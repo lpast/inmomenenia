@@ -22,7 +22,12 @@
 /* CSS General de la web */
 
 body {
+	
+	/*background-image: url("../php/img_inmuebles/Untitled-02.png");*/
 	background-color: #f5f1e7;
+	margin: 0;
+  	margin-bottom: 40px;
+
 }
 
 h1, h2,h3 {
@@ -30,7 +35,7 @@ h1, h2,h3 {
 }
 
 footer {
-	background-color: black;
+	background-color: #000000;
 	padding-top: 8px;
 	display: both;
 	bottom: 0;
@@ -59,8 +64,8 @@ footer {
     background-color: #286090;
 }
 
-.menu-inicio {
-	margin-top: 125px;
+.cabecera-menu-inicio {
+	margin-top: 175px !important;
 }
 
 .quien-eres {
@@ -94,7 +99,6 @@ footer {
 .nav {
 	padding-top: 16px;
 }
-
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
 	color: #baa35f;
@@ -144,7 +148,7 @@ footer {
 }
 
 .pager li>a, .pager li>span {
-	background-color: #222;
+	background-color: #000000;
     border: 1px solid #baa35e;
     color: #baa35e;
 }
@@ -222,7 +226,7 @@ footer {
 }
 
 .botones-clientes {
-	    margin-left: 40.333333%;
+	margin-left: 40.333333%;
 }
 
 .btn-primary {

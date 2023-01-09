@@ -8,34 +8,31 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>InmoMenenia</title>
-    <!-- CSS de Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <!-- Mi CSS -->
-    <link rel="stylesheet" href="../css/estilos.css" media="screen">
-    <!-- Librería jQuery requerida por los plugins de JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery.js"></script>
- 
-    <!-- Todos los plugins JavaScript de Bootstrap (se pueden
-         incluir archivos JavaScript individuales de los únicos
-         pluginps que se utilicen) -->
-         <scrit src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
+    <title>Inmuebles</title>
+    <!-- Insertamos el archivo CSS compilado y comprimido -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Theme opcional -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+      <!-- Mi CSS -->
+      <link rel="stylesheet" href="../css/estilos.css" media="screen">
+    <!--Insertamos jQuery dependencia de Bootstrap-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Insertamos el archivo JS compilado y comprimido -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
     
     <!-- Menú de navegación -->
-    <?php $tipoMenu=Interfaz::mostrarTipoMenu(); ?>
+    <?php $tipoMenu=Interfaz::mostrarMenu(); ?>
 
     <!-- Se muestran los inmuebles comprados por el usuario -->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 menu-inicio">
-          <h2 align="center" style="margin-top: 50px;">Todos estos inmuebles están disponibles</h2>
+		<div class="row">
+			<div class="col-xs-12 cabecera-menu-inicio">
+          <h2 align="center" style="margin-top: 50px;">Ahora mismo, estos son los inmuebles están disponibles</h2>
           <?php 
             $con = abrirConexion();
             $sql = "SELECT * FROM tbl_inmuebles";
@@ -57,7 +54,7 @@
                   echo "<img class='img-responsive' src='$fila[imagen]'>
                         <h2>$fila[direccion]</h2>
                         <h4>$fila[precio] €</h4>
-                        <form action='./inmuebles/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
+                        <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
                   echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
                 }
 
