@@ -109,6 +109,8 @@ session_start();
 	</div>
   
   <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
+  <footer class="navbar-nav navbar-inverse">
+      <p align="center">Copyright Menenia's Digital 2022</p>
+    </footer> 
   </body>
 </html>

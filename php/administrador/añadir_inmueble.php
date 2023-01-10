@@ -30,7 +30,7 @@ comprobarAdmin();
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_inmuebles(); ?>
   
-    <?php $menu = Interfaz::form_añadir_inmueb(); ?>
+    <?php $menu = Interfaz::form_añadir_inmueble(); ?>
 
    <!-- Código PHP para añadir un nuevo inmueble -->
    <?php añadir_inmuebles(); ?>

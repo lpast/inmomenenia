@@ -411,118 +411,100 @@ function listar_inmuebles(){
 
 
 
-function añadir_inmuebles(){
+function añadir_inmuebles() : bool{
 
-             if (isset($_POST['nuevo_inmueble'])){
-                $id = $_POST['id'];
-                $tipo = $_POST['tipo'];
-                $direccion = $_POST['direccion'];
-                $cp = $_POST['cp'];
-                $zona = $_POST['zona'];
-                $metros = $_POST['metros'];
-                $num_hab = $_POST['num_hab'];
-                $banos = $_POST['banos'];
-                $garaje = $_POST['garaje'];
-                $jardin = $_POST['jardin'];
-                $piscina = $_POST['piscina'];
-                $estado = $_POST['estado'];
-                $descripcion = $_POST['descripcion'];
-                $precio = $_POST['precio'];
-                $imagen = $_FILES['imagen']['name'];
-                $imagen_tmp = $_FILES['imagen']['tmp_name'];
-                $imagen_type = $_FILES['imagen']['type'];
-                $img_correcto = false;
-                $fecha_alta = $_POST['fecha_alta'];
-                $id_cliente = $_POST['id_cliente'];
+  if (isset($_POST['nuevo_inmueble'])){
+    $id = $_POST['id'];
+    $tipo = $_POST['tipo'];
+    $direccion = $_POST['direccion'];
+    $cp = $_POST['cp'];
+    $zona = $_POST['zona'];
+    $metros = $_POST['metros'];
+    $num_hab = $_POST['num_hab'];
+    $banos = $_POST['banos'];
+    $garaje = $_POST['garaje'];
+    $jardin = $_POST['jardin'];
+    $piscina = $_POST['piscina'];
+    $estado = $_POST['estado'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $imagen = $_FILES['imagen']['name'];
+    $imagen_tmp = $_FILES['imagen']['tmp_name'];
+    $imagen_type = $_FILES['imagen']['type'];
+    $img_correcto = false;
+    $fecha_alta = $_POST['fecha_alta'];
+    $id_cliente = $_POST['id_cliente'];
 
+    //comprobamos que la extensión de la imagen sea válida
+    if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png'){
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
+        </div></div></div>";
+    }
 
-                //comprobamos que la extensión de la imagen sea válida
-                if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png'){
-                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                            <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
-                          </div></div></div>";
-                }
-
-                // subimos la imagen al servidor
-                if (!file_exists('../../php/img_inmuebles')){
-                  mkdir('../../php/img_inmuebles');
-                  echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                    <strong>carpeta creada</strong> 
-                    </div>";
-                }else{
-                    echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                    <strong>la carpeta estaba creada</strong> 
-                  </div>";
-                }
-
-                // creo la ruta donde guardar la foto dependiendo del tipo que sea
-                /*if ($imagen_type == 'image/png'){
-                  $ruta_img = '../../php/img_inmuebles/$imagen'.'.png';
-                   echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                  <strong>ruta correcta png</strong> 
-                </div>";
-                echo $ruta_img;
-                }else if ($imagen_type == 'image/jpeg'){
-                  $ruta_img = "../../php/img_inmuebles/$imagen.jpeg";
-                  echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                  <strong>ruta correcta jpeg</strong> 
-                    </div>";
-                    echo $ruta_img;
-                } */
+    // subimos la imagen al servidor
+    if (!file_exists('../../php/img_inmuebles')){
+      mkdir('../../php/img_inmuebles');
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+        <strong>carpeta creada</strong> 
+      </div>";
+    }else{
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+      <strong>la carpeta estaba creada</strong> 
+      </div>";
+    }
                 
-                // creo la ruta donde guardar la foto dependiendo del tipo que sea
-                if ($imagen_type){
-                    $ruta_img = "../../php/img_inmuebles/$imagen";//.'$direccion.jpeg';
-                    echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                        <strong>ruta correcta jpeg</strong> 
-                      </div>";
-                      echo $ruta_img;
-                } 
+    // creo la ruta donde guardar la foto dependiendo del tipo que sea
+    if ($imagen_type){
+        $ruta_img = "../../php/img_inmuebles/$imagen";//.'$direccion.jpeg';
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>ruta correcta jpeg</strong> 
+          </div>";
+          echo $ruta_img;
+    } 
                 
 
-                // guardo la foto en el servidor
-                if (move_uploaded_file($imagen_tmp, $ruta_img)){
-                  $img_correcto = true;
-                }else{
-                 echo "<div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                            <strong>Error al subir la imagen del inmueble al servidor</strong> 
-                          </div>";
-                  echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
-                }
+    // guardo la foto en el servidor
+    if (move_uploaded_file($imagen_tmp, $ruta_img)){
+      $img_correcto = true;
+    }else{
+      echo "<div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+              <strong>Error al subir la imagen del inmueble al servidor</strong> 
+              </div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+    }
 
-                // añado el inmueble a la BD si se ha subido la imagen correctamente
-                
-                if ($img_correcto){
+    // añado el inmueble a la BD si se ha subido la imagen correctamente
+    if ($img_correcto){
 
-                  $conexion = abrirConexion();
+      $conexion = abrirConexion();
 
-                  $insertar = "INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
-                  ($id, '$tipo', '$direccion', $cp, '$zona', $metros, $num_hab, $banos, $garaje, $jardin, $piscina, $estado, '$descripcion', $precio, '$imagen', $fecha_alta, '$id_cliente')";
+      $insertar = "INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
+      ($id, '$tipo', '$direccion', $cp, '$zona', $metros, $num_hab, $banos, $garaje, $jardin, $piscina, $estado, '$descripcion', $precio, '$imagen', $fecha_alta, '$id_cliente')";
 
-                  $datos = mysqli_query($conexion, $insertar);
-
-                  echo $datos;
-                  
-                  if ($datos){
-                    echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                            <strong>Inmuebles añadido correctamente</strong> 
-                          </div>";
-                    echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=inmuebles.php'>";
-                  }else{
-                    echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                            <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble</h4>
-                          </div></div></div>";
-                   // echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
-                  }
-                }
-              }
-      echo"  </div>
-        
-      </div>
-    </div>";
+      $datos = mysqli_query($conexion, $insertar);
+      echo $datos;
+      
+      if ($datos){
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+                <strong>Inmuebles añadido correctamente</strong> 
+              </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=inmuebles.php'>";
+      }else{
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble</h4>
+              </div></div></div>";
+      // echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+      }
+    }
+  }
+  echo "</div>    
+    </div>
+  </div>";
+  return true;
 }
 
-function buscar_inmuebles_admin(){ 
+function buscar_inmuebles_admin() : bool { 
   if (isset($_POST['buscar_inm'])){
     $tipo = $_POST['tipo'];
     $direccion = $_POST['direccion'];
@@ -647,10 +629,12 @@ function buscar_inmuebles_admin(){
       }
       mysqli_close($con);
     }
+    return true;
   }//llave cierre  if (isset($_POST['buscar_inm']))
+  
 }
 
-function borrar_inmueble(){
+function borrar_inmueble() : bool {
   if (isset($_POST['borrar'])){
     $id = $_POST['id'];
 
@@ -689,5 +673,6 @@ function borrar_inmueble(){
     }
 
     mysqli_close($conexion);
+    return true;
     }
 }

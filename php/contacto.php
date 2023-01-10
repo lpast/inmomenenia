@@ -23,8 +23,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
+
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::mostrarMenu(); ?>
+
+     <!-- Muestra contacto -->
+     <?php $contacto = Interfaz::muestra_contacto(); ?>
 
     <!-- Formulario de contacto -->
     <?php $menu = Interfaz::formulario_contacto(); ?>

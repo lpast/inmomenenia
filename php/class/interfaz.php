@@ -2,7 +2,7 @@
 
 class Interfaz {
   
-  static public function mostrarMenuIndex(){
+  static public function mostrarMenuIndex() : bool {
     if (isset($_SESSION['tipo'])){
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u'){
@@ -95,9 +95,10 @@ class Interfaz {
             </div>
       </nav>";
     }
+    return true;
   }
 
-  static public function mostrarMenu(){
+  static public function mostrarMenu() : bool {
     if (isset($_SESSION['tipo'])){
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u'){
@@ -188,36 +189,38 @@ class Interfaz {
             </div>
       </nav>";
     }
+    return true;
   }
 
-  static public function imagen_aleatoria(){
+  static public function imagen_aleatoria() : bool {
     echo "<div class='container-fluid'>
-    <div class='row'>
-    <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <h1 align='center'> Encuentra tu nuevo hogar</h1>";
-          $conexion = abrirConexion();
-          $sql = 'SELECT imagen FROM tbl_inmuebles';
-          $imagenes = array();
-            
-          $imagen = mysqli_query($conexion,$sql);
-            
-          if (!$imagen){
-            echo 'Eror al cargar las imagenes';
-          } else {
-            while ($fila = mysqli_fetch_array($imagen,MYSQLI_ASSOC)) {
-              array_push ($imagenes,$fila['imagen']);
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <h1 align='center'> Encuentra tu nuevo hogar</h1>";
+            $conexion = abrirConexion();
+            $sql = 'SELECT imagen FROM tbl_inmuebles';
+            $imagenes = array();
+              
+            $imagen = mysqli_query($conexion,$sql);
+              
+            if (!$imagen){
+              echo 'Eror al cargar las imagenes';
+            } else {
+              while ($fila = mysqli_fetch_array($imagen,MYSQLI_ASSOC)){
+                array_push ($imagenes,$fila['imagen']);
+              }
             }
-          }
-          mysqli_close($conexion);
+            mysqli_close($conexion);
 
-          $max = count($imagenes);
-          $img_aleatoria = rand(0,$max);
-          echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>;         
-      </div>
-    </div>";
+            $max = count($imagenes);
+            $img_aleatoria = rand(0,$max);
+         echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
+          </div>
+          </div>";
+    return  true;
   }
 
-  static public function form_buscar_Inmuebles(){
+  static public function form_buscar_Inmuebles() : bool {
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
       <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -258,7 +261,7 @@ class Interfaz {
                     </div>
                     <div class='form-group'>
                       <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
+                        <input class='form-control btn-primary' align='center' type='submit' name='buscar_inm' value='Buscar'>
                       </div>
                     </div>
                   </form>
@@ -269,43 +272,62 @@ class Interfaz {
         </div>
       </div>
       </div>";
+      return true;
+  }
+
+  static public function muestra_contacto() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <div class='jumbotron'>
+          <h1 align ='center'>CONTACTO</h1>
+          </br>
+          <h2 align ='center'><img src='../iconos/location.png' alt='inmomenenia' width='80px'> C/San Blas 41, La Puebla de Alfinén, Zaragoza</h2>
+          <h2 align ='center'><img src='../iconos/telephone.png' alt='inmomenenia' width='80px'> 692.60.14.54</h2>
+          <h2 align ='center'><img src='../iconos/mail.png' alt='inmomenenia' width='80px'> contacto@inmomenenia.es</h2>
+          <h2 align ='center'>   </h2>
+          </br>
+          <h1 style='margin-bottom:50px' align='center'>CÓMO LLEGAR</h1>
+          <p align ='center'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+          <h2 align ='center'><img src='../iconos/bus.png' alt='inmomenenia' width='80px'>Línea 211</h3>
+          </div>";
+    return true;
   }
           
 
-  static public function formulario_contacto (){
+  static public function formulario_contacto() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 menu-inicio'>
-          <h2 align ='center'> </h2>
+      
+        <div class='jumbotron'>
           <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
           <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
-          </div>
-          <div class='col-md-6 col-md-offset-3'>
-            <div class='panel panel-default'>
-              <div class='panel-body'>
-                <form id='contacto' action='#' method='post' accept-charset='utf-8'>
-                  <div class='form-group'>
-                    <label class='col-sm-2' for='nombre'> Nombre *</label>
-                    <div class='col-sm-10 '>
+        </div>
+        <div class='col-md-6 col-md-offset-3'>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
+              <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+                <div class='form-group'>
+                  <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
+                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                       <input class='form-control' type='text' name='nombre' placeholder='escribe aquí tu nombre' autofocus>
                     </div>
                   </div>
-                  <br>
                   <div class='form-group'>
-                    <label class='col-sm-2' for='Email'> Email *</label>
-                    <div class='col-sm-10 '>
+                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
+                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                       <input class='form-control' type='text' name='email' placeholder='escribe aquí tu email'>
                     </div>
                   </div>
                   <div class='form-group'>
-                    <label class='col-sm-2' for='telefono'> Teléfono</label>
-                    <div class='col-sm-10 '>
+                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
+                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                       <input class='form-control' type='number' name='telefono' placeholder='escribe aquí tu teléfono'>
                     </div>
                   </div>
                   <div class='form-group'>
-                    <label class='col-sm-2' for='asunto'> Asunto</label>
-                    <div class='col-sm-10 '>
+                    <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
+                    <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                       <label class='radio-inline'>
                         <input type='radio' name='asunto'>Pedir información
                       </label>
@@ -319,17 +341,15 @@ class Interfaz {
                   </div>
                   <br>
                   <div class='form-group'>
-                    <label class=' col-sm-2'>Mensaje *</label>
-                    <div class='col-sm-10'>
+                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
+                    <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                       <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
                     </div>
                   </div>
                   <br>
                   <div class='form-group'>
-                    <div class='col-sm-12 col-sm-offset-5'>
-                      <div class='col-sm-2'>
-                        <input class='form-control btn-primary' style='background-color: #000000;	border-color: #000000; color: #baa35f; align=center'; type='submit' name='guardar' value='Guardar'>
-                      </div>
+                    <div class='col-md-12 col-sm-2'>                      
+                        <input class='form-control btn-primary' align=center' type='submit' name='Enviar' value='Enviar'>
                     </div>
                   </div>
                 </form>
@@ -338,32 +358,36 @@ class Interfaz {
           </div>
       </div>
     </div>";
+    return true;
   }
 
-  static public function formulario_acceso (){
+  static public function formulario_acceso() : bool {
     echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 menu-inicio'>
-        <h2 align='center'>Acceder a la aplicación</h2>
-        <div class='panel panel-default'>
-          <div class='panel-body'>
+      <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <div class='jumbotron'>
+          <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
             <form action='#' method='post' class='form-horizontal'>
               <div class='form-group'>
-                <label class='col-sm-3 col-sm-offset-2'>Usuario</label>
-                <div class='col-sm-6'>
-                  <input class='form-control' type='text' name='nick' required>
-                </div>
+                <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
+                  <div class='col-sm-6'>
+                    <input class='form-control' type='text' name='nick' required>
+                  </div>
               </div>
               <div class='form-group'>
-                <label class='col-sm-3 col-sm-offset-2'>Contraseña</label>
-                <div class='col-sm-6'>
-                  <input class='form-control' type='password' name='password' required>
-                </div>
+              <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
+                  <div class='col-sm-6'>
+                    <input class='form-control' type='password' name='password' required>
+                  </div>
               </div>
               <div class='form-group'>
-                <label class='col-sm-4 col-sm-offset-2'>¿Mantener sesión abierta?</label>
                 <div class='checkbox'>
-                <input type='checkbox' value='open' name='check'>
+                  <input class='form-control' type='checkbox' value='open' name='check'>
+                </div>
+                <div>
+                <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
                 </div>
               </div>
               <div class='form-group'>
@@ -376,11 +400,13 @@ class Interfaz {
         </div>
       </div>
     </div>
-    </div>";
+  </div>";
 
-  }
+  return  true;
+    
+}
 
-  static public function mostrarCalendario($dia, $mes, $año) {
+  static public function mostrarCalendario($dia, $mes, $año) : bool {
     switch ($mes) {
       case 1:
         $nombre_mes='Enero';
@@ -522,10 +548,11 @@ class Interfaz {
               <li><a class='btn btn-warnig' role='button' href='citas.php?mes=$mes_despues&anio=".$año."'>Siguiente</a></li>
           </ul>";
 
+          return true;
   }
 
-  static public function gestion_inmuebles(){
-    echo "<div class='container-fluid menu-inicio'>
+  static public function gestion_inmuebles() : bool {
+    echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
         <div class='col-xs-12'>
           <nav class='navbar '>
@@ -540,7 +567,7 @@ class Interfaz {
         </div>
       </div>
     </div>";
-
+    return true;
   }
 
   static public function listar_inmuebles(){
@@ -644,7 +671,7 @@ class Interfaz {
     }
   }
 
-  static public function form_añadir_inmueb (){
+  static public function form_añadir_inmueble () : bool{
     echo "<div class='container-fluid'>
     <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -817,6 +844,7 @@ class Interfaz {
             </div>
           </div>
         </div>";
+    return true;
   }
 
   static public function form_borrar_inmueble(){

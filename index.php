@@ -2,8 +2,8 @@
    require_once "php/dbconnect.php";
    require_once "php/class/interfaz.php";
    require_once "php/funciones.php";
-  session_start(); 
-  comprobarIndex();
+    session_start(); 
+    comprobarIndex();
 ?>
 <!DOCTYPE html>
 <html lang="es">

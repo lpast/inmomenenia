@@ -123,6 +123,8 @@ INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_b
 (0263, 'venta', 'Pastor 63', 50195, 'La Puebla de Alfindén', 150, 1, 3, 1, 0, 0, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 99.000, './img_inmuebles/fachada_0263.jpg',09/12/2022, '321654896T');
 
 INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
+(0545, 'alquiler', 'Rio Ebro 37', 50195, 'Pastriz', 90,  1, true, 1, 1, 1, 1,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 350, './img_inmuebles/fachada_0078.jpg','2022-08-05', '404635645C');
+
 (0103, 'alquiler', 'Carretera Zaragoza 03', 50195, 'Pastriz', 90,  1, 1, 0, 0, 1, 0,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 400, './img_inmuebles/fachada_0078.jpg','2022-05-08', '403215697C'),
 (0489, 'alquiler', 'Eras Altas 89', 50171, 'La Puebla de Alfindén', 120, 3, 2, 0, 0, 1,  0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, './img_inmuebles/fachada_0078.jpeg',, '721469363B');
 
