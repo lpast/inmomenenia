@@ -411,7 +411,7 @@ function listar_inmuebles(){
 
 
 
-function añadir_inmuebles() : bool{
+function añadir_inmuebles(){
 
   if (isset($_POST['nuevo_inmueble'])){
     $id = $_POST['id'];
@@ -501,10 +501,9 @@ function añadir_inmuebles() : bool{
   echo "</div>    
     </div>
   </div>";
-  return true;
 }
 
-function buscar_inmuebles_admin() : bool { 
+function buscar_inmuebles_admin(){ 
   if (isset($_POST['buscar_inm'])){
     $tipo = $_POST['tipo'];
     $direccion = $_POST['direccion'];
@@ -629,12 +628,11 @@ function buscar_inmuebles_admin() : bool {
       }
       mysqli_close($con);
     }
-    return true;
   }//llave cierre  if (isset($_POST['buscar_inm']))
   
 }
 
-function borrar_inmueble() : bool {
+function borrar_inmueble(){
   if (isset($_POST['borrar'])){
     $id = $_POST['id'];
 
@@ -673,6 +671,5 @@ function borrar_inmueble() : bool {
     }
 
     mysqli_close($conexion);
-    return true;
     }
 }
