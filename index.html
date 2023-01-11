@@ -1,10 +1,3 @@
-<?php
-   require_once "php/dbconnect.php";
-   require_once "php/class/interfaz.php";
-   require_once "php/funciones.php";
-  session_start(); 
-  comprobarIndex();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +21,7 @@
 	
 </head>
 <body>
-	 <!-- Menú de navegación -->
-	 <?php $menuIndex = Interfaz::mostrarMenuHome(); ?>
-
-	 <div class='container-fluid'>
+	<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
 			<h1 align='center'>  </h1>	
