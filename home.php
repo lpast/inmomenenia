@@ -1,3 +1,10 @@
+<?php
+   require_once "php/dbconnect.php";
+   require_once "php/class/interfaz.php";
+   require_once "php/funciones.php";
+  session_start(); 
+  comprobarIndex();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,15 +24,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <?php
-   require_once "php/dbconnect.php";
-   require_once "php/class/interfaz.php";
-   require_once "php/funciones.php";
-  session_start(); 
-  comprobarIndex();
-?>
     <!-- Menú de navegación -->
-    <?php $menuIndex = Interfaz::mostrarMenuIndex(); ?>
+    <?php $menuIndex = Interfaz::mostrarMenuHome(); ?>
 
     <!-- Muestro imagen de un inmueble aleatorio -->
     <?php $aleatoria = Interfaz::imagen_aleatoria(); ?>

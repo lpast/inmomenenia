@@ -2,7 +2,7 @@
 
 class Interfaz {
   
-  static public function mostrarMenuIndex() : bool {
+  static public function mostrarMenuHome() : bool {
     if (isset($_SESSION['tipo'])){
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u'){
@@ -14,7 +14,7 @@ class Interfaz {
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>                        
                     </button>
-                    <a href='./index.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+                    <a href='./home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
@@ -36,7 +36,7 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='./index.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+            <a href='./home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
@@ -82,7 +82,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='index.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+                <a href='home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
@@ -110,7 +110,7 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='./../index.php'><img src='./../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='./../home.php'><img src='./../logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
@@ -132,7 +132,7 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='../../index.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='../../home.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
@@ -176,7 +176,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span>
                   <span class='icon-bar b-resp'></span>                        
                 </button>
-                <a href='../index.php'><img src='../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                <a href='../home.php'><img src='../logo.jpeg' alt='inmomenenia' width='20%'></a>
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
@@ -220,7 +220,7 @@ class Interfaz {
     return  true;
   }
 
-  static public function form_buscar_Inmuebles() : bool {
+  static public function form_buscar_Inmuebles(){
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
       <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -261,7 +261,7 @@ class Interfaz {
                     </div>
                     <div class='form-group'>
                       <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control btn-primary' align='center' type='submit' name='buscar_inm' value='Buscar'>
+                        <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
                       </div>
                     </div>
                   </form>
@@ -272,7 +272,6 @@ class Interfaz {
         </div>
       </div>
       </div>";
-      return true;
   }
 
   static public function muestra_contacto() : bool {
@@ -698,7 +697,7 @@ class Interfaz {
                       <select class='form-control' name='tipo' id='tipo'>
                         <option value='alquiler'>Selecciona una opcion</option>
                         <option value='alquiler'>Alquilar</option>
-                        <option value='compra'>Comprar</option>
+                        <option value='compra'>Vender</option>
                       </select>
                     </div>
                   </div>
@@ -742,10 +741,10 @@ class Interfaz {
                       <label class='col-sm-2' >Garaje:</label>
                       <div class='col-sm-10'>
                           <label class='radio-inline'>
-                              <input type='radio' name='garaje' value='si' id= 'gSi'> Si
+                              <input type='radio' name='garaje' value='1' id= 'gSi'> Si
                           </label>
                           <label class='radio-inline'>
-                              <input type='radio' name='garaje' value='no' id='gNo'> No
+                              <input type='radio' name='garaje' value='1' id='gNo'> No
                           </label>
                       </div>
                   </div>
