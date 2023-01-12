@@ -1,7 +1,7 @@
 <?php
-   require_once "php/dbconnect.php";
-   require_once "php/class/interfaz.php";
-   require_once "php/funciones.php";
+  require_once "php/dbconnect.php";
+  require_once "php/class/interfaz.php";
+  require_once "php/funciones.php";
   session_start(); 
   comprobarIndex();
 ?>
@@ -28,10 +28,8 @@
     <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
 
     <!-- Muestro imagen de un inmueble aleatorio -->
-    <?php $aleatoria = Interfaz::imagen_aleatoria(); ?>
+    <?php $aleatoria = Interfaz::mostrar_home(); ?>
          
-    <!-- mostrar formulario de busqueda-->
-    <?php $form_buscar = Interfaz::form_buscar_Inmuebles();?>
     <!-- buscar inmuebles-->
     <?php buscar_Inmuebles();?>
 </div>

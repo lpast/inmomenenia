@@ -33,7 +33,7 @@ if (isset($_GET['mes'])) {
    <?php $menu = Interfaz::mostrarMenu(); ?>
 
   <!-- Menú con opciones de administracion-->
-  <?php menu_admon();?>
+  <?php $menu_admmon=Interfaz::menu_admon();?>
   
   <div class='container-fluid'>
       <div class='row'>

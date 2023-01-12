@@ -14,7 +14,7 @@ class Interfaz {
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>                        
                     </button>
-                    <a href='./home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+                    <a href='./index.html'><img src='css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
@@ -37,11 +37,11 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='home-admin.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+            <a href='./index.html'><img src='css/logo.jpeg' alt='inmomenenia' width='20%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
-            <li><a href='php/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+            <li><a href='php/administrador/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
             <li><a href='php/administrador/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
             <li><a href='php/administrador/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
             <li><a href='php/administrador/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
@@ -61,7 +61,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+                <a href='./index.html'><img src='css/logo.jpeg' alt='inmomenenia' width='20%'></a>
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
@@ -89,7 +89,7 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='./../home.php'><img src='./../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='./../index.html'><img src='./../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
@@ -103,7 +103,8 @@ class Interfaz {
                       </div>
                     </div>
               </nav>";
-      }if ($tipo_usuario == 'a'){
+      }
+      if ($tipo_usuario == 'a'){
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
                     <div class='container-fluid'>
                       <div class='navbar-header'>
@@ -112,7 +113,7 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='home-admin.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='./../../index.html'><img src='./../../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
@@ -128,30 +129,30 @@ class Interfaz {
       }
     }else{
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-            <div class='container-fluid'>
-              <div class='navbar-header'>
-                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>                        
-                </button>
-                <a href='../home.php'><img src='../logo.jpeg' alt='inmomenenia' width='20%'></a>
-              </div>
-              <div class='collapse navbar-collapse' id='nav-responsive'>
-              <ul class='nav navbar-nav navbar-right'>
-                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-              </ul>
-              </div>
-            </div>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>                        
+            </button>
+            <a href='./../index.html'><img src='./../logo.jpeg' alt='inmomenenia' width='20%'></a>
+          </div>
+          <div class='collapse navbar-collapse' id='nav-responsive'>
+            <ul class='nav navbar-nav navbar-right'>
+              <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+              <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
+              <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+              <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+            </ul>
+          </div>
+        </div>
       </nav>";
     }
     return true;
   }
 
-  static public function imagen_aleatoria() : bool {
+  /*static public function imagen_aleatoria() : bool {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
@@ -177,8 +178,8 @@ class Interfaz {
           </div>
           </div>";
     return  true;
-  }
-
+  }*/
+  
   static public function form_buscar_Inmuebles() : bool {
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
             <div class='row'>
@@ -196,7 +197,7 @@ class Interfaz {
                     <div class='col-sm-5 col-lg-offset-2'>
                       <select class='form-control' id='tipo' name='tipo'>
                         <option value='alquiler'>Alquilar</option>
-                        <option value='compra'>Comprar</option>
+                        <option value='venta'>Venta</option>
                       </select>
                     </div>
                   </div>
@@ -231,6 +232,77 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    return true;
+  }
+  static public function mostrar_home() : bool {
+
+    if (isset($_SESSION['tipo'])){
+      $tipo_usuario = $_SESSION['tipo'];
+      if ($tipo_usuario == 'u'){
+         //Mostramos una imagen aleatoria 
+        echo "<div class='container-fluid'>
+        <div class='row'>
+          <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+            <h1 align='center'> Encuentra tu hogar perfecto</h1>";
+        $conexion = abrirConexion();
+        $sql = 'SELECT imagen FROM tbl_inmuebles';
+        $imagenes = array();
+
+        $imagen = mysqli_query($conexion, $sql);
+
+        if (!$imagen) {
+          echo 'Eror al cargar las imagenes';
+        } else {
+          while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+            array_push($imagenes, $fila['imagen']);
+          }
+        }
+        mysqli_close($conexion);
+
+        $max = count($imagenes);
+        $img_aleatoria = rand(0, $max - 1);
+        echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
+            </div>
+            </div>";
+      }
+      if ($tipo_usuario == 'a'){
+        //Mostramos una imagen aleatoria 
+        echo "<div class='container-fluid'>
+          <div class='row'>
+            <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+              <h1 align='center'> Administración InmoMenenia</h1>
+          </div>
+        </div>";
+     }
+    }else{
+      //Mostramos una imagen aleatoria 
+     echo "<div class='container-fluid'>
+     <div class='row'>
+       <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+         <h1 align='center'> Encuentra tu hogar perfecto</h1>";
+     $conexion = abrirConexion();
+     $sql = 'SELECT imagen FROM tbl_inmuebles';
+     $imagenes = array();
+
+     $imagen = mysqli_query($conexion, $sql);
+
+     if (!$imagen) {
+       echo 'Eror al cargar las imagenes';
+     } else {
+       while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+         array_push($imagenes, $fila['imagen']);
+       }
+     }
+     mysqli_close($conexion);
+
+     $max = count($imagenes);
+     $img_aleatoria = rand(0, $max - 1);
+     echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
+         </div>
+         </div>";
+    }
+    self::form_buscar_Inmuebles();
+
     return true;
   }
 
@@ -567,7 +639,7 @@ class Interfaz {
   }
    
 
-  static public function gestion_citas(){
+  static public function gestion_citas() : bool {
     echo "<div class='container-fluid menu-inicio'>
     <div class='row'>
     <div class='col-xs-12'>
@@ -583,54 +655,55 @@ class Interfaz {
     </div>
     </div>
     </div>";
+    return true;
   }
 
-  static public function mostrar_ProximasCitas(){
-
+  static public function mostrar_ProximasCitas(): bool {
     echo '<div class="container-fluid">
-    <div class="row">
-      <!-- Citas y Modificar -->
-      <div class="col-xs-12 col-md-6">
-        <h2 class="margen-citas" align="center">Próximas citas</h2>';
-  
-    $actual = date('Y-m-d');
-    $marca_actual = strtotime($actual); 
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <h2 class="margen-citas" align="center">Próximas citas</h2>';
+          
+          $actual = date('Y-m-d');
+          $marca_actual = strtotime($actual); 
 
-    $conexion = abrirConexion();
-    $sql = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id_cliente
-            from tbl_citas inner join tbl_clientes
-            on tbl_citas.id_cliente = tbl_clientes.id
-            order by fecha desc";
+          $conexion = abrirConexion();
+          $sql = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id
+                  from tbl_citas inner join tbl_clientes
+                  on tbl_citas.id_cliente = tbl_clientes.id
+                  order by fecha desc";
 
-    $mostrar = mysqli_query($conexion,$sql);
+          $mostrar = mysqli_query($conexion,$sql);
 
-    if (!$mostrar) {
-      echo "Error al hacer la consulta a la BD";
-    } else {
-      $num_filas = mysqli_num_rows($mostrar);
-      if ($num_filas == 0) {
-        echo "No hay citas para mostrar";
-      }else{
-        echo "<p align='center'><b>Se han listado $num_filas citas</b></p>";
-        echo "<div class='table-responsive'>";
-        echo "<table class='table table-striped table-hover'";
-        echo "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Teléfono</th><th>Modificar</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
-          $marca_cita = strtotime($fila['fecha']);
-          $marca_hora = strtotime($fila['hora']);
-          $f_formateada = date("d-m-Y",$marca_cita);
-          $h_formateada = date("G:i",$marca_hora);
-
-          if ($marca_cita > $marca_actual) {
-            echo "<tbody><tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td>
-              <td><form action='modificar_cita.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+          if (!$mostrar) {
+            echo "Error al hacer la consulta a la BD";
           } else {
-            echo "<tbody><tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td><td>No se puede modificar</td></tr></tbody>";
+            $num_filas = mysqli_num_rows($mostrar);
+            if ($num_filas == 0) {
+              echo "No hay citas para mostrar";
+            } else {
+              echo "<p align='center'><b>Se han listado $num_filas citas</b></p>";
+              echo "<div class='table-responsive'>";
+                echo  "<table class='table table-striped table-hover'";
+                  echo    "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Teléfono</th><th>Modificar</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
+                    $marca_cita = strtotime($fila['fecha']);
+                    $marca_hora = strtotime($fila['hora']);
+                    $f_formateada = date("d-m-Y",$marca_cita);
+                    $h_formateada = date("G:i",$marca_hora);
+
+                    if ($marca_cita > $marca_actual) {
+                      echo "<tbody><tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td>
+                        <td><form action='modificar_cita.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                    } else {
+                      echo "<tbody><tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td><td>No se puede modificar</td></tr></tbody>";
+                    }
+                  }
+                echo "</table>
+              </div>";
+            }
           }
-        }
-        echo "</table></div>";
-      }
-    }
+    return true;
   }
 
   static public function form_añadir_inmueble () : bool{
