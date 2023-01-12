@@ -2,12 +2,12 @@
 
 function iniciar_sesion(){
   if ($_SESSION['tipo'] == 'u'){
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }else if ($_SESSION['tipo'] == 'a'){
-     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }
 
-  if (isset($_POST['acceder'])) {
+  if (isset($_POST['acceder'])){
     $usuario = $_POST['nick'];
     $pass = $_POST['password'];
 
@@ -16,67 +16,69 @@ function iniciar_sesion(){
 
     $consulta = mysqli_query($con, $sql);
 
-    if ($consulta) {
-      if (mysqli_num_rows($consulta) > 0) {
+    if ($consulta){
+      if (mysqli_num_rows($consulta) > 0){
         $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
         $_SESSION['id_usuario'] = $fila['id'];
 
         if ($usuario == 'administrador'){
           $_SESSION['tipo'] = 'a';
           $_SESSION['nombre'] = 'Administrador';
-
-        } else {
+          $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=../home-admin.php'>";
+        }else{
           $_SESSION['tipo'] = 'u';
           $_SESSION['nombre'] = $fila['nombre'] . ' ' . $fila['apellidos'];
+          $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=../home.php'>";
         }
 
         if (isset($_POST['check'])) {
           $datos = session_encode();
           setcookie('datos', $datos, time() + (15 * 24 * 60 * 60), '/');
         }
+        
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <strong>¡Acceso correcto!</strong> 
           </div>";
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=../index.php'>";
-      } else {
+      }else{
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
       }
-    } else {
+    }else{
       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
         <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
     }
+    echo $home;
   }
 }
 
 function comprobarUsuario() {
   if (isset($_SESSION['tipo'])){
     if ($_SESSION['tipo'] != 'u'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
     }
     
   }else if ($_COOKIE['datos']){
       session_decode($_COOKIE['datos']);
       if ($_SESSION['tipo'] != 'u'){
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
       }
   }else{
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }
 }
 
 function comprobarAdmin(){
   if (isset($_SESSION['tipo'])){
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
     }
   } else if ($_COOKIE['datos']) {
     session_decode($_COOKIE['datos']);
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
     }
   } else {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../index.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }
 }
 
@@ -90,6 +92,7 @@ function comprobarIndex(){
     //echo "No hay sesión";
   }
 }
+
 
 function buscar_Inmuebles(){ 
   if (isset($_POST['buscar_inm'])){
@@ -281,7 +284,6 @@ function buscar_Inmuebles(){
   }//llave cierre  if (isset($_POST['buscar_inm']))
 }
 
-
 function inmuebles_cliente (){
   $id = $_SESSION['id_usuario'];
   $con = abrirConexion();
@@ -346,29 +348,7 @@ function listar_inmuebles(){
       }
       mysqli_close($conexion); 
 }
-  /*function mostrar_inmueble_aleatorio(){
-    $conexion = abrirConexion();
-    $coge_imagen = "SELECT imagen FROM tbl_inmuebles";
-    $imagenes = array();
-            
-    $imagen = mysqli_query($conexion,$coge_imagen);
-    
-    if (!$imagen) {
-      echo "Se ha producido un error al cargar las imagenes";
-    } else {
-      while ($fila = mysqli_fetch_array($imagen,MYSQLI_ASSOC)) {
-        array_push($imagenes,$fila['imagen']);
-      }
-    }
-    mysqli_close($conexion);
-
-    $max = count($imagenes);
-    $azar = rand(0,$max);
-    echo "<img src='./php/$imagenes[$azar]' class='img-rounded img-responsive' style='width:100%; align:center; border:solid 0.5px' > ";
-  }*/
-
-
-
+  
 function añadir_inmuebles(){
 
   if (isset($_POST['nuevo_inmueble'])){

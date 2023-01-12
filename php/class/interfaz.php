@@ -18,6 +18,7 @@ class Interfaz {
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
+                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                     <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
                     <li><a href='php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                     <li><a href='php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
@@ -36,7 +37,7 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='./home.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
+            <a href='home-admin.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
@@ -49,29 +50,7 @@ class Interfaz {
           </div>
         </div>
         </nav>";
-      }/*else{
-        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-            <div class='container-fluid'>
-              <div class='navbar-header'>
-                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>    
-                  <span class='icon-bar b-resp'></span>                           
-                </button>
-                <a href='index.php'><img src='logo.jpeg' alt='inmomenenia' width='20%'></a>
-              </div>
-              <div class='collapse navbar-collapse' id='nav-responsive'>
-              <ul class='nav navbar-nav navbar-right'>
-                <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                <li><a href='php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='php/ubicacion.php'><span class='glyphicon glyphicon-log-in'></span> Ubicacion</a></li>
-                <li><a href='php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-              </ul>
-              </div>
-            </div>
-      </nav>";
-      }*/
+      }
     }else{
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
             <div class='container-fluid'>
@@ -86,9 +65,9 @@ class Interfaz {
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
+                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                 <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
                 <li><a href='php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='php/ubicacion.php'><span class='glyphicon glyphicon-log-in'></span> Ubicacion</a></li>
                 <li><a href='php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
               </ul>
               </div>
@@ -114,6 +93,7 @@ class Interfaz {
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
+                        <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                         <li><a href='/php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
                         <li><a href='/php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                         <li><a href='/php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
@@ -132,7 +112,7 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='../../home.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='home-admin.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
@@ -145,28 +125,7 @@ class Interfaz {
                       </div>
                     </div>
               </nav>";
-      }/*else{
-        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-            <div class='container-fluid'>
-              <div class='navbar-header'>
-                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>                        
-                </button>
-                <a href='../../index.php'><img src='../../logo.jpeg' alt='inmomenenia' width='20%'></a>
-              </div>
-              <div class='collapse navbar-collapse' id='nav-responsive'>
-              <ul class='nav navbar-nav navbar-right'>
-                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='ubicacion.php'><span class='glyphicon glyphicon-log-in'></span> Ubicacion</a></li>
-                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-              </ul>
-              </div>
-            </div>
-        </nav>";
-      }*/
+      }
     }else{
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
             <div class='container-fluid'>
@@ -180,9 +139,9 @@ class Interfaz {
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
+                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                 <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
                 <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='ubicacion.php'><span class='glyphicon glyphicon-log-in'></span> Ubicacion</a></li>
                 <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
               </ul>
               </div>
@@ -213,14 +172,14 @@ class Interfaz {
             mysqli_close($conexion);
 
             $max = count($imagenes);
-            $img_aleatoria = rand(0,$max);
+            $img_aleatoria = rand(0,$max-1);
          echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
           </div>
           </div>";
     return  true;
   }
 
-  static public function form_buscar_Inmuebles(){
+  static public function form_buscar_Inmuebles() : bool {
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
             <div class='row'>
               <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -272,23 +231,28 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    return true;
   }
 
   static public function muestra_contacto() : bool {
     echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <div class='jumbotron'>
-          <h1 align ='center'>CONTACTO</h1>
-          </br>
-          <h2 align ='center'><img src='../iconos/location.png' alt='inmomenenia' width='80px'> C/San Blas 41, La Puebla de Alfinén, Zaragoza</h2>
-          <h2 align ='center'><img src='../iconos/telephone.png' alt='inmomenenia' width='80px'> 692.60.14.54</h2>
-          <h2 align ='center'><img src='../iconos/mail.png' alt='inmomenenia' width='80px'> contacto@inmomenenia.es</h2>
-          <h2 align ='center'>   </h2>
-          </br>
-          <h1 style='margin-bottom:50px' align='center'>CÓMO LLEGAR</h1>
-          <p align ='center'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
-          <h2 align ='center'><img src='../iconos/bus.png' alt='inmomenenia' width='80px'>Línea 211</h3>
+            <div class='row'>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+                <div class='jumbotron'>
+                  <h1 align ='center'>CONTACTO</h1>
+                  </br>
+                  <h2 align ='center'><img src='../iconos/location.png' alt='inmomenenia' width='80px'> C/San Blas 41, La Puebla de Alfinén, Zaragoza</h2>
+                  <h2 align ='center'><img src='../iconos/telephone.png' alt='inmomenenia' width='80px'> 692.60.14.54</h2>
+                  <h2 align ='center'><img src='../iconos/mail.png' alt='inmomenenia' width='80px'> contacto@inmomenenia.es</h2>
+                  <h2 align ='center'>   </h2>
+                  </br></br>
+                  </br>
+                  <h1 style='margin-bottom:50px' align='center'>CÓMO LLEGAR</h1>
+                  <p align ='center'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+                  <h2 align ='center'><img src='../iconos/bus.png' alt='inmomenenia' width='80px'>Línea 211</h3>
+                </div>
+              </div>
+            </div>
           </div>";
     return true;
   }
@@ -296,67 +260,66 @@ class Interfaz {
 
   static public function formulario_contacto() : bool {
     echo "<div class='container-fluid'>
-    <div class='row'>
-      
-        <div class='jumbotron'>
-          <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
-          <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
-        </div>
-        <div class='col-md-6 col-md-offset-3'>
-          <div class='panel panel-default'>
-            <div class='panel-body'>
-              <form id='contacto' action='#' method='post' accept-charset='utf-8'>
-                <div class='form-group'>
-                  <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
-                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                      <input class='form-control' type='text' name='nombre' placeholder='escribe aquí tu nombre' autofocus>
-                    </div>
+            <div class='row'>
+              <div class='jumbotron'>
+                <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
+                <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
+              </div>
+              <div class='col-md-6 col-md-offset-3'>
+                <div class='panel panel-default'>
+                  <div class='panel-body'>
+                    <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='nombre' placeholder='escribe aquí tu nombre' autofocus>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='email' placeholder='escribe aquí tu email'>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='number' name='telefono' placeholder='escribe aquí tu teléfono'>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
+                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Pedir información
+                          </label>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Consulta
+                          </label>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Sugerencia
+                          </label>
+                        </div>
+                      </div>
+                      <br>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
+                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
+                        </div>
+                      </div>
+                      <br>
+                      <div class='form-group'>
+                      <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                            <input class='form-control btn-primary' align=center' type='submit' name='Enviar' value='Enviar'>
+                        </div>
+                      </div>
+                    </form>
                   </div>
-                  <div class='form-group'>
-                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
-                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                      <input class='form-control' type='text' name='email' placeholder='escribe aquí tu email'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
-                    <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                      <input class='form-control' type='number' name='telefono' placeholder='escribe aquí tu teléfono'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
-                    <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                      <label class='radio-inline'>
-                        <input type='radio' name='asunto'>Pedir información
-                      </label>
-                      <label class='radio-inline'>
-                        <input type='radio' name='asunto'>Consulta
-                      </label>
-                      <label class='radio-inline'>
-                        <input type='radio' name='asunto'>Sugerencia
-                      </label>
-                    </div>
-                  </div>
-                  <br>
-                  <div class='form-group'>
-                    <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
-                    <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                      <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
-                    </div>
-                  </div>
-                  <br>
-                  <div class='form-group'>
-                    <div class='col-md-12 col-sm-2'>                      
-                        <input class='form-control btn-primary' align=center' type='submit' name='Enviar' value='Enviar'>
-                    </div>
-                  </div>
-                </form>
+                </div>
               </div>
             </div>
-          </div>
-      </div>
-    </div>";
+          </div>";
     return true;
   }
 
