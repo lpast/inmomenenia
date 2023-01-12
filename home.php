@@ -25,7 +25,7 @@
   </head>
   <body>
     <!-- Menú de navegación -->
-    <?php $menuIndex = Interfaz::mostrarMenuHome(); ?>
+    <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
 
     <!-- Muestro imagen de un inmueble aleatorio -->
     <?php $aleatoria = Interfaz::imagen_aleatoria(); ?>

@@ -196,7 +196,7 @@ class Interfaz {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <h1 align='center'> Encuentra tu nuevo hogar</h1>";
+          <h1 align='center'> Encuentra tu hogar perfecto</h1>";
             $conexion = abrirConexion();
             $sql = 'SELECT imagen FROM tbl_inmuebles';
             $imagenes = array();
@@ -222,56 +222,56 @@ class Interfaz {
 
   static public function form_buscar_Inmuebles(){
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
-      <div class='row'>
-      <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
-      <div class='panel-group'>
-          <div class='panel panel-default cabecera'>
-              <div class='panel-heading'>
-                  <h2 align='center'>Buscar inmueble</h2>
-              </div>
-                <div class='panel-body'>
-                  <p align='center'>Rellene los campos por los que quiera filtrar realizar la búsqueda</p>
+            <div class='row'>
+              <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
+                <div class='panel-group'>
+                  <div class='panel panel-default cabecera'>
+                    <div class='panel-heading'>
+                      <h2 align='center'>Buscar inmueble</h2>
+                    </div>
+                  <div class='panel-body'>
+                    <p align='center'>Rellene los campos por los que quiera filtrar la búsqueda</p>
                   <form class='form-horizontal' action='#' method='post'>
-                    <div class='form-group'>
-                      <label class='col-sm-3 col-sm-offset-2'>Tipo</label>
-                      <div class='col-sm-6 '>
-                        <select class='form-control' id='tipo' name='tipo'>
-                          <option value='alquiler'>Alquilar</option>
-                          <option value='compra'>Comprar</option>
-                        </select>
-                      </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Tipo</label>
+                    <div class='col-sm-5 col-lg-offset-2'>
+                      <select class='form-control' id='tipo' name='tipo'>
+                        <option value='alquiler'>Alquilar</option>
+                        <option value='compra'>Comprar</option>
+                      </select>
                     </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Nº de habitaciones:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='num_hab'>
-                      </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Nº de habitaciones:</label>
+                    <div class='col-sm-5 col-lg-offset-2'>
+                      <input class='form-control' type='text' name='num_hab'>
                     </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Metros<sup>2</sup>:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='metros'>
-                      </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Metros<sup>2</sup>:</label>
+                    <div class='col-sm-5 col-lg-offset-2'>
+                      <input class='form-control' type='text' name='metros'>
                     </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Precio:</label>
-                      <div class='col-sm-5  col-lg-offset-2'>
-                        <input class='form-control' type='text' name='precio'>
-                      </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Precio:</label>
+                    <div class='col-sm-5  col-lg-offset-2'>
+                      <input class='form-control' type='text' name='precio'>
                     </div>
-                    <div class='form-group'>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
-                      </div>
+                  </div>
+                  <div class='form-group'>
+                    <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                      <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
                     </div>
-                  </form>
+                  </div>
+                </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>";
+    </div>";
   }
 
   static public function muestra_contacto() : bool {
