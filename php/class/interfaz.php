@@ -3,9 +3,9 @@
 class Interfaz {
   
   static public function mostrarMenuHome() : bool {
-    if (isset($_SESSION['tipo'])){
+    if (isset($_SESSION['tipo'])) {
       $tipo_usuario = $_SESSION['tipo'];
-      if ($tipo_usuario == 'u'){
+      if ($tipo_usuario == 'u') {
         echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
                 <div class='container-fluid'>
                   <div class='navbar-header'>
@@ -28,7 +28,8 @@ class Interfaz {
                   </div>
                 </div>
               </nav>";
-      }if ($tipo_usuario == 'a'){
+      }
+      if ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>
@@ -41,11 +42,11 @@ class Interfaz {
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
-            <li><a href='php/administrador/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
-            <li><a href='php/administrador/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
-            <li><a href='php/administrador/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
-            <li><a href='php/administrador/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='./php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+            <li><a href='./php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+            <li><a href='./php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+            <li><a href='./php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+            <li><a href='./php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
           </ul>
           </div>
         </div>
@@ -61,14 +62,15 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='./index.html'><img src='css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+                <a href='./index.html'><img src='../../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
-                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                <li><a href='php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+                <li><a href='./php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+                <li><a href='./php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+                <li><a href='./php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+                <li><a href='./php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+                <li><a href='./php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
               </ul>
               </div>
             </div>
@@ -93,7 +95,7 @@ class Interfaz {
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+                        <li><a href='/home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                         <li><a href='/php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
                         <li><a href='/php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                         <li><a href='/php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
@@ -113,15 +115,15 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                        
                         </button>
-                        <a href='./../../index.html'><img src='./../../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='./../../index.html'><img src='../../../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='../../php/noticias.php'><span class='glyphicon glyphicon-bullhorn'></span> Noticias</a></li>
-                        <li><a href='/php/clientes.php'><span class='glyphicon glyphicon-user'></span> Clientes</a></li>
-                        <li><a href='/php/administrador/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
-                        <li><a href='/php/administrador/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-                        <li><a href='/php/cerrrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                        <li><a href='../../../php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+                        <li><a href='../../../php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+                        <li><a href='../../../php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+                        <li><a href='../../../php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+                        <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                       </ul>
                       </div>
                     </div>
@@ -329,7 +331,6 @@ class Interfaz {
     return true;
   }
           
-
   static public function formulario_contacto() : bool {
     echo "<div class='container-fluid'>
             <div class='row'>
@@ -439,7 +440,7 @@ class Interfaz {
   return  true;
     
 }
-
+/* Menú de navegación usuario*/
   static public function mostrarCalendario($dia, $mes, $año) : bool {
     switch ($mes) {
       case 1:
@@ -604,7 +605,7 @@ class Interfaz {
     return true;
   }
 
-  static public function listar_inmuebles(){
+  static public function listar_inmuebles() : bool {
     $conexion = abrirConexion();
         $mostrar = "SELECT id, direccion, metros, descripcion, precio, id_cliente, imagen
                     FROM tbl_inmuebles";
@@ -635,7 +636,8 @@ class Interfaz {
             echo "</table>";
           }
         }
-        mysqli_close($conexion); 
+        mysqli_close($conexion);
+    return true;
   }
    
 
@@ -669,9 +671,7 @@ class Interfaz {
 
           $conexion = abrirConexion();
           $sql = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id
-                  from tbl_citas inner join tbl_clientes
-                  on tbl_citas.id_cliente = tbl_clientes.id
-                  order by fecha desc";
+          from tbl_citas inner join tbl_clientes on tbl_citas.id_cliente = tbl_clientes.id order by fecha desc";
 
           $mostrar = mysqli_query($conexion,$sql);
 
@@ -882,7 +882,7 @@ class Interfaz {
     return true;
   }
 
-  static public function form_borrar_inmueble(){
+  static public function form_borrar_inmueble() : bool {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -924,10 +924,11 @@ class Interfaz {
           </div>
         </div>
       </div>
-    </div>";       
+    </div>";
+    return true;   
   }
 
-  static public function form_buscar_inmueble_admin(){
+  static public function form_buscar_inmueble_admin() : bool {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -979,7 +980,83 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    return true;
   }
+
+  static public function gestion_noticias() : bool {
+    echo "<div class='container-fluid cabecera-menu-inicio'>
+    <div class='row'>
+    <div class='col-xs-12'>
+        <nav class='navbar'>
+        <div class='container-fluid'>
+            <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+            <li><a type='button' class='btn btn-primary btn-md' type='submit' name='añadir' value='añadir' href='añadir_noticias.php'>Añadir noticia</a></li>
+            <li><a type='button' class='btn btn-primary btn-md' type='submit' name='submit' value='borrar' href='borrar_noticias.php'>Borrar noticia</a></li>
+            <li><a type='button' class='btn btn-primary btn-md' type='submit' name='submit' value='buscar' href='buscar_noticias.php'>Buscar noticia</a></li>
+            </ul>
+        </div>
+        </nav>
+    </div>
+    </div>
+    </div>";
+    return true;
+  }
+
+  static public function mostrar_noticias(): bool {
+     // Cargamos las noticias de forma paginada
+     $conexion = abrirConexion();
+     $consulta = "SELECT * from tbl_noticias";
+
+     $noticias = mysqli_query($conexion,$consulta);
+
+     if (!$noticias) {
+        echo "Error al cargar las noticias desde la BD";
+      } else {
+        $num_filas = mysqli_num_rows($noticias);
+        if ($num_filas > 0) {
+          $num_noticas = 5; //limite de noticias a mostrar
+          $pagina = false;
+        }
+
+        if (isset($_GET['pagina'])) {
+          $pagina = $_GET['pagina'];
+        }
+
+        if (!$pagina) {
+          $inicio = 0;
+          $pagina = 1;
+        } else {
+          $inicio = ($pagina - 1) * $num_noticas;
+        }
+
+        $consulta_mostrar = "SELECT * from tbl_noticias order by fecha desc limit $inicio,$num_noticas";
+
+        $mostrar = mysqli_query($conexion,$consulta_mostrar);
+
+        if (!$mostrar) {
+          echo "Error al cargar las noticias desde la BD";
+        } else {
+          while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
+            $marca_cita = strtotime($fila['fecha']);
+            $f_formateada = date("d-m-Y",$marca_cita);
+           
+            echo "<div class='col-sm-4 col-sm-offset-4'>";
+            echo "<div class='panel panel-default'>";
+            echo "<div class='panel-body tnoticias'>";
+            //muestro info de noticia
+            echo "<img align'center' class='img-responsive' src='$fila[imagen]'>
+              <h4 align='center'><b>$fila[titular]</b></h4>
+              <h5 align='center'>Fecha de publicación: $f_formateada</h5>
+              <form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver más'></form>"; 
+
+            echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+          }
+        }         
+      }
+      mysqli_close($conexion);
+      return true;
+  }
+
 }//llave cierre de clase
 
 ?>

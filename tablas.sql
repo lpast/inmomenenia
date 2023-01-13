@@ -59,13 +59,21 @@ USE MENENIA;
  );
 
  CREATE TABLE tbl_citas (
-    id bigint(20) unsigned NOT NULL,
+    id int(20) unsigned NOT NULL,
     fecha date NOT NULL,
     hora time NOT NULL,
     motivo varchar(50) NOT NULL,
     lugar varchar(30) NOT NULL,
     id_cliente bigint(20) NOT NULL
 );
+
+   CREATE TABLE tbl_noticias (
+      id int(20) NOT NULL,
+      titular varchar(30) NOT NULL,
+      contenido varchar(1500) NOT NULL,
+      imagen varchar(100) NOT NULL,
+      fecha date NOT NULL
+   );
 
 
 ********************************************************************************************************
@@ -148,3 +156,11 @@ INSERT INTO tbl_citas (id, fecha, hora, motivo, lugar, id_cliente) VALUES
 (18, '2023-01-13', '11:22:00', 'Entrega llaves piso', 'C/ tortola, 44', 0890),
 (63, '2023-02-11', '11:22:00', 'Entrega llaves piso', 'C/ tortola, 44', 0017),
 (045, '2023-05-20', '11:00:00', 'Firma de papeles ', 'Oficina', 0115);
+
+INSERT INTO tbl_noticias ( id, titular, contenido, imagen, fecha) VALUES
+(1, 'Black friday inmobiliario', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!', './img_noticias/1.png', '2022-10-28'),
+(4, 'Nuevos pisos', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!', './img_noticias/4.png', '2022-11-27'),
+(7, 'Acceso a la vivienda', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', './img_noticias/6.png', '2022-12-08'),
+(16, 'Nuevo sector estrella en Bolsa', 'El sector inmobiliario centra este año las miradas en el mercado. Tras una década donde ninguna promotora inmobiliaria salía a Bolsa, este año, dos de ellas (Neinor y Aedas) han saltado al parqué; mientras que la histórica Colonial, convertida en Socimi en junio, protagoniza una operación de más de 1.200 millones al lanzar, el pasado 13 de noviembre, una opa sobre su homóloga Axiare.\r\nTodas estas operaciones han puesto en el foco en este tipo de empresas que, tras años fuera de la lista de recomendaciones bursátiles, cuentan en su mayoría con el apoyo de los analistas.', './img_noticias/16.png',  '2023-01-16'),
+(17, 'Piratas inmobiliarios', 'inmobiliaria', './img_noticias/17.png', '2022-12-13'),
+(18, 'Las promotoras te buscan ', 'Las promotoras inmobiliarias se han puesto a vender atención. Una limpieza integral del piso y de las zonas comunes antes de la entrega de las llaves, una botella de vino dispuesta en el recibidor al abrir la puerta, compromiso de respuesta en la gestión de desperfectos en menos de 48 horas, canales de comunicación digitales o trato personalizado son algunas de las atenciones que están recibiendo los nuevos compradores de vivienda. Unos años de crisis y de sequía en las ventas han bastado para que este sector empiece a tener en cuenta a su cliente, antes y después de la compra.', './img_noticias/18.png',  '2023-01-16');
