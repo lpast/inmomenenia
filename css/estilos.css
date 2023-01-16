@@ -23,11 +23,11 @@
 
 body {
 	
-	background-image: url("Untitled.png");
+	/*background-image: url("Untitled.png");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: cover;
-	/*background-color: #f5f1e7;*/
+	background-size: cover;*/
+	background-color: #f5f1e7;
 	margin: 0;
   	margin-bottom: 40px;
 
