@@ -58,9 +58,9 @@ footer {
 }
 
 .btn-theme {
-    color: #fff;
-    background-color: transparent;
-    border: 2px solid #fff;
+	color: #000;
+	background-color: #f5f1e7;
+    border: 1px solid #f5f1e7;
     margin-right: 15px;
 }
 

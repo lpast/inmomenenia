@@ -265,7 +265,7 @@ class Interfaz {
                 echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
                 </div></div></div>";
 
-        self::mostrar_noticias();
+        
       }
       if ($tipo_usuario == 'a'){
         //Mostramos una imagen aleatoria 

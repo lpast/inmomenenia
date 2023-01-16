@@ -31,6 +31,11 @@
          
     <!-- buscar inmuebles-->
     <?php buscar_Inmuebles();?>
+
+    <?php Interfaz::mostrar_noticias();?>
+
+
+
 </div>
       </div>     
   </div>
