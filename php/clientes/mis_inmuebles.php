@@ -26,15 +26,8 @@
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::mostrarMenu(); ?>
 
-     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12 cabecera-menu-inicio">
-          <h2 align="center" style="margin-top: 50px;">Estos son los inmuebles que ya has comprado</h2>
-           <!-- Se muestran los datos del usuario -->
-          <?php inmuebles_cliente();?>
-        </div>
-      </div>
-    </div>
+    <!-- Se muestran los datos del usuario -->
+    <?php  $inmuebles = Interfaz::inmuebles_cliente();?>
 
     <!-- footer -->
     <footer class="navbar-nav navbar-inverse">

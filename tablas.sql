@@ -6,7 +6,7 @@ CREATE DATABASE db_inmomenenia;
 
 USE MENENIA;
 
- CREATE TABLE tbl_clientes (
+ CREATE TABLE IF NOT EXISTS tbl_clientes (
     id varchar (10) NOT NULL UNIQUE,
     nombre varchar (20) NOT NULL,
     apellidos varchar (30) NOT NULL,
@@ -17,7 +17,7 @@ USE MENENIA;
     CONSTRAINT pk_cli_id PRIMARY KEY (id)
  );
 
-  CREATE TABLE tbl_empleados (
+  CREATE TABLE IF NOT EXISTS tbl_empleados (
     id varchar (9) NOT NULL UNIQUE,
     nombre varchar (20) NOT NULL,
     apellidos varchar (30) NOT NULL,
@@ -29,15 +29,16 @@ USE MENENIA;
     CONSTRAINT pk_emp_id PRIMARY KEY (id)
  );
 
-  CREATE TABLE tbl_usuarios (
+  CREATE TABLE IF NOT EXISTS tbl_usuarios (
     id varchar (9) NOT NULL UNIQUE,
+    nombre varchar (20),
     fecha_alta DATE NOT NULL,
     nom_user varchar (20) NOT NULL,
     pass varchar (5) NOT NULL,
     CONSTRAINT pk_usu_id PRIMARY KEY (id)
  );
 
- CREATE TABLE tbl_inmuebles (
+ CREATE TABLE IF NOT EXISTS tbl_inmuebles (
     id int (5) NOT NULL UNIQUE,
     tipo varchar (10) NOT NULL,
     direccion varchar (30) NOT NULL,
@@ -58,7 +59,7 @@ USE MENENIA;
     CONSTRAINT  pk_inm_id PRIMARY KEY (id)
  );
 
- CREATE TABLE tbl_citas (
+ CREATE TABLE IF NOT EXISTS tbl_citas (
     id int(20) unsigned NOT NULL,
     fecha date NOT NULL,
     hora time NOT NULL,
@@ -67,7 +68,7 @@ USE MENENIA;
     id_cliente bigint(20) NOT NULL
 );
 
-   CREATE TABLE tbl_noticias (
+   CREATE TABLE IF NOT EXISTS tbl_noticias (
       id int(20) NOT NULL,
       titular varchar(30) NOT NULL,
       contenido varchar(1500) NOT NULL,
@@ -81,41 +82,41 @@ alter table tbl_inmuebles ADD CONSTRAINT fk_id FOREIGN KEY (id_cliente) referenc
 ********************************************************************************************************
 
  //volcado datos 'tbl_clientes' 
-INSERT INTO tbl_clientes (id, nombre, apellidos, telefono, email, direccion, nom_user, pass) VALUES
-('0', 'disponible', '', 000000000,'' , '', '',''),
+INSERT INTO tbl_clientes (id, nombre, apellidos, telefono, email, direccion, nom_user) VALUES
+('0', 'disponible', '', 000000000,'' , '', ''),
 ('74859657P', 'Marisa', 'Perez Martínez', 61162263, '','Av. Nueva, 123', 'marisapm45'),
-('38693644L', 'Teresa', 'Salsero Martínez', 65874114, '','Av. Vieja, 65', 'tete78', 'r7gl3'),
+('38693644L', 'Teresa', 'Salsero Martínez', 65874114, '','Av. Vieja, 65', 'tete78'),
 ('72036547J', 'Isabel', 'Cornago Lavega', 987456123, 'i_c_lavega@hotmail.es', 'Av. Sol 57', 'isa_c'),
-('204896957S', 'Antonio', 'Camacho Perez', 692478963,'', 'Av. Teatro, 15', 'ant_oi'),
-('403215697C', 'Daniel', 'Blazque Franco', 653896574, 'daniel_bf@ematiza.es','Calle San Blas 41', 'dani_bl'),
-('458054786A', 'Yasmina', 'Marco Monlora', 666547896, 'yas_1986@outlook.com','Av. Platanos, 57', 'yas82'),
-('478963214H', 'Amparo', 'Sánchez Carrillo', 685633215, 'amp_san@yahoo.com', 'C/ industrial, 17', 'amp'),
-('450017784T', 'José', 'Torrecillas Fernández',612321441, '', 'C/ Tahona ,5', 'jose'),
-('895632541D', 'Timoteo', 'Torrecillas Carrillo', 611622633, 'ttc_yahoo.es', 'Plaza vieja, 89', 'tim_78'),
-('115478215K', 'Rubén', 'Segura Romo', 664790808, '', 'Doctor Pareja Yébenes, 8', 'ruben'),
-('879658231F', 'Delia', 'Sánchez Carrillo', 612321441, '', 'C/ industrial, 17', 'delia'),
-('369147258M', 'Antonia', 'Medina Soler',654789412, '','C/Teatro 47 1a', 'toni'),
-('721469369B', 'Andres', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','C/ Doctor Pareja Yében, 68 3C', 'and');
+('20489695S', 'Antonio', 'Camacho Perez', 692478963,'', 'Av. Teatro, 15', 'ant_oi'),
+('40321567C', 'Daniel', 'Blazque Franco', 653896574, 'daniel_bf@ematiza.es','Calle San Blas 41', 'dani_bl'),
+('45805486A', 'Yasmina', 'Marco Monlora', 666547896, 'yas_1986@outlook.com','Av. Platanos, 57', 'yas82'),
+('47896214H', 'Amparo', 'Sánchez Carrillo', 685633215, 'amp_san@yahoo.com', 'C/ industrial, 17', 'amp'),
+('45007784T', 'José', 'Torrecillas Fernández',612321441, '', 'C/ Tahona ,5', 'jose'),
+('89532541D', 'Timoteo', 'Torrecillas Carrillo', 611622633, 'ttc_yahoo.es', 'Plaza vieja, 89', 'tim_78'),
+('11478215K', 'Rubén', 'Segura Romo', 664790808, '', 'Doctor Pareja Yébenes, 8', 'ruben'),
+('89658231F', 'Delia', 'Sánchez Carrillo', 612321441, '', 'C/ industrial, 17', 'delia'),
+('69147258M', 'Antonia', 'Medina Soler',654789412, '','C/Teatro 47 1a', 'toni'),
+('72146969B', 'Andres', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','C/ Doctor Pareja Yében, 68 3C', 'and');
 
-INSERT INTO tbl_clientes (id, nombre, apellidos, telefono, email, direccion, telefono, nom_user, pass) VALUES
-('78596875P', 'Pepe', 'Rodriguez Sancho', 'Calle Hermita, 36', 976355896, 'peperodsano@yahoo.com', 'peperod','peperd');
+INSERT INTO tbl_clientes (id, nombre, apellidos, telefono, email, direccion, nom_user) VALUES
+('78596875P', 'Pepe', 'Rodriguez Sancho', 976355896, 'peperodsano@yahoo.com','Calle Hermita, 36', 'peperod');
 
 //volcado datos 'tbl_usuarios'
-INSERT INTO tbl_usuarios (id, fecha_alta, nom_user, pass) VALUES
-('74859657P','1985-12-12', 'marisapm45', 'fg7t9')
-('38693644L', '1975-10-12', 'tete78', 'r7gl3'),
-('72036547J', '1975-02-02', 'isa_c', 'i8i3c'),
-('20489695S', '1968-08-13', 'ant_oi', '789li'),
-('40321569C', '1983-04-04', 'dani_bl', '44abr'),
-('45805478A',' 1977-10-10', 'yas82', 'rub78'),
-('47896321H', '1987-06-03', 'amp', 'amp79'),
-('45007784T', '1986-11-30', 'jose', '9b680'),
-('89562541D', '1983-02-14', 'tim_78', 'op789'),
-('11548215K', '1980-06-30', 'ruben', '8b925'),
-('87968231F', '1980-01-15', 'delia', '6bc5e'),
-('36917258M', '1978-03-06', 'toni', '6g7rt'),
-('72149369B', '1979-10-07', 'and', '784ñl');
-('72998257Y', '2022-01-04', 'Administrador', 'admin');
+INSERT INTO tbl_usuarios (id, nombre, fecha_alta, nom_user, pass) VALUES
+('74859657P', 'Marisa', '1985-12-12', 'marisapm45', 'fg7t9'),
+('38693644L', 'Teresa', '1975-10-12', 'tete78', 'r7gl3'),
+('72036547J', 'Isabel', '1975-02-02', 'isa_c', 'i8i3c'),
+('20489695S', 'Antonio', '1968-08-13', 'ant_oi', '789li'),
+('40321567C', 'Daniel', '1983-04-04', 'dani_bl', '44abr'),
+('45805486A', 'Yasmina', '1977-10-10', 'yas82', 'rub78'),
+('47896214H', 'Amparo', '1987-06-03', 'amp', 'amp79'),
+('45007784T', 'José', '1986-11-30', 'jose', '9b680'),
+('89532541D', 'Timoteo',  '1986-11-30','tim_78', 'op789'),
+('11478215K', 'Rubén', '1980-06-30', 'ruben', '8b925'),
+('89658231F', 'Delia', '1980-01-15', 'delia', '6bc5e'),
+('69147258M', 'Antonia', '1978-03-06', 'toni', '6g7rt'),
+('72149369B', 'Andrés', '1979-10-07', 'and', '784ñl'),
+('72998257Y','' ,'2022-01-04', 'Administrador', 'admin');
 
 //volcado datos 'tbl_inmuebles'
 INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
@@ -164,3 +165,6 @@ INSERT INTO tbl_noticias ( id, titular, contenido, imagen, fecha) VALUES
 (16, 'Nuevo sector estrella en Bolsa', 'El sector inmobiliario centra este año las miradas en el mercado. Tras una década donde ninguna promotora inmobiliaria salía a Bolsa, este año, dos de ellas (Neinor y Aedas) han saltado al parqué; mientras que la histórica Colonial, convertida en Socimi en junio, protagoniza una operación de más de 1.200 millones al lanzar, el pasado 13 de noviembre, una opa sobre su homóloga Axiare.\r\nTodas estas operaciones han puesto en el foco en este tipo de empresas que, tras años fuera de la lista de recomendaciones bursátiles, cuentan en su mayoría con el apoyo de los analistas.', './img_noticias/16.png',  '2023-01-16'),
 (17, 'Piratas inmobiliarios', 'inmobiliaria', './img_noticias/17.png', '2022-12-13'),
 (18, 'Las promotoras te buscan ', 'Las promotoras inmobiliarias se han puesto a vender atención. Una limpieza integral del piso y de las zonas comunes antes de la entrega de las llaves, una botella de vino dispuesta en el recibidor al abrir la puerta, compromiso de respuesta en la gestión de desperfectos en menos de 48 horas, canales de comunicación digitales o trato personalizado son algunas de las atenciones que están recibiendo los nuevos compradores de vivienda. Unos años de crisis y de sequía en las ventas han bastado para que este sector empiece a tener en cuenta a su cliente, antes y después de la compra.', './img_noticias/18.png',  '2023-01-16');
+
+
+SELECT * FROM tbl_clientes inner join tbl_usuarios on tbl_clientes.id = tbl_usuarios.id WHERE tbl_clientes.id='74859657P';

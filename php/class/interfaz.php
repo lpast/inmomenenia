@@ -235,37 +235,40 @@ class Interfaz {
     </div>";
     return true;
   }
+
   static public function mostrar_home() : bool {
 
     if (isset($_SESSION['tipo'])){
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
-         //Mostramos una imagen aleatoria 
-        echo "<div class='container-fluid'>
+        //if (isset($_SESSION['nombre'])) {
+          $nombre = $_SESSION['nombre'];
+          //Mostramos una imagen aleatoria 
+          echo "<div class='container-fluid'>
             <div class='row'>
               <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                <h1 align='center'> Encuentra tu hogar perfecto</h1>";
-                $conexion = abrirConexion();
-                $sql = 'SELECT imagen FROM tbl_inmuebles';
-                $imagenes = array();
+                <h1 align='center'> ¡ Hola $nombre ! </h1>";
 
-                $imagen = mysqli_query($conexion, $sql);
+          $conexion = abrirConexion();
+          $sql = 'SELECT imagen FROM tbl_inmuebles';
+          $imagenes = array();
 
-                if (!$imagen) {
-                  echo 'Eror al cargar las imagenes';
-                } else {
-                  while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-                    array_push($imagenes, $fila['imagen']);
-                  }
-                }
-                mysqli_close($conexion);
+          $imagen = mysqli_query($conexion, $sql);
 
-                $max = count($imagenes);
-                $img_aleatoria = rand(0, $max - 1);
-                echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
+          if (!$imagen) {
+            echo 'Eror al cargar las imagenes';
+          } else {
+            while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+              array_push($imagenes, $fila['imagen']);
+            }
+          }
+          mysqli_close($conexion);
+
+          $max = count($imagenes);
+          $img_aleatoria = rand(0, $max - 1);
+          echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
                 </div></div></div>";
-
-        
+       // }   
       }
       if ($tipo_usuario == 'a'){
         //Mostramos una imagen aleatoria 
@@ -309,6 +312,246 @@ class Interfaz {
     return true;
   }
 
+  static public function inmuebles_disponibles() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-xs-12 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Ahora mismo, estos son los inmuebles están disponibles</h2>";
+        
+        $con = abrirConexion();
+        $sql = 'SELECT * FROM tbl_inmuebles';
+        $consulta = mysqli_query($con,$sql);
+
+        if (!$consulta) {
+          echo 'Error al realizar la consulta';
+        } else {
+          $num_filas = mysqli_num_rows($consulta);
+          if ($num_filas == 0) {
+            echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                    <h2>Ups... ahora mismo no tenemos ningún inmueble disponible :(</h2>
+                  </div>";
+          } else {
+            while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
+              echo "<div class='col-sm-4'>";
+              echo "<div class='panel panel-default'>";
+              echo "<div class='panel-body tnoticias'>";
+              echo "<img class='img-responsive' src='$fila[imagen]'>
+                    <h2>$fila[direccion]</h2>
+                    <h4>$fila[precio] €</h4>
+                    <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
+              echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+            }
+
+          }
+        }
+        mysqli_close($con);
+    echo "</div>
+  </div>
+</div>";
+    return true;
+  }
+/* Menú de navegación usuario*/
+  static public function datos_cliente(): bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Estos son tus datos de cliente</h2>
+          <p align='center'><b>Podrás modificar tu dirección, teléfono o contraseña</b></p>";
+            
+          $id = $_SESSION['id_usuario'];
+
+          $con = abrirConexion();
+          $sql = "SELECT * FROM tbl_clientes inner join tbl_usuarios on tbl_clientes.id = tbl_usuarios.id WHERE tbl_clientes.id='$id'";
+
+          $consulta = mysqli_query($con,$sql);
+
+          if (!$consulta) {
+            echo 'Error al hacer la consulta en BD... :(';
+          } else {
+            $fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC);
+            $nombre = $fila['nombre'];
+            $apellidos = $fila['apellidos'];
+            $direccion = $fila['direccion'];
+            $telefono = $fila['telefono'];
+            $email = $fila['email'];
+            $usuario = $fila['nom_user'];
+            $pass = $fila['pass'];
+          }
+
+          echo " <form action='#' method='post' accept-charset='utf-8'>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
+              <div class='form-group'>
+                <div class='col-sm-2'>
+                  <label>Nombre</label>
+                </div>
+                <div class='col-sm-10'>
+                 <input class='form-control' type='text' name='nombre' value='$nombre' readonly>
+                </div>
+              </div>
+              <div class='form-group'>
+                <div class='col-sm-2'>
+                  <label>Apellidos</label>
+                </div>
+                <div class='col-sm-10'>
+                 <input class='form-control' type='text' name='apellidos' value='$apellidos' readonly>
+                </div>
+             </div>
+              <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Dirección</label>
+                  </div>
+                  <div class='col-sm-10'>
+                  <input class='form-control' type='text' name='direccion' value='$direccion'>
+                  </div>
+              </div>
+              <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Teléfono </label>
+                  </div>
+                  <div class='col-sm-10'>
+                  <input class='form-control' type='text' name='telefono' value='$telefono'>
+                  </div>
+              </div>
+              <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Email </label>
+                  </div>
+                  <div class='col-sm-10'>
+                  <input class='form-control' type='text' name='email' value='$email'>
+                  </div>
+              </div>
+              <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Usuario</label>
+                  </div>
+                  <div class='col-sm-10'>
+                  <input class='form-control' type='text' name='usuario' value='$usuario' readonly>
+                  </div>
+              </div>
+              <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Contraseña</label>
+                  </div>
+                  <div class='col-sm-10'>
+                  <input class='form-control' type='text' name='password' placeholder='Si desea cambiar su contraseña escriba una nueva aquí'>
+                  </div>
+              </div>
+              <div>
+                <br>.
+              </div>
+              <div class='form-group'>
+                <div class='col-sm-12 col-sm-offset-4'>
+                  <div class='col-sm-2'>
+                    <input class='form-control btn-primary' type='submit' name='guardar' value='Guardar'>
+                  </div>
+                  <div class='col-sm-2'>
+                    <a href='../index.php' class='btn btn-danger'>Cancelar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>";
+    return true;
+  }
+
+  static public function inmuebles_cliente() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Estos son los inmuebles que ya has comprado</h2>";
+                    
+          
+          $id = $_SESSION['id_usuario'];
+          $con = abrirConexion();
+          $sql = "SELECT * FROM tbl_inmuebles WHERE id_cliente='$id'";
+          $consulta = mysqli_query($con,$sql);
+        
+          if (!$consulta) {
+            echo "Error al realizar la consulta";
+          } else {
+            $num_filas = mysqli_num_rows($consulta);
+            if ($num_filas == 0) {
+              echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                      <h2>Aún no tienen ningún inmueble comprado :(</h2>
+                    </div>";
+            } else {
+              while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
+                echo "<div class='col-sm-4'>";
+                echo "<div class='panel panel-default'>";
+                echo "<div class='panel-body tnoticias'>";
+                echo "<img class='img-responsive' src='$fila[imagen]'>
+                      <h2>$fila[direccion]</h2>
+                      <h4>$fila[precio] €</h4>
+                      <p>$fila[descripcion]</p>"; //info inmueble
+                echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+              }
+            }
+          }
+    mysqli_close($con);
+
+    echo "</div></div></div>";
+    return true;
+  }
+
+  static public function citas_cliente() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Echa un vistazo a tus citas</h2>
+          <p align='center'><b>Tus próximas citas aparecen marcadas en <span style='color:green'>verde</span> y la pasadas en <span style='color:#baa35f'>amarillo</span></b></p>
+            <div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
+
+            $actual = date('Y-m-d');
+            $marca_actual = strtotime($actual); 
+
+            $id_cliente = $_SESSION['id_usuario'];
+            $con = abrirConexion();
+            $sql = "SELECT * FROM tbl_citas WHERE id_cliente='$id_cliente' order by fecha desc";
+
+            $consulta = mysqli_query($con,$sql);
+
+            if (!$consulta) {
+              echo "Error al realizar la consulta sql...";
+            } else {
+              $num_filas = mysqli_num_rows($consulta);
+
+              if ($num_filas == 0) {
+                echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                      <h2>No tienes ninguna cita programada</h2>
+                    </div>";
+              } else {
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-hover'>";
+                echo "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th></tr></thead>";
+                echo "<tbody>";
+                while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
+                  $marca_cita = strtotime($fila['fecha']);
+                  $marca_hora = strtotime($fila['hora']);
+                  $f_formateada = date("d-m-Y",$marca_cita);
+                  $h_formateada = date("G:i",$marca_hora);
+                  if ($marca_cita >= $marca_actual ) { // en verde (son las futuras citas)
+                    echo "<tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
+                  } else { // en amarillo (son las citas ya pasadas)
+                    echo "<tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
+                  }
+                }
+                echo "</tbody>";
+                echo "</table></div>"; //responsive, table-hover 
+              }
+            }
+            mysqli_close($con);
+
+            echo " </div>
+      </div>
+    </div>
+    </div>";
+    return true;
+  }
   static public function muestra_contacto() : bool {
     echo "<div class='container-fluid'>
             <div class='row'>
@@ -440,8 +683,9 @@ class Interfaz {
 
   return  true;
     
-}
-/* Menú de navegación usuario*/
+  }
+
+  
   static public function mostrarCalendario($dia, $mes, $año) : bool {
     switch ($mes) {
       case 1:
@@ -586,7 +830,6 @@ class Interfaz {
 
           return true;
   }
-
   static public function gestion_inmuebles() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -706,6 +949,79 @@ class Interfaz {
           }
     return true;
   }
+  static public function gestion_clientes() : bool {
+    echo "<div class='container-fluid cabecera-menu-inicio'>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <nav class='navbar '>
+            <div class='container-fluid'>
+              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+                <li><a type='button' class='btn btn-primary btn-md' href='añadir_noticias.php'>Añadir usuario</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='borrar_noticias.php'>Borrar usuario</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='buscar_noticias.php'>Buscar usuario</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>";
+    return true;
+  }
+  static public function listar_usuarios() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 lista-clientes'>
+       <h2 class='margen-citas' align='center'>Listado de clientes</h2>
+        <div class='panel panel-default'>
+           <div class='panel-body'>
+             <div class='table-responsive'>
+             <div class='table table-striped'>";
+               
+                   $conexion = abrirConexion();
+                   $consulta = "SELECT id, nombre, apellidos , direccion ,telefono 
+                               from tbl_clientes
+                               order by id";
+                   $datos = mysqli_query($conexion,$consulta);
+                   
+                   if (!$datos) {
+                     echo "No hay datos que mostrar";
+                   } else {
+                     $num_filas = mysqli_num_rows($datos);
+
+                     if ($num_filas == 0) {
+                       echo "No hay ningún usuario registrado";
+                     } else {
+                       $clientes_registrados = $num_filas - 2;
+                       echo "<p><strong>Número de usuarios registrados:</strong> $clientes_registrados</p>";
+                       echo "<table class='table table-hover'";
+                       echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th><th>Modificar</th></tr></thead>";
+                       while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
+                         if($fila['id'] > 1) {
+                           if ($fila['telefono2'] == '') {
+                             echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>Sin información</td>
+                             <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                           } else {
+                             echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[telefono2]</td>
+                             <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                           } 
+                         }
+                       }
+                     }
+                   }
+                   mysqli_close($conexion); 
+                
+             echo "</div>
+           </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>";
+    return true;
+  }
+
+/* Menú de navegación administrador*/
+
 
   static public function form_añadir_inmueble () : bool {
     echo "<div class='container-fluid'>

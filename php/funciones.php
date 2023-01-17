@@ -1,31 +1,30 @@
 <?php
 
 function iniciar_sesion(){
-  if ($_SESSION['tipo'] == 'u'){
+  if ($_SESSION['tipo'] == 'u') {
     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
-  }else if ($_SESSION['tipo'] == 'a'){
+  } else if ($_SESSION['tipo'] == 'a') {
      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }
 
-  if (isset($_POST['acceder'])){
+  if (isset($_POST['acceder'])) {
     $usuario = $_POST['nick'];
     $pass = $_POST['password'];
 
     $con = abrirConexion();
     $sql = "SELECT * from tbl_usuarios where nom_user='$usuario' and pass='$pass'";
-
     $consulta = mysqli_query($con, $sql);
 
-    if ($consulta){
-      if (mysqli_num_rows($consulta) > 0){
+    if ($consulta) {
+      if (mysqli_num_rows($consulta) > 0) {
         $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
         $_SESSION['id_usuario'] = $fila['id'];
 
-        if ($usuario == 'administrador'){
+        if ($usuario == 'administrador') {
           $_SESSION['tipo'] = 'a';
           $_SESSION['nombre'] = 'Administrador';
           $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=../home.php'>";
-        }else{
+        } else {
           $_SESSION['tipo'] = 'u';
           $_SESSION['nombre'] = $fila['nombre'] . ' ' . $fila['apellidos'];
           $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=../home.php'>";
@@ -39,11 +38,11 @@ function iniciar_sesion(){
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <strong>¡Acceso correcto!</strong> 
           </div>";
-      }else{
+      } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
       }
-    }else{
+    } else {
       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
         <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
     }
@@ -296,36 +295,59 @@ function listar_inmuebles(){
 }
 
 /* CLIENTE */
-function inmuebles_cliente (){
+
+function gestion_datos_usuario(): bool {
+
   $id = $_SESSION['id_usuario'];
-  $con = abrirConexion();
-  $sql = "SELECT * FROM tbl_inmuebles WHERE id_cliente='$id'";
-  $consulta = mysqli_query($con,$sql);
 
-  if (!$consulta) {
-    echo "Error al realizar la consulta";
-  } else {
-    $num_filas = mysqli_num_rows($consulta);
-    if ($num_filas == 0) {
-      echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-              <h2>Aún no tienen ningún inmueble comprado :(</h2>
-            </div>";
-    } else {
-      while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
-        echo "<div class='col-sm-4'>";
-        echo "<div class='panel panel-default'>";
-        echo "<div class='panel-body tnoticias'>";
-        echo "<img class='img-responsive' src='$fila[imagen]'>
-              <h2>$fila[direccion]</h2>
-              <h4>$fila[precio] €</h4>
-              <p>$fila[descripcion]</p>"; //info inmueble
-        echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
-      }
-
-    }
+  if (isset($_POST['cancelar'])) {
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../mis_datos.php'>";
   }
-  mysqli_close($con);
+
+  if (isset($_POST['guardar'])) {
+    if ($_POST['password'] == '') {
+    
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+
+    $con = abrirConexion();
+    $sql = "UPDATE tbl_clientes SET direccion='$direccion', telefono='$telefono' WHERE id='$id'";
+
+     if (mysqli_query($con,$sql)) {
+       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+           <b>Datos actualizados correctamente</b> 
+         </div>";
+
+       echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+     } else {
+       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+       <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+     </div></div></div>";
+     }
+
+   } else {
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+    $password = $_POST['password'];
+
+     $con = abrirConexion();
+   
+     $sql = "UPDATE tbl_usuarios SET pass='$password' WHERE id='$id'";
+     if (mysqli_query($con,$sql)) {
+       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+           <b>Datos actualizados correctamente</b> 
+         </div>";
+       echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+     } else {
+       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+       <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+     </div></div></div>";
+     }
+   }
+  }
+  return true;
 }
+
 
 /* ADMINISTRADOR */
 function añadir_inmuebles(){

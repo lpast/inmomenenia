@@ -30,26 +30,15 @@
     <?php $botones = Interfaz::gestion_clientes(); ?>
 
     
-    <!-- Muestra una tabla con los inmuebles almacenados en la BD -->
-    <div class="container-fluid ">
-      <div class="row">
-        <div class="col-xs-12">
-          <h2 class="margen-citas" align="center">Inmuebles almacenados</h2>
-          <div class="panel-group">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="table-responsive">
-                <div class="table table-hover">
-                  <!-- Listamos inmuebles -->
-                  <?php $lista_inmuebles = Interfaz::listar_inmuebles(); ?>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Muestra una tabla con los clientes almacenados en la BD -->
+    <?php $menu = Interfaz::listar_usuarios(); ?>
+    
+    <!-- footer -->
+    <footer class="navbar-nav navbar-inverse">
+      <p align="center"><a class="aweb" href="../inmobiliaria/php/mapa_web.php">Mapa web</a> | Estamos en Av. Doctor Oloriz, 6 (Granada) | Teléfono: 611622633 | Email: info@inmobiliaria.com</p>
+    </footer>
+  </body>
+</html>
     
     <!-- footer -->
     <footer class="navbar-nav navbar-inverse">
