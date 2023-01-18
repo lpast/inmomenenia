@@ -12,7 +12,8 @@ class Interfaz {
                     <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>                        
+                      <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>                             
                     </button>
                     <a href='./index.html'><img src='./css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                     </div>
@@ -23,6 +24,7 @@ class Interfaz {
                     <li><a href='php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                     <li><a href='php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
                     <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
+                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                     <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                   </div>
@@ -88,7 +90,8 @@ class Interfaz {
                         <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>                        
+                          <span class='icon-bar b-resp'></span>
+                          <span class='icon-bar b-resp'></span>                      
                         </button>
                         <a href='../../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
@@ -99,6 +102,7 @@ class Interfaz {
                         <li><a href='../php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                         <li><a href='../clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
                         <li><a href='../clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
+                        <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                         <li><a href='../cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                       </ul>
                       </div>
@@ -556,22 +560,40 @@ class Interfaz {
     echo "<div class='container-fluid'>
             <div class='row'>
               <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                <div class='jumbotron'>
-                  <h1 align ='center'>CONTACTO</h1>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>CONTACTO</h1>
+                    </br>
+                    <h2><a href='https://lapuebladealfinden.es/'><img src='../iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
+                    <h2><a href='+34692605414'><img src='../iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
+                    <h2><a href='contacto@inmomenenia.es'><img src='../iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
+                    <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
+                  </div>
                   </br>
-                  <h2 align ='center'><img src='../iconos/location.png' alt='inmomenenia' width='80px'> C/San Blas 41, La Puebla de Alfinén, Zaragoza</h2>
-                  <h2 align ='center'><img src='../iconos/telephone.png' alt='inmomenenia' width='80px'> 692.60.14.54</h2>
-                  <h2 align ='center'><img src='../iconos/mail.png' alt='inmomenenia' width='80px'> contacto@inmomenenia.es</h2>
-                  <h2 align ='center'>   </h2>
-                  </br></br>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>CÓMO LLEGAR</h1>
                   </br>
-                  <h1 style='margin-bottom:50px' align='center'>CÓMO LLEGAR</h1>
-                  <p align ='center'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
-                  <h2 align ='center'><img src='../iconos/bus.png' alt='inmomenenia' width='80px'>Línea 211</h3>
+                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>";
+    return true;
+  }
+
+  static public function contacto_RRSS(): bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='jumbotron'>
+        <h2 align ='center'>Si quieres conocernos un poco más</h2>
+        <div class ='iconos' align ='center' style='padding-top:15px'>
+        <a href='https://www.facebook.com/'><img src='../iconos/facebook.png' alt='facebook-inmomenenia' width='70px'></a>
+        <a href='https://www.instagram.com/'><img src='../iconos/instagram.png' alt='instagram-inmomenenia' width='70px'></a>
+        <a href='https://wa.me/######?text=¡Estoy+interesado!'><img src='../iconos/whatsapp.png' alt='whatsapp-inmomenenia' width='70px'></a>
+        <a href='https://twitter.com/'><img src='../iconos/twitter.png' alt='twitter-inmomenenia' width='70px'></a>
+        </div>
+
+      </div>";
+      
     return true;
   }
           

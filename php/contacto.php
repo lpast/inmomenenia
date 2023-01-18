@@ -29,12 +29,15 @@
 
      <!-- Muestra contacto -->
      <?php $contacto = Interfaz::muestra_contacto(); ?>
+       <!-- Muestra contacto -->
+       <?php $contacto = Interfaz::contacto_RRSS(); ?>
 
     <!-- Formulario de contacto -->
     <?php $menu = Interfaz::formulario_contacto(); ?>
 
+    <!-- footer -->
     <footer class="navbar-nav navbar-inverse">
-    <p align="center">Copyright Menenia's Digital 2022</p>
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
         
   </body>

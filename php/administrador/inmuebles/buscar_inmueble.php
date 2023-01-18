@@ -38,9 +38,10 @@
       </div>
       </div>
       </div>
-      <footer class="navbar-nav navbar-inverse">
-        <p align="center">Copyright Menenia's Digital 2022</p>
-      </footer>
+      <!-- footer -->
+   <footer class="navbar-nav navbar-inverse">
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
+    </footer>
     </body>
 
   </html>

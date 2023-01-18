@@ -32,7 +32,7 @@
 
     <!-- footer -->
     <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 611622633 | Email: info@inmomenenia.com</p>
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
   </body>
 </html>

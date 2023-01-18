@@ -5,6 +5,7 @@
   session_start(); 
   comprobarIndex();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

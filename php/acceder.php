@@ -32,8 +32,9 @@ session_start();
     <!-- Accedemos a la aplicacón -->
     <?php iniciar_sesion();?>
 
-    <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
+   <!-- footer -->
+   <footer class="navbar-nav navbar-inverse">
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
   </body>
 </html>

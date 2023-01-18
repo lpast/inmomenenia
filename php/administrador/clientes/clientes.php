@@ -41,8 +41,8 @@
 </html>
     
     <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmobiliaria/php/mapa_web.php">Mapa web</a> | Estamos en Av. Doctor Oloriz, 6 (Granada) | Teléfono: 611622633 | Email: info@inmobiliaria.com</p>
+   <footer class="navbar-nav navbar-inverse">
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
   </body>
 </html>
