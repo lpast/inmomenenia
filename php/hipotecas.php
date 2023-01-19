@@ -20,21 +20,19 @@
       <link rel="stylesheet" href="../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="../js/favoritos.js"></script>
-
+    <script src="../js/calcula_hipoteca.js"></script>
   </head>
   <body>
     <!-- Menú de navegación -->
-    <?php $tipoMenu=Interfaz::mostrarMenu(); ?>
+    <?php $menu = Interfaz::mostrarMenu(); ?>
 
-    <!-- Se muestran los inmuebles disponibles -->
-    <?php Interfaz::inmuebles_disponibles();?>
+     <!-- Se muestran las citas comprados por el usuario -->
+    <?php $hipoteca = Interfaz::form_hipoteca(); ?>
 
     <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
+   <footer class="navbar-nav navbar-inverse">
       <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
   </body>

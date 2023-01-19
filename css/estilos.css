@@ -131,8 +131,6 @@ footer {
 	border-color: #f5f1e8;
 }
 
-
-
 .btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
 	background-color: #333; 
 	border-color: #f5f1e8;
@@ -140,6 +138,16 @@ footer {
 
 .btn-info:hover {
 	background-color: #333; 
+	border-color: #f5f1e8;
+}
+
+.btn-favorito {
+	background-color:#baa35f;
+	border-color: #f5f1e8;
+}
+
+.btn-favorito:hover {
+	background-color: #333 !important; 
 	border-color: #f5f1e8;
 }
 

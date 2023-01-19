@@ -13,19 +13,21 @@ class Interfaz {
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>                             
                     </button>
                     <a href='./index.html'><img src='./css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                    <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                    <li><a href='php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
-                    <li><a href='php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
-                    <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
-                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span>Buscar Inmuebles</a></li>
+                    <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
+                    <li><a href='php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span>Mis inmuebles</a></li>
+                    <li><a href='php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span>Mis datos personales</a></li>
+                    <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span>Mis citas</a></li>
+                    <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
+                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span>Contacto</a></li>
+                    <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span>Cerrar sesión</a></li>
                   </ul>
                   </div>
                 </div>
@@ -62,6 +64,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span>
                   <span class='icon-bar b-resp'></span>
                   <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
                 <a href='./index.html'><img src='./css/logo.jpeg' alt='inmomenenia' width='20%'></a>
@@ -70,6 +73,7 @@ class Interfaz {
               <ul class='nav navbar-nav navbar-right'>
                 <li><a href='./home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
                 <li><a href='./php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
+                <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
                 <li><a href='./php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                 <li><a href='./php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
               </ul>
@@ -341,7 +345,23 @@ class Interfaz {
               echo "<div class='panel-body tnoticias'>";
               echo "<img class='img-responsive' src='$fila[imagen]'>
                     <h2>$fila[direccion]</h2>
-                    <h4>$fila[precio] €</h4>
+                    <h4>$fila[precio] € </h4>
+    
+                    <a class='btn btn-favorito' href='#' id='boton-favorito' value='$fila[id]'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
+                    <button id='boton-favoritos'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'>Guardar</button><br>
+
+                    <input type='text' placeholder='Nombre' id='nombretxt'><br><br>   
+
+           
+                        <hr />
+                        id:
+                        <label type='text' id='nombre'></label><br>                          
+                        
+
+                        <button id='boton-cargar'>
+                          Cargar elementos
+                        </button>
+                   
                     <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
               echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
             }
@@ -660,6 +680,47 @@ class Interfaz {
             </div>
           </div>";
     return true;
+  }
+
+  static public function form_hipoteca(): bool {
+   echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='jumbotron'>
+        <h1 align ='center'>Cálcula tu hipoteca o préstamo</h2>
+      </div>
+      <div class='col-md-6 col-md-offset-3'>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+              <div class='form-group'>
+                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Importe: </label>
+                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                  <input class='form-control' type='text' name='importe' maxlength=9 value=1000 autofocus>
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Años: </label>
+                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                  <input class='form-control' type='text' name='anos' maxlength=2 value=1 autofocus>
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Intereés: </label>
+                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                  <input class='form-control' type='text' name='interes' maxlength=9 value=3.6 autofocus>
+                </div>
+              </div>
+              <div>
+                <p><input type='button' value='Calcular' onclick='calcular()'></p>
+              </div>
+            </form>
+            <div id='resultado'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>";
+  return true;
   }
 
   static public function formulario_acceso() : bool {
