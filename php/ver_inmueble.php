@@ -57,16 +57,35 @@ session_start();
 	 ?>
 
 	<!-- Muestro los datos del inmueble -->
+  echo "<div class='container-fluid'>
+            <div class='row'>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+              <h1 align="center">Información del inmueble</h1>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>---</h1>
+                    <ul><img src="<?php echo $imagen; ?>" width='600' height='450'></ul>
+                  </div>
+                  </br>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>CÓMO LLEGAR</h1>
+                  </br>
+                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+                  </div>
+                </div>
+            </div>
+          </div>";
+  
+  
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-md-10 col-md-offset-1 cabecera-menu-inicio">
-					<h3 align="center">Información del inmueble</h3>
+					<h1 align="center">Información del inmueble</h1>
           <div class="row justify-content-around">
             <div class="col-4">
-              <center><img src="<?php echo $imagen; ?>" style="width:50%;border-radius: 0.5%;border: solid 0.5px black;"></center>
+              <img src="<?php echo $imagen; ?>" style="width:50%;border-radius: 0.5%;border: solid 0.5px black;"></center>
             </div>
             <div class="col-4">
-            <div class="ver-inm" align="center">
+              <div class="ver-inm" align="center">
               <?php
               if (isset($_POST['id_cliente'])) {
                 if($id_cliente== 0 ){
@@ -103,10 +122,11 @@ session_start();
                 }
                 ?>
 					  </div>
-              </div>
+          </div>
 			</div>
 		</div>
 	</div>
+
   
   <!-- footer -->
   <footer class="navbar-nav navbar-inverse">

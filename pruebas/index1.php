@@ -3,8 +3,8 @@
         <title>Ejemplo LocalStorage</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">     </script>
         <script>
-        /*Funcion de Capturar, Almacenar datos y Limpiar campos*/
-        $(document).ready(function(){    
+            /*Funcion de Capturar, Almacenar datos y Limpiar campos*/
+            $(document).ready(function(){    
             $('#boton-guardar').click(function(){        
                 /*Captura de datos escrito en los inputs*/        
                 var nom = document.getElementById("nombretxt").value;

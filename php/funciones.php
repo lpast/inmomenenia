@@ -94,172 +94,93 @@ function comprobarIndex(){
 
 function buscar_Inmuebles(){ 
   if (isset($_POST['buscar_inm'])){
-    $tipo = $_POST['tipo'];
-    $num_hab = $_POST['num_hab'];
-    $metros = $_POST['metros'];
-    $precio = $_POST['precio'];
+     $tipo = $_POST['tipo'];
+     $num_hab = $_POST['num_hab'];
+     $metros = $_POST['metros'];
+     $precio = $_POST['precio'];
 
-    if ($tipo == "venta"){
-      if($precio != ''){
-        if($num_hab != ''){
-            if ($metros != ''){
-              $conexion = abrirConexion();   ///buscamos por venta  precio  num_hab y metros
-              $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and num_hab =='$num_hab' and metros=='$metros' and tipo='venta'";
-              $allbventa = mysqli_query($conexion,$sql);
-        
-              if (!$allbventa){
-                echo "Error al consultar BD - venta - precio - numero de hanitaciones";
-              }else{
+    if ($tipo == 'venta') { //buacamos por venta
+        if ($num_hab != '') {//buscamos por venta - habitaciones
+          if ($metros != '') { 
+            if ($precio != '') { 
+              $conexion = abrirConexion();// buscamos por venta - habitaciones - metros - precio
+              $sql = "SELECT * from tbl_inmuebles where num_hab='$num_hab' and metros='$metros' and precio='$precio' and tipo='venta'";
+              $bventa = mysqli_query($conexion, $sql);
+
+              if (!$bventa) {
+                echo "Error al consultar BD - venta - numero de hanitaciones - metros - precio";
+              } else {
                 echo "<table class='table table-striped'>";
                 echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-              while ($fila = mysqli_fetch_array($allbventa,MYSQLI_ASSOC)){
+                while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
+                  echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
+                <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
+                </tr></tbody>";
+                }
+                echo "</table>";
+              }
+              mysqli_close($conexion);
+            }// buscamos por venta - num_hab - metros
+            $conexion = abrirConexion();
+            $sql = "SELECT * from tbl_inmuebles where num_hab='$num_hab' and metros='$metros' and tipo='venta'";
+            $bventa = mysqli_query($conexion, $sql);
+
+            if (!$bventa) {
+              echo "Error al consultar BD - venta - numero de hanitaciones - metros";
+            } else {
+              echo "<table class='table table-striped'>";
+              echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
+              while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                 echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
+              <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
+              </tr></tbody>";
+              }
+              echo "</table>";
+            }
+            mysqli_close($conexion);
+          } else { //fin por venta - num_hab - metros
+            $conexion = abrirConexion();
+            $sql = "SELECT * from tbl_inmuebles where num_hab='$num_hab' and tipo='venta'";
+            $bventa = mysqli_query($conexion, $sql);
+
+            if (!$bventa) {
+              echo "Error al consultar BD - venta - numero de hanitaciones";
+            } else {
+              echo "<table class='table table-striped'>";
+              echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
+              while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
+                echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
+              <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
+              </tr></tbody>";
+              }
+              echo "</table>";
+            }
+            mysqli_close($conexion);
+          }
+        } else {
+          $conexion = abrirConexion();
+          $sql = "SELECT * from tbl_inmuebles where tipo='venta'";
+          $bventa = mysqli_query($conexion, $sql);
+  
+          if (!$bventa) {
+            echo "Error al consultar BD - venta - numero de hanitaciones";
+          } else {
+            echo "<table class='table table-striped'>";
+            echo "<thead><tr><th>Dirección</th><th>Nº. abitaciones</th></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
+                while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
+                  echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
                 <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
                 </tr></tbody>";
               }
               echo "</table>";
-            }
-                mysqli_close($conexion);
-            }
-          $conexion = abrirConexion();   ///buscamos por venta  precio y num_hab
-          $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and num_hab =='$num_hab' and tipo='venta'";
-          $bprehabventa = mysqli_query($conexion,$sql);
-    
-          if (!$bprehabventa){
-            echo "Error al consultar BD - venta - precio - numero de hanitaciones";
-          }else{
-            echo "<table class='table table-striped'>";
-            echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-          while ($fila = mysqli_fetch_array($bprehabventa,MYSQLI_ASSOC)){
-            echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-            <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-            </tr></tbody>";
-          }
-          echo "</table>";
-        }
-            mysqli_close($conexion);
-        }
-        $conexion = abrirConexion();   ///buscamos por venta y precio
-        $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and tipo='venta'";
-        $bpreventa = mysqli_query($conexion,$sql);
-  
-        if (!$bpreventa){
-          echo "Error al consultar BD - venta y precio";
-        }else{
-          echo "<table class='table table-striped'>";
-          echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($bpreventa,MYSQLI_ASSOC)){
-          echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='$fila[imagen]' width='150px'></td>
-          <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-          </tr></tbody>";
-        }
-        echo "</table>";
-      }
+              }
           mysqli_close($conexion);
-      }else if($precio == ''){
-        $conexion = abrirConexion();
-        $sql = "SELECT * from tbl_inmuebles where tipo='venta'";
-        $bventa = mysqli_query($conexion,$sql);
-  
-        if (!$bventa){
-          echo "Error al consultar BD - venta";
-        }else{
-          echo "<table class='table table-striped'>";
-          echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($bventa,MYSQLI_ASSOC)){
-          echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-          <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-          </tr></tbody>";
-        }
-        echo "</table>";
-      }
-          mysqli_close($conexion);
-  
-      }
-    }
-      
+        }//fin venta - habitaciones
+        
+    }//-fin venta
+  }//fin isset
+}//fin buscar inmuebles
 
-  if ($tipo == "alquiler"){
-    if($precio != ''){
-      if($num_hab != ''){
-          if ($metros != ''){
-            $conexion = abrirConexion();   ///buscamos por alquiler  precio  num_hab y metros
-            $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and num_hab =='$num_hab' and metros=='$metros' and tipo='alquiler'";
-            $allbalquiler = mysqli_query($conexion,$sql);
-      
-            if (!$allbalquiler){
-              echo "Error al consultar BD - alquiler - precio - numero de hanitaciones";
-            }else{
-              echo "<table class='table table-striped'>";
-              echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-            while ($fila = mysqli_fetch_array($allbalquiler,MYSQLI_ASSOC)){
-              echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-              <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-              </tr></tbody>";
-            }
-            echo "</table>";
-          }
-              mysqli_close($conexion);
-          }
-        $conexion = abrirConexion();   ///buscamos por alquiler  precio y num_hab
-        $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and num_hab =='$num_hab' and tipo='alquiler'";
-        $bprehabalquiler = mysqli_query($conexion,$sql);
-  
-        if (!$bprehabalquiler){
-          echo "Error al consultar BD - alquiler - precio - numero de hanitaciones";
-        }else{
-          echo "<table class='table table-striped'>";
-          echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($bprehabalquiler,MYSQLI_ASSOC)){
-          echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-          <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-          </tr></tbody>";
-        }
-        echo "</table>";
-      }
-          mysqli_close($conexion);
-      }
-      $conexion = abrirConexion();   ///buscamos por alquiler y precio
-      $sql = "SELECT * from tbl_inmuebles where precio like '$precio' and tipo='alquiler'";
-      $bprealquiler = mysqli_query($conexion,$sql);
-
-      if (!$bprealquiler){
-        echo "Error al consultar BD - alquiler y precio";
-      }else{
-        echo "<table class='table table-striped'>";
-        echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-      while ($fila = mysqli_fetch_array($bprealquiler,MYSQLI_ASSOC)){
-        echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-        <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-        </tr></tbody>";
-      }
-      echo "</table>";
-    }
-        mysqli_close($conexion);
-    }else if($precio == ''){
-      $conexion = abrirConexion();
-      $sql = "SELECT * from tbl_inmuebles where tipo='alquiler'";
-      $balquiler = mysqli_query($conexion,$sql);
-
-      if (!$balquiler){
-        echo "Error al consultar BD - alquiler";
-      }else{
-        echo "<table class='table table-striped'>";
-        echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-      while ($fila = mysqli_fetch_array($balquiler,MYSQLI_ASSOC)){
-        echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
-        <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-        </tr></tbody>";
-      }
-      echo "</table>";
-    }
-        mysqli_close($conexion);
-
-    }
-  }
-    
-  }//llave cierre  if (isset($_POST['buscar_inm']))
-}
 function listar_inmuebles(){
   $conexion = abrirConexion();
       $mostrar = "SELECT id, direccion, descripcion, precio, id_cliente, imagen
@@ -292,6 +213,27 @@ function listar_inmuebles(){
         }
       }
       mysqli_close($conexion); 
+}
+
+function datos_noticia() {
+  if (isset($_POST['ver'])) {
+    $id = $_POST['id'];
+    $conexion = abrirConexion();
+    $consulta = "SELECT * from tbl_noticias where id='$id'";
+    $noticia = mysqli_query($conexion,$consulta);
+
+    if (!$noticia) {
+      echo "¡Error! No se ha podido acceder a la noticia :(";
+    } else {
+      while ($fila = mysqli_fetch_array($noticia, MYSQLI_ASSOC)) {
+        $titular = $fila['titular'];
+        $contenido = $fila['contenido'];
+        $imagen = $fila['imagen'];
+        $fecha = $fila['fecha'];
+      }
+    }
+    mysqli_close($conexion);
+  }
 }
 
 /* CLIENTE */

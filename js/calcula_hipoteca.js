@@ -16,6 +16,7 @@ function calcular() {
     const table=document.createElement("table");
 
     table.setAttribute("border",1);
+    table.setAttribute("background-color",red);
     table.setAttribute("cellpadding",5);
     table.setAttribute("cellspacing",0);
 

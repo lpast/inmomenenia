@@ -20,14 +20,13 @@ class Interfaz {
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span>Buscar Inmuebles</a></li>
+                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
                     <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
-                    <li><a href='php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span>Mis inmuebles</a></li>
-                    <li><a href='php/clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span>Mis datos personales</a></li>
-                    <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span>Mis citas</a></li>
-                    <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
-                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span>Contacto</a></li>
-                    <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span>Cerrar sesión</a></li>
+                    
+                    <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
+                    <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                    <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                   </div>
                 </div>
@@ -97,17 +96,18 @@ class Interfaz {
                           <span class='icon-bar b-resp'></span>
                           <span class='icon-bar b-resp'></span>                      
                         </button>
-                        <a href='../../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+                        <a href='../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
                       </div>
                       <div class='collapse navbar-collapse' id='nav-responsive'>
                       <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='../home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                        <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
+                        <li><a href='../home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio </a></li>
+                        
+                        <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
                         <li><a href='../php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
                         <li><a href='../clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
                         <li><a href='../clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
                         <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                        <li><a href='../cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                        <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                       </ul>
                       </div>
                     </div>
@@ -136,14 +136,15 @@ class Interfaz {
                     </div>
               </nav>";
       }
-    }else{
+    } else {
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>
             <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>                        
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>                       
             </button>
             <a href='../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
           </div>
@@ -151,6 +152,7 @@ class Interfaz {
             <ul class='nav navbar-nav navbar-right'>
               <li><a href='../home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
               <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
+              <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
               <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
               <li><a href='../php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
             </ul>
@@ -161,34 +163,6 @@ class Interfaz {
     return true;
   }
 
-  /*static public function imagen_aleatoria() : bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <h1 align='center'> Encuentra tu hogar perfecto</h1>";
-            $conexion = abrirConexion();
-            $sql = 'SELECT imagen FROM tbl_inmuebles';
-            $imagenes = array();
-              
-            $imagen = mysqli_query($conexion,$sql);
-              
-            if (!$imagen){
-              echo 'Eror al cargar las imagenes';
-            } else {
-              while ($fila = mysqli_fetch_array($imagen,MYSQLI_ASSOC)){
-                array_push ($imagenes,$fila['imagen']);
-              }
-            }
-            mysqli_close($conexion);
-
-            $max = count($imagenes);
-            $img_aleatoria = rand(0,$max-1);
-         echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
-          </div>
-          </div>";
-    return  true;
-  }*/
-  
   static public function form_buscar_Inmuebles() : bool {
     echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
             <div class='row'>
@@ -244,9 +218,9 @@ class Interfaz {
     return true;
   }
 
-  static public function mostrar_home() : bool {
+ static public function mostrar_home() : bool {
 
-    if (isset($_SESSION['tipo'])){
+    if (isset($_SESSION['tipo'])) {
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         //if (isset($_SESSION['nombre'])) {
@@ -255,30 +229,36 @@ class Interfaz {
           echo "<div class='container-fluid'>
             <div class='row'>
               <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                <h1 align='center'> ¡ Hola $nombre ! </h1>";
+                <h1 align='center'> ¡ Hola $nombre ! </h1>
+                <h2 align='center'> ¿En qué podemos ayudarte? </h2>
+              </div>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
+                 self::gestion_cliente();
+              echo "</div>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>";
 
-          $conexion = abrirConexion();
-          $sql = 'SELECT imagen FROM tbl_inmuebles';
-          $imagenes = array();
+                  $conexion = abrirConexion();
+                  $sql = 'SELECT imagen FROM tbl_inmuebles';
+                  $imagenes = array();
 
-          $imagen = mysqli_query($conexion, $sql);
+                  $imagen = mysqli_query($conexion, $sql);
 
-          if (!$imagen) {
-            echo 'Eror al cargar las imagenes';
-          } else {
-            while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-              array_push($imagenes, $fila['imagen']);
-            }
-          }
-          mysqli_close($conexion);
+                  if (!$imagen) {
+                    echo 'Eror al cargar las imagenes';
+                  } else {
+                    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+                      array_push($imagenes, $fila['imagen']);
+                    }
+                  }
+                  mysqli_close($conexion);
 
-          $max = count($imagenes);
-          $img_aleatoria = rand(0, $max - 1);
-          echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
-                </div></div></div>";
-       // }   
-      }
-      if ($tipo_usuario == 'a'){
+                  $max = count($imagenes);
+                  $img_aleatoria = rand(0, $max - 1);
+                  echo "<center><img src='php/$imagenes[$img_aleatoria]' alt='img-aleatoria' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
+                        </div></div></div>";
+                self::mostrar_noticias();
+              }
+      if ($tipo_usuario == 'a') {
         //Mostramos una imagen aleatoria 
         echo "<div class='container-fluid'>
           <div class='row'>
@@ -287,8 +267,9 @@ class Interfaz {
           </div>
         </div>";
         self::mostrar_noticias();
+        self::form_buscar_Inmuebles();
       }
-    }else{
+    } else {
       //Mostramos una imagen aleatoria 
      echo "<div class='container-fluid'>
      <div class='row'>
@@ -314,8 +295,11 @@ class Interfaz {
      echo "<center><img src='php/$imagenes[$img_aleatoria]' class='img-rounded img-responsive' style='width:612px; height:408px; border:solid 0.5px'><center>     
          </div>
          </div>";
+
+      self::form_buscar_Inmuebles();
+      buscar_Inmuebles();
     }
-    self::form_buscar_Inmuebles();
+   
 
     return true;
   }
@@ -347,23 +331,19 @@ class Interfaz {
                     <h2>$fila[direccion]</h2>
                     <h4>$fila[precio] € </h4>
     
-                    <a class='btn btn-favorito' href='#' id='boton-favorito' value='$fila[id]'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
-                    <button id='boton-favoritos'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'>Guardar</button><br>
+                    <input type='hidden' id='id' value='$fila[id]'/>
+                    <a class='btn btn-favorito' href='#' id='agregar-favoritos'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
 
-                    <input type='text' placeholder='Nombre' id='nombretxt'><br><br>   
+                    <button id='favoritos' onClick='like()'>LIKE</button>
+                    <p type='text' style='color:blue;' id='show'></p>
+                    <h2>LIKES</h2>
 
-           
-                        <hr />
-                        id:
-                        <label type='text' id='nombre'></label><br>                          
-                        
-
-                        <button id='boton-cargar'>
-                          Cargar elementos
-                        </button>
+                   
                    
                     <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
               echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+
+              
             }
 
           }
@@ -374,7 +354,303 @@ class Interfaz {
 </div>";
     return true;
   }
+
+  static public function form_hipoteca(): bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='jumbotron'>
+        <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
+        <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
+      </div>
+      <div class='col-md-6 col-md-offset-3'>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+            <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+              <div class='form-group'>
+    <div class='container-fluid col-sm-8 col-sm-offset-2' cabecera-menu>
+    <div class='row'>
+     
+        <div class='panel-group'>
+          <div class='panel panel-default cabecera'>
+            <div class='panel-heading'>
+              <h2 align='center'>Buscar inmueble</h2>
+            </div>
+            <div class='container-fluid' cabecera-menu-inicio>
+            <div class='row'>
+              <div class='jumbotron'>
+                <h1 align ='center'>Cálcula tu hipoteca o préstamo</h2>
+              </div>
+              <div class='col-md-6 col-md-offset-3'>
+                <div class='panel panel-default'>
+                  <div class='panel-body'>
+                    <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Importe: </label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='importe' maxlength=9 value=1000 autofocus>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Años: </label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='anos' maxlength=2 value=1 autofocus>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Intereés: </label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='interes' maxlength=9 value=3.6 autofocus>
+                        </div>
+                      </div>
+                      <div>
+                        <p><input type='button' value='Calcular' onclick='calcular()'></p>
+                      </div>
+                    </form>
+                  <div id='resultado'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>";
+   return true;
+   }
+
+   static public function muestra_contacto() : bool {
+    echo "<div class='container-fluid'>
+            <div class='row'>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>CONTACTO</h1>
+                    </br>
+                    <h2><a href='https://lapuebladealfinden.es/'><img src='../iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
+                    <h2><a href='+34692605414'><img src='../iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
+                    <h2><a href='contacto@inmomenenia.es'><img src='../iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
+                    <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
+                  </div>
+                  </br>
+                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
+                    <h1 align ='center'>CÓMO LLEGAR</h1>
+                  </br>
+                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+                  </div>
+                </div>
+            </div>
+          </div>";
+    return true;
+  }
+
+  static public function contacto_RRSS(): bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='jumbotron'>
+        <h2 align ='center'>Si quieres conocernos un poco más</h2>
+        <div class ='iconos' align ='center' style='padding-top:15px'>
+        <a href='https://www.facebook.com/'><img src='../iconos/facebook.png' alt='facebook-inmomenenia' width='70px'></a>
+        <a href='https://www.instagram.com/'><img src='../iconos/instagram.png' alt='instagram-inmomenenia' width='70px'></a>
+        <a href='https://wa.me/######?text=¡Estoy+interesado!'><img src='../iconos/whatsapp.png' alt='whatsapp-inmomenenia' width='70px'></a>
+        <a href='https://twitter.com/'><img src='../iconos/twitter.png' alt='twitter-inmomenenia' width='70px'></a>
+        </div>
+
+      </div>";
+      
+    return true;
+  }
+          
+  static public function formulario_contacto() : bool {
+    echo "<div class='container-fluid'>
+            <div class='row'>
+              <div class='jumbotron'>
+                <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
+                <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
+              </div>
+              <div class='col-md-6 col-md-offset-3'>
+                <div class='panel panel-default'>
+                  <div class='panel-body'>
+                    <form id='contacto' action='#' method='post' accept-charset='utf-8'>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='nombre' placeholder='escribe aquí tu nombre' autofocus>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' name='email' placeholder='escribe aquí tu email'>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
+                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='number' name='telefono' placeholder='escribe aquí tu teléfono'>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
+                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Pedir información
+                          </label>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Consulta
+                          </label>
+                          <label class='radio-inline'>
+                            <input type='radio' name='asunto'>Sugerencia
+                          </label>
+                        </div>
+                      </div>
+                      <br>
+                      <div class='form-group'>
+                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
+                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
+                        </div>
+                      </div>
+                      <br>
+                      <div class='form-group'>
+                      <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                            <input class='form-control btn-primary' align=center' type='submit' name='Enviar' value='Enviar'>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>";
+    return true;
+  }
+
+  static public function formulario_acceso() : bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <div class='jumbotron'>
+          <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
+            <form action='#' method='post' class='form-horizontal'>
+              <div class='form-group'>
+                <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
+                  <div class='col-sm-6'>
+                    <input class='form-control' type='text' name='nick' required>
+                  </div>
+              </div>
+              <div class='form-group'>
+              <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
+                  <div class='col-sm-6'>
+                    <input class='form-control' type='password' name='password' required>
+                  </div>
+              </div>
+              <div class='form-group'>
+                <div class='checkbox'>
+                  <input class='form-control' type='checkbox' value='open' name='check'>
+                </div>
+                <div>
+                <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
+                </div>
+              </div>
+              <div class='form-group'>
+                <div class='col-sm-9 col-sm-offset-2'>
+                  <input class='form-control btn-primary' type='submit' name='acceder' value='Acceder'>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>";
+
+  return  true;
+    
+  }
+
+ 
+  static public function mostrar_noticias() : bool {
+    echo "<div class=¡container-fluid¡>
+      <div class='row'>
+        <div class='col-xs-12 ultimas-noticias'>
+          <h2 class='margen-citas' align='center'>Aquí tienes toda la actualidad inmobiliaria</h2>";
+          // Cargamos las noticias de forma paginada
+          $conexion = abrirConexion();
+          $consulta = "SELECT * from tbl_noticias";
+
+          $noticias = mysqli_query($conexion,$consulta);
+
+          if (!$noticias) {
+            echo "Error al cargar las noticias desde la BD";
+          } else {
+            $num_filas = mysqli_num_rows($noticias);
+            if ($num_filas > 0) {
+              $num_noticas = 5; //limite de noticias a mostrar
+              $pagina = false;
+            }
+
+            if (isset($_GET['pagina'])) {
+              $pagina = $_GET['pagina'];
+            }
+
+            if (!$pagina) {
+              $inicio = 0;
+              $pagina = 1;
+            } else {
+              $inicio = ($pagina - 1) * $num_noticas;
+            }
+
+            $consulta_mostrar = "SELECT * from tbl_noticias order by fecha desc limit $inicio,$num_noticas";
+
+            $mostrar = mysqli_query($conexion,$consulta_mostrar);
+
+            if (!$mostrar) {
+              echo "Error al cargar las noticias desde la BD";
+            } else {
+              while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
+                $marca_cita = strtotime($fila['fecha']);
+                $f_formateada = date("d-m-Y",$marca_cita);
+                  //muestro info de noticia
+                echo "<div class='panel-body tnoticias'>  
+                  <img align'center' class='img-responsive' src='$fila[imagen]'>
+                  <h4 align='center'><b>$fila[titular]</b></h4>
+                  <h5 align='center'>Fecha de publicación: $f_formateada</h5>
+                  <form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver más'></form>"; 
+                echo "</div>";
+              }
+            }    
+          }
+     mysqli_close($conexion);
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+   // botones páginas -->
+    echo "<div class='container-fluid'>
+          <div class='row'>
+            <div class='col-xs-12 footer-noticias'>
+              <ul class='pager'>
+                <li><a href='noticias.php?pagina=".($pagina - 1)."'>Atrás</a></li>
+                <li><a href='noticias.php?pagina=".($pagina + 1)."'>Siguiente</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>";
+        return true;
+  }
+  
 /* Menú de navegación usuario*/
+  static public function gestion_cliente(): bool {
+    echo "<nav class='navbar'>
+            <div class='container-fluid'>
+              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+                <li><a type='button' class='btn btn-primary btn-md' href='./php/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='./php/clientes/mis_inmuebles.php'> Gestionar mis inmuebles</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='./php/clientes/mis_datos.php'> Gestionar mis datos personales</a></li>
+
+                <li><a 
+              </ul>
+            </div>
+          </nav>";
+    return true;
+  }
   static public function datos_cliente(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -576,199 +852,7 @@ class Interfaz {
     </div>";
     return true;
   }
-  static public function muestra_contacto() : bool {
-    echo "<div class='container-fluid'>
-            <div class='row'>
-              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
-                    <h1 align ='center'>CONTACTO</h1>
-                    </br>
-                    <h2><a href='https://lapuebladealfinden.es/'><img src='../iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
-                    <h2><a href='+34692605414'><img src='../iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
-                    <h2><a href='contacto@inmomenenia.es'><img src='../iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
-                    <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
-                  </div>
-                  </br>
-                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
-                    <h1 align ='center'>CÓMO LLEGAR</h1>
-                  </br>
-                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
-                  </div>
-                </div>
-            </div>
-          </div>";
-    return true;
-  }
-
-  static public function contacto_RRSS(): bool {
-    echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='jumbotron'>
-        <h2 align ='center'>Si quieres conocernos un poco más</h2>
-        <div class ='iconos' align ='center' style='padding-top:15px'>
-        <a href='https://www.facebook.com/'><img src='../iconos/facebook.png' alt='facebook-inmomenenia' width='70px'></a>
-        <a href='https://www.instagram.com/'><img src='../iconos/instagram.png' alt='instagram-inmomenenia' width='70px'></a>
-        <a href='https://wa.me/######?text=¡Estoy+interesado!'><img src='../iconos/whatsapp.png' alt='whatsapp-inmomenenia' width='70px'></a>
-        <a href='https://twitter.com/'><img src='../iconos/twitter.png' alt='twitter-inmomenenia' width='70px'></a>
-        </div>
-
-      </div>";
-      
-    return true;
-  }
-          
-  static public function formulario_contacto() : bool {
-    echo "<div class='container-fluid'>
-            <div class='row'>
-              <div class='jumbotron'>
-                <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
-                <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
-              </div>
-              <div class='col-md-6 col-md-offset-3'>
-                <div class='panel panel-default'>
-                  <div class='panel-body'>
-                    <form id='contacto' action='#' method='post' accept-charset='utf-8'>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' name='nombre' placeholder='escribe aquí tu nombre' autofocus>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' name='email' placeholder='escribe aquí tu email'>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='number' name='telefono' placeholder='escribe aquí tu teléfono'>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
-                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Pedir información
-                          </label>
-                          <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Consulta
-                          </label>
-                          <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Sugerencia
-                          </label>
-                        </div>
-                      </div>
-                      <br>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
-                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
-                        </div>
-                      </div>
-                      <br>
-                      <div class='form-group'>
-                      <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                            <input class='form-control btn-primary' align=center' type='submit' name='Enviar' value='Enviar'>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>";
-    return true;
-  }
-
-  static public function form_hipoteca(): bool {
-   echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='jumbotron'>
-        <h1 align ='center'>Cálcula tu hipoteca o préstamo</h2>
-      </div>
-      <div class='col-md-6 col-md-offset-3'>
-        <div class='panel panel-default'>
-          <div class='panel-body'>
-            <form id='contacto' action='#' method='post' accept-charset='utf-8'>
-              <div class='form-group'>
-                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Importe: </label>
-                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                  <input class='form-control' type='text' name='importe' maxlength=9 value=1000 autofocus>
-                </div>
-              </div>
-              <div class='form-group'>
-                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Años: </label>
-                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                  <input class='form-control' type='text' name='anos' maxlength=2 value=1 autofocus>
-                </div>
-              </div>
-              <div class='form-group'>
-                <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Intereés: </label>
-                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                  <input class='form-control' type='text' name='interes' maxlength=9 value=3.6 autofocus>
-                </div>
-              </div>
-              <div>
-                <p><input type='button' value='Calcular' onclick='calcular()'></p>
-              </div>
-            </form>
-            <div id='resultado'></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>";
-  return true;
-  }
-
-  static public function formulario_acceso() : bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <div class='jumbotron'>
-          <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
-          <div class='panel panel-default'>
-            <div class='panel-body'>
-            <form action='#' method='post' class='form-horizontal'>
-              <div class='form-group'>
-                <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
-                  <div class='col-sm-6'>
-                    <input class='form-control' type='text' name='nick' required>
-                  </div>
-              </div>
-              <div class='form-group'>
-              <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
-                  <div class='col-sm-6'>
-                    <input class='form-control' type='password' name='password' required>
-                  </div>
-              </div>
-              <div class='form-group'>
-                <div class='checkbox'>
-                  <input class='form-control' type='checkbox' value='open' name='check'>
-                </div>
-                <div>
-                <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
-                </div>
-              </div>
-              <div class='form-group'>
-                <div class='col-sm-9 col-sm-offset-2'>
-                  <input class='form-control btn-primary' type='submit' name='acceder' value='Acceder'>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>";
-
-  return  true;
-    
-  }
-
-  
+ 
   static public function mostrarCalendario($dia, $mes, $año) : bool {
     switch ($mes) {
       case 1:
@@ -913,6 +997,7 @@ class Interfaz {
 
           return true;
   }
+
   static public function gestion_inmuebles() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -966,7 +1051,6 @@ class Interfaz {
         mysqli_close($conexion);
     return true;
   }
-   
 
   static public function gestion_citas() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
@@ -1032,6 +1116,7 @@ class Interfaz {
           }
     return true;
   }
+
   static public function gestion_clientes() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -1050,6 +1135,7 @@ class Interfaz {
     </div>";
     return true;
   }
+
   static public function listar_usuarios() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -1402,60 +1488,7 @@ class Interfaz {
     return true;
   }
 
-  static public function mostrar_noticias() : bool {
-     // Cargamos las noticias de forma paginada
-     $conexion = abrirConexion();
-     $consulta = "SELECT * from tbl_noticias";
-
-     $noticias = mysqli_query($conexion,$consulta);
-
-     if (!$noticias) {
-        echo "Error al cargar las noticias desde la BD";
-      } else {
-        $num_filas = mysqli_num_rows($noticias);
-        if ($num_filas > 0) {
-          $num_noticas = 5; //limite de noticias a mostrar
-          $pagina = false;
-        }
-
-        if (isset($_GET['pagina'])) {
-          $pagina = $_GET['pagina'];
-        }
-
-        if (!$pagina) {
-          $inicio = 0;
-          $pagina = 1;
-        } else {
-          $inicio = ($pagina - 1) * $num_noticas;
-        }
-
-        $consulta_mostrar = "SELECT * from tbl_noticias order by fecha desc limit $inicio,$num_noticas";
-
-        $mostrar = mysqli_query($conexion,$consulta_mostrar);
-
-        if (!$mostrar) {
-          echo "Error al cargar las noticias desde la BD";
-        } else {
-          while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
-            $marca_cita = strtotime($fila['fecha']);
-            $f_formateada = date("d-m-Y",$marca_cita);
-           
-            echo "<div class='col-sm-4 col-sm-offset-4'>";
-            echo "<div class='panel panel-default'>";
-            echo "<div class='panel-body tnoticias'>";
-            //muestro info de noticia
-            echo "<img align'center' class='img-responsive' src='$fila[imagen]'>
-              <h4 align='center'><b>$fila[titular]</b></h4>
-              <h5 align='center'>Fecha de publicación: $f_formateada</h5>
-              <form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver más'></form>"; 
-
-            echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
-          }
-        }         
-      }
-      mysqli_close($conexion);
-      return true;
-  }
+  
 
   static public function form_añadir_noticias() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>

@@ -24,3 +24,5 @@ function cantidadDeseo() {
     let listas = JSON.parse(localStorage.getItem('listaDeseo'));
     console.log(listas);
 }
+
+
