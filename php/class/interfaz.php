@@ -534,10 +534,10 @@ static public function form_buscar_Inmuebles() : bool {
       mysqli_close($conexion);
   
       $max = count($imagenes);
-      $img_aleatoria1 = rand(0, $max - 1);
+      $img_aleatoria = rand(0, $max - 1);
      
       echo "<div class='contenedor-imagenes'>
-      <img src='media/img/$imagenes[$img_aleatoria1]' alt='First img' class='img-rounded' style='width:1300px; height:400px; border:solid 0.5px'>
+      <img src='media/img/$imagenes[$img_aleatoria]' alt='Img aleatoria' class='img-rounded' style='width:1300px; height:400px; border:solid 0.5px'>
       </div>";
     echo "</div>";
     self::form_buscar_Inmuebles();
