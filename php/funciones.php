@@ -168,7 +168,7 @@ function buscar_Inmuebles(){
             echo "<table class='table table-striped'>";
             echo "<thead><tr><th>Dirección</th><th>Nº. abitaciones</th></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                 while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                  echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[precio]</td><td><img src='./php/$fila[imagen]' width='150px'></td>
+                  echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[precio]</td><td><img src='media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
                 <td><form action='./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
                 </tr></tbody>";
               }
@@ -406,7 +406,7 @@ function buscar_inmuebles_admin(){
               echo "<table class='table table-striped'>";
               echo "<thead><tr><th>Dirección</th><th><th>Metros<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
               while ($fila = mysqli_fetch_array($ballventa,MYSQLI_ASSOC)){
-                echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='php/$fila[imagen]' width='150px'></td>
+                echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
               <td><form action='../../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
               </tr></tbody>";
               }

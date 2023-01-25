@@ -474,12 +474,13 @@ static public function form_buscar_Inmuebles() : bool {
     </div>
   </div>";
   return true;
-} */
+} 
 
- static public function mostrar_home() : bool {
+*/
 
-    if (isset($_SESSION['tipo'])) {
-      $tipo_usuario = $_SESSION['tipo'];
+static public function mostrar_home() : bool {
+  if (isset($_SESSION['tipo'])) {
+    $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         //if (isset($_SESSION['nombre'])) {
           $nombre = $_SESSION['nombre'];
@@ -494,12 +495,12 @@ static public function form_buscar_Inmuebles() : bool {
                     self::gestion_cliente();
               echo "</div>";
               echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>";
-
-                 
               self::mostrar_noticias();
+              echo "</div>";
+            echo "</div>";
+          echo "</div>";
       }
       if ($tipo_usuario == 'a') {
-        //Mostramos una imagen aleatoria 
         echo "<div class='container-fluid'>
           <div class='row'>
             <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
@@ -508,43 +509,46 @@ static public function form_buscar_Inmuebles() : bool {
         </div>";
         self::mostrar_noticias();
         self::form_buscar_Inmuebles();
+        echo "</div>";
       }
-    } else {
+  } else {
       //Mostramos una imagen aleatoria 
       echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>
-          <h2 align='center'> Encuentra tu hogar perfecto </h2>
-        </div>";
+        <div class='row'>
+          <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+            <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>
+            <h2 align='center'> Encuentra tu hogar perfecto </h2>
+          </div>";
       echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'> ";
-      $conexion = abrirConexion();
-      $sql = 'SELECT imagen FROM tbl_inmuebles';
-      $imagenes = array();
+        $conexion = abrirConexion();
+        $sql = 'SELECT imagen FROM tbl_inmuebles';
+        $imagenes = array();
+    
+        $imagen = mysqli_query($conexion, $sql);
   
-      $imagen = mysqli_query($conexion, $sql);
-  
-      if (!$imagen) {
-        echo 'Eror al cargar las imagenes';
-      } else {
-        while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-          array_push($imagenes, $fila['imagen']);
+        if (!$imagen) {
+          echo 'Eror al cargar las imagenes';
+        } else {
+          while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+            array_push($imagenes, $fila['imagen']);
+          }
         }
-      }
-      mysqli_close($conexion);
-  
-      $max = count($imagenes);
-      $img_aleatoria = rand(0, $max - 1);
-     
-      echo "<div class='contenedor-imagenes'>
-      <img src='media/img/$imagenes[$img_aleatoria]' alt='Img aleatoria' class='img-rounded' style='width:1300px; height:400px; border:solid 0.5px'>
-      </div>";
+        mysqli_close($conexion);
+    
+        $max = count($imagenes);
+        $img_aleatoria = rand(0, $max - 1);
+      
+        echo "<div class='contenedor-imagenes'>
+          <img src='media/img/img_aleatoria/$imagenes[$img_aleatoria]' alt='Img aleatoria' class='img-rounded' style='width:1300px; height:400px; border:solid 0.5px'>
+        </div>";
+    echo "</div>";
+    echo "</div>";
     echo "</div>";
     self::form_buscar_Inmuebles();
     buscar_Inmuebles();
-    }
-    return true;
   }
+  return true;
+}
 
   static public function inmuebles_disponibles() : bool {
     echo "<div class='container-fluid'>
@@ -569,12 +573,12 @@ static public function form_buscar_Inmuebles() : bool {
               echo "<div class='col-sm-4'>";
               echo "<div class='panel panel-default'>";
               echo "<div class='panel-body tnoticias'>";
-              echo "<img class='img-responsive' src='$fila[imagen]'>
+              echo "<img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]'>
                     <h2>$fila[direccion]</h2>
                     <h4>$fila[precio] € </h4>
     
                     <input type='hidden' id='id' value='$fila[id]'/>
-                    <a class='btn btn-favorito' href='#' id='agregar-favoritos'><img src='../iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
+                    <a class='btn btn-favorito' href='#' id='agregar-favoritos'><img src='media/iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
 
                     <button id='favoritos' onClick='like()'>LIKE</button>
                     <p type='text' style='color:blue;' id='show'></p>
@@ -582,16 +586,14 @@ static public function form_buscar_Inmuebles() : bool {
 
                     <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
               echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
-
-              
             }
 
           }
         }
         mysqli_close($con);
     echo "</div>
-  </div>
-</div>";
+    </div>
+    </div>";
     return true;
   }
 

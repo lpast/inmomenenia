@@ -26,69 +26,56 @@ session_start();
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::mostrarMenu(); ?>
 	
-	<!-- Recojo en variables los datos a mostrar mediante PHP -->
-	<?php 
-		if (isset($_POST['ver'])) {
-			$id = $_POST['id'];
+    <!-- Recojo en variables los datos a mostrar mediante PHP -->
+    <?php 
+      if (isset($_POST['ver'])) {
+        $id = $_POST['id'];
 
-			$conexion = abrirConexion();
-			$consulta = "SELECT tipo, direccion, cp, metros, num_hab, garaje, descripcion,precio,imagen FROM tbl_inmuebles where id='$id'";
+        $conexion = abrirConexion();
+        $consulta = "SELECT tipo, direccion, cp, metros, num_hab, garaje, descripcion, precio, imagen FROM tbl_inmuebles where id='$id'";
 
-			$datos = mysqli_query($conexion,$consulta);
+        $datos = mysqli_query($conexion,$consulta);
 
-			if (!$datos) {
-				echo "Error, no se ha podido consultar los datos del inmueble";
-			} else {
-				while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-          //$id=$fila['id'];
-          $tipo=$fila['tipo'];
-					$direccion = $fila['direccion'];
-          $cp = $fila['cp'];
-					$metros = $fila['metros'];
-					$num_hab = $fila['num_hab'];
-					$garaje = $fila['garaje'];
-          $descripcion = $fila['descripcion'];
-          $precio = $fila['precio'];
-					$imagen = $fila['imagen'];
-				}
-			}
-			mysqli_close($conexion);
-		}
-	 ?>
+        if (!$datos) {
+          echo "Error, no se ha podido consultar los datos del inmueble";
+        } else {
+          while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+            //$id=$fila['id'];
+            $tipo=$fila['tipo'];
+            $direccion = $fila['direccion'];
+            $cp = $fila['cp'];
+            $metros = $fila['metros'];
+            $num_hab = $fila['num_hab'];
+            $garaje = $fila['garaje'];
+            $descripcion = $fila['descripcion'];
+            $precio = $fila['precio'];
+            $imagen = $fila['imagen'];
+          }
+        }
+        mysqli_close($conexion);
+      }
+    ?>
 
+    
 	<!-- Muestro los datos del inmueble -->
-  echo "<div class='container-fluid'>
-            <div class='row'>
-              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-              <h1 align="center">Información del inmueble</h1>
-                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
-                    <h1 align ='center'>---</h1>
-                    <ul><img src="<?php echo $imagen; ?>" width='600' height='450'></ul>
-                  </div>
-                  </br>
-                  <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
-                    <h1 align ='center'>CÓMO LLEGAR</h1>
-                  </br>
-                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
-                  </div>
-                </div>
-            </div>
-          </div>";
-  
-  
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12 col-md-10 col-md-offset-1 cabecera-menu-inicio">
-					<h1 align="center">Información del inmueble</h1>
-          <div class="row justify-content-around">
-            <div class="col-4">
-              <img src="<?php echo $imagen; ?>" style="width:50%;border-radius: 0.5%;border: solid 0.5px black;"></center>
-            </div>
-            <div class="col-4">
-              <div class="ver-inm" align="center">
-              <?php
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio">
+          <div class='jumbotron'>
+                <h1 align ='center'>INFORMACIÓN DEL INMUEBLE</h3>
+          </div>
+        </div>
+        <div class="col-md-offset-2 col-md-5">
+          <ul>
+            <lo><img class='img-responsive' src='../media/img/img_inmuebles/<?php echo $imagen; ?>' width='700' height='400'></lo>
+          </ul>
+          </div>
+        <div class="col-md-5 ">
+          <div class='jumbotron'>
+            <h2 align ='center'>CARACTERÍSTICAS</h2>
+            <?php
               if (isset($_POST['id_cliente'])) {
-                if($id_cliente== 0 ){
+                if ($id_cliente== 0 ) {
                   echo "<p><button type='button' class='btn btn-success bt-ver'>Disponible</button></p>";
                 } else {
                   echo "<p><button type='button' class='btn btn-danger bt-ver'>No disponible</button></p>";
@@ -96,37 +83,57 @@ session_start();
               }
 
               if (isset($_SESSION['tipo']) == 'u') {
-                echo "<p><button type='button' class='btn btn-success bt-ver'>Disponible</button></p>
-                      <p><b>Dirección: </b>$direccion</p><br>
-                      <p><b>Código Postal: </b>$cp </p><br>
-                      <p><b>Número de Habitaciones: </b>$num_hab </p><br>
-                      <p><b>Metros: </b> $metros </p><br>
-                      <p><b>Garaje: </b>$garaje </p><br>
-                      <p><b>Descripción: </b> $descripcion </p><br>
-                      <p><b>Precio: </b>$precio €</p><br>";
+                echo "<p align='center'><button type='button' class='btn btn-success bt-ver'>Disponible</button>
+                <h3 align='center'><b>Dirección: </b>$direccion</h3>
+                <h3 align='center'><b>Código Postal: </b>$cp </h3>
+                <h3 align='center'><b>Número de Habitaciones: </b>$num_hab </h3>
+                <h3 align='center'><b>Metros: </b> $metros </h3>
+                <h3 align='center'><b>Garaje: </b>$garaje </h3>
+                <h3 align='center'><b>Precio: </b>$precio €</h3>
+               
               } else if (isset($_SESSION['tipo']) == 'a') {
-                  echo "<p><button type='button' class='btn btn-success bt-ver'>Disponible</button></p>
-                        <p><b>Dirección: </b>$direccion </p><br>
-                        <p><b>Código Postal: </b> $cp </p><br>
-                        <p><b>Número de Habitaciones: </b>$num_hab </p><br>
-                        <p><b>Metros: </b>$metros</p><br>
-                        <p><b>Garaje: </b>$garaje </p><br>
-                        <p><b>Descripción: </b> $descripcion </p><br>
-                        <p><b>Precio: </b>$precio €</p><br>";
-                } else {
-                  echo "<p><button type='button' class='btn btn-success bt-ver'>No Disponible</button></p>
-                        <p><b>Dirección: </b>$direccion</p><br>
-                        <p><b>Metros: </b>$metros</p><br>
-                        <p><b>Garaje: </b>$garaje</p><br>
-                        <p><b>Precio: </b>$precio €</p><br>";
-                }
-                ?>
-					  </div>
-          </div>
-			</div>
-		</div>
-	</div>
+                echo "<h3 align='center'><button type='button' class='btn btn-success bt-ver'>Disponible</button></h3>
+                <h3 align='center'><b>Dirección: </b>$direccion</h3>
+                <h3 align='center'><b>Código Postal: </b>$cp </h3>
+                <h3 align='center'><b>Número de Habitaciones: </b>$num_hab </h3>
+                <h3 align='center'><b>Metros: </b> $metros </h3>
+                <h3 align='center'><b>Garaje: </b>$garaje </h3>
+                <h3 align='center'><b>Precio: </b>$precio €</h3>";
+              } else {
+                echo "<p align='center'><button type='button' class='btn btn-success bt-ver'>No Disponible</button></p>
+                <p align='center'><b>Dirección: </b>$direccion</p><br>
+                <p align='center'><b>Metros: </b>$metros</p><br>
+                <p align='center'><b>Garaje: </b>$garaje</p><br>
+                <p align='center'><b>Precio: </b>$precio €</p>";
+              }
+            ?>
+            </div>
+            <div class='jumbotron'>
+              <h3 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h3>
+              <h3 align ='center'>Trataremos de responderte lo antes posible</h3>
+            </div>
+        </div>
+      </div>
 
+	<!-- Muestro los datos del inmueble -->
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
+        <h2 align="center">Descripción</h1>
+        <?php
+
+          if (isset($_SESSION['tipo']) == 'u') {
+          echo "<p><b>Descripción: </b>$descripcion</p>";
+                 
+          } else if (isset($_SESSION['tipo']) == 'a') {
+            echo "<p><b>Descripción: </b>$descripcion</p>";
+          } else {
+            echo "<h3> Si quieres obtener información más detallada, puedes registrarte como usuario </h3>
+            <p><button type='button' class='btn btn-success bt-ver'>Resgistrarse</button></p>";
+          }
+        ?>
+      </div>
+  </div>
   
   <!-- footer -->
   <footer class="navbar-nav navbar-inverse">
