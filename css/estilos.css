@@ -33,8 +33,17 @@ body {
 
 }
 
-h1, h2,h3 {
+h1, h2,h3, h4, p {
 	font-family: 'Lobster Two';
+}
+
+.cabecera-menu-inicio {
+	margin-top: 125px !important;
+	padding-top: 15px;
+}
+
+.img-aleatoria { 
+	padding-top: 155px;
 }
 
 footer {
@@ -67,10 +76,7 @@ footer {
     background-color: #286090;
 }
 
-.cabecera-menu-inicio {
-	margin-top: 175px !important;
-	padding-top: 15px;
-}
+
 
 .quien-eres {
 	margin-right: 25px;
@@ -270,5 +276,14 @@ table th{
 	text-align: center;
 
 }
+.contenedor-imagenes {
+	display: inline-block;
+	width:1300px;
+	height:400px
+}
+
+
+
+
 
 
