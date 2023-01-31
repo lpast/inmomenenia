@@ -21,6 +21,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+      body{
+        background-image: url("../../media/img/img_inmuebles/fachada_0533.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      </style>
   </head>
   <body>
     <head>
@@ -28,18 +36,13 @@
         <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
     </head>
 
-    <section>
-      
-         <?php $aleatoria = Interfaz::mostrar_home(); ?>
-   
-      
-     
-     
-     
-    </section>
+     <section>
+       <?php $home = Interfaz::mostrar_home(); ?> 
+     </section>
 
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
+    <!-- footer -->
+    <footer class="navbar-nav navbar-inverse">
+      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

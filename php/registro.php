@@ -10,7 +10,7 @@ session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Acceso</title>
+    <title>Registrarse</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -41,7 +41,8 @@ session_start();
 
     <div class="acceso">
         <!-- Formulario de acceso -->
-        <?php $form_acceso= Interfaz::formulario_acceso();?>
+        <?php $form_acceso= Interfaz::formulario_registro();?>
+
         <!-- Accedemos a la aplicacón -->
         <?php iniciar_sesion();?>
       </div>

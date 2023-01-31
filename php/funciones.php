@@ -260,7 +260,7 @@ function buscar_Inmuebles(){
       } 
     }//-fin venta
   }//fin isset
-}//fin buscar inmuebles
+}
 
 function listar_inmuebles(){
   $conexion = abrirConexion();
@@ -315,6 +315,37 @@ function datos_noticia() {
     }
     mysqli_close($conexion);
   }
+}
+
+function registrarse() {
+  if (isset($_POST['registrarse'])) {
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $fecha_alta = $_POST['fecha_alta'];
+    $nom_user = $_POST['nom_user'];
+    $pass = $_POST['password'];
+
+    $conexion = abrirConexion();
+    $insertar = "INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
+    ('$id','$nombre','$apellidos','$telefono', '$email, '$fecha_alta', '$nom_user', '$pass')";
+    
+    if(mysqli_query($conexion, $insertar)) {
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>Datos guardados correctamente</strong> 
+          </div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=noticias.php'>";
+    } else {
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong>No ha sido posible guardar los datos</h4>
+      </div></div></div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=noticias.php'>";
+    }
+  }
+  mysqli_close($conexion);
+return true;
 }
 
 /* CLIENTE */
@@ -408,8 +439,8 @@ function añadir_inmuebles(){
     }
 
     // subimos la imagen al servidor
-    if (!file_exists('../../../php/img_inmuebles')){
-      mkdir('../../../php/img_inmuebles');
+    if (!file_exists('../../../media/img/img_inmuebles')){
+      mkdir('../../../media/img/img_inmuebles');
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
         <strong>carpeta creada</strong> 
       </div>";
@@ -421,7 +452,7 @@ function añadir_inmuebles(){
                 
      // creo la ruta donde guardar la foto dependiendo del tipo que sea
      if ($imagen_type){
-      $ruta_img = "../../../php/img_inmuebles/$imagen";
+      $ruta_img = "../../../media/img/img_inmuebles/$imagen";
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <strong>ruta correcta</strong> 
         </div>";
@@ -651,19 +682,19 @@ function añadir_noticias() : bool {
     $img_correcto = false;
 
     //comprobamos que la extensión de la imagen sea válida
-    if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png'){
+    if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png') {
       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
         <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
         </div></div></div>";
     }
 
     // subimos la imagen al servidor
-    if (!file_exists('../../../php/img_noticias')){
-      mkdir('../../../php/img_noticias');
+    if (!file_exists('../../../media/img/img_noticias')) {
+      mkdir('../../../media/img/img_noticias');
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
         <strong>la carpeta se ha creado</strong> 
       </div>";
-    }else{
+    } else {
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
       <strong>la carpeta estaba creada</strong> 
       </div>";
@@ -671,7 +702,7 @@ function añadir_noticias() : bool {
                 
     // creo la ruta donde guardar la foto dependiendo del tipo que sea
     if ($imagen_type){
-        $ruta_img = "../../../php/img_noticias/$imagen";//.'$direccion.jpeg';
+        $ruta_img = "../../../media/img/img_noticias/$imagen";
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
             <strong>ruta correcta</strong> 
           </div>";
@@ -681,9 +712,9 @@ function añadir_noticias() : bool {
     // guardo la foto en el servidor
     if (move_uploaded_file($imagen_tmp, $ruta_img)) {
       $img_correcto = true;
-    }else{
+    } else {
       echo "<div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-              <strong>Error al subir la imagen del inmueble al servidor</strong> 
+              <strong>Error al subir la imagen al servidor</strong> 
               </div>";
       echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
     }
@@ -726,5 +757,82 @@ function borrar_noticias(): bool {
     }
     mysqli_close($conexion);
   }
+  return true;
+}
+
+function buscar_noticias() : bool {
+  if (isset($_POST['buscar_not'])) {
+    $titular = $_POST['titular'];
+    
+    $conexion = abrirConexion();
+    $consulta = "SELECT * from tbl_noticias where titular like '%$titular%'";
+
+    $busqueda = mysqli_query($conexion,$consulta);
+
+    if (!$busqueda) {
+      echo "No se han encontrado coincidencias...";
+    } else {
+      $num_filas = mysqli_num_rows($busqueda);
+      if ($num_filas == 0) {
+        echo "Sin coincidencias";
+      } else {
+        echo "Se listarán $num_filas noticias relacionadas..."; 
+        echo "<table class='table table-striped'>";
+        echo "<thead><tr><th>Titular</th><th>Fecha de publicación</th><th>Imagen</th><th>Ver</th></tr></thead>";
+        while ($fila = mysqli_fetch_array($busqueda,MYSQLI_ASSOC)) {
+          echo "<tbody><tr><td><strong>$fila[titular]</strong></td><td>$fila[fecha]</td><td><img src='../../../media/img/img_noticias/$fila[imagen]' width='150px'></td>
+          <td><form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Leer Más'></form></td></tr></tbody>";
+        }
+        echo '</table>';
+      }
+
+    }
+    mysqli_close($conexion);
+  }
+  return true;
+}
+
+function añadir_cliente(): bool {
+  if (isset($_POST['cancelar'])) {
+    header("url=/clientes.php");
+  }
+
+  if (isset($_POST['nuevo_cliente'])) {
+    $id = $_POST['id'];
+    $tipo = $_POST['tipo'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $direccion = $_POST['direccion'];
+
+    $conexion = abrirConexion();
+
+    $insertar = "INSERT INTO tbl_clientes (id, tipo, nombre, apellidos, telefono, email, direccion) VALUES
+    ('$id', '$tipo', '$nombre', '$apellidos', '$telefono','$email','$direccion')";
+
+    if (mysqli_query($conexion,$insertar)) {
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+                  <strong>Cliente añadido correctamente</strong> 
+                </div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=clientes.php'>";
+    } else {
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+              <h4><strong>¡Error!</strong>No ha sido posible añadir el cliente</h4>
+            </div></div></div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=clientes.php'>";
+    }
+  mysqli_close($conexion);
+  }
+  return true;
+}
+
+function buscar_cliente(): bool {
+  echo ""
+  return true;
+}
+
+function borrar_cliente(): bool {
+  echo ""
   return true;
 }

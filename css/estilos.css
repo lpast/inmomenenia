@@ -43,7 +43,7 @@ h1, h2,h3, h4, p {
 }
 
 .home {
-	background-image: url("../../media/img/img_inmuebles/fachada_0533.jpg");
+	background-image: url("../media/img/img_inmuebles/bbk_fachada_0533.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -52,14 +52,14 @@ h1, h2,h3, h4, p {
 }
 
 .hipotecas {
-	background-image: url("../media/img/img_inmuebles/buhardilla_0890.jpeg");
+	background-image: url("../media/img/img_inmuebles/bbk_buhardilla_0890.jpeg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
 }
 
 .acceso {
-	background-image: url("../media/img/img_inmuebles/buhardilla_0890.jpeg");
+	background-image: url("../media/img/img_inmuebles/bbk_buhardilla_0890.jpeg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -67,7 +67,7 @@ h1, h2,h3, h4, p {
 
 
 .cabecera {
-	margin-top: 25px;
+	padding-top: 110px;
 }
 
 
@@ -84,9 +84,7 @@ h1, h2,h3, h4, p {
 }
 
 .cabecera-menu-inicio {
-/*margin-top: 125px !important;  */
 	padding-top: 175px;
-	
 }
 
 .menu {
@@ -103,6 +101,7 @@ h1, h2,h3, h4, p {
 
 .contenedor-imagenes {
 	display: inline-block;
+	padding-top: 15px;
 	width:1300px;
 	height:400px
 }
@@ -118,6 +117,11 @@ footer {
 	position: fixed;
 }
 
+.margen-noticias {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
 .margen-citas {
 	margin-top: 100px;
 }
@@ -131,7 +135,7 @@ footer {
 	margin-top: 10%;
 }
 
-.pagina{
+.pagina {
 	margin-bottom: 30px;
 }
 
@@ -191,18 +195,31 @@ footer {
 	background-color: #b9a25f;
 }
 
+.btn-theme {
+	color: rgb(255, 255, 255);
+	background-color: #59b8f7;
+    border: 1px solid #63b4eb;
+    margin-right: 15px;
+}
+
+.btn-theme:hover {
+    color: #000;
+    background-color: #baa35f;
+    border-color: #fff;
+}
+
 .btn-info {
-	background-color:#baa35f;
+	background-color: #baa35f;
 	border-color: #f5f1e8;
 }
 
 .btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
-	background-color: #333; 
+	background-color: rgb(29, 48, 156); 
 	border-color: #f5f1e8;
 }
 
 .btn-info:hover {
-	background-color: #333; 
+	background-color: rgb(20, 27, 119); 
 	border-color: #f5f1e8;
 }
 
@@ -232,7 +249,7 @@ footer {
 	
 }
 
-.mostrar-busqueda, .tnoticias, .muestra-contenedor {
+.mostrar-busqueda, .tnoticias {
 	padding: 15px;
     border: solid 0.5px;
     border-color: #101010;
@@ -240,6 +257,10 @@ footer {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
     transition: 0.5s;
 
+}
+
+.tcontenedor{
+	width: 900px;
 }
 
 .aweb{

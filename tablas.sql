@@ -89,17 +89,18 @@ CREATE TABLE IF NOT EXISTS tbl_noticias (
 
 --volcado datos 'tbl_inmuebles' 
 INSERT INTO tbl_inmuebles (id, tipo, direccion, cp, localidad, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
-(0589, 'alquiler', 'Eras Altas 86', 50171, 'La Puebla de Alfindén', 120, 3, 2, 0, 0, 1, 0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'fachada_0078.jpeg', '2022-09-08', '74859657P'),
-(0263, 'venta', 'Pastor 63', 50195, 'La Puebla de Alfindén', 150, 1, 3, 1, 0, 0, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 99.000, 'fachada_0263.jpg','2022-09-08', '38693644L'),
-(0115, 'venta', 'Camino Flores 36', 50195, 'Pastriz', 90, 1, 1, 0, 0, 1, 0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'fachada_0489.jpeg','2022-06-20', '72036547J'),
-(0386, 'venta', 'Fueros 86', 50171,  'La Puebla de Alfindén', 100, 3, 2, 0, 1, 1, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'fachada_0386.jpg','2022-10-02', '87456321N'),
-(0533, 'venta', 'Hermita 53', 50171, 'La Puebla de Alfindén', 134, 3, 3, 1, 0, 0, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 1159.000, 'fachada_0533.jpg','2022-10-10', '20489695S'),
-(0720, 'venta', 'Reyes Catolicos 26', 50171, 'La Puebla de Alfindén', 125, 2, 1, 0, 1, 0, 0,'Preciosa casa para una familia. Construcción terminada hace pocos meses, lista para entrar a vivir.', 189.000, 'sala_estar_0890.jpg','2022-05-12', '458054786A'),
-(0545, 'alquiler', 'Rio Ebro 37', 50195, 'Pastriz', 90,  1, true, 1, 1, 1, 1,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 350, 'fachada_0078.jpg','2022-08-05', '404635645C'),
-(0103, 'alquiler', 'Carretera Zaragoza 03', 50195, 'Pastriz', 90,  1, 1, 0, 0, 1, 0,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'salon_0147.png','2022-05-08', '403215697C'),
-(0489, 'alquiler', 'Eras Altas 89', 50171, 'La Puebla de Alfindén', 120, 3, 2, 0, 0, 1,  0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'inmueble-58.jpeg','2022-10-07', '72146969B'),
-(0415, 'venta', 'Camino Duques 15', 50195, 'Pastriz', 134, 2, 2, 0, 0, 0, 1,'Casa totalmente reformada y equipada, lista para entrar a vivir.', 89.000,'hab-juvenil-2_0720.jpg','2022-07-05', '38693644L'),
-(0078, 'venta', 'Mayor 78', 50171, 'La Puebla de Alfindén', 220, 3, 1, 0, 0, 1, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'sala_estar_0890.jpg','2022-06-05', '40321567C'),
+(0589, 'alquiler', 'Eras Altas 86', 50171, 'La Puebla de Alfindén', 120, 3, 2, 0, 0, 1, 0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'fachada_0078.png', '2022-09-08', '74859657P'),
+(0263, 'venta', 'Pastor 63', 50195, 'La Puebla de Alfindén', 150, 1, 3, 1, 0, 0, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 99.000, 'fachada_0263.png','2022-09-08', '38693644L'),
+(0115, 'venta', 'Camino Flores 36', 50195, 'Pastriz', 90, 1, 1, 0, 0, 1, 0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'salon_0489.png','2022-06-20', '72036547J'),
+(0386, 'venta', 'Fueros 86', 50171,  'La Puebla de Alfindén', 100, 3, 2, 0, 1, 1, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'fachada_0890.png','2022-10-02', '87456321N'),
+(0533, 'venta', 'Hermita 53', 50171, 'La Puebla de Alfindén', 134, 3, 3, 1, 0, 0, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 1159.000, 'fachada_0533.png','2022-10-10', '20489695S'),
+(0720, 'venta', 'Reyes Catolicos 26', 50171, 'La Puebla de Alfindén', 125, 2, 1, 0, 1, 0, 0,'Preciosa casa para una familia. Construcción terminada hace pocos meses, lista para entrar a vivir.', 189.000, 'salon_0059.png','2022-05-12', '458054786A'),
+(0545, 'alquiler', 'Rio Ebro 37', 50195, 'Pastriz', 90,  1, true, 1, 1, 1, 1,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 350, 'salon_0078.png','2022-08-05', '404635645C'),
+(0103, 'alquiler', 'Carretera Zaragoza 03', 50195, 'Pastriz', 90,  1, 1, 0, 0, 1, 0,'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'salon_0103.png','2022-05-08', '403215697C'),
+(0489, 'alquiler', 'Eras Altas 89', 50171, 'La Puebla de Alfindén', 120, 3, 2, 0, 0, 1,  0, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'salon_0115.png','2022-10-07', '72146969B'),
+(0415, 'venta', 'Camino Duques 15', 50195, 'Pastriz', 134, 2, 2, 0, 0, 0, 1,'Casa totalmente reformada y equipada, lista para entrar a vivir.', 89.000,'salon_cocina263.png','2022-07-05', '38693644L'),
+(0078, 'venta', 'Mayor 78', 50171, 'La Puebla de Alfindén', 220, 3, 1, 0, 0, 1, 1, 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'salon_7890.png','2022-06-05', '40321567C');
+
 (0890, 'venta', 'Aragón 54', 50171, 'La Puebla de Alfindén', 133, 3, 2, 0, 0, 1,  0, 'Preciosa casa para una familia. Reformada y equipada hace pocos meses, lista para entrar a vivir.', 139.000, 'salon-rojo_0063.jpeg','2022-10-07', '39147258M'),
 (0113, 'alquiler', 'Carretera Zaragoza 03', 50195, 'Pastriz', 90,  1, 1, 0, 0, 1, 0, 'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'fachada_0078.jpg','2022-05-08', '40324786C');
 

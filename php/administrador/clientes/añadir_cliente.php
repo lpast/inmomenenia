@@ -1,49 +1,44 @@
 <?php 
-        require_once "../../php/dbconnect.php";
-        require_once "../../php/class/interfaz.php";
-        require_once "../../php/funciones.php";
-        session_start(); 
+ require_once  "../../../php/dbconnect.php";
+ require_once  "../../../php/class/interfaz.php";
+ require_once  "../../../php/funciones.php";
+session_start(); 
+comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Área Personal</title>
+    <title>Añadir Cliente Nuevo</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../../css/estilos.css" media="screen">
+    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-  <head>
-        <!-- Menú de navegación -->
-        <?php $menuHome = Interfaz::mostrarMenu(); ?>
-    </head>
+    <script src='/js/validar_nuevo_inmueble.js'></script>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <?php $menu = Interfaz::mostrarMenu(); ?>
 
-    <section>
-         <?php $personal = Interfaz::area_personal(); ?>
-    </section>
+    <!-- Botones de funciones añadir, borrar, buscar -->
+    <?php $botones = Interfaz::gestion_clientes(); ?>
+  
+    <?php $menu = Interfaz::form_añadir_cliente(); ?>
 
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-    </footer>
+   <!-- Código PHP para añadir un nuevo inmueble -->
+   <?php añadir_cliente(); ?>
 
-    <!-- footer -->
+
+   <!-- footer -->
    <footer class="navbar-nav navbar-inverse">
       <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
- 
-   
-       
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+</body>
 </html>
