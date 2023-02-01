@@ -424,7 +424,7 @@ class Interfaz {
     echo "</div>";
     return true;
   }
-
+/*
   static public function botones_pag() : bool {
     echo "<div class='col-xs-12 footer-noticias'>
       <ul class='pager'>
@@ -434,7 +434,7 @@ class Interfaz {
     </div>";
     return true;
   }
-
+*/
   static public function inmuebles_disponibles() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -481,7 +481,6 @@ class Interfaz {
     </div>";
     return true;
   }
-
   static public function form_hipoteca(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -1918,6 +1917,51 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    return true;
+  }
+
+  static public function form_buscar_cliente() : bool {
+    echo "<div class='container-fluid menu-inicio'>
+    <div class='row'>
+      <div class='col-xs-12 col-md-8 col-md-offset-2'>
+         <div class='panel-group'>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>
+              <h2 align='center'> Buscar un cliente</h2>
+            </div>
+            <div class='panel-body'>
+              <p align='center'>Rellene el campo o campos por los que quiere realizar la búsqueda</p>
+              <form class='form-horizontal' action='#' method='post'>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Id:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='id' autofocus>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Nombre:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='nombre' autofocus>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Apellidos:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='apellidos'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'>Tlf:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='telefono'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-12'>
+                    <input class='form-control btn-primary' type='submit' name='buscar_cliente' value='Buscar'>
+                  </div> 
+                </div>
+              </form>";
     return true;
   }
 

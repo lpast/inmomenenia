@@ -1,10 +1,10 @@
-<?php
-  include "../../php/dbconnect.php";
-  include "../../php/class/interfaz.php";
-  include "../../php/funciones.php";
-  session_start();
-  comprobarAdmin();
-  ?>
+<?php 
+    require_once "../../../php/dbconnect.php";
+    require_once "../../../php/class/interfaz.php";
+    require_once "../../../php/funciones.php";
+    session_start(); 
+    comprobarAdmin();
+?>
   <!DOCTYPE html>
   <html lang="es">
   <head>
@@ -16,7 +16,7 @@
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../../css/estilos.css" media="screen">
+    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
@@ -35,9 +35,7 @@
       <?php Interfaz::form_buscar_cliente(); ?>
       <!-- buscar inmuebles-->
       <?php buscar_cliente(); ?>
-      </div>
-      </div>
-      </div>
+     
       <!-- footer -->
    <footer class="navbar-nav navbar-inverse">
       <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
