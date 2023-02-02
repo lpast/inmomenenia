@@ -219,7 +219,6 @@ class Interfaz {
                   <h2 align='center'>Descubre lo que tenemos para ti</h2>
                 </div>
               <div class='panel-body'>
-                <p align='center'>Rellene los campos por los que quiera filtrar la búsqueda</p>
               <form class='form-horizontal' action='#' method='post'>
               <div class='form-group'>
                 <label class='col-sm-2'>Tipo</label>
@@ -370,7 +369,7 @@ class Interfaz {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='<div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
-          <h2 class='margen-noticias' align='center'>Aquí tienes toda la actualidad inmobiliaria</h2>";
+          <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes toda la actualidad inmobiliaria</h2>";
           // Cargamos las noticias de forma paginada
           $conexion = abrirConexion();
           $consulta = "SELECT * from tbl_noticias";
@@ -408,8 +407,10 @@ class Interfaz {
                 $marca_cita = strtotime($fila['fecha']);
                 $f_formateada = date("d-m-Y", $marca_cita);
                 //muestro info de noticia
-                echo "<div class='panel-body tnoticias'>  
-                      <img align='center' src='../media/img/img_noticias/$fila[imagen]' alt='img_noticia' width='30%'>
+                echo "<div class='panel-body tnoticias'>
+                  <div class='petit-noticias'>
+                        <img src='../media/img/img_noticias/$fila[imagen]' alt='img_noticia'>
+                      </div>
                       <h3 align='center'><b>$fila[titular]</b></h3>
                       <p align='center'>Fecha de publicación: $f_formateada</p>
                       <p class='texto'>$fila[contenido]<p>

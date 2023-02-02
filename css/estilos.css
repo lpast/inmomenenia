@@ -67,25 +67,40 @@ h1, h2,h3, h4, p {
 
 
 .cabecera {
+	background-color: #e9ae2e;
 	padding-top: 110px;
 }
 
+.cabecera-menu-inicio {
+	padding-top: 125px;
+	padding-bottom: 20px;
+}
+
+.cabecera-noticia {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
 
 .cabecera-form {
 	margin-top: 70px;
 }
 
-.cabecera-form-cli {
-	margin-top: 170px;
+.petit-noticias { 
+	padding-top: 25px;
+	padding-bottom: 20px;
+	width: 30px;
+	text-align: center
 }
 
-.cabecera-form-inm {
-	margin-top: 150px;
+.contenido-noticia {
+	text-align: center
+	
 }
 
-.cabecera-menu-inicio {
-	padding-top: 175px;
-}
+
+
+
+
 
 .menu {
     margin-top: auto;
@@ -325,16 +340,6 @@ table th{
 	text-align: left;
 }
 
-.cabecera-noticia {
-	margin-top: 50px;
-	margin-bottom: 50px;
-}
-
-
-.contenido-noticia {
-	text-align: center;
-
-}
 
 
 
