@@ -83,13 +83,13 @@ session_start();
               }
 
               if (isset($_SESSION['tipo']) == 'u') {
-                echo "<p align='center'><button type='button' class='btn btn-success bt-ver'>Disponible</button>
+              echo "<p align='center'><button type='button' class='btn btn-success bt-ver'>Disponible</p>
                 <h3 align='center'><b>Dirección: </b>$direccion</h3>
                 <h3 align='center'><b>Código Postal: </b>$cp </h3>
                 <h3 align='center'><b>Número de Habitaciones: </b>$num_hab </h3>
                 <h3 align='center'><b>Metros: </b> $metros </h3>
                 <h3 align='center'><b>Garaje: </b>$garaje </h3>
-                <h3 align='center'><b>Precio: </b>$precio €</h3>
+                <h3 align='center'><b>Precio: </b>$precio €</h3>";
                
               } else if (isset($_SESSION['tipo']) == 'a') {
                 echo "<h3 align='center'><button type='button' class='btn btn-success bt-ver'>Disponible</button></h3>
@@ -109,7 +109,7 @@ session_start();
             ?>
             </div>
             <div class='jumbotron'>
-              <h3 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h3>
+              <h3 align ='center'>Si quieres más información no dudes en ponerte en contacto con nosotros</h3>
               <h3 align ='center'>Trataremos de responderte lo antes posible</h3>
             </div>
         </div>

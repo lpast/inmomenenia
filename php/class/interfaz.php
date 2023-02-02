@@ -16,17 +16,16 @@ class Interfaz {
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>                             
                     </button>
-                    <a href='./index.html'><img src='./css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+                    <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-                    <li><a href='php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span>Inmuebles</a></li>
-                    
-                    <li><a href='php/clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
-                    <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                    <li><a href='../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+                    <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+                    <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
                     <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                    <li><a href='../php/clientes/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
+                    <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                   </div>
                 </div>
@@ -41,21 +40,21 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='./index.html'><img src='css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+            <a href='./index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
-            <li><a href='./php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
-            <li><a href='./php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
-            <li><a href='./php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
-            <li><a href='./php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='./php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='../php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+            <li><a href='../php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+            <li><a href='../php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+            <li><a href='../php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+            <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
           </ul>
           </div>
         </div>
         </nav>";
       }
-    }else{
+    } else {
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
             <div class='container-fluid'>
               <div class='navbar-header'>
@@ -66,15 +65,15 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='./index.html'><img src='./css/logo.jpeg' alt='inmomenenia' width='20%'></a>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
               </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
-                <li><a href='./home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                <li><a href='./php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                <li><a href='php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
-                <li><a href='./php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='./php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+                <li><a href='../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+                <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
+                <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
+                <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                <li><a href='../php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
               </ul>
               </div>
             </div>
@@ -84,307 +83,196 @@ class Interfaz {
   }
 
   static public function mostrarMenu() : bool {
-    if (isset($_SESSION['tipo'])){
+    if (isset($_SESSION['tipo'])) {
       $tipo_usuario = $_SESSION['tipo'];
-      if ($tipo_usuario == 'u'){
-        echo " <nav class='menu navbar navbar-inverse texto navbar-fixed-top'>
-                    <div class='container-fluid'>
-                      <div class='navbar-header'>
-                        <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                          <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>                      
-                        </button>
-                        <a href='../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
-                      </div>
-                      <div class='collapse navbar-collapse' id='nav-responsive'>
-                      <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='../home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio </a></li>
-                        
-                        <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-                        <li><a href='../php/clientes/mis_inmuebles.php'><span class='glyphicon glyphicon-folder-open'></span> Mis inmuebles</a></li>
-                        <li><a href='../clientes/mis_datos.php'><span class='glyphicon glyphicon-pencil'></span> Mis datos personales</a></li>
-                        <li><a href='../clientes/mis_citas.php'><span class='glyphicon glyphicon-calendar'></span> Mis citas</a></li>
-                        <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                        <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-                      </ul>
-                      </div>
+      if ($tipo_usuario == 'u') {
+        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+                <div class='container-fluid'>
+                  <div class='navbar-header'>
+                    <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
+                      <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>
+                      <span class='icon-bar b-resp'></span>                             
+                    </button>
+                    <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
                     </div>
+                  <div class='collapse navbar-collapse' id='nav-responsive'>
+                  <ul class='nav navbar-nav navbar-right'>
+                    <li><a href='../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+                    <li><a href='../php/clientes/buscar_inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Buscar Inmuebles</a></li>
+                    <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+                    <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                    <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                    <li><a href='../php/clientes/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
+                    <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                  </ul>
+                  </div>
+                </div>
               </nav>";
       }
-      if ($tipo_usuario == 'a'){
+      if ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-                    <div class='container-fluid'>
-                      <div class='navbar-header'>
-                        <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                          <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>
-                          <span class='icon-bar b-resp'></span>                        
-                        </button>
-                        <a href='./../../index.html'><img src='../../../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
-                      </div>
-                      <div class='collapse navbar-collapse' id='nav-responsive'>
-                      <ul class='nav navbar-nav navbar-right'>
-                        <li><a href='../../../php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
-                        <li><a href='../../../php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
-                        <li><a href='../../../php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
-                        <li><a href='../../../php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-                        <li><a href='../../../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-                      </ul>
-                      </div>
-                    </div>
-              </nav>";
-      }
-    } else {
-      echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>
             <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>                       
+              <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='../index.html'><img src='../css/logo.jpeg' alt='inmomenenia' width='20%'></a>
-          </div>
+            <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+            </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
-            <ul class='nav navbar-nav navbar-right'>
-              <li><a href='../home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-              <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
-              <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
-              <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-              <li><a href='../php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-            </ul>
+          <ul class='nav navbar-nav navbar-right'>
+            <li><a href='../php/administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> noticias</a></li>
+            <li><a href='../php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+            <li><a href='../php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+            <li><a href='../php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+            <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+          </ul>
           </div>
         </div>
+        </nav>";
+      }
+    } else {
+      echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+            <div class='container-fluid'>
+              <div class='navbar-header'>
+                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span>                              
+                </button>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+              </div>
+              <div class='collapse navbar-collapse' id='nav-responsive'>
+              <ul class='nav navbar-nav navbar-right'>
+                <li><a href='../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+                <li><a href='../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Inmuebles</a></li>
+                <li><a href='../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span>Calcula tu hipoteca</a></li>
+                <li><a href='../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                <li><a href='../php/acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+              </ul>
+              </div>
+            </div>
       </nav>";
     }
     return true;
   }
 
-/*footer*/
-static public function footer() : bool {
-  /*Remove the container if you want to extend the Footer to full width. */
-    echo "<footer class='navbar-nav navbar-inverse' style='background-color: #3e4551'>
-        <div class='container-fluid'>
-          <div class='row'>
-            <div class='col-xs-12 col-md-8 col-md-offset-2'>
-                <h5 class='text-uppercase'>FOOTER CONTENT</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Molestiae modi cum ipsam ad, illo possimus laborum ut
-                  reiciendis obcaecati. Ducimus, quas. Corrupti, pariatur eaque?
-                  Reiciendis assumenda iusto sapiente inventore animi?
-                </p>
+  static public function mostrar_home() : bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>";     
+          if (isset($_SESSION['tipo'])) {
+            $tipo_usuario = $_SESSION['tipo'];
+            if ($tipo_usuario == 'u') {
+              $nombre = $_SESSION['nombre'];
+              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+                <h1 align='center'> ¡ Hola $nombre ! </h1>
+                <h2 align='center'> ¿En qué podemos ayudarte? </h2>
               </div>";
-    
-             /* Grid column-->*/
-              echo "<div class='col-xs-12 col-md-8 col-md-offset-2'>
-                <h5 class='text-uppercase'>Links</h5>
-                <ul class=''>
-                  <li>
-                    <a href='#!' class='text-white'>Link 1</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 2</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 3</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 4</a>
-                  </li>
-                </ul>
+              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
+                self::gestion_cliente();
+              echo "</div>";
+              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
+                self::mostrar_noticias();
+              echo "</div>";
+            }
+            if ($tipo_usuario == 'a') {
+              //Mostramos una imagen aleatoria 
+              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+                <h1 align='center'> Administración InmoMenenia</h1>
               </div>
-              
-              <!--Grid column-->
-              <div class='col-xs-12 col-md-6 mb-4 mb-md-4'>
-                <h5 class='text-uppercase'>Links</h5>
-    
-                <ul class='list-unstyled mb-0'>
-                  <li>
-                    <a href='#!' class='text-white'>Link 1</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 2</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 3</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 4</a>
-                  </li>
-                </ul>
-              </div>
-    
-              <!--Grid column-->
-              <div class='col-lg-2 col-md-6 mb-4 mb-md-4'>
-                <h5 class='text-uppercase'>Links</h5>
-    
-                <ul class='list-unstyled mb-4'>
-                  <li>
-                    <a href='#!' class='text-white'>Link 1</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 2</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 3</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 4</a>
-                  </li>
-                </ul>
-              </div>
-              <!--Grid column-->
-    
-              <!--Grid column-->
-              <div class='col-lg-2 col-md-6 mb-4 mb-md-4'>
-                <h5 class='text-uppercase'>Links</h5>
-    
-                <ul class='list-unstyled mb-0'>
-                  <li>
-                    <a href='#!' class='text-white'>Link 1</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 2</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 3</a>
-                  </li>
-                  <li>
-                    <a href='#!' class='text-white'>Link 4</a>
-                  </li>
-                </ul>
-              </div>
-              <!--Grid column-->
-            </div>
-            <!--Grid row-->
-          </section>
-          <!-- Section: Links -->
-    
-          <hr class='mb-4' />
-    
-          <!-- Section: CTA -->
-          <section class=''>
-            <p class='d-flex justify-content-center align-items-center'>
-              <span class='me-3'>Register for free</span>
-              <button type='button' class='btn btn-outline-light btn-rounded'>
-                Sign up!
-              </button>
-            </p>
-          </section>
-          <!-- Section: CTA -->
-    
-          <hr class='mb-4' />
-    
-          <!-- Section: Social media -->
-          <section class='mb-4 text-center'>
-            <!-- Facebook -->
-            <a
-               class='btn btn-outline-light btn-floating m-1'
-               href='#!'
-               role='button'
-               ><i class='fab fa-facebook-f'></i
-              ></a>
-    
-            <!-- Twitter -->
-            <a class='btn btn-outline-light btn-floating m-1'
-               href='#!'
-               role='button'
-               ><i class='fab fa-twitter'></i
-              ></a>
-    
-            <!-- Google -->
-            <a class='btn btn-outline-light btn-floating m-1'
-               href='#!'
-               role='button'
-               ><i class='fab fa-google'></i
-              ></a>
-    
-            <!-- Instagram -->
-            <a class='btn btn-outline-light btn-floating m-1'
-               href='#!'
-               role='button'><i class='fab fa-instagram'></i>
-           </a>
-    
             
-          </section>
-          <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-    
-        <!-- Copyright -->
-        <div class='text-center p-3' style='background-color: rgba(0, 0, 0, 0.2)'>
-          © 2020 Copyright:
-          <a class='text-white' href='https://mdbootstrap.com/'
-             >MDBootstrap.com</a>
-           
-        </div>
-        
-      </footer>
-    
-   ";
-   /* End of .container -->*/
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
+                self::mostrar_noticias();
+              echo "</div>
+
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
+                self::form_buscar_Inmuebles();
+                buscar_Inmuebles();
+              echo "</div>";
+            }
+          } else {
+            echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+              <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>
+            </div>";
+            self::form_buscar_Inmuebles();
+            buscar_Inmuebles();
+            echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
+            self::mostrar_noticias();
+          echo "</div>";
+          }
+      echo "</div>";
+    echo "</div>";
     return true;
-}
-static public function form_buscar_Inmuebles() : bool {
-  echo "<div class='container-fluid col-sm-8 col-sm-offset-2'>
-          <div class='row'>
-            <div class='col-xs-12 col-md-8 col-md-offset-2'>
-              <div class='panel-group'>
-                <div class='panel panel-default cabecera'>
-                  <div class='panel-heading'>
-                    <h2 align='center'>Buscar inmueble</h2>
-                  </div>
-                <div class='panel-body'>
-                  <p align='center'>Rellene los campos por los que quiera filtrar la búsqueda</p>
-                <form class='form-horizontal' action='#' method='post'>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Tipo</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <select class='form-control' id='tipo' name='tipo'>
-                      <option value='alquiler'>Alquilar</option>
-                      <option value='venta'>Venta</option>
-                    </select>
-                  </div>
+  }
+
+  static public function form_buscar_Inmuebles() : bool {
+    echo "<div class='col-xs-12 col-md-8 col-md-offset-2'>
+            <div class='panel-group'>
+              <div class='panel panel-default cabecera-inicio'>
+                <div class='panel-heading'>
+                  <h2 align='center'>Descubre lo que tenemos para ti</h2>
                 </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Nº de habitaciones:</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <input class='form-control' type='text' name='num_hab'>
-                  </div>
+              <div class='panel-body'>
+              <form class='form-horizontal' action='#' method='post'>
+              <div class='form-group'>
+                <label class='col-sm-2'>Tipo</label>
+                <div class='col-sm-5 col-lg-offset-2'>
+                  <select class='form-control' id='tipo' name='tipo'>
+                    <option value=''>Seleccione el tipo de vivienda</option>
+                    <option value='alquiler'>Alquilar</option>
+                    <option value='venta'>Venta</option>
+                  </select>
                 </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Metros<sup>2</sup>:</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <input class='form-control' type='text' name='metros'>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Precio:</label>
-                  <div class='col-sm-5  col-lg-offset-2'>
-                    <input class='form-control' type='text' name='precio'>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                    <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
-                  </div>
-                </div>
-              </form>
               </div>
+              <div class='form-group'>
+                <label class='col-sm-2'>Localidad</label>
+                <div class='col-sm-5 col-lg-offset-2'>
+                  <select class='form-control' id='localidad' name='localidad'>
+                  <option value=''>Seleccione la localidad</option>
+                    <option value='puebla'>La Puebla de Alfindén</option>
+                    <option value='pastriz'>Pastriz</option>
+                  </select>
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class='col-sm-2'>Nº de habitaciones:</label>
+                <div class='col-sm-5 col-lg-offset-2'>
+                  <input class='form-control' type='text' name='num_hab'  placeholder='Nº de habitaciones'>
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class='col-sm-2'>Metros<sup>2</sup>:</label>
+                <div class='col-sm-5 col-lg-offset-2'>
+                  <input class='form-control' type='text' name='metros'  placeholder='metros'>
+                </div>
+              </div>
+              <div class='form-group'>
+                <label class='col-sm-2'>Precio:</label>
+                <div class='col-sm-5  col-lg-offset-2'>
+                  <input class='form-control' type='text' name='precio'  placeholder='€'>
+                </div>
+              </div>
+              <div class='form-group'>
+                <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                  <input class='form-control btn-primary' type='submit' name='buscar_inm' value='Buscar'>
+                </div>
+              </div>
+            </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>";
-  return true;
-}
+    </div>";
+    return true;
+  }
 
-/* static public function carousel() : bool {
+  /* static public function carousel() : bool {
     echo "<div class='container-carousel'>
     <div class='row'>
       <!-- Carousel -->
@@ -477,84 +365,82 @@ static public function form_buscar_Inmuebles() : bool {
 } 
 
 */
+  static public function mostrar_noticias(): bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>
+        <div class='<div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
+          <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes toda la actualidad inmobiliaria</h2>";
+          // Cargamos las noticias de forma paginada
+          $conexion = abrirConexion();
+          $consulta = "SELECT * from tbl_noticias";
 
-static public function mostrar_home() : bool {
-  if (isset($_SESSION['tipo'])) {
-    $tipo_usuario = $_SESSION['tipo'];
-      if ($tipo_usuario == 'u') {
-        //if (isset($_SESSION['nombre'])) {
-          $nombre = $_SESSION['nombre'];
-          //Mostramos una imagen aleatoria 
-          echo "<div class='container-fluid'>
-                  <div class='row'>
-                    <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                      <h1 align='center'> ¡ Hola $nombre ! </h1>
-                      <h2 align='center'> ¿En qué podemos ayudarte? </h2>
-                    </div>";
-              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
-                    self::gestion_cliente();
-              echo "</div>";
-              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>";
-              self::mostrar_noticias();
-              echo "</div>";
-            echo "</div>";
-          echo "</div>";
-      }
-      if ($tipo_usuario == 'a') {
-        echo "<div class='container-fluid'>
-          <div class='row'>
-            <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-              <h1 align='center'> Administración InmoMenenia</h1>
-          </div>
-        </div>";
-        self::mostrar_noticias();
-        self::form_buscar_Inmuebles();
-        echo "</div>";
-      }
-  } else {
-      //Mostramos una imagen aleatoria 
-      echo "<div class='container-fluid'>
-        <div class='row'>
-          <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-            <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>
-            <h2 align='center'> Encuentra tu hogar perfecto </h2>
-          </div>";
-      echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'> ";
-        $conexion = abrirConexion();
-        $sql = 'SELECT imagen FROM tbl_inmuebles';
-        $imagenes = array();
-    
-        $imagen = mysqli_query($conexion, $sql);
-  
-        if (!$imagen) {
-          echo 'Eror al cargar las imagenes';
-        } else {
-          while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-            array_push($imagenes, $fila['imagen']);
+          $noticias = mysqli_query($conexion, $consulta);
+
+          if (!$noticias) {
+            echo "Error al cargar las noticias desde la BD";
+          } else {
+            $num_filas = mysqli_num_rows($noticias);
+            if ($num_filas > 0) {
+              $num_noticas = 5; //limite de noticias a mostrar
+              $pagina = false;
+            }
+
+            if (isset($_GET['pagina'])) {
+              $pagina = $_GET['pagina'];
+            }
+
+            if (!$pagina) {
+              $inicio = 0;
+              $pagina = 1;
+            } else {
+              $inicio = ($pagina - 1) * $num_noticas;
+            }
+
+            $consulta_mostrar = "SELECT * from tbl_noticias order by fecha desc limit $inicio,$num_noticas";
+
+            $mostrar = mysqli_query($conexion, $consulta_mostrar);
+
+            if (!$mostrar) {
+              echo "Error al cargar las noticias desde la BD";
+            } else {
+              while ($fila = mysqli_fetch_array($mostrar, MYSQLI_ASSOC)) {
+                $marca_cita = strtotime($fila['fecha']);
+                $f_formateada = date("d-m-Y", $marca_cita);
+                //muestro info de noticia
+                echo "<div class='panel-body tnoticias'>
+                  <div class='petit-noticias'>
+                        <img src='../media/img/img_noticias/$fila[imagen]' alt='img_noticia'>
+                      </div>
+                      <h3 align='center'><b>$fila[titular]</b></h3>
+                      <p align='center'>Fecha de publicación: $f_formateada</p>
+                      <p class='texto'>$fila[contenido]<p>
+                      <form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver más'></form>";
+                echo "</div>";
+              }
+            }
           }
-        }
-        mysqli_close($conexion);
-    
-        $max = count($imagenes);
-        $img_aleatoria = rand(0, $max - 1);
-      
-        echo "<div class='contenedor-imagenes'>
-          <img src='media/img/img_aleatoria/$imagenes[$img_aleatoria]' alt='Img aleatoria' class='img-rounded' style='width:1300px; height:400px; border:solid 0.5px'>
-        </div>";
+          mysqli_close($conexion);
+        echo "</div>";
+      echo "</div>";
     echo "</div>";
-    echo "</div>";
-    echo "</div>";
-    self::form_buscar_Inmuebles();
-    buscar_Inmuebles();
+    return true;
   }
-  return true;
-}
-
+/*
+  static public function botones_pag() : bool {
+    echo "<div class='col-xs-12 footer-noticias'>
+      <ul class='pager'>
+        <li><a href='noticias.php?pagina=".($pagina - 1)."'>Atrás</a></li>
+        <li><a href='noticias.php?pagina=".($pagina + 1)."'>Siguiente</a></li>
+      </ul>
+    </div>";
+    return true;
+  }
+*/
   static public function inmuebles_disponibles() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
-        <div class='col-xs-12 cabecera-menu-inicio'>
-        <h2 align='center' style='margin-top: 50px;'>Ahora mismo, estos son los inmuebles están disponibles</h2>";
+        <div class='col-xs-12 cabecera'>
+          <h1 align='center' style='margin-top: 25px;'>Ahora mismo, estos son los inmuebles están disponibles</h1>";
         
         $con = abrirConexion();
         $sql = 'SELECT * FROM tbl_inmuebles';
@@ -573,7 +459,7 @@ static public function mostrar_home() : bool {
               echo "<div class='col-sm-4'>";
               echo "<div class='panel panel-default'>";
               echo "<div class='panel-body tnoticias'>";
-              echo "<img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]'>
+              echo "<img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
                     <h2>$fila[direccion]</h2>
                     <h4>$fila[precio] € </h4>
     
@@ -596,7 +482,6 @@ static public function mostrar_home() : bool {
     </div>";
     return true;
   }
-
   static public function form_hipoteca(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -660,10 +545,10 @@ static public function mostrar_home() : bool {
                   <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
                     <h1 align ='center'>CONTACTO</h1>
                     </br>
-                    <h2><a href='https://lapuebladealfinden.es/'><img src='../iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
-                    <h2><a href='+34692605414'><img src='../iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
-                    <h2><a href='contacto@inmomenenia.es'><img src='../iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
-                    <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
+                    <h2><a href='https://lapuebladealfinden.es/'><img src='../media/iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
+                    <h2><a href='+34692605414'><img src='../media/iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
+                    <h2><a href='contacto@inmomenenia.es'><img src='../media/iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
+                    <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../media/iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
                   </div>
                   </br>
                   <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
@@ -683,10 +568,10 @@ static public function mostrar_home() : bool {
       <div class='jumbotron'>
         <h2 align ='center'>Si quieres conocernos un poco más</h2>
         <div class ='iconos' align ='center' style='padding-top:15px'>
-        <a href='https://www.facebook.com/'><img src='../iconos/facebook.png' alt='facebook-inmomenenia' width='70px'></a>
-        <a href='https://www.instagram.com/'><img src='../iconos/instagram.png' alt='instagram-inmomenenia' width='70px'></a>
-        <a href='https://wa.me/######?text=¡Estoy+interesado!'><img src='../iconos/whatsapp.png' alt='whatsapp-inmomenenia' width='70px'></a>
-        <a href='https://twitter.com/'><img src='../iconos/twitter.png' alt='twitter-inmomenenia' width='70px'></a>
+        <a href='https://www.facebook.com/'><img src='../media/iconos/facebook.png' alt='facebook-inmomenenia' width='70px'></a>
+        <a href='https://www.instagram.com/'><img src='../media/iconos/instagram.png' alt='instagram-inmomenenia' width='70px'></a>
+        <a href='https://wa.me/######?text=¡Estoy+interesado!'><img src='../media/iconos/whatsapp.png' alt='whatsapp-inmomenenia' width='70px'></a>
+        <a href='https://twitter.com/'><img src='../media/iconos/twitter.png' alt='twitter-inmomenenia' width='70px'></a>
         </div>
 
       </div>";
@@ -762,133 +647,262 @@ static public function mostrar_home() : bool {
   static public function formulario_acceso() : bool {
     echo "<div class='container-fluid'>
       <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <div class='jumbotron'>
-          <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
-          <div class='panel panel-default'>
-            <div class='panel-body'>
-            <form action='#' method='post' class='form-horizontal'>
-              <div class='form-group'>
-                <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
-                  <div class='col-sm-6'>
-                    <input class='form-control' type='text' name='nick' required>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <div class='jumbotron'>
+            <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <form action='#' method='post' class='form-horizontal'>
+                  <div class='form-group'>
+                    <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
+                      <div class='col-sm-6'>
+                        <input class='form-control' type='text' name='nick' required>
+                      </div>
+                    </div>
+                  <div class='form-group'>
+                    <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
+                      <div class='col-sm-6'>
+                        <input class='form-control' type='password' name='password' required>
+                      </div>
                   </div>
-              </div>
-              <div class='form-group'>
-              <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
-                  <div class='col-sm-6'>
-                    <input class='form-control' type='password' name='password' required>
+                  <div class='form-group'>
+                    <div class='checkbox'>
+                      <input class='form-control' type='checkbox' value='open' name='check'>
+                    </div>
+                    <div>
+                      <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
+                    </div>
                   </div>
+                  <div class='form-group'>
+                    <div class='col-sm-9 col-sm-offset-2'>
+                      <input class='form-control btn-primary' type='submit' name='acceder' value='Acceder'>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div class='form-group'>
-                <div class='checkbox'>
-                  <input class='form-control' type='checkbox' value='open' name='check'>
-                </div>
-                <div>
-                <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
-                </div>
-              </div>
-              <div class='form-group'>
-                <div class='col-sm-9 col-sm-offset-2'>
-                  <input class='form-control btn-primary' type='submit' name='acceder' value='Acceder'>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>";
+    </div>";
 
   return  true;
     
   }
 
- 
-  static public function mostrar_noticias() : bool {
-    echo "<div class=¡container-fluid¡>
-      <div class='row'>
-        <div class='col-xs-12 ultimas-noticias'>
-          <h2 class='margen-citas' align='center'>Aquí tienes toda la actualidad inmobiliaria</h2>";
-          // Cargamos las noticias de forma paginada
-          $conexion = abrirConexion();
-          $consulta = "SELECT * from tbl_noticias";
-
-          $noticias = mysqli_query($conexion,$consulta);
-
-          if (!$noticias) {
-            echo "Error al cargar las noticias desde la BD";
-          } else {
-            $num_filas = mysqli_num_rows($noticias);
-            if ($num_filas > 0) {
-              $num_noticas = 5; //limite de noticias a mostrar
-              $pagina = false;
-            }
-
-            if (isset($_GET['pagina'])) {
-              $pagina = $_GET['pagina'];
-            }
-
-            if (!$pagina) {
-              $inicio = 0;
-              $pagina = 1;
-            } else {
-              $inicio = ($pagina - 1) * $num_noticas;
-            }
-
-            $consulta_mostrar = "SELECT * from tbl_noticias order by fecha desc limit $inicio,$num_noticas";
-
-            $mostrar = mysqli_query($conexion,$consulta_mostrar);
-
-            if (!$mostrar) {
-              echo "Error al cargar las noticias desde la BD";
-            } else {
-              while ($fila = mysqli_fetch_array($mostrar,MYSQLI_ASSOC)) {
-                $marca_cita = strtotime($fila['fecha']);
-                $f_formateada = date("d-m-Y",$marca_cita);
-                  //muestro info de noticia
-                echo "<div class='panel-body tnoticias'>  
-                  <img align'center' class='img-responsive' src='$fila[imagen]'>
-                  <h4 align='center'><b>$fila[titular]</b></h4>
-                  <h5 align='center'>Fecha de publicación: $f_formateada</h5>
-                  <form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver más'></form>"; 
-                echo "</div>";
-              }
-            }    
-          }
-     mysqli_close($conexion);
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
-   // botones páginas -->
+  static public function formulario_registro() : bool {
     echo "<div class='container-fluid'>
-          <div class='row'>
-            <div class='col-xs-12 footer-noticias'>
-              <ul class='pager'>
-                <li><a href='noticias.php?pagina=".($pagina - 1)."'>Atrás</a></li>
-                <li><a href='noticias.php?pagina=".($pagina + 1)."'>Siguiente</a></li>
-              </ul>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <div class='jumbotron'>
+            <h1 style='margin-bottom:35px' align='center'>Registro</h1>
+            <div class='panel panel-default'>
+              <div class='panel-body'>
+                <form action='#' method='post' class='form-horizontal'>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Dni:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='id'  placeholder='Aquí tu Dni' required>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                      <label class='col-sm-2'>Nombre:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='nombre'  placeholder='Aquí tu nombre' required>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                      <label class='col-sm-2'>Apellidos:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='apellidos'  placeholder='Aquí tus apellidos'>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class='col-sm-2'>Teléfono:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='telefono'  placeholder='Aquí tu teléfono' required>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class='col-sm-2'>Email:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='email'  placeholder='Aquí tu email'>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class='col-sm-2'>Fecha:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='date' name='fecha_alta' placeholder='Aquí la fecha de hoy' required>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class='col-sm-2'>Nombre de usuario:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='nom_user'  placeholder='Aquí tu Email' required>
+                      </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class='col-sm-2'>Contraseña:</label>
+                      <div class='col-sm-5 col-lg-offset-2'>
+                        <input class='form-control' type='text' name='pass'  placeholder='Aquí tu contraseña' required>
+                      </div>
+                    </div>
+                  <div class='form-group'>
+                    <div class='checkbox'>
+                      <input class='form-control' type='checkbox' value='open' name='check'>
+                    </div>
+                    <div>
+                      <h4><label class='col-sm-4 col-sm-offset-2'> Acepto los términos de privacidad</label></h4>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <div class='col-sm-9 col-sm-offset-2'>
+                      <input class='form-control btn-primary' type='submit' name='registrarse' value='Aceptar'>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>";
-        return true;
-  }
-  
-/* Menú de navegación usuario*/
-  static public function gestion_cliente(): bool {
-    echo "<nav class='navbar'>
-            <div class='container-fluid'>
-              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-primary btn-md' href='./php/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='./php/clientes/mis_inmuebles.php'> Gestionar mis inmuebles</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='./php/clientes/mis_datos.php'> Gestionar mis datos personales</a></li>
+        </div>
+      </div>
+    </div>";
 
-                <li><a 
-              </ul>
-            </div>
-          </nav>";
+  return  true;
+    
+  }
+ 
+/* Menú de navegación usuario*/
+
+  static public function gestion_cliente(): bool {
+    echo "<div class='container-fluid cabecera-menu'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <nav class='navbar'>
+          <div class='container-fluid'>
+            <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+              <li><a type='button' class='btn btn-primary btn-md' href='../php/clientes/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
+              <li><a type='button' class='btn btn-primary btn-md' href=''../clientes/mis_inmuebles.php'> Ver mis inmuebles</a></li>
+              <li><a type='button' class='btn btn-primary btn-md' href=''../clientes/mis_citas.php'> Ver mis citas</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>";
     return true;
   }
+
+  static public function area_personal(): bool {
+      echo "<div class='container-fluid'>
+        <div class='row'>";
+          if (isset($_SESSION['tipo'])) {
+            $tipo_usuario = $_SESSION['tipo'];
+            if ($tipo_usuario == 'u') {
+              $nombre = $_SESSION['nombre'];
+              //Mostramos una imagen aleatoria 
+              echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+                <h1 align='center'> ¡ Hola $nombre ! </h1>
+                <h2 align='center'> ¿En qué podemos ayudarte?</h2>
+                <div class ='col-md-4'>
+                  <ul>
+                    <lo><a href='../clientes/mis_datos.php/'><img src='../../media/iconos/mis-datos.png' alt='logo-mis-datos' width='150px' align='center'>
+                    <h2> Modificar mis datos personales </h2></a></lo>
+
+                    <lo><a href='../clientes/mis_inmuebles.php/'><img src='../../media/iconos/house.png' alt='logo-mis-datos' width='150px' align='center'>
+                    <h2> Ver mis inmuebles </h2></a></lo>
+
+                    <lo><a href='../clientes/mis_citas.php/'><img src='../../media/iconos/calendar.png' alt='logo-mis-datos' width='150px' align='center'>
+                    <h2>Ver mis citas </h2></a></lo>
+                  </ul>
+                </div>
+                <div class ='col-md-4'>
+                </div>
+              </div>";
+            }
+          }    
+        echo "</div>";
+      echo "</div>";
+            
+          
+      return true;
+  }
+
+  static public function img_aleatoria(): bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <h1 align='center'> Encuentra lo que necesitas </h1>
+        
+        </div>
+        <div class='col-xs-12 col-sm-offset-2 col-sm-8 col-sm-offset-2'>";
+          $conexion = abrirConexion();
+          $sql = 'SELECT imagen FROM tbl_inmuebles';
+          $imagenes = array();
+    
+          $imagen = mysqli_query($conexion, $sql);
+
+          if (!$imagen) {
+          echo 'Eror al cargar las imagenes';
+          } else {
+            while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+              array_push($imagenes, $fila['imagen']);
+            }
+          }
+          mysqli_close($conexion);
+        
+          $max = count($imagenes);
+          $img_aleatoria1 = rand(0, $max - 1);
+          $img_aleatoria2 = rand(0, $max - 1);
+          echo "<ul class='contenedor-imagenes'>
+            <img src='../../media/img/img_inmuebles/$imagenes[$img_aleatoria1]' alt='Img aleatoria' class='img-rounded' style='width:600px; height:400px; border:solid 0.5px'>
+            <img src='../../media/img/img_inmuebles/$imagenes[$img_aleatoria2]' alt='Img aleatoria' class='img-rounded' style='width:600px; height:400px; border:solid 0.5px'>
+          </ul>";
+        echo "</div>";
+      echo "</div>";
+  echo "</div>";
+  return true;
+  }
+
+  static public function inmuebles_cliente() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Estos son los inmuebles que ya has comprado</h2>";
+                    
+          
+          $id = $_SESSION['id_usuario'];
+          $con = abrirConexion();
+          $sql = "SELECT * FROM tbl_inmuebles WHERE id_cliente='$id'";
+          $consulta = mysqli_query($con,$sql);
+        
+          if (!$consulta) {
+            echo "Error al realizar la consulta";
+          } else {
+            $num_filas = mysqli_num_rows($consulta);
+            if ($num_filas == 0) {
+              echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                      <h2>Aún no tienen ningún inmueble comprado :(</h2>
+                    </div>";
+            } else {
+              while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
+                echo "<div class='col-sm-4'>";
+                echo "<div class='panel panel-default'>";
+                echo "<div class='panel-body tnoticias'>";
+                echo "<img class='img-responsive' src='../../../media/img/img_inmuebles/$fila[imagen]' alt='inmueble_cliente'>
+                      <h2>$fila[direccion]</h2>
+                      <h4>$fila[precio] €</h4>
+                      <p>$fila[descripcion]</p>"; //info inmueble
+                echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+              }
+            }
+          }
+    mysqli_close($con);
+
+    echo "</div></div></div>";
+    return true;
+  }
+  
   static public function datos_cliente(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -994,45 +1008,6 @@ static public function mostrar_home() : bool {
       </div>
     </div>
     </div>";
-    return true;
-  }
-
-  static public function inmuebles_cliente() : bool {
-    echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 cabecera-menu-inicio'>
-        <h2 align='center' style='margin-top: 50px;'>Estos son los inmuebles que ya has comprado</h2>";
-                    
-          
-          $id = $_SESSION['id_usuario'];
-          $con = abrirConexion();
-          $sql = "SELECT * FROM tbl_inmuebles WHERE id_cliente='$id'";
-          $consulta = mysqli_query($con,$sql);
-        
-          if (!$consulta) {
-            echo "Error al realizar la consulta";
-          } else {
-            $num_filas = mysqli_num_rows($consulta);
-            if ($num_filas == 0) {
-              echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-                      <h2>Aún no tienen ningún inmueble comprado :(</h2>
-                    </div>";
-            } else {
-              while ($fila = mysqli_fetch_array($consulta,MYSQLI_ASSOC)) {
-                echo "<div class='col-sm-4'>";
-                echo "<div class='panel panel-default'>";
-                echo "<div class='panel-body tnoticias'>";
-                echo "<img class='img-responsive' src='$fila[imagen]'>
-                      <h2>$fila[direccion]</h2>
-                      <h4>$fila[precio] €</h4>
-                      <p>$fila[descripcion]</p>"; //info inmueble
-                echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
-              }
-            }
-          }
-    mysqli_close($con);
-
-    echo "</div></div></div>";
     return true;
   }
 
@@ -1235,26 +1210,7 @@ static public function mostrar_home() : bool {
 
           return true;
   }
-
-  static public function gestion_inmuebles() : bool {
-    echo "<div class='container-fluid cabecera-menu-inicio'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          <nav class='navbar '>
-            <div class='container-fluid'>
-              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-primary btn-md' href='añadir_inmueble.php'>Añadir inmueble</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='borrar_inmueble.php'>Borrar inmueble</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='buscar_inmueble.php'>Buscar inmueble</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>";
-    return true;
-  }
-
+ 
   static public function listar_inmuebles() : bool {
     $conexion = abrirConexion();
         $mostrar = "SELECT id, direccion, metros, descripcion, precio, id_cliente, imagen
@@ -1355,16 +1311,19 @@ static public function mostrar_home() : bool {
     return true;
   }
 
-  static public function gestion_clientes() : bool {
+
+/* Menú de navegación administrador*/
+
+  static public function gestion_inmuebles() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
         <div class='col-xs-12'>
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-primary btn-md' href='añadir_noticias.php'>Añadir usuario</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='borrar_noticias.php'>Borrar usuario</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='buscar_noticias.php'>Buscar usuario</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='añadir_inmueble.php'>Añadir inmueble</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='borrar_inmueble.php'>Borrar inmueble</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='buscar_inmueble.php'>Buscar inmueble</a></li>
               </ul>
             </div>
           </nav>
@@ -1373,62 +1332,6 @@ static public function mostrar_home() : bool {
     </div>";
     return true;
   }
-
-  static public function listar_usuarios() : bool {
-    echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 lista-clientes'>
-       <h2 class='margen-citas' align='center'>Listado de clientes</h2>
-        <div class='panel panel-default'>
-           <div class='panel-body'>
-             <div class='table-responsive'>
-             <div class='table table-striped'>";
-               
-                   $conexion = abrirConexion();
-                   $consulta = "SELECT id, nombre, apellidos , direccion ,telefono 
-                               from tbl_clientes
-                               order by id";
-                   $datos = mysqli_query($conexion,$consulta);
-                   
-                   if (!$datos) {
-                     echo "No hay datos que mostrar";
-                   } else {
-                     $num_filas = mysqli_num_rows($datos);
-
-                     if ($num_filas == 0) {
-                       echo "No hay ningún usuario registrado";
-                     } else {
-                       $clientes_registrados = $num_filas - 2;
-                       echo "<p><strong>Número de usuarios registrados:</strong> $clientes_registrados</p>";
-                       echo "<table class='table table-hover'";
-                       echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th><th>Modificar</th></tr></thead>";
-                       while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
-                         if($fila['id'] > 1) {
-                           if ($fila['telefono2'] == '') {
-                             echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>Sin información</td>
-                             <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-                           } else {
-                             echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[telefono2]</td>
-                             <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-                           } 
-                         }
-                       }
-                     }
-                   }
-                   mysqli_close($conexion); 
-                
-             echo "</div>
-           </div>
-           </div>
-        </div>
-      </div>
-    </div>
-  </div>";
-    return true;
-  }
-
-/* Menú de navegación administrador*/
-
 
   static public function form_añadir_inmueble () : bool {
     echo "<div class='container-fluid'>
@@ -1605,7 +1508,6 @@ static public function mostrar_home() : bool {
         </div>";
     return true;
   }
-
   static public function form_borrar_inmueble() : bool {
     echo "<div class='container-fluid'>
       <div class='row'>
@@ -1726,8 +1628,6 @@ static public function mostrar_home() : bool {
     return true;
   }
 
-  
-
   static public function form_añadir_noticias() : bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
     <div class='row'>
@@ -1791,7 +1691,6 @@ static public function mostrar_home() : bool {
     return true;
   }
   
-
   static public function form_borrar_noticias(): bool {
     echo "    <div class='container-fluid cabecera-menu-inicio'>
     <div class='row'>
@@ -1834,8 +1733,239 @@ static public function mostrar_home() : bool {
     return true;
   }
 
+  static public function form_buscar_noticias(): bool {
+    echo "<div class='container-fluid menu-inicio'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
+          <div class='panel-group'>
+            <div class=' panel panel-default' action='#' method='post'>
+              <div class='panel-heading'>
+                <h2 align='center'>Buscar noticias</h2>
+              </div>
+              <div class='panel-body'>
+                <p align='center'>Rellene el campo para realizar la búsqueda</p>
+                <form class='form-horizontal' action='#' method='post' accept-charset='utf-8'>
+                  <div class='form-group'>
+                    <label class=' col-sm-3'>Titular de la noticia:</label>
+                    <div class='col-sm-9'>
+                      <input class='form-control' type='text' id='titular' name='titular' autofocus> <span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <div class='col-sm-12'>
+                      <input id='buscar' class='form-control btn-primary' type='submit' name='buscar_not' value='Buscar' >
+                    </div> 
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>";
+    return true;
+  }
+
+  static public function gestion_clientes() : bool {
+    echo "<div class='container-fluid cabecera-menu-inicio'>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <nav class='navbar '>
+            <div class='container-fluid'>
+              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+                <li><a type='button' class='btn btn-primary btn-md' href='añadir_noticias.php'>Añadir usuario</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='borrar_noticias.php'>Borrar usuario</a></li>
+                <li><a type='button' class='btn btn-primary btn-md' href='buscar_noticias.php'>Buscar usuario</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>";
+    return true;
+  }
+
+  static public function form_añadir_cliente(): bool {
+    echo "
+    <!-- Nuevo cliente -->
+    <div class='container-fluid menu-inicio'>
+      <div class='row'>
+        <div class='col-xs-12 col-md-8 col-md-offset-2'>
+          <div class='panel-group'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h2 align='center'>Nuevo cliente</h2>
+              </div>
+              <div class='panel-body'>
+                <form class='form-horizontal' action='#' method='post'>
+                  <div class='form-group'>
+                    <label class=' col-sm-2'>ID:</label>
+                    <div class='col-sm-10'>";
+                        $con = abrirConexion();
+                        $consulta = "SELECT auto_increment from information_schema.tables where table_schema='db_inmomenenia' and table_name='clientes'";
+                        $datos = mysqli_query($con, $consulta);
+                        $array = mysqli_fetch_array($datos, MYSQLI_NUM);
+                        echo "<td><input class='form-control' type='text' name='direccion' value = $array[0] readonly></td>";
+                      
+                  echo "</div>
+                  </div>
+                  <div class='form-group'>
+                    <label class=' col-sm-2'>Nombre:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='nom' id='nombre' autofocus><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Apellidos:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='ape' id='apellidos'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Dirección:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='dir' id='direccion'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Tlf 1:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='tel1' id='telefono1'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Tlf 2:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='tel2' id='telefono2'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Usuario:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='n_us' id='n_us'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Constraseña:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='pass' id='pass'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <div class='col-sm-12 col-sm-offset-4'>
+                      <div class='col-sm-2'>
+                        <input class='form-control btn-primary' id='nuevo_cliente' type='submit' name='nuevo_cliente' value='Añadir'>
+                      </div>
+                      <div class='col-sm-2'>
+                        <a href='./clientes.php' class='btn btn-danger'>Cancelar</a>
+                      </div>
+                    </div>
+                  </div> 
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>";
+    return true;
+  }
+
+  static public function listar_usuarios() : bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 lista-clientes'>
+       <h2 class='margen-citas' align='center'>Listado de clientes</h2>
+        <div class='panel panel-default'>
+           <div class='panel-body'>
+             <div class='table-responsive'>
+              <div class='table table-striped'>";
+                $conexion = abrirConexion();
+                $consulta = "SELECT id, nombre, apellidos , direccion ,telefono 
+                            from tbl_clientes
+                            order by id";
+                $datos = mysqli_query($conexion,$consulta);
+                
+                if (!$datos) {
+                  echo "No hay datos que mostrar";
+                } else {
+                  $num_filas = mysqli_num_rows($datos);
+
+                  if ($num_filas == 0) {
+                    echo "No hay ningún usuario registrado";
+                  } else {
+                    $clientes_registrados = $num_filas - 2;
+                    echo "<p><strong>Número de usuarios registrados:</strong> $clientes_registrados</p>";
+                    echo "<table class='table table-hover'";
+                    echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th><th>Modificar</th></tr></thead>";
+                    while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
+                      if($fila['id'] > 1) {
+                        if ($fila['telefono2'] == '') {
+                          echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>Sin información</td>
+                          <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                        } else {
+                          echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[telefono2]</td>
+                          <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                        } 
+                      }
+                    }
+                  }
+                }
+                mysqli_close($conexion);    
+              echo "</div>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>";
+    return true;
+  }
+
+  static public function form_buscar_cliente() : bool {
+    echo "<div class='container-fluid menu-inicio'>
+    <div class='row'>
+      <div class='col-xs-12 col-md-8 col-md-offset-2'>
+         <div class='panel-group'>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>
+              <h2 align='center'> Buscar un cliente</h2>
+            </div>
+            <div class='panel-body'>
+              <p align='center'>Rellene el campo o campos por los que quiere realizar la búsqueda</p>
+              <form class='form-horizontal' action='#' method='post'>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Id:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='id' autofocus>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Nombre:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='nombre' autofocus>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'> Apellidos:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='apellidos'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class=' col-sm-2'>Tlf:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='telefono'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-12'>
+                    <input class='form-control btn-primary' type='submit' name='buscar_cliente' value='Buscar'>
+                  </div> 
+                </div>
+              </form>";
+    return true;
+  }
+
 }//llave cierre de clase
 
 ?>
-
-

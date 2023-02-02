@@ -1,16 +1,16 @@
 <?php 
-    require_once "../../php/dbconnect.php";
-    require_once "../../php/class/interfaz.php";
-    require_once "../../php/funciones.php";
+    require_once "../../../php/dbconnect.php";
+    require_once "../../../php/class/interfaz.php";
+    require_once "../../../php/funciones.php";
     session_start(); 
+    comprobarAdmin();
 ?>
-<!DOCTYPE html>
-<html lang="es">
-  <head>
+  <!DOCTYPE html>
+  <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mis datos personales</title>
+    <title>Borrar Inmueble Nuevo</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -21,20 +21,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <script src='/js/validar_nuevo_inmueble.js'></script>
+    </head>
 
-    <!-- Mostramos formulario con datos del usuario -->
-    <?php $datos = Interfaz::datos_cliente(); ?>
+    <body>
+      <!-- Menú de navegación -->
+      <?php Interfaz::mostrarMenu(); ?>
 
-    <!-- Gestionmos datos usuaior -->
-    <?php gestion_datos_usuario();?>
-    
-    <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
+      <!-- Botones de funciones añadir, borrar, buscar -->
+      <?php Interfaz::gestion_cliente(); ?>
+
+      <!-- mostrar formulario de busqueda-->
+      <?php Interfaz::form_buscar_cliente(); ?>
+      <!-- buscar inmuebles-->
+      <?php buscar_cliente(); ?>
+     
+      <!-- footer -->
+   <footer class="navbar-nav navbar-inverse">
       <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
     </footer>
-  </body>
-</html>
+    </body>
+
+  </html>

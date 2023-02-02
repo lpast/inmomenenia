@@ -23,14 +23,28 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="../js/calcula_hipoteca.js"></script>
+    <style>
+form {width:250px;}
+form>div>span {width:100px;display: inline-block;text-align:left;}
+form input {width:150px;}
+form>div {text-align:center;}
+table>tr>th, table>tr>td {text-align:right;}
+</style>
   </head>
   <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
-
-     <!-- Se muestran las citas comprados por el usuario -->
-    <?php $hipoteca = Interfaz::form_hipoteca(); ?>
-
+    <head>
+      <!-- Menú de navegación -->
+      <?php $menu = Interfaz::mostrarMenu(); ?>
+    </head>
+    
+    <section>
+        <div class = 'hipotecas'>
+        <!-- Se muestran las citas comprados por el usuario -->
+        <?php $hipoteca = Interfaz::form_hipoteca(); ?>
+      </div>
+    </section>
+    
+    
     <!-- footer -->
    <footer class="navbar-nav navbar-inverse">
       <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
