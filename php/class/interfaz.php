@@ -40,7 +40,7 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='./index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+            <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
@@ -234,7 +234,7 @@ class Interfaz {
                 <label class='col-sm-2'>Localidad</label>
                 <div class='col-sm-5 col-lg-offset-2'>
                   <select class='form-control' id='localidad' name='localidad'>
-                  <option value=''>Seleccione la localidad</option>
+                    <option value=''>Seleccione la localidad</option>
                     <option value='puebla'>La Puebla de Alfindén</option>
                     <option value='pastriz'>Pastriz</option>
                   </select>
@@ -243,13 +243,13 @@ class Interfaz {
               <div class='form-group'>
                 <label class='col-sm-2'>Nº de habitaciones:</label>
                 <div class='col-sm-5 col-lg-offset-2'>
-                  <input class='form-control' type='text' name='num_hab'  placeholder='Nº de habitaciones'>
+                  <input class='form-control' type='text' name='num_hab' placeholder='Nº de habitaciones'>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-2'>Metros<sup>2</sup>:</label>
                 <div class='col-sm-5 col-lg-offset-2'>
-                  <input class='form-control' type='text' name='metros'  placeholder='metros'>
+                  <input class='form-control' type='text' name='metros' placeholder='metros'>
                 </div>
               </div>
               <div class='form-group'>
@@ -439,9 +439,10 @@ class Interfaz {
   static public function inmuebles_disponibles() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
-        <div class='col-xs-12 cabecera'>
-          <h1 align='center' style='margin-top: 25px;'>Ahora mismo, estos son los inmuebles están disponibles</h1>";
-        
+        <div class='col-xs-12 cabecera-menu-inicio tinmuebles'>
+          <h1 align='center'>Ahora mismo, estos son los inmuebles están disponibles</h1>
+          </div>";
+          
         $con = abrirConexion();
         $sql = 'SELECT * FROM tbl_inmuebles';
         $consulta = mysqli_query($con,$sql);
@@ -460,17 +461,20 @@ class Interfaz {
               echo "<div class='panel panel-default'>";
               echo "<div class='panel-body tnoticias'>";
               echo "<img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
-                    <h2>$fila[direccion]</h2>
-                    <h4>$fila[precio] € </h4>
+                <h2 align ='center'><span style='color: red;'>$fila[titular]</span></h2>
+                <h2 align ='center'>$fila[localidad]</h2>
+                  <div class ='iconos'align ='center' style='padding-top:5px'>
+                    <img src='../media/iconos/ducha.png' alt='baños-inmueble' width='60px'>  $fila[num_baños]
+                    <img src='../media/iconos/cama.png' alt='habitaciones-inmomenenia' width='60px' style='padding-left:20px'>  $fila[num_hab]
+                    <img src='../media/iconos/zona.png' alt='metros-inmomenenia' width='50px' style='padding-left:30x'>  $fila[metros] m<sup>2</sup>
+                    <img src='../media/iconos/euro.png' alt='precio-inmueble' width='60px' style='padding-left:20px'>  $fila[precio] €
+
+                </div>
+                <h4 align ='center'>$fila[descripcion]</h4>
     
-                    <input type='hidden' id='id' value='$fila[id]'/>
-                    <a class='btn btn-favorito' href='#' id='agregar-favoritos'><img src='media/iconos/favorito.png' alt='twitter-inmomenenia' width='30px'></a>
+                    
 
-                    <button id='favoritos' onClick='like()'>LIKE</button>
-                    <p type='text' style='color:blue;' id='show'></p>
-                    <h2>LIKES</h2>
-
-                    <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
+                    <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
               echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
             }
 

@@ -779,7 +779,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                  //alquiler  - localidad
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='puebla'";
+                $sql = "SELECT * from tbl_inmuebles where localidad='puebla' and tipo='alquiler' ";
                 $balquiler = mysqli_query($conexion, $sql);
   
                 if (!$balquiler) {
@@ -819,7 +819,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // alquiler -  -localidad -  metros
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='puebla' and metros like $metros";
+                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad=$localidad and metros like $metros";
                 $balquiler = mysqli_query($conexion, $sql);
   
                 if (!$balquiler) {
@@ -1151,27 +1151,6 @@ function listar_inmuebles(){
       mysqli_close($conexion); 
 }
 
-function datos_noticia() {
-  if (isset($_POST['ver'])) {
-    $id = $_POST['id'];
-    $conexion = abrirConexion();
-    $consulta = "SELECT * from tbl_noticias where id='$id'";
-    $noticia = mysqli_query($conexion,$consulta);
-
-    if (!$noticia) {
-      echo "¡Error! No se ha podido acceder a la noticia :(";
-    } else {
-      while ($fila = mysqli_fetch_array($noticia, MYSQLI_ASSOC)) {
-        $titular = $fila['titular'];
-        $contenido = $fila['contenido'];
-        $imagen = $fila['imagen'];
-        $fecha = $fila['fecha'];
-      }
-    }
-    mysqli_close($conexion);
-  }
-}
-
 function registrarse() {
   if (isset($_POST['registrarse'])) {
     $id = $_POST['id'];
@@ -1202,6 +1181,41 @@ function registrarse() {
   mysqli_close($conexion);
 return true;
 }
+function datos_noticia() {
+  if (isset($_POST['ver'])) {
+    $id = $_POST['id'];
+    $conexion = abrirConexion();
+    $consulta = "SELECT * from tbl_noticias where id='$id'";
+    $noticia = mysqli_query($conexion,$consulta);
+
+    if (!$noticia) {
+      echo "¡Error! No se ha podido acceder a la noticia :(";
+    } else {
+      while ($fila = mysqli_fetch_array($noticia, MYSQLI_ASSOC)) {
+        $titular = $fila['titular'];
+        $contenido = $fila['contenido'];
+        $imagen = $fila['imagen'];
+        $fecha = $fila['fecha'];
+
+        echo "<div class='container-fluid cabecera-menu-inicio'>
+        <div class='row'>
+          <div class='col-sm-8 col-sm-offset-2'>
+            <center><img src='../media/img/img_noticias/$imagen' img-align='center' width='60%'></center>
+            <div class='contenido-noticia'>
+              <h1><b> $titular</b></h1>
+                  <p align='justify'> $contenido</p>
+                  <p><b>Fecha de publicación: </b>$fecha</p>
+                  <a class='btn btn-info' href='./noticias.php'>Volver a <b>noticias</b></a>
+            </div>
+          </div>
+        </div>
+      </div>";
+      }
+    }
+    mysqli_close($conexion);
+  }
+}
+
 
 /* CLIENTE */
 
@@ -2056,3 +2070,4 @@ function buscar_cliente() {
     }
   }
 }
+ 

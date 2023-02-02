@@ -67,7 +67,6 @@ h1, h2,h3, h4, p {
 
 
 .cabecera {
-	background-color: #e9ae2e;
 	padding-top: 110px;
 }
 
@@ -88,18 +87,24 @@ h1, h2,h3, h4, p {
 .petit-noticias { 
 	padding-top: 25px;
 	padding-bottom: 20px;
-	width: 30px;
+	width: 5px;
 	text-align: center
 }
 
 .contenido-noticia {
 	text-align: center
-	
 }
 
+.tinmuebles {
+	margin-top: 75px;
+	padding: 15px;
+    border: solid 0.5px;
+    border-color: #101010;
+    background-color: #f5f1e8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
 
 
-
+}
 
 
 .menu {
@@ -121,16 +126,6 @@ h1, h2,h3, h4, p {
 	height:400px
 }
 
-footer {
-	background-color: #000000;
-	padding-top: 8px;
-	display: both;
-	bottom: 0;
-	width: 100%;
-	height: 40px;
-	color: #baa35f;
-	position: fixed;
-}
 
 .margen-noticias {
 	margin-top: 25px;
@@ -248,9 +243,6 @@ footer {
 	border-color: #f5f1e8;
 }
 
-
-
-
 .pager li>a, .pager li>span {
 	background-color: #000000;
     border: 1px solid #baa35e;
@@ -271,7 +263,6 @@ footer {
     background-color: #f5f1e8;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
     transition: 0.5s;
-
 }
 
 .tcontenedor{
@@ -304,15 +295,6 @@ footer {
 }
 
 
-.footer-noticias {
-	margin-bottom: 40px;
-    margin-top: -60px;
-}
-
-.footer-clientes {
-	margin-left: -31px;
-}
-
 .lista-clientes {
 	margin-top: 35px;
 }
@@ -338,6 +320,18 @@ footer {
 
 table th{
 	text-align: left;
+}
+
+
+footer {
+	background-color: #000000;
+	padding-top: 8px;
+	display: both;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	color: #baa35f;
+	position: fixed;
 }
 
 
