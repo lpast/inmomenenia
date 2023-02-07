@@ -1,3 +1,4 @@
+
 function calcular() {
 
     let deuda=parseFloat(document.querySelector("input[name=importe]").value);
@@ -5,7 +6,7 @@ function calcular() {
     let interes=parseFloat(document.querySelector("input[name=interes]").value);
     const resultado=document.getElementById("resultado");
 
-    // hacemos los calculos...
+    // hacemos los calculos
     interes=(interes/100)/12;
     const m=(deuda*interes*(Math.pow((1+interes),(anos*12))))/((Math.pow((1+interes),(anos*12)))-1);
 

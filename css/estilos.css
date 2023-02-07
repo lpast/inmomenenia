@@ -30,7 +30,6 @@ body {
 	background-color: #f5f1e7;
 	margin: 0;
   	margin-bottom: 40px;
-
 }
 
 head {
@@ -87,8 +86,7 @@ h1, h2,h3, h4, p {
 .petit-noticias { 
 	padding-top: 25px;
 	padding-bottom: 20px;
-	width: 5px;
-	text-align: center
+	text-align: center;
 }
 
 .contenido-noticia {
@@ -102,10 +100,38 @@ h1, h2,h3, h4, p {
     border-color: #101010;
     background-color: #f5f1e8;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
-
-
 }
 
+.mostrar-busqueda, .tnoticias {
+	padding: 15px;
+    border: solid 0.5px;
+    border-color: #101010;
+    background-color: #f5f1e8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
+    transition: 0.5s;
+}
+
+.tcontenedor{
+	width: 900px;
+}
+
+.aweb{
+	color:#baa35e;
+}
+
+.tnoticias:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0);
+}
+
+.tmapa {
+	padding: 15px;
+	width: 350px;
+    border: solid 0.5px;
+    border-color: #101010;
+    background-color: #f5f1e8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
+    transition: 0.5s;
+}
 
 .menu {
     margin-top: auto;
@@ -189,7 +215,7 @@ h1, h2,h3, h4, p {
 
 .nav>li>a:focus, .nav>li>a:hover {
 	text-decoration: none;
-    background-color: #286090;
+    background-color: #b9a25f;
 }
 
 .n-resp {
@@ -234,7 +260,8 @@ h1, h2,h3, h4, p {
 }
 
 .btn-favorito {
-	background-color:#baa35f;
+	background-color:#f5f1e8;
+	color:red;
 	border-color: #f5f1e8;
 }
 
@@ -256,35 +283,6 @@ h1, h2,h3, h4, p {
 	
 }
 
-.mostrar-busqueda, .tnoticias {
-	padding: 15px;
-    border: solid 0.5px;
-    border-color: #101010;
-    background-color: #f5f1e8;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0);
-    transition: 0.5s;
-}
-
-.tcontenedor{
-	width: 900px;
-}
-
-.aweb{
-	color:#baa35e;
-}
-
-.tnoticias:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0);
-}
-
-.ver-inm {
-	margin-top: 25px;
-}
-
-.bt-ver {
-	margin-top: 5px;
-}
-
 .contenedor {
     padding: 2px 40px;
 }
@@ -294,13 +292,8 @@ h1, h2,h3, h4, p {
 	margin-bottom: 50px;
 }
 
-
 .lista-clientes {
 	margin-top: 35px;
-}
-
-.botones-clientes {
-	margin-left: 40.333333%;
 }
 
 .btn-primary {
@@ -324,7 +317,7 @@ table th{
 
 
 footer {
-	background-color: #000000;
+	background-color: black;
 	padding-top: 8px;
 	display: both;
 	bottom: 0;
@@ -332,10 +325,24 @@ footer {
 	height: 40px;
 	color: #baa35f;
 	position: fixed;
+	margin: 0;
 }
 
+.logo {
+	padding-top: 5px;
+	height: 20px;
+}
 
-
-
-
-
+.button5 {
+	background-color: #f5f1e8 !important;
+	border: none;
+	color:#f5f1e8!important;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+  }

@@ -40,7 +40,7 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='../index.html'><img class='logo' src='../media/img/logo.png' alt='logo-inmomenenia'></a>
+            <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
@@ -66,7 +66,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
                 </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
@@ -97,7 +97,7 @@ class Interfaz {
                       <span class='icon-bar b-resp'></span>
                       <span class='icon-bar b-resp'></span>                             
                     </button>
-                    <a href='../../index.html'><img src='../../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+                    <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
                     </div>
                   <div class='collapse navbar-collapse' id='nav-responsive'>
                   <ul class='nav navbar-nav navbar-right'>
@@ -122,7 +122,7 @@ class Interfaz {
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>                        
             </button>
-            <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+            <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
@@ -148,7 +148,7 @@ class Interfaz {
                   <span class='icon-bar b-resp'></span> 
                   <span class='icon-bar b-resp'></span>                              
                 </button>
-                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='20%'></a>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
                 </div>
               <div class='collapse navbar-collapse' id='nav-responsive'>
               <ul class='nav navbar-nav navbar-right'>
@@ -406,7 +406,7 @@ class Interfaz {
                 //muestro info de noticia
                 echo "<div class='panel-body tnoticias'>
                   <div class='petit-noticias' style=align='center'>
-                    <img src='../media/img/img_noticias/$fila[imagen]'  alt='img_noticia' >
+                    <img src='../media/img/img_noticias/$fila[imagen]' alt='img_noticia' >
                   </div>
                   <h3 align='center'><b>$fila[titular]</b></h3>
                   <p align='center'>Fecha de publicación: $f_formateada</p>
@@ -466,10 +466,15 @@ class Interfaz {
               $tipo_usuario = $_SESSION['tipo'];
               if ($tipo_usuario == 'u') {
                 echo "<div class='favorito'>
-                  <a href='#' id='agregar-favorito' name='agregar-favoritos'><img id='favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'> Agregar a favoritos</a>
-                  <input type='hidden' id='id' value='$fila[id]'/>";
+                <button class='button button5'><img id='favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
+                  <a href='#' id='añadir_favorito' type='submit' name='añadir_favorito'> Añadir_favorito</a></button>
+                  <input type='hidden' id='id_favorito' value='$fila[id]
+                  <input type='hidden' id='id_usuario' value='$_SESSION[id_usuario]
+                  <input type='hidden' id='id_inmueble' value='$_SESSION[id_inmueble]'/>";
                 echo "$_SESSION[id_usuario]";
                 echo "$_SESSION[id_inmueble]";
+                añadir_favorito();
+
                 echo "</div>";
               }
             }
@@ -824,20 +829,20 @@ class Interfaz {
                     <h2 align='center'> ¿En qué podemos ayudarte?</h2>
                     <div class ='col-md-6'>
                       <ul>
-                        <lo><a href='../php/usuarios/mis_datos.php'><img src='../media/iconos/mis-datos.png' alt='logo-mis-datos' width='150px' align='center'>
+                        <lo><a href='../usuarios/mis_datos.php'><img src='../../media/iconos/mis-datos.png' alt='logo-mis-datos' width='150px' align='center'>
                         <h2> Modificar mis datos personales </h2></a></lo>
 
-                        <lo><a href='../php/clientes/mis_inmuebles.php'><img src='../media/iconos/house.png' alt='logo-mis-inmuebles' width='150px' align='center'>
+                        <lo><a href='../usuarios/mis_inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-mis-inmuebles' width='150px' align='center'>
                         <h2> Ver mis inmuebles </h2></a></lo>
                       </ul>
                       
                     </div>
                     <div class ='col-md-6'>
                     <ul>
-                        <lo><a href='../php/usuarios/mis_citas.php'><img src='../media/iconos/calendar.png' alt='logo-mis-citas' width='150px' align='center'>
+                        <lo><a href='../usuarios/mis_citas.php'><img src='../../media/iconos/calendar.png' alt='logo-mis-citas' width='150px' align='center'>
                         <h2>Ver mis citas </h2></a></lo>
 
-                        <lo><a href='../php/usuarios/mis_favoritos.php'><img src='../media/iconos/mis-favoritos.png' alt='logo-mis-favoritos' width='150px' align='center'>
+                        <lo><a href='../usuarios/mis_favoritos.php'><img src='../../media/iconos/mis-favoritos.png' alt='logo-mis-favoritos' width='150px' align='center'>
                         <h2>Ver mis favoritos </h2></a></lo>
                       </ul>
                     </div>
@@ -848,6 +853,70 @@ class Interfaz {
     echo "</div>";
 
 
+    return true;
+  }
+
+  static public function mostrarFavoritos() : bool {
+
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <div class='tnoticias'>
+          <h1 align='center''>Echa un vistazo a tus inmuebles</h1>
+        </div>;
+      </div>
+      <div class='col-xs-12 col-sm-offset-2 col-sm-10'>";
+        
+          $id_usuario=$_SESSION['id_usuario'];
+          $con = abrirConexion();
+          $sql = "SELECT * from tbl_favoritos fav INNER JOIN tbl_inmuebles inm on fav.id_inmueble=inm.id WHERE fav.id_usuario='$id_usuario'";
+
+          $consulta = mysqli_query($con, $sql);
+
+          if (!$consulta) {
+            echo 'Error al consultar favoritos';
+          } else {
+            $num_filas = mysqli_num_rows($consulta);
+            if ($num_filas == 0) {
+              echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                      <h2>Ups... ahora mismo no tiene ningún inmueble guardado como favoritos :(</h2>
+                    </div>";
+            } else {
+              while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+               
+                echo "<div class='col-sm-4'>";
+                echo "<div class='panel panel-default'>";
+                echo "<div class='panel-body tnoticias'>";
+                echo "<img class='img-responsive' src='../../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
+                      <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
+                echo "<h3 align ='center'>$fila[calle]</h3>
+                      <h4 align ='center' style='padding-bottom:15px'>$fila[localidad]</h4>
+                      <div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
+                        <h3><img src='../../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $fila[num_banos]</b>
+                        <img src='../../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[num_hab]</b><h3>
+                        <h3><img src='../../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b>  $fila[garaje]</b>
+                        <img src='../../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[jardin]</b>
+                        <img src='../../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[piscina]</b><h3>
+                        <h3><img src='../../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $fila[estado]</b>
+                        <img src='../../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[tipo]</b><h3>
+                        <h3><img src='../../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b>  $fila[metros] m<sup>2</sup></b>
+                        <img src='../../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[precio] €</b><h3>
+                      </div>
+                      <h4 align ='center'>$fila[descripcion]</h4>
+                      <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
+                echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+              }
+            }
+          }
+          mysqli_close($con);
+
+        
+
+
+
+        
+        echo "</div>
+      </div>";
     return true;
   }
 

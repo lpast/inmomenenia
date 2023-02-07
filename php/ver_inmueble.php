@@ -94,46 +94,46 @@ session_start();
 
               if (isset($_SESSION['tipo']) == 'u') {
               echo "<div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
-                <h3><img src='/inmomenenia/media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px' <b> $calle</b>
-                <img src='/inmomenenia/media/iconos/pin.png' alt='localidad-inmueble' width='50px'  'margin-right:15px'><b> $localidad</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
-                  <img src='/inmomenenia/media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b> $garaje</b>
-                  <img src='/inmomenenia/media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $jardin</b>
-                  <img src='/inmomenenia/media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $piscina</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $estado</b>
-                  <img src='/inmomenenia/media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $tipo</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
-                  <img src='/inmomenenia/media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
+                <h3><img src='../media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px' <b> $calle</b>
+                <img src='../media/iconos/pin.png' alt='localidad-inmueble' width='50px'  'margin-right:15px'><b> $localidad</b><h3>
+                  <h3><img src='../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
+                  <img src='../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
+                  <h3><img src='../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b> $garaje</b>
+                  <img src='../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $jardin</b>
+                  <img src='../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $piscina</b><h3>
+                  <h3><img src='../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $estado</b>
+                  <img src='../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $tipo</b><h3>
+                  <h3><img src='../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
+                  <img src='../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
                   </div>
               <div class='jumbotron'>
                 <h3 align ='center'>Si quieres más información no dudes en ponerte en contacto con nosotros</h3>
                 <h3 align ='center'>Trataremos de responderte lo antes posible</h3>
               </div>
-              <a class='btn btn-theme' href='/inmomenenia/php/inmuebles.php'>Volver a <b>Cartera de Inmuebles</b></a>";
+              <a class='btn btn-theme' href='../php/inmuebles.php'>Volver a <b>Cartera de Inmuebles</b></a>";
               } else if (isset($_SESSION['tipo']) == 'a') {
               echo "<div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
-                <h3><img src='/inmomenenia/media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px'><b> $calle</b>
-                <img src='/inmomenenia/media/iconos/pin.png' alt='localidad-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $localidad</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
-                  <img src='/inmomenenia/media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b> $garaje</b>
-                  <img src='/inmomenenia/media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $jardin</b>
-                  <img src='/inmomenenia/media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $piscina</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $estado</b>
-                  <img src='/inmomenenia/media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $tipo</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
-                  <img src='/inmomenenia/media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/codigo-de-barras.png' alt='id-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $$id €</b><
-                  <img src='/inmomenenia/media/iconos/calendario.png' alt='fecha-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fecha_alta</b><h3>
+                <h3><img src='../media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px'><b> $calle</b>
+                <img src='../media/iconos/pin.png' alt='localidad-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $localidad</b><h3>
+                  <h3><img src='../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
+                  <img src='../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
+                  <h3><img src='../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b> $garaje</b>
+                  <img src='../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $jardin</b>
+                  <img src='../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $piscina</b><h3>
+                  <h3><img src='../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $estado</b>
+                  <img src='../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $tipo</b><h3>
+                  <h3><img src='../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
+                  <img src='../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
+                  <h3><img src='../media/iconos/codigo-de-barras.png' alt='id-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $$id €</b><
+                  <img src='../media/iconos/calendario.png' alt='fecha-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fecha_alta</b><h3>
                   </div>";
               } else {
-                echo "<h3 align='center'><img src='/inmomenenia/media/iconos/ubicacion.png' alt='ubicacion-inmueble' width='50px'>$localidad</h3>
+                echo "<h3 align='center'><img src='../media/iconos/ubicacion.png' alt='ubicacion-inmueble' width='50px'>$localidad</h3>
                 <div class ='iconos' align ='center' style='padding-top:5px  font-size:30px'>
-                  <h3><img src='/inmomenenia/media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
-                  <img src='/inmomenenia/media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
-                  <h3><img src='/inmomenenia/media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
-                  <img src='/inmomenenia/media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
+                  <h3><img src='../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $num_banos</b>
+                  <img src='../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $num_hab</b><h3>
+                  <h3><img src='../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b> $metros m<sup>2</sup></b>
+                  <img src='../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $precio €</b><h3>
                 </div>
                 <div class='jumbotron'>
                   <h3 align ='center'>Si quieres más información no dudes en ponerte en contacto con nosotros</h3>
@@ -163,10 +163,10 @@ session_start();
                 } else {
                   echo "<div class='jumbotron'>
                     <h3> Si quieres obtener información más detallada, puedes registrarte como usuario </h3>
-                    <p align='center'><a class='btn btn-success bt-ver' href='/inmomenenia/php/registro.php'><b> Registrarse</b></a></p>
+                    <p align='center'><a class='btn btn-success bt-ver' href='../php/registro.php'><b> Registrarse</b></a></p>
 
                   </div>
-                  <p align='center'><a class='btn btn-theme' href='/inmomenenia/php/inmuebles.php'>Volver a <b>Cartera de Inmuebles</b></a></p>";
+                  <p align='center'><a class='btn btn-theme' href='../php/inmuebles.php'>Volver a <b>Cartera de Inmuebles</b></a></p>";
                 }
               ?>
             </div>
