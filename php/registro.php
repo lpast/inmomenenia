@@ -39,24 +39,13 @@ session_start();
       <?php $menu = Interfaz::mostrarMenu(); ?>
     </head>
 
-    <div class="acceso">
+   
         <!-- Formulario de acceso -->
         <?php $form_acceso= Interfaz::formulario_registro();?>
-
-        <!-- Accedemos a la aplicacón -->
-        <?php iniciar_sesion();?>
-      </div>
-   
-
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-      <!-- footer -->
-      <footer class="navbar-nav navbar-inverse">
-          <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
-        </footer>
-    </footer>
+        
     
-          
    
+ <!-- footer -->
+ <?php $home = Interfaz::footer(); ?> 
   </body>
 </html>

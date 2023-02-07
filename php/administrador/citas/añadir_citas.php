@@ -1,8 +1,7 @@
 <?php 
- require_once "../../php/dbconnect.php";
- require_once "../../php/class/interfaz.php";
- require_once "../../php/funciones.php";
- require_once "funciones.php";
+   require_once "../php/dbconnect.php";
+   require_once "../php/class/interfaz.php";
+   require_once "../php/funciones.php";
 session_start(); 
 comprobarAdmin();
 
@@ -23,7 +22,7 @@ if (isset($_GET['mes'])) {
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
       <!-- Mi CSS -->
-      <link rel="stylesheet" href="../../css/estilos.css" media="screen">
+      <link rel="stylesheet" href="../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
@@ -33,7 +32,7 @@ if (isset($_GET['mes'])) {
    <?php $menu = Interfaz::mostrarMenu(); ?>
 
   <!-- Menú con opciones de administracion-->
-  <?php $menu_admmon=Interfaz::menu_admon();?>
+  <?php $menu_admmon=Interfaz::gestion_citas();?>
   
   <div class='container-fluid'>
       <div class='row'>
@@ -188,9 +187,7 @@ if (isset($_GET['mes'])) {
     
     }?>
 
-    <!-- footer -->
-   <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
-    </footer>
+   <!-- footer -->
+   <?php $home = Interfaz::footer(); ?> 
   </body>
 </html>

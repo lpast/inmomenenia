@@ -44,9 +44,8 @@
         </div>
       </div>
     </div>
-    <footer class="navbar-nav navbar-inverse">
-    <p align="center">Copyright Menenia's Digital 2022</p>
-    </footer>
+    <!-- footer -->
+    <?php $home = Interfaz::footer(); ?> 
   </body>
 </html>
         

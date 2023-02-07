@@ -30,9 +30,7 @@ session_start();
     <?php datos_noticia(); ?>
     
     <!-- footer -->
-    <footer class="navbar-nav navbar-inverse footer-noticia">
-      <p align="center">Estamos en Av. Doctor Oloriz, 6 (Granada) | Teléfono: 611622633 | Email: info@inmobiliaria.com</p>
-    </footer>
+    <?php $home = Interfaz::footer(); ?> 
   </body>
 </html>
 

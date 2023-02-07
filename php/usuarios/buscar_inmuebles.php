@@ -1,16 +1,15 @@
 <?php 
-        require_once "../../php/dbconnect.php";
-        require_once "../../php/class/interfaz.php";
-        require_once "../../php/funciones.php";
-        session_start(); 
-?>
+  require_once "../../php/dbconnect.php";
+  require_once "../../php/class/interfaz.php";
+  require_once "../../php/funciones.php";
+  session_start(); 
+ ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-  <head>
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Área Personal</title>
+    <title>Buscar Inmuebles</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -23,7 +22,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <style>
       body{
-        background-image: url("../../media/img/img_inmuebles/fachada_0533.jpg");
+        background-image: url("../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -31,27 +30,17 @@
       </style>
   </head>
   <body>
-  <head>
-        <!-- Menú de navegación -->
-        <?php $menuHome = Interfaz::mostrarMenu(); ?>
-    </head>
+    <!-- Menú de navegación -->
+    <?php $menu = Interfaz::mostrarMenu(); ?>
 
-    <section>
-         <?php $personal = Interfaz::area_personal(); ?>
-    </section>
-
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-    </footer>
-
-    <!-- footer -->
-   <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
-    </footer>
- 
+    <!-- Muestro imagen de un inmueble aleatorio -->
+    <?php $aleatoria = Interfaz::img_aleatoria(); ?>
+    <div class='cabecera'>
+    <?php $form = Interfaz::form_buscar_Inmuebles(); ?>
+      <?php buscar_Inmuebles(); ?>
+    </div>
    
-       
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+   <!-- footer -->
+   <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>

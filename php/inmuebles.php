@@ -26,7 +26,7 @@
     <script src="../js/favoritos.js"></script>
     <style>
       body{
-        background-image: url("../../media/img/img_inmuebles/fachada_0533.jpg");
+        background-image: url("../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -39,10 +39,10 @@
 
     <!-- Se muestran los inmuebles disponibles -->
     <?php Interfaz::inmuebles_disponibles();?>
-
+  
     <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
-    </footer>
+    <?php $home = Interfaz::footer(); ?> 
   </body>
+
+  
 </html>
