@@ -1,16 +1,16 @@
 <?php 
-    include "../../../php/dbconnect.php";
-    include "../../../php/class/interfaz.php";
-    include "../../../php/funciones.php";
-    session_start(); 
-    comprobarAdmin();
+       include "../../../php/dbconnect.php";
+       include "../../../php/class/interfaz.php";
+       include "../../../php/funciones.php";
+      session_start(); 
+      comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clientes</title>
+    <title>Modificar Cliente </title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -22,19 +22,23 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
-  <body style="background-color: #f5f1e7; background-image:none;">
+<body>
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_clientes(); ?>
+  
+    <?php $cliente=Interfaz::mod_datos_cliente(); ?>
 
-    
-    <!-- Muestra una tabla con los clientes almacenados en la BD -->
-    <?php $clientes = Interfaz::listar_clientes(); ?>
-    
-    <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?>
-  </body>
+
+   <!-- Código PHP para añadir un nuevo inmueble -->
+   <?php gestion_datos_cliente(); ?>
+ <!-- footer -->
+ <?php $home = Interfaz::footer(); ?> 
+
+    <script src='/js/validar_nuevo_inmueble.js'></script>
+</body>
 </html>
-    
+ 
+ 

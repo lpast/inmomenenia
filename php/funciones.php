@@ -1,53 +1,55 @@
 <?php
 
 function iniciar_sesion(){
-  if ($_SESSION['tipo'] == 'u') {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
-  } else if ($_SESSION['tipo'] == 'a') {
-     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
-  }
+ /* if (isset($_SESSION['tipo'])) {*/
+    if ($_SESSION['tipo'] == 'u') {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
+    } else if ($_SESSION['tipo'] == 'a') {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
+    }
 
-  if (isset($_POST['acceder'])) {
-    $usuario = $_POST['nick'];
-    $pass = $_POST['password'];
+    if (isset($_POST['acceder'])) {
+      $usuario = $_POST['nick'];
+      $pass = $_POST['password'];
 
-    $con = abrirConexion();
-    $sql = "SELECT * from tbl_usuarios where nom_user='$usuario' and pass='$pass'";
-    $consulta = mysqli_query($con, $sql);
+      $con = abrirConexion();
+      $sql = "SELECT * from tbl_usuarios where nom_user='$usuario' and pass='$pass'";
+      $consulta = mysqli_query($con, $sql);
 
-    if ($consulta) {
-      if (mysqli_num_rows($consulta) > 0) {
-        $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-        $_SESSION['id_usuario'] = $fila['id'];
+      if ($consulta) {
+        if (mysqli_num_rows($consulta) > 0) {
+          $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+          $_SESSION['id_usuario'] = $fila['id'];
 
-        if ($usuario == 'administrador') {
-          $_SESSION['tipo'] = 'a';
-          $_SESSION['nombre'] = 'Administrador';
-          $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
-        } else {
-          $_SESSION['tipo'] = 'u';
-          $_SESSION['nombre'] = $fila['nombre'] . ' ' . $fila['apellidos'];
-          $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
-        }
+          if ($usuario == 'administrador') {
+            $_SESSION['tipo'] = 'a';
+            $_SESSION['nombre'] = 'Administrador';
+            $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
+          } else {
+            $_SESSION['tipo'] = 'u';
+            $_SESSION['nombre'] = $fila['nombre'] . ' ' . $fila['apellidos'];
+            $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
+          }
 
-        if (isset($_POST['check'])) {
-          $datos = session_encode();
-          setcookie('datos', $datos, time() + (15 * 24 * 60 * 60), '/');
-        }
-        
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          if (isset($_POST['check'])) {
+            $datos = session_encode();
+            setcookie('datos', $datos, time() + (15 * 24 * 60 * 60), '/');
+          }
+
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <strong>¡Acceso correcto!</strong> 
           </div>";
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
+        }
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
-      }
-    } else {
-      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
         <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
+      }
+      echo $home;
     }
-    echo $home;
-  }
+ /* }*/
 }
 
 function comprobarUsuario() {
@@ -66,18 +68,18 @@ function comprobarUsuario() {
   }
 }
 
-function comprobarAdmin(){
+function comprobarAdmin() {
   if (isset($_SESSION['tipo'])){
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
     }
   } else if ($_COOKIE['datos']) {
     session_decode($_COOKIE['datos']);
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
     }
   } else {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
   }
 }
 
@@ -1121,7 +1123,6 @@ function buscar_Inmuebles() {
   }//----fin isset
 }
 
-
 function listar_inmuebles(){
   $conexion = abrirConexion();
       $mostrar = "SELECT id, direccion, descripcion, precio, id_cliente, imagen
@@ -1158,7 +1159,7 @@ function listar_inmuebles(){
 
 function registrarse() {
   if (isset($_POST['cancelar'])) {
-    header("url=/index.php");
+    header("url=../index.php");
   }
 
   if (isset($_POST['alta_usuario'])) {
@@ -1205,6 +1206,7 @@ function registrarse() {
   }
  
 }
+
 function datos_noticia() {
   if (isset($_POST['ver'])) {
     $id = $_POST['id'];
@@ -1604,6 +1606,40 @@ function borrar_inmueble(){
     }
 } /* -------------------- REVISAR -----*/
 
+function modificar_inmueble() {
+  if (isset($_POST['modificar'])) {
+    $id = $_POST['id'];
+
+    // almaceno en variables los datos para mostrarlas después en los 'value' del formulario
+    $conexion = abrirConexion();
+    $sql = "SELECT * from clientes where id='$id'";
+
+    $consulta = mysqli_query($conexion, $sql);
+
+    if (!$consulta) {
+      echo "No se han encontrado los datos del usuario en la BD";
+      header("location:../php/clientes.php");
+    } else {
+      $num_filas = mysqli_num_rows($consulta);
+      while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+        $tipo = $fila['tipo'];
+        $nombre = $fila['nombre'];
+        $apellidos = $fila['apellidos'];
+        $telefono = $fila['telefono'];
+        $email = $fila['email'];
+        $calle = $fila['calle'];
+        $portal = $fila['portal'];
+        $piso = $fila['piso'];
+        $puerta = $fila['puerta'];
+        $cp = $fila['cp'];
+        $localidad = $fila['localidad'];
+      }
+    }
+    mysqli_close($conexion);
+  }
+
+}
+
 function añadir_noticias() : bool {
   if (isset($_POST['añadir_noticia'])) {
     $id = $_POST['id'];
@@ -1677,25 +1713,6 @@ function añadir_noticias() : bool {
   return true;
 }
 
-function borrar_noticias(): bool {
-  if (isset($_POST['borrar'])) {
-    $id = $_POST['id'];
-    $conexion = abrirConexion();
-    $borrar = "DELETE from tbl_noticias where id='$id'";
-    if (mysqli_query($conexion,$borrar)) {
-     echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong> Se ha borrado correctamente la notia</strong> 
-        </div>";
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
-    } else {
-      echo "<p>¡Error! No se ha podido borrar la noticia...</p>";
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
-    }
-    mysqli_close($conexion);
-  }
-  return true;
-}
-
 function buscar_noticias() : bool {
   if (isset($_POST['buscar_not'])) {
     $titular = $_POST['titular'];
@@ -1727,6 +1744,26 @@ function buscar_noticias() : bool {
   }
   return true;
 }
+function borrar_noticias(): bool {
+  if (isset($_POST['borrar'])) {
+    $id = $_POST['id'];
+    $conexion = abrirConexion();
+    $borrar = "DELETE from tbl_noticias where id='$id'";
+    if (mysqli_query($conexion,$borrar)) {
+     echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <strong> Se ha borrado correctamente la notia</strong> 
+        </div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
+    } else {
+      echo "<p>¡Error! No se ha podido borrar la noticia...</p>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
+    }
+    mysqli_close($conexion);
+  }
+  return true;
+}
+
+
 
 function añadir_cliente(): bool {
   if (isset($_POST['cancelar'])) {
@@ -2144,4 +2181,37 @@ function buscar_cliente() {
     }
   }
 }
- 
+
+function gestion_datos_cliente() {
+  if (isset($_POST['modificar'])) {
+    $id = $_POST['id'];                    
+    $tipo = $_POST['tipo'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
+    $calle = $_POST['calle'];
+    $portal = $_POST['portal'];
+    $piso = $_POST['piso'];
+    $puerta = $_POST['puerta'];
+    $cp = $_POST['cp'];
+    $localidad = $_POST['localidad'];
+
+    $conexion = abrirConexion();
+    $actualizar = "UPDATE tbl_clientes set tipo= '$tipo',nombre='$nombre',apellidos='$apellidos',telefono='$telefono',email='$email',calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' where id='$id'";
+
+    if (mysqli_query($conexion,$actualizar)) {
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <b>Datos actualizados correctamente</b> 
+        </div>";
+
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
+    } else {
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+      <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+    </div></div></div>";
+    }
+    mysqli_close($conexion);
+  }
+
+}

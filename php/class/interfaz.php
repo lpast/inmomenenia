@@ -165,6 +165,37 @@ class Interfaz {
     return true;
   }
 
+  static public function menuAdmin(): bool {
+    if (isset($_SESSION['tipo'])) {
+      $tipo_usuario = $_SESSION['tipo'];
+      if ($tipo_usuario == 'a') {
+        echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>                        
+            </button>
+            <a href='../../../index.html'><img src='../../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+            </div>
+          <div class='collapse navbar-collapse' id='nav-responsive'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li><a href='../../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+            <li><a href='../noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
+            <li><a href='../clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+            <li><a href='../inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+            <li><a href='../citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+            <li><a href='../../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+          </ul>
+          </div>
+        </div>
+        </nav>";
+      }
+    }
+    return true;
+  }
+
   static public function mostrar_home(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>";
@@ -184,18 +215,14 @@ class Interfaz {
         echo "</div>";
       }
       if ($tipo_usuario == 'a') {
-        //Mostramos una imagen aleatoria 
         echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-                <h1 align='center'> Administración InmoMenenia</h1>
-              </div>
-            
-              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
-        self::mostrar_noticias();
-        echo "</div>
+          <h1 align='center'> Administración InmoMenenia </h1>
+        </div>";
+        self::area_administrador();
 
-              <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
-        self::form_buscar_Inmuebles();
-        buscar_Inmuebles();
+        echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>";
+            self::form_buscar_Inmuebles();
+            buscar_Inmuebles();
         echo "</div>";
       }
     } else {
@@ -204,7 +231,7 @@ class Interfaz {
             </div>";
       self::form_buscar_Inmuebles();
       buscar_Inmuebles();
-      echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
+      echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>";
       self::mostrar_noticias();
       echo "</div>";
     }
@@ -218,7 +245,7 @@ class Interfaz {
             <div class='panel-group'>
               <div class='panel panel-default cabecera-inicio'>
                 <div class='panel-heading'>
-                  <h2 align='center'>Descubre lo que tenemos para ti</h2>
+                  <h2 align='center'><img src='../media/iconos/lupa.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
                 </div>
               <div class='panel-body'>
               <form class='form-horizontal' action='#' method='post'>
@@ -466,15 +493,15 @@ class Interfaz {
               $tipo_usuario = $_SESSION['tipo'];
               if ($tipo_usuario == 'u') {
                 echo "<div class='favorito'>
-                <button class='button button5'><img  id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
-                  <a href='#' id='añadir_favorito' type='submit' name='añadir_favorito'> Añadir favorito</a></button>
-                 
-                  <input type='hidden' id='id_usuario' value='$_SESSION[id_usuario]
-                  <input type='hidden' id='id_inmueble' value='$_SESSION[id_inmueble]'/>";
-                echo "$_SESSION[id_usuario]";
-                echo "$_SESSION[id_inmueble]";
+                <form>
+                  <button class='button button5'><img  id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
+                    <a href='#' id='añadir_favorito' type='submit' name='añadir_favorito'> Añadir favorito</a></button>
+                    <input type='hidden' id='id_usuario' value='$_SESSION[id_usuario]'/>
+                    <input type='hidden' id='id_inmueble' value='$_SESSION[id_inmueble]'/>";
+                    echo "$_SESSION[id_usuario]";
+                    echo "$_SESSION[id_inmueble]
+                </form>";
                 añadir_favorito();
-
                 echo "</div>";
               }
             }
@@ -1464,6 +1491,42 @@ class Interfaz {
 
 
   /* Menú de navegación administrador*/
+  static public function area_administrador(): bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>";
+    
+        if (isset($_SESSION['tipo'])) {
+          $tipo_usuario = $_SESSION['tipo'];
+          if ($tipo_usuario == 'a') {
+            //Mostramos una imagen aleatoria 
+            echo "<h2 align='center'> ¿Qué quieres hacer?</h2>
+                    <div class ='col-md-offset-2 col-md-4'>
+                      <ul>
+                      <lo><a href='administrador/citas/citas.php'><img src='../../media/iconos/calendar.png' alt='logo-citas' width='150px' align='center'>
+                        <h2>Ver Citas</h2></a>
+                      </lo>
+                        <lo><a href='administrador/inmuebles/inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-inmuebles' width='150px' align='center'>
+                        <h2> Ver Inmuebles </h2></a>
+                        </lo>
+                      </ul>
+                    </div>
+                    <div class ='col-md-offset-2 col-md-4'>
+                    <ul>
+                        <lo><a href='administrador/clientes/clientes.php'><img src='../../media/iconos/mis-datos.png' alt='logo-clientes' width='150px' align='center'>
+                        <h2>Ver CLientes </h2></a></lo>
+                        <lo><a href='administrador/noticias/noticias.php'><img src='../../media/iconos/newspaper.png' alt='logo-noticias' width='150px' align='center'>
+                        <h2>Ver Noticias </h2></a></lo>
+                      </ul>
+                    </div>
+                  </div>";
+          }
+        }
+      echo "</div>";
+    echo "</div>";
+
+
+    return true;
+  }
 
   static public function gestion_inmuebles(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
@@ -1923,9 +1986,11 @@ return true;
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-primary btn-md' href='../php/administrador/noticias/añadir_noticias.php'>Añadir usuario</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='../php/administrador/noticias/borrar_noticias.php'>Borrar usuario</a></li>
-                <li><a type='button' class='btn btn-primary btn-md' href='../php/administrador/noticias/buscar_noticias.php'>Buscar usuario</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='../php/administrador/noticias/añadir_cliente.php'>Añadir cliente</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='../php/administrador/noticias/borrar_cliente.php'>Borrar cliente</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='../php/administrador/noticias/buscar_cliente.php'>Buscar cliente</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='../php/administrador/noticias/modificar_cliente.php'>Buscar cliente</a></li>
+
               </ul>
             </div>
           </nav>
@@ -2021,7 +2086,7 @@ return true;
     return true;
   }
 
-  static public function listar_usuarios(): bool {
+  static public function listar_clientes(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
       <div class='col-xs-12 lista-clientes'>
@@ -2030,39 +2095,30 @@ return true;
            <div class='panel-body'>
              <div class='table-responsive'>
               <div class='table table-striped'>";
-    $conexion = abrirConexion();
-    $consulta = "SELECT id, nombre, apellidos , direccion ,telefono 
-                            from tbl_clientes
-                            order by id";
-    $datos = mysqli_query($conexion, $consulta);
+                $conexion = abrirConexion();
+                $consulta = "SELECT id, nombre, apellidos  ,telefono, email, localidad from tbl_clientes order by id";
+                $datos = mysqli_query($conexion, $consulta);
 
-    if (!$datos) {
-      echo "No hay datos que mostrar";
-    } else {
-      $num_filas = mysqli_num_rows($datos);
+                if (!$datos) {
+                  echo "No hay datos que mostrar";
+                } else {
+                  $num_filas = mysqli_num_rows($datos);
 
-      if ($num_filas == 0) {
-        echo "No hay ningún usuario registrado";
-      } else {
-        $clientes_registrados = $num_filas - 2;
-        echo "<p><strong>Número de usuarios registrados:</strong> $clientes_registrados</p>";
-        echo "<table class='table table-hover'";
-        echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th><th>Modificar</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-          if ($fila['id'] > 1) {
-            if ($fila['telefono2'] == '') {
-              echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>Sin información</td>
-                          <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-            } else {
-              echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[telefono2]</td>
-                          <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-            }
-          }
-        }
-      }
-    }
-    mysqli_close($conexion);
-    echo "</div>
+                  if ($num_filas == 0) {
+                    echo "No hay clientes";
+                  } else {
+                    $clientes_registrados = $num_filas - 2;
+                    echo "<p><strong>Número de clientes:</strong> $clientes_registrados</p>";
+                    echo "<table class='table table-hover'";
+                    echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Modificar</th></tr></thead>";
+                    while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+                      echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                          <td><form action='modificar_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                    }
+                  }
+                }
+                mysqli_close($conexion);
+              echo "</div>
             </div>
            </div>
           </div>
@@ -2116,6 +2172,138 @@ return true;
               </form>";
     return true;
   }
+
+  static public function mod_datos_cliente(): bool {
+    echo "<div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+        <h2 align='center' style='margin-top: 50px;'>Estos son los datos de cliente</h2>
+          <p align='center'><b>Aquí puedes modificarlos</b></p>";
+
+          $id = $_POST['id'];
+
+          $con = abrirConexion();
+          $sql = "SELECT * FROM tbl_clientes WHERE id='$id'";
+
+          $consulta = mysqli_query($con, $sql);
+
+          if (!$consulta) {
+            echo 'Error al hacer la consulta en BD... :(';
+          } else {
+            $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+            $id = $fila['id'];
+            $nombre = $fila['nombre'];
+            $apellidos = $fila['apellidos'];
+            $calle = $fila['calle'];
+            $portal = $fila['portal'];
+            $piso = $fila['piso'];
+            $puerta = $fila['direccion'];
+            $cp = $fila['cp'];
+            $localidad = $fila['localidad'];
+            $telefono = $fila['telefono'];
+            $email = $fila['email'];
+          }
+
+          echo "<div class='container-fluid menu-inicio'>
+            <div class='row'>
+              <div class='col-xs-12 col-md-8 col-md-offset-2'>
+                <div class='panel-group'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading'>
+                      <h4 align='center'>Modificar cliente</h4>
+                    </div>
+                    <div class='panel-body'>
+                      <form class='form-horizontal' action='#' method='post'>
+                        <div class='form-group'>
+                          <label class=' col-sm-2'>ID:</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='id' value='$id' readonly >
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class=' col-sm-2'>Nombre</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='nombre' value='$nombre'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Apellidos:</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='apellidos' value='$apellidos'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Teléfono:</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='telefono' 
+                            value='$telefono'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Email:</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='email' 
+                            value='$email'> 
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Calle</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='calle' value='$calle'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Portal</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='portal' value='$portal'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Piso</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='piso' value='$piso'>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Puerta</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='puerta' value='$puerta'>
+                          </div>
+                        </div>
+                          <div class='form-group'>
+                          <label class='col-sm-2'>CP</label>
+                            <div class='col-sm-10'>
+                              <input class='form-control' type='text' name='cp' value='$cp'>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class='col-sm-2'>Localidad</label>
+                            <div class='col-sm-10'>
+                              <input class='form-control' type='text' name='cp' value='$localidad'>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <div class='col-sm-12 col-sm-offset-4' style='padding-top:15px'>
+                            <div class='col-sm-2'>
+                              <input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'>
+                            </div>
+                            <div class='col-sm-2'>
+                              <a href='../php/administrador/clientes/clientes.php' class='btn btn-danger'>Cancelar</a>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>";
+          return true;
+  }
+  
   static public function gestion_citas(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
