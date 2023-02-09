@@ -32,12 +32,12 @@
     <?php $cliente=Interfaz::mod_datos_cliente(); ?>
 
 
-   <!-- Código PHP para añadir un nuevo inmueble -->
-   <?php gestion_datos_cliente(); ?>
- <!-- footer -->
- <?php $home = Interfaz::footer(); ?> 
+    <!-- Código PHP para añadir un nuevo inmueble -->
+    <?php modificar_datos_cliente(); ?>
 
-    <script src='/js/validar_nuevo_inmueble.js'></script>
+    <!-- footer -->
+    <?php $footer = Interfaz::footer(); ?> 
+
 </body>
 </html>
  

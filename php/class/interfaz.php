@@ -1408,40 +1408,7 @@ class Interfaz {
     return true;
   }
 
-  static public function listar_inmuebles(): bool {
-    $conexion = abrirConexion();
-    $mostrar = "SELECT id, direccion, metros, descripcion, precio, id_cliente, imagen
-                    FROM tbl_inmuebles";
-    $datos = mysqli_query($conexion, $mostrar);
-    if (!$datos) {
-      echo "No hay datos que mostrar";
-    } else {
-      $num_filas = mysqli_num_rows($datos);
 
-      if ($num_filas == 0) {
-        echo "No hay ningún inmueble almacenado";
-      } else {
-        echo "<p><strong>Total de inmuebles almacenados:</strong> $num_filas</p>";
-        echo "<table class='table table-hover'";
-        echo "<thead><tr><th>ID</th><th>Dirección</th><th>Metros</th><th>Precio</th><th>Imagen</th><th>Ver inmueble</th><th>Modificar inmueble</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-          // si es el usuario 'disponible' muestro cartel de disponible
-          if ($fila['id_cliente'] == 0) {
-            echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td>td>$fila[metros]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td></td>
-              <td><form action='/php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-              <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-          } else {
-            echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td></td>
-                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
-                      <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-          }
-        }
-        echo "</table>";
-      }
-    }
-    mysqli_close($conexion);
-    return true;
-  }
 
   static public function mostrar_ProximasCitas(): bool {
     echo '<div class="container-fluid">
@@ -1546,7 +1513,40 @@ class Interfaz {
     </div>";
     return true;
   }
+  static public function listar_inmuebles(): bool {
+    $conexion = abrirConexion();
+    $mostrar = "SELECT id, direccion, metros, descripcion, precio, id_cliente, imagen
+                    FROM tbl_inmuebles";
+    $datos = mysqli_query($conexion, $mostrar);
+    if (!$datos) {
+      echo "No hay datos que mostrar";
+    } else {
+      $num_filas = mysqli_num_rows($datos);
 
+      if ($num_filas == 0) {
+        echo "No hay ningún inmueble almacenado";
+      } else {
+        echo "<p><strong>Total de inmuebles almacenados:</strong> $num_filas</p>";
+        echo "<table class='table table-hover'";
+        echo "<thead><tr><th>ID</th><th>Dirección</th><th>Metros</th><th>Precio</th><th>Imagen</th><th>Ver inmueble</th><th>Modificar inmueble</th></tr></thead>";
+        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+          // si es el usuario 'disponible' muestro cartel de disponible
+          if ($fila['id_cliente'] == 0) {
+            echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td>td>$fila[metros]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td></td>
+              <td><form action='/php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
+              <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+          } else {
+            echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='ver' value='Ver'></form></td>
+                      <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-primary' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+          }
+        }
+        echo "</table>";
+      }
+    }
+    mysqli_close($conexion);
+    return true;
+  }
   static public function form_añadir_inmueble(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
@@ -2107,7 +2107,7 @@ return true;
                   if ($num_filas == 0) {
                     echo "No hay clientes";
                   } else {
-                    $clientes_registrados = $num_filas - 2;
+                    $clientes_registrados = $num_filas;
                     echo "<p><strong>Número de clientes:</strong> $clientes_registrados</p>";
                     echo "<table class='table table-hover'";
                     echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Modificar</th></tr></thead>";
@@ -2192,12 +2192,13 @@ return true;
           } else {
             $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
             $id = $fila['id'];
+            $tipo = $fila['tipo'];
             $nombre = $fila['nombre'];
             $apellidos = $fila['apellidos'];
             $calle = $fila['calle'];
             $portal = $fila['portal'];
             $piso = $fila['piso'];
-            $puerta = $fila['direccion'];
+            $puerta = $fila['puerta'];
             $cp = $fila['cp'];
             $localidad = $fila['localidad'];
             $telefono = $fila['telefono'];
@@ -2218,6 +2219,12 @@ return true;
                           <label class=' col-sm-2'>ID:</label>
                           <div class='col-sm-10'>
                             <input class='form-control' type='text' name='id' value='$id' readonly >
+                          </div>
+                        </div>
+                        <div class='form-group'>
+                          <label class=' col-sm-2'>Tipo</label>
+                          <div class='col-sm-10'>
+                            <input class='form-control' type='text' name='tipo' value='$tipo'>
                           </div>
                         </div>
                         <div class='form-group'>
@@ -2280,7 +2287,7 @@ return true;
                         <div class='form-group'>
                           <label class='col-sm-2'>Localidad</label>
                             <div class='col-sm-10'>
-                              <input class='form-control' type='text' name='cp' value='$localidad'>
+                              <input class='form-control' type='text' name='localidad' value='$localidad'>
                             </div>
                           </div>
                         </div>
@@ -2288,7 +2295,7 @@ return true;
                           <div class='col-sm-12 col-sm-offset-4' style='padding-top:15px'>
                             <div class='col-sm-2'>
                               <input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'>
-                            </div>
+                              </div>
                             <div class='col-sm-2'>
                               <a href='../php/administrador/clientes/clientes.php' class='btn btn-danger'>Cancelar</a>
                             </div>

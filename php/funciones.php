@@ -71,15 +71,15 @@ function comprobarUsuario() {
 function comprobarAdmin() {
   if (isset($_SESSION['tipo'])){
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
     }
   } else if ($_COOKIE['datos']) {
     session_decode($_COOKIE['datos']);
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
     }
   } else {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
   }
 }
 
@@ -1263,7 +1263,7 @@ function gestion_datos_usuario(): bool {
     $telefono = $_POST['telefono'];
 
     $con = abrirConexion();
-    $sql = "UPDATE tbl_clientes SET calle=$calle, portal=$portal, piso=$piso, puerta=$puerta, telefono=$telefono WHERE id=$id";
+    $sql = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', telefono='$telefono' WHERE id='$id'";
 
      if (mysqli_query($con,$sql)) {
        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
@@ -2182,36 +2182,42 @@ function buscar_cliente() {
   }
 }
 
-function gestion_datos_cliente() {
-  if (isset($_POST['modificar'])) {
-    $id = $_POST['id'];                    
-    $tipo = $_POST['tipo'];
-    $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
-    $telefono = $_POST['telefono'];
-    $email = $_POST['email'];
-    $calle = $_POST['calle'];
-    $portal = $_POST['portal'];
-    $piso = $_POST['piso'];
-    $puerta = $_POST['puerta'];
-    $cp = $_POST['cp'];
-    $localidad = $_POST['localidad'];
-
-    $conexion = abrirConexion();
-    $actualizar = "UPDATE tbl_clientes set tipo= '$tipo',nombre='$nombre',apellidos='$apellidos',telefono='$telefono',email='$email',calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' where id='$id'";
-
-    if (mysqli_query($conexion,$actualizar)) {
-      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <b>Datos actualizados correctamente</b> 
-        </div>";
-
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
-    } else {
-      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-      <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-    </div></div></div>";
-    }
-    mysqli_close($conexion);
+function modificar_datos_cliente() {
+  
+  if (isset($_POST['cancelar'])) {
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=clientes.php'>";
   }
 
+  if (isset($_POST['modificar'])) {
+    
+      $id = $_POST['id'];                    
+      $tipo = $_POST['tipo'];
+      $nombre = $_POST['nombre'];
+      $apellidos = $_POST['apellidos'];
+      $telefono = $_POST['telefono'];
+      $email = $_POST['email'];
+      $calle = $_POST['calle'];
+      $portal = $_POST['portal'];
+      $piso = $_POST['piso'];
+      $puerta = $_POST['puerta'];
+      $cp = $_POST['cp'];
+      $localidad = $_POST['localidad'];
+  
+      $conexion = abrirConexion();
+      $sql = "UPDATE tbl_clientes SET tipo= $tipo, nombre=$nombre, apellidos=$apellidos,telefono=$telefono,email=$email,calle=$calle, portal=$portal, piso=$piso, puerta=$puerta, cp=$cp, localidad=$localidad WHERE id=$id";
+  
+      if (mysqli_query($conexion,$sql)) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <b>Datos actualizados correctamente</b> 
+          </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
+      } else {
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+      </div></div></div>";
+      }
+      mysqli_close($conexion);
+    }
+  
+  return true;
 }
