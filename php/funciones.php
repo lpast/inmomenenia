@@ -71,7 +71,7 @@ function comprobarUsuario() {
 function comprobarAdmin() {
   if (isset($_SESSION['tipo'])){
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../../../php/home.php'>";
     }
   } else if ($_COOKIE['datos']) {
     session_decode($_COOKIE['datos']);
@@ -1246,49 +1246,64 @@ function datos_noticia() {
 /* USUARIOS */
 
 function gestion_datos_usuario(): bool {
-
-  $id = $_SESSION['id_usuario'];
-
   if (isset($_POST['cancelar'])) {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../mis_datos.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=clientes.php'>";
   }
-
   if (isset($_POST['guardar'])) {
-    if ($_POST['password'] == '') {
-    
-    $calle = $_POST['calle'];
-    $portal = $_POST['portal'];
-    $piso = $_POST['piso'];
-    $puerta = $_POST['puerta'];
-    $telefono = $_POST['telefono'];
+    if ($_POST['pass'] == '') {
+      $id = $_POST['id'];
+      $nombre = $_POST['nombre'];
+      $apellidos=$_POST['apellidos'];
+      $calle = $_POST['calle'];
+      $portal = $_POST['portal'];
+      $piso = $_POST['piso'];
+      $puerta = $_POST['puerta'];
+      $localidad = $_POST['localidad'];
+      $cp = $_POST['cp'];
+      $telefono = $_POST['telefono'];
+      $email = $_POST['email'];
+      $nom_user = $_POST['nom_user'];
 
-    $con = abrirConexion();
-    $sql = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', telefono='$telefono' WHERE id='$id'";
+      $con = abrirConexion();
+      $sql = "UPDATE tbl_usuarios, tbl_clientes
+      SET tbl_usuarios.nombre='$nombre', tbl_usuarios.apellidos='$apellidos', tbl_usuarios.telefono='$telefono', tbl_usuarios.email='$email',
+       tbl_usuarios.nom_user='$nom_user', tbl_clientes.calle='$calle', tbl_clientes.portal='$portal', tbl_clientes.piso='$piso', tbl_clientes.puerta='$puerta', tbl_clientes.cp='$cp', tbl_clientes.localidad='$localidad'
+      WHERE tbl_usuarios.id='$id'";
 
-     if (mysqli_query($con,$sql)) {
-       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-           <b>Datos actualizados correctamente</b> 
-         </div>";
+      if (mysqli_query($con,$sql)) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <b>Datos actualizados correctamente</b> 
+          </div>";
 
-       echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
-     } else {
-       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-       <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-     </div></div></div>";
-     }
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+      } else {
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+      </div></div></div>";
+      }
+    } else {
+      $id = $_POST['id'];
+      $nombre = $_POST['nombre'];
+      $apellidos=$_POST['apellidos'];
+      $calle = $_POST['calle'];
+      $portal = $_POST['portal'];
+      $piso = $_POST['piso'];
+      $puerta = $_POST['puerta'];
+      $localidad = $_POST['localidad'];
+      $cp = $_POST['cp'];
+      $telefono = $_POST['telefono'];
+      $email = $_POST['email'];
+      $nom_user = $_POST['nom_user'];
+      $pass = $_POST['pass'];
 
-   } else {
-    $id = $_POST['id'];
-    $telefono = $_POST['telefono'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+      $con = abrirConexion();
+      $sql = "UPDATE tbl_clientes INNER JOIN tbl_usuarios ON tbl_clientes.id = u.id 
+      SET tbl_clientes.nombre='$nombre', tbl_clientes.apellidos='$apellidos', tbl_clientes.calle='$calle', tbl_clientes.portal='$portal'; tbl_clientes.piso='$piso', tbl_clientes.puerta='$puerta', tbl_clientes.cp='$cp', tbl_clientes.localidad='$localidad';
+      tbl_clientes.telefono='$telefono', tbl_clientes.email='$email', tbl_usuarios.nombre='$nombre', tbl_usuarios.apellidos='$apellidos', tbl_usuarios.telefono='$telefono', tbl_usuarios.email='$email', tbl_usuarios.nom_user='$nom_user', tbl_usuarios='$pass' WHERE tbl_clientes.id='$id'";
 
-     $con = abrirConexion();
-   
-     $sql = "UPDATE tbl_usuarios SET telefono=$telefono, email=$email, pass=password WHERE id=$id";
-     if (mysqli_query($con,$sql)) {
-       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-           <b>Datos actualizados correctamente</b> 
+      if (mysqli_query($con,$sql)) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <b>Datos actualizados correctamente</b> 
          </div>";
        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
      } else {
@@ -2189,7 +2204,6 @@ function modificar_datos_cliente() {
   }
 
   if (isset($_POST['modificar'])) {
-    
       $id = $_POST['id'];                    
       $tipo = $_POST['tipo'];
       $nombre = $_POST['nombre'];
@@ -2204,7 +2218,7 @@ function modificar_datos_cliente() {
       $localidad = $_POST['localidad'];
   
       $conexion = abrirConexion();
-      $sql = "UPDATE tbl_clientes SET tipo= $tipo, nombre=$nombre, apellidos=$apellidos,telefono=$telefono,email=$email,calle=$calle, portal=$portal, piso=$piso, puerta=$puerta, cp=$cp, localidad=$localidad WHERE id=$id";
+      $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos',telefono='$telefono',email='$email',calle='$calle,' portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' WHERE id='$id'";
   
       if (mysqli_query($conexion,$sql)) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>

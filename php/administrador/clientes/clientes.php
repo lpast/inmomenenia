@@ -3,7 +3,6 @@
     include "../../../php/class/interfaz.php";
     include "../../../php/funciones.php";
     session_start(); 
-    comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">

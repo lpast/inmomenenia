@@ -67,7 +67,7 @@
     <!-- footer -->
    <?php Interfaz::footer();?>
 
- 
+    <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();   
           });

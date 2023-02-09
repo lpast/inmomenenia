@@ -3,7 +3,6 @@
        include "../../../php/class/interfaz.php";
        include "../../../php/funciones.php";
       session_start(); 
-      comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,12 +28,11 @@
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_clientes(); ?>
   
-    <?php $cliente=Interfaz::mod_datos_cliente(); ?>
+    <!-- Formmulario con datos -->   
+    <?php $datos=Interfaz::mod_datos_cliente(); ?>
 
 
-    <!-- Código PHP para añadir un nuevo inmueble -->
-    <?php modificar_datos_cliente(); ?>
-
+    
     <!-- footer -->
     <?php $footer = Interfaz::footer(); ?> 
 

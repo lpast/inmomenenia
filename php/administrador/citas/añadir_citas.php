@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestión citas</title>
+    <title>Añadir citas</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -40,7 +40,7 @@
             <form class='form-horinzontal panel-body' action='#' method='post'>
                 <div class='form-group'>
                     <label class=' col-sm-2'>ID:</label>
-                    <div class='col-sm-10'>"
+                    <div class='col-sm-10'>
                       <?php 
                         $con = abrirConexion();
                         $consulta = "SELECT auto_increment from information_schema.tables where table_schema='db_inmobiliaria' and table_name='tbl_citas'";
@@ -93,7 +93,7 @@
                     <select class="form-control" name="id_cliente">
                         <?php 
                           $conexion = abrirConexion();
-                          $consulta = "SELECT id, nombre, apellidos from clientes";
+                          $consulta = "SELECT id, nombre, apellidos from tbl_clientes";
                           $clientes = mysqli_query($conexion,$consulta);
                           
                           if (!$clientes) {
@@ -157,8 +157,7 @@
         
         $conexion = abrirConexion();
 
-        $insertar = "INSERT into tbl_citas (id,fecha,hora,motivo,lugar,id_cliente)
-              values (null,'$fecha','$hora','$motivo','$lugar','$id_cliente')";
+        $insertar = "INSERT INTO tbl_citas (id,fecha,hora,motivo,lugar,id_cliente) VALUES (null,'$fecha','$hora','$motivo','$lugar','$id_cliente')";
 
         if (mysqli_query($conexion,$insertar)) {
          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
