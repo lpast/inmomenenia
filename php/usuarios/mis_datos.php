@@ -37,7 +37,7 @@
     <!-- Mostramos formulario con datos del usuario -->
     <?php $datos = Interfaz::datos_usuario(); ?>
 
-    <!-- Gestionamos datos usuaior -->
+    <!-- Gestionamos datos usuaio -->
     <?php gestion_datos_usuario();?>
     
      <!-- footer -->

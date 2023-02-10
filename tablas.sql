@@ -32,10 +32,10 @@ CREATE TABLE IF NOT EXISTS tbl_inmuebles (
 
 CREATE TABLE IF NOT EXISTS tbl_usuarios (
    id varchar (10) NOT NULL UNIQUE,
-   nombre varchar (20) NOT NULL,
-   apellidos varchar (30) NOT NULL,
-   telefono int (9) NOT NULL,
-   email varchar (30),
+   nombre varchar (20) NOT NULL REFERENCES tbl_clientes(nombre),
+   apellidos varchar (30) NOT NULL REFERENCES tbl_clientes(apellidos),
+   telefono int (9) NOT NULL REFERENCES tbl_clientes(telefono),
+   email varchar (30) REFERENCES tbl_clientes(email),
    fecha_alta DATE NOT NULL,
    nom_user varchar (20) NOT NULL,
    pass varchar (5) NOT NULL,
@@ -43,15 +43,15 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
 );
 
 CREATE TABLE IF NOT EXISTS tbl_passwords (
-  id varchar (10) NOT NULL UNIQUE,
-  pass varchar (5) NOT NULL,
+  id varchar (10) NOT NULL UNIQUE REFERENCES tbl_usuarios(id),
+  pass varchar (5) NOT NULL REFERENCES tbl_usuarios(pass),
   CONSTRAINT pk_psw_id PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS tbl_favoritos (
    id_favorito int (10) NOT NULL UNIQUE,
-   id_usuario varchar (10) NOT NULL,
-   id_inmueble int (5) NOT NULL
+   id_usuario varchar (10) NOT NULL REFERENCES tbl_usuarios(id),
+   id_inmueble int (5) NOT NULL REFERENCES tbl_inmuebles(id)
 );
 
  CREATE TABLE IF NOT EXISTS tbl_clientes (
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS tbl_citas (
    hora time NOT NULL,
    motivo varchar(50) NOT NULL,
    lugar varchar(30) NOT NULL,
-   id_cliente  varchar (10) NOT NULL
+   id_cliente  varchar (10) NOT NULL REFERENCES tbl_usuarios(id)
 );
 
 CREATE TABLE IF NOT EXISTS tbl_noticias (
@@ -108,9 +108,9 @@ INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad,
 (0115, 'alquiler', 'Camino Flores', 36, '4', 'B', 50195, 'Pastriz', 90, 1, 1, 'no', 'no', 'no', 'segunda mano', 'Casa  en Pastriz','Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'salon_0489.png','2022-06-20', '72036547J'),
 (0386, 'venta', 'Fueros', 86, null, null, 50171, 'La Puebla de Alfindén', 100, 3, 2, 'si', 'si', 'no', 'segunda mano', 'Oportunidad', 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 350, 'fachada_0890.png','2022-10-02', '87456321N'),
 (0533, 'venta', 'Avd. de la Ermita', 53, '6', 'B', 50171, 'La Puebla de Alfindén', 134, 3, 3, 'no', 'no', 'no', 'segunda mano', 'Oportunidad', 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 159.000, 'fachada_0533.png','2022-10-10', '20489695S'),
-(0720, 'venta', 'Calle Almendro', 26, '6', 'A', 50171, 'La Puebla de Alfindén', 125, 2, 1, 'si', 'si', 'no', 'obra nueva', 'Preciosa casa en venta','Preciosa casa para una familia. Construcción terminada hace pocos meses, lista para entrar a vivir.', 189.000, 'salon_0059.png','2022-05-12', '458054786A')
+(0720, 'venta', 'Calle Almendro', 26, '6', 'A', 50171, 'La Puebla de Alfindén', 125, 2, 1, 'si', 'si', 'no', 'obra nueva', 'Preciosa casa en venta','Preciosa casa para una familia. Construcción terminada hace pocos meses, lista para entrar a vivir.', 189.000, 'salon_0059.png','2022-05-12', '458054786A'),
 (0545, 'alquiler', 'Avd. Palafox', 37, '8', 'C', 50195, 'Pastriz', 90,  1, 1, 'no', 'no', 'no', 'segunda mano', 'Oportunidad en alquiler', 'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 350, 'salon_0078.png','2022-08-05', '404635645C'),
-(0103, 'alquiler', 'Carretera Zaragoza', 03, null, null, 50195, 'Pastriz', 90, 2, 1, 'si', 'si', 'si', 'nueva','Casa en alquiler','Preciosa y acogedora casa nueva y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'salon_0103.png','2022-05-08', '403215697C');
+(0103, 'alquiler', 'Carretera Zaragoza', 03, null, null, 50195, 'Pastriz', 90, 2, 1, 'si', 'si', 'si', 'nueva','Casa en alquiler','Preciosa y acogedora casa nueva y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'salon_0103.png','2022-05-08', '403215697C'),
 (0489, 'alquiler', 'Calle Barrio Nuevo', 89, null, null, 50171, 'La Puebla de Alfindén', 120, 3, 2, 'no', 'no', 'no', 'segunda mano', 'Casa en alquiler', 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'salon_0115.png','2022-10-07', '72146969B'),
 (0415, 'venta', 'Avd. Santa Ana', 15, '1','A Izq', 50195, 'Pastriz', 134, 2, 2, 'no', 'no', 'no', 'segunda mano', 'Casa en venta','Casa totalmente reformada y equipada, lista para entrar a vivir.', 89.000,'salon_cocina263.png','2022-07-05', '38693644L'),
 (0078, 'venta', 'Calle Acacia', 78, null, null, 50171, 'La Puebla de Alfindén', 220, 3, 1, 'no', 'si', 'si', 'obra nueva', 'Casa en venta', 'Obra nueva, lista para entrar a vivir.', 150.000, 'salon_7890.png','2022-06-05', '40321567C');
@@ -120,7 +120,7 @@ INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad,
 
 --volcado datos 'tbl_usuarios'
 INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
-('72998257Y', 'Administrador', 'Marco Cornago', 692605415, '', '1986-10-31', 'Administrador', 'administrador');
+('72998257Y', 'Administrador', 'Marco Cornago', 692605415, '', '1986-10-31', 'Administrador', 'admin'),
 ('74859657P', 'Marisa', 'Perez Martínez', 61162263, '','2022-12-12', 'marisapm45', 'fg7t9'),
 ('72149369B', 'Andrés', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','2022-10-07', 'and', '784ñl'),
 ('78996587P', 'Pepa', 'Antonia Peralta', 647847151,'pepaperal@yahoo.es', '2019-12-12', 'pepaperal', 'pepap'),
@@ -205,4 +205,4 @@ INSERT INTO tbl_empleados (id, nombre, apellidos, direccion, telefono, fecha_alt
 ('72998257Y', 'Administrador', 'Marco Cornago', 'San Blas, 41', 692605415, '1986-10-31', 'administrador');
 
 INSERT INTO tbl_favoritos (id_favorito, id_usuario, id_inmueble ) VALUES
-(001,, 0533);
+(001,'47896214H', 0533);

@@ -13,7 +13,7 @@ function iniciar_sesion(){
       $pass = $_POST['password'];
 
       $con = abrirConexion();
-      $sql = "SELECT * from tbl_usuarios where nom_user='$usuario' and pass='$pass'";
+      $sql = "SELECT * FROM tbl_usuarios WHERE nom_user='$usuario' and pass='$pass'";
       $consulta = mysqli_query($con, $sql);
 
       if ($consulta) {
@@ -102,8 +102,6 @@ function buscar_Inmuebles() {
     $metros = $_POST['metros'];
     $precio = $_POST['precio'];
     
-
-
     echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
     <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los resultados de tu búsqueda</h2>";
    
@@ -114,7 +112,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // venta
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='venta'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta'";
                 $bventa = mysqli_query($conexion, $sql);
 
                 if (!$bventa) {
@@ -133,7 +131,7 @@ function buscar_Inmuebles() {
               } else {
                 //venta - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where precio=$precio and tipo='venta'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE precio=$precio and tipo='venta'";
                 $bventa = mysqli_query($conexion, $sql);
 
                 if (!$bventa) {
@@ -153,7 +151,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // venta - metros
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where metros=$metros and tipo='venta'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE metros=$metros and tipo='venta'";
                 $bventa = mysqli_query($conexion, $sql);
 
                 if (!$bventa) {
@@ -172,7 +170,7 @@ function buscar_Inmuebles() {
               } else {
                 //venta - metros - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where metros=$metros and precio=$precio and tipo='venta'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE metros=$metros and precio=$precio and tipo='venta'";
                 $bventa = mysqli_query($conexion, $sql);
   
                 if (!$bventa) {
@@ -195,7 +193,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // venta - habitaciones
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='venta' and num_hab=$num_hab";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and num_hab=$num_hab";
                 $bventa = mysqli_query($conexion, $sql);
 
                 if (!$bventa) {
@@ -214,7 +212,7 @@ function buscar_Inmuebles() {
               } else {
                 //venta -habitacions - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='venta' and precio=$precio and num_hab=$num_hab";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and precio=$precio and num_hab=$num_hab";
                 $bventa = mysqli_query($conexion, $sql);
   
                 if (!$bventa) {
@@ -235,7 +233,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // venta - metros
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='venta' and metros=$metros";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and metros=$metros";
                 $bventa = mysqli_query($conexion, $sql);
 
                 if (!$bventa) {
@@ -254,7 +252,7 @@ function buscar_Inmuebles() {
               } else {
                 //venta -habitaciones - metros - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='venta' and precio=$precio and num_hab=$num_hab and metros=$metros";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and precio=$precio and num_hab=$num_hab and metros=$metros";
                 $bventa = mysqli_query($conexion, $sql);
   
                 if (!$bventa) {
@@ -280,7 +278,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   //venta  - localidad
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén'";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén'";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -299,7 +297,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta  - localidad - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and precio=$precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -320,7 +318,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // venta - localidad - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and metros=$metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -339,7 +337,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and precio=$precio and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and precio=$precio and metros=$metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -362,7 +360,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // venta -  -localidad - habitaciones
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and num_hab like $num_hab";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and num_hab like $num_hab";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -381,7 +379,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - habitacions - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and num_hab like $num_hab and precio like $precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and num_hab like $num_hab and precio like $precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -402,7 +400,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // localidad - venta - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and metros like $metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and metros like $metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -421,7 +419,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - habitaciones - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='La Puebla de Alfindén' and num_hab=$num_hab and metros=$metros and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='La Puebla de Alfindén' and num_hab=$num_hab and metros=$metros and precio=$precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -449,7 +447,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   //venta  - localidad
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz'";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz'";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -468,7 +466,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta  - localidad - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and precio=$precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -489,7 +487,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // venta - localidad - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and metros=$metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -508,7 +506,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and precio=$precio and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and precio=$precio and metros=$metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -531,7 +529,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // venta -  -localidad - habitaciones
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and num_hab like $num_hab";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and num_hab like $num_hab";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -550,7 +548,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - habitacions - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and num_hab like $num_hab and precio like $precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and num_hab like $num_hab and precio like $precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -571,7 +569,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // localidad - venta - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and metros like $metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and metros like $metros";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -590,7 +588,7 @@ function buscar_Inmuebles() {
                 } else {
                   //venta - localidad - habitaciones - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='venta' and localidad='pastriz' and num_hab=$num_hab and metros=$metros and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta' and localidad='pastriz' and num_hab=$num_hab and metros=$metros and precio=$precio";
                   $bventa = mysqli_query($conexion, $sql);
     
                   if (!$bventa) {
@@ -620,7 +618,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // alquiler
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler'";
                 $balquiler = mysqli_query($conexion, $sql);
 
                 if (!$balquiler) {
@@ -639,7 +637,7 @@ function buscar_Inmuebles() {
               } else {
                 //alquiler - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where precio=$precio and tipo='alquiler'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE precio=$precio and tipo='alquiler'";
                 $balquiler = mysqli_query($conexion, $sql);
 
                 if (!$balquiler) {
@@ -659,7 +657,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // alquiler - metros
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where metros=$metros and tipo='alquiler'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE metros=$metros and tipo='alquiler'";
                 $balquiler = mysqli_query($conexion, $sql);
 
                 if (!$balquiler) {
@@ -678,7 +676,7 @@ function buscar_Inmuebles() {
               } else {
                 //alquiler - metros - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where metros=$metros and precio=$precio and tipo='alquiler'";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE metros=$metros and precio=$precio and tipo='alquiler'";
                 $balquiler = mysqli_query($conexion, $sql);
   
                 if (!$balquiler) {
@@ -701,7 +699,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // alquiler - habitaciones
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and num_hab=$num_hab";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and num_hab=$num_hab";
                 $balquiler = mysqli_query($conexion, $sql);
 
                 if (!$balquiler) {
@@ -720,7 +718,7 @@ function buscar_Inmuebles() {
               } else {
                 //alquiler -habitacions - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and precio=$precio and num_hab=$num_hab";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and precio=$precio and num_hab=$num_hab";
                 $balquiler = mysqli_query($conexion, $sql);
   
                 if (!$balquiler) {
@@ -741,7 +739,7 @@ function buscar_Inmuebles() {
               if ($precio == "") {
                 // alquiler - metros
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and metros=$metros";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and metros=$metros";
                 $balquiler = mysqli_query($conexion, $sql);
 
                 if (!$balquiler) {
@@ -760,7 +758,7 @@ function buscar_Inmuebles() {
               } else {
                 //alquiler -habitaciones - metros - precio
                 $conexion = abrirConexion();
-                $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and precio=$precio and num_hab=$num_hab and metros=$metros";
+                $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and precio=$precio and num_hab=$num_hab and metros=$metros";
                 $balquiler = mysqli_query($conexion, $sql);
   
                 if (!$balquiler) {
@@ -786,7 +784,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   //alquiler  - localidad
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén'";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén'";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -805,7 +803,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler  - localidad - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and precio=$precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -826,7 +824,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // alquiler - localidad - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and metros=$metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -845,7 +843,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and precio=$precio and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and precio=$precio and metros=$metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -868,7 +866,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // alquiler -  -localidad - habitaciones
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab like $num_hab";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab like $num_hab";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -887,7 +885,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - habitacions - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab like $num_hab and precio like $precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab like $num_hab and precio like $precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -908,7 +906,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // localidad - alquiler - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and metros like $metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and metros like $metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -927,7 +925,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - habitaciones - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab=$num_hab and metros=$metros and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='La Puebla de Alfindén' and num_hab=$num_hab and metros=$metros and precio=$precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -955,7 +953,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   //alquiler  - localidad
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz'";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz'";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -974,7 +972,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler  - localidad - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and precio=$precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -995,7 +993,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // alquiler - localidad - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and metros=$metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1014,7 +1012,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and precio=$precio and metros=$metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and precio=$precio and metros=$metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1037,7 +1035,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // alquiler -  -localidad - habitaciones
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and num_hab like $num_hab";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and num_hab like $num_hab";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1056,7 +1054,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - habitacions - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and num_hab like $num_hab and precio like $precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and num_hab like $num_hab and precio like $precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1077,7 +1075,7 @@ function buscar_Inmuebles() {
                 if ($precio == "") {
                   // localidad - alquiler - metros
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and metros like $metros";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and metros like $metros";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1096,7 +1094,7 @@ function buscar_Inmuebles() {
                 } else {
                   //alquiler - localidad - habitaciones - metros - precio
                   $conexion = abrirConexion();
-                  $sql = "SELECT * from tbl_inmuebles where tipo='alquiler' and localidad='pastriz' and num_hab=$num_hab and metros=$metros and precio=$precio";
+                  $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler' and localidad='pastriz' and num_hab=$num_hab and metros=$metros and precio=$precio";
                   $balquiler = mysqli_query($conexion, $sql);
     
                   if (!$balquiler) {
@@ -1211,7 +1209,7 @@ function datos_noticia() {
   if (isset($_POST['ver'])) {
     $id = $_POST['id'];
     $conexion = abrirConexion();
-    $consulta = "SELECT * from tbl_noticias where id='$id'";
+    $consulta = "SELECT * FROM tbl_noticias WHERE id='$id'";
     $noticia = mysqli_query($conexion,$consulta);
 
     if (!$noticia) {
@@ -1247,7 +1245,7 @@ function datos_noticia() {
 
 function gestion_datos_usuario(): bool {
   if (isset($_POST['cancelar'])) {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=clientes.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=area_personal.php'>";
   }
   if (isset($_POST['guardar'])) {
     if ($_POST['pass'] == '') {
@@ -1265,16 +1263,17 @@ function gestion_datos_usuario(): bool {
       $nom_user = $_POST['nom_user'];
 
       $con = abrirConexion();
-      $sql = "UPDATE tbl_usuarios, tbl_clientes
-      SET tbl_usuarios.nombre='$nombre', tbl_usuarios.apellidos='$apellidos', tbl_usuarios.telefono='$telefono', tbl_usuarios.email='$email',
-       tbl_usuarios.nom_user='$nom_user', tbl_clientes.calle='$calle', tbl_clientes.portal='$portal', tbl_clientes.piso='$piso', tbl_clientes.puerta='$puerta', tbl_clientes.cp='$cp', tbl_clientes.localidad='$localidad'
-      WHERE tbl_usuarios.id='$id'";
+      $sql1 = "UPDATE tbl_usuarios 
+      SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
+       nom_user='$nom_user' WHERE id='$id'";
 
-      if (mysqli_query($con,$sql)) {
+      $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
+      WHERE id='$id'";
+
+      if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos actualizados correctamente</b> 
+            <b>Datos 1 actualizados correctamente</b> 
           </div>";
-
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
@@ -1297,19 +1296,22 @@ function gestion_datos_usuario(): bool {
       $pass = $_POST['pass'];
 
       $con = abrirConexion();
-      $sql = "UPDATE tbl_clientes INNER JOIN tbl_usuarios ON tbl_clientes.id = u.id 
-      SET tbl_clientes.nombre='$nombre', tbl_clientes.apellidos='$apellidos', tbl_clientes.calle='$calle', tbl_clientes.portal='$portal'; tbl_clientes.piso='$piso', tbl_clientes.puerta='$puerta', tbl_clientes.cp='$cp', tbl_clientes.localidad='$localidad';
-      tbl_clientes.telefono='$telefono', tbl_clientes.email='$email', tbl_usuarios.nombre='$nombre', tbl_usuarios.apellidos='$apellidos', tbl_usuarios.telefono='$telefono', tbl_usuarios.email='$email', tbl_usuarios.nom_user='$nom_user', tbl_usuarios='$pass' WHERE tbl_clientes.id='$id'";
+      $sql1 = "UPDATE tbl_usuarios 
+      SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
+       nom_user='$nom_user' WHERE id='$id'";
 
-      if (mysqli_query($con,$sql)) {
+      $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
+      WHERE id='$id'";
+
+      if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos actualizados correctamente</b> 
-         </div>";
-       echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
-     } else {
-       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-       <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-     </div></div></div>";
+            <b>Datos 1 actualizados correctamente</b> 
+          </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+      } else {
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+      </div></div></div>";
      }
    }
   }
@@ -1456,12 +1458,12 @@ function buscar_inmuebles_admin(){
           if($precio != ""){//SI  venta, direccion, metros y precio
             $con = abrirConexion();
             $sql = "SELECT *
-                    from tbl_inmuebles
-                    where calle=$calle
-                    where portal=$portal
-                    where piso=$piso
-                    where metros=$metros
-                    where precio=$precio 
+                    FROM tbl_inmuebles
+                    WHERE calle=$calle
+                    WHERE portal=$portal
+                    WHERE piso=$piso
+                    WHERE metros=$metros
+                    WHERE precio=$precio 
                     and tipo='venta'";
             $ballventa = mysqli_query($con,$sql);
 
@@ -1480,7 +1482,7 @@ function buscar_inmuebles_admin(){
             mysqli_close($con);
           }/*else if($precio == ""){ //buscamos por venta, numero de habitaciones y metros 
             $con = abrirConexion();
-            $sql = "SELECT * from tbl_inmuebles where num_hab='%num_hab%' where metros='%metros%' and tipo='venta'";
+            $sql = "SELECT * FROM tbl_inmuebles WHERE num_hab='%num_hab%' WHERE metros='%metros%' and tipo='venta'";
             $bhmventa = mysqli_query($con,$sql);
 
             if (!$bhmventa){
@@ -1499,7 +1501,7 @@ function buscar_inmuebles_admin(){
           }//------cierre llave if precio*/
           //buscamos por venta, dirección y metros
           $con = abrirConexion();
-          $sql = "SELECT * from tbl_inmuebles where direccion='%direccion%' where metros='%metros%' and tipo='venta'";
+          $sql = "SELECT * FROM tbl_inmuebles WHERE direccion='%direccion%' WHERE metros='%metros%' and tipo='venta'";
           $bhmventa = mysqli_query($con,$sql);
 
           if (!$bhmventa){
@@ -1519,7 +1521,7 @@ function buscar_inmuebles_admin(){
           
         }else if($metros == ""){//SI  venta y direccion
           $con = abrirConexion();
-          $sql = "SELECT * from tbl_inmuebles where direccion='%direccion%' and tipo='venta'";
+          $sql = "SELECT * FROM tbl_inmuebles WHERE direccion='%direccion%' and tipo='venta'";
 
           $bhventa = mysqli_query($con,$sql);
 
@@ -1540,7 +1542,7 @@ function buscar_inmuebles_admin(){
         }//llave cierre metros 
       }
       $con = abrirConexion();
-      $sql = "SELECT * from tbl_inmuebles where tipo='venta'";
+      $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta'";
       $bventa = mysqli_query($con,$sql);
 
       if (!$bventa){
@@ -1558,7 +1560,7 @@ function buscar_inmuebles_admin(){
       mysqli_close($con);
     }else if($tipo == "alquiler"){ //buscamos por alquiler
       $con = abrirConexion();
-      $sql = "SELECT * from tbl_inmuebles where tipo='alquiler'";
+      $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler'";
       $balquiler = mysqli_query($con,$sql);
 
       if (!$balquiler){
@@ -1584,7 +1586,7 @@ function borrar_inmueble(){
     $id = $_POST['id'];
 
     $conexion = abrirConexion();
-    $img = "SELECT from tbl_inmuebles where id='$id'";
+    $img = "SELECT FROM tbl_inmuebles WHERE id='$id'";
 
     $url = mysqli_query($conexion,$img);
 
@@ -1603,7 +1605,7 @@ function borrar_inmueble(){
     }
 
     // una vez borrada la imagen del server procedo a borrar el inmueble de la BD
-    $borrado = "DELETE from tbl_inmuebles where id='$id'";
+    $borrado = "DELETE FROM tbl_inmuebles WHERE id='$id'";
 
     $borrar = mysqli_query($conexion,$borrado);
 
@@ -1627,7 +1629,7 @@ function modificar_inmueble() {
 
     // almaceno en variables los datos para mostrarlas después en los 'value' del formulario
     $conexion = abrirConexion();
-    $sql = "SELECT * from clientes where id='$id'";
+    $sql = "SELECT * FROM clientes WHERE id='$id'";
 
     $consulta = mysqli_query($conexion, $sql);
 
@@ -1708,10 +1710,10 @@ function añadir_noticias() : bool {
 
     if ($img_correcto) {
       $conexion = abrirConexion();
-      $insertar = "INSERT into tbl_noticias (id, titular, contenido, imagen, fecha) VALUES
+      $sql = "INSERT into tbl_noticias (id, titular, contenido, imagen, fecha) VALUES
       ('$id','$titular','$contenido','$ruta_img', '$fecha')";
       
-      if(mysqli_query($conexion, $insertar)) {
+      if(mysqli_query($conexion, $sql)) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
               <strong>Noticia publicada correctamente</strong> 
             </div>";
@@ -1729,11 +1731,11 @@ function añadir_noticias() : bool {
 }
 
 function buscar_noticias() : bool {
-  if (isset($_POST['buscar_not'])) {
+  if (isset($_POST['buscar'])) {
     $titular = $_POST['titular'];
     
     $conexion = abrirConexion();
-    $consulta = "SELECT * from tbl_noticias where titular='%$titular%'";
+    $consulta = "SELECT * FROM tbl_noticias WHERE titular='$titular'";
 
     $busqueda = mysqli_query($conexion,$consulta);
 
@@ -1763,7 +1765,7 @@ function borrar_noticias(): bool {
   if (isset($_POST['borrar'])) {
     $id = $_POST['id'];
     $conexion = abrirConexion();
-    $borrar = "DELETE from tbl_noticias where id='$id'";
+    $borrar = "DELETE FROM tbl_noticias WHERE id='$id'";
     if (mysqli_query($conexion,$borrar)) {
      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <strong> Se ha borrado correctamente la notia</strong> 
@@ -1803,10 +1805,10 @@ function añadir_cliente(): bool {
 
     $conexion = abrirConexion();
 
-    $insertar = "INSERT INTO tbl_clientes (id, tipo, nombre, apellidos, telefono, email, calle, portal, piso, puerta, cp, localidad) VALUES
-    ($id, $tipo, $nombre, $apellidos, $telefono, $email, $calle, $portal, $piso, $puerta, $cp, $localidad)";
+    $sql = "INSERT INTO tbl_clientes (id, tipo, nombre, apellidos, telefono, email, calle, portal, piso, puerta, cp, localidad) VALUES
+    ('$id', '$tipo', '$nombre', '$apellidos', '$telefono', '$email','$calle', '$portal', '$piso','$puerta', '$cp','$localidad')";
 
-    if (mysqli_query($conexion,$insertar)) {
+    if (mysqli_query($conexion,$sql)) {
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
                   <strong>Cliente añadido correctamente</strong> 
                 </div>";
@@ -1823,376 +1825,43 @@ function añadir_cliente(): bool {
 }
 
 function buscar_cliente() {
-  if (isset($_POST['buscar_usuario'])) {
+  if (isset($_POST['buscar'])) {
     $id = $_POST['id'];
+    $tipo =$_POST['tipo'];
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
-    $telefono = $_POST['telefono'];
+    $localidad = $_POST['localidad'];
 
     if ($id == "") {
-      if ($nombre == "") {
-        if ($apellidos == "") {
-          if ($telefono == "") {
-          } else { // si telefono
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+      if ($tipo == "") {
+        if ($nombre == "") {
+          if ($apellidos == "") {
+            if ($localidad == "") {
             } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún cliente por ese teléfono";
+              //buscamos por localidad
+              $conexion = abrirConexion();
+              $sql = "SELECT * FROM tbl_clientes WHERE localidad='$localidad'";
+              $buscar = mysqli_query($conexion, $sql);
+
+              if (!$buscar) {
+                echo "Error al consultar BD - localidad";
               } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                echo "<table class='table table-striped'>";
+                echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Ver</th></tr></thead>";
+                while ($fila = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
+                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td>n</td>
+                <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                </tr></tbody>";
                 }
                 echo "</table>";
               }
+              mysqli_close($conexion); 
             }
-          } // --fin si telefono
-        } else { // si apellidos
-          if ($telefono == "") { //----------no telefono si apellidos
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where apellidos=$apellidos";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún cliente por esos apellidos";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } else { ///si apellidos si telefono
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where apellidos=$apellidos and telefono=$telefono";
-
-            $btelape = mysqli_query($con, $sql);
-
-            if (!$btelape) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btelape);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún cliente por esos apellidos";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btelape)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } //fin si apellidos si telefono
-        } //----fin si apellidos
-      } else { // si nombre
-        if ($apellidos == "") {
-          if ($telefono == "") { //buscamos por nombre
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where nombre=$nombre";
-
-            $bnombre = mysqli_query($con, $sql);
-
-            if (!$bnombre) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($bnombre);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún cliente por esos apellidos";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($bnombre)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-
-          } else { //buscamos por nombre y telefono
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where nombre= $nombre and telefono=$telefono";
-
-            $bnomtel = mysqli_query($con, $sql);
-
-            if (!$bnomtel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($bnomtel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún cliente por esos apellidos";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Telefono 2</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($bnomtel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-
-          }
-        } else { //buscamos por nombre - apellidos
-          if ($telefono == "") {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where nombre=$nombre and apellidos=$apellidos";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } else {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where nombre=$nombre and apellidos=$apellidos and telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          }
-
-        }
-      } //--fin si nombre
-    } else { //si id
-      if ($nombre == "") {
-        if ($apellidos == "") {
-          if ($telefono == "") { //buscamos por id 
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } else { //buscamos por id - telefono
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          }
-        } else { //buscamos por id-apellidos 
-          if ($telefono == "") {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and apellidos=$apellidos";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-
-          } else {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and apellidos=$apellidos and telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
+            
+            
           }
         }
-      } else { //buscamos por id-nombre
-        if ($apellidos == "") {
-          if ($telefono == "") {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id='$id and nombre=$nombre";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } else {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and nombre=$nombre and telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          }
-        } else {
-          if ($telefono == "") {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and nombre=$nombre and apellidos=$apellidos";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-          } else {
-            $con = abrirConexion();
-            $sql = "SELECT * from tbl_clientes where id=$id and nombre=$nombre and apellidos=$apellidos and telefono=$telefono";
-
-            $btel = mysqli_query($con, $sql);
-
-            if (!$btel) {
-              echo "Error al consultar DB - telefono";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
-            } else {
-              $num_filas = mysqli_num_rows($btel);
-              if ($num_filas == 0) {
-                echo "No se ha encontrado ningún apellido";
-              } else {
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Email</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($btel)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[direccion]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
-                }
-                echo "</table>";
-              }
-            }
-
-          }
-        }
-      } //--fin si id
+      }
     }
   }
 }
@@ -2204,34 +1873,34 @@ function modificar_datos_cliente() {
   }
 
   if (isset($_POST['modificar'])) {
-      $id = $_POST['id'];                    
-      $tipo = $_POST['tipo'];
-      $nombre = $_POST['nombre'];
-      $apellidos = $_POST['apellidos'];
-      $telefono = $_POST['telefono'];
-      $email = $_POST['email'];
-      $calle = $_POST['calle'];
-      $portal = $_POST['portal'];
-      $piso = $_POST['piso'];
-      $puerta = $_POST['puerta'];
-      $cp = $_POST['cp'];
-      $localidad = $_POST['localidad'];
+    $id = $_POST['id'];
+    $tipo = $_POST['tipo']; 
+    $nombre = $_POST['nombre'];
+    $apellidos=$_POST['apellidos'];
+    $calle = $_POST['calle'];
+    $portal = $_POST['portal'];
+    $piso = $_POST['piso'];
+    $puerta = $_POST['puerta'];
+    $localidad = $_POST['localidad'];
+    $cp = $_POST['cp'];
+    $telefono = $_POST['telefono'];
+    $email = $_POST['email'];
   
-      $conexion = abrirConexion();
-      $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos',telefono='$telefono',email='$email',calle='$calle,' portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' WHERE id='$id'";
-  
-      if (mysqli_query($conexion,$sql)) {
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos actualizados correctamente</b> 
-          </div>";
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
-      } else {
-        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-      </div></div></div>";
-      }
-      mysqli_close($conexion);
+    $conexion = abrirConexion();
+    $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos',telefono='$telefono', email='$email', calle='$calle,' portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' WHERE id='$id'";
+
+    if (mysqli_query($conexion,$sql)) {
+      echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <b>Datos actualizados correctamente</b> 
+        </div>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
+    } else {
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+      <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+    </div></div></div>";
     }
+    mysqli_close($conexion);
+  }
   
   return true;
 }

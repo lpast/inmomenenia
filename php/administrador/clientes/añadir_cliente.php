@@ -34,9 +34,8 @@
    <!-- Código PHP para añadir un nuevo inmueble -->
    <?php añadir_cliente(); ?>
  <!-- footer -->
- <?php $home = Interfaz::footer(); ?> 
+ <?php $footer = Interfaz::footer(); ?> 
 
-    <script src='/js/validar_nuevo_inmueble.js'></script>
 </body>
 </html>
  
