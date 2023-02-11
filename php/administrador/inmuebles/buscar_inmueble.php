@@ -35,11 +35,8 @@
       <?php Interfaz::form_buscar_inmueble_admin(); ?>
       <!-- buscar inmuebles-->
       <?php buscar_inmuebles_admin (); ?>
-      </div>
-      </div>
-      </div>
-       <!-- footer -->
-   <?php $home = Interfaz::footer(); ?> 
+      <!-- footer -->
+      <?php $home = Interfaz::footer(); ?> 
     </body>
 
   </html>

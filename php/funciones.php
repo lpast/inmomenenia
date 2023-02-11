@@ -118,7 +118,7 @@ function buscar_Inmuebles() {
                 if (!$bventa) {
                   echo "Error al consultar BD - venta";
                 } else {
-                  echo "<table class='table table-striped'>";
+                  echo "<table class='table table-hover'>";
                   echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                     echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
@@ -1121,39 +1121,7 @@ function buscar_Inmuebles() {
   }//----fin isset
 }
 
-function listar_inmuebles(){
-  $conexion = abrirConexion();
-      $mostrar = "SELECT id, direccion, descripcion, precio, id_cliente, imagen
-                  FROM tbl_inmuebles";
-      $datos = mysqli_query($conexion,$mostrar);
-      if (!$datos){
-        echo "No hay datos que mostrar";
-      }else{
-        $num_filas = mysqli_num_rows($datos);
 
-        if ($num_filas == 0){
-          echo "No hay ningún inmueble almacenado";
-        }else{
-          echo "<p><strong>Total de inmuebles almacenados:</strong> $num_filas</p>";
-          echo "<table class='table table-hover'";
-          echo "<thead><tr><th>ID</th><th>Dirección</th><th>Precio</th><th>Imagen</th><th>Disponibilidad</th><th>Ver inmueble</th><th>Modificar inmueble</th></tr></thead>";
-          while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
-            // si es el usuario 'disponible' muestro cartel de disponible
-            if ($fila['id_cliente'] == 0) {
-              echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td><td><button type='button' class='btn btn-success'>Disponible</button></td></td>
-            <td><form action='/php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-            <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-            }else{
-              echo "<tbody><tr><td>$fila[id]</td><td>$fila[direccion]</td><td>$fila[precio] €</td><td><img src='$fila[imagen]' style='width:150px''></td><td><button type='button' class='btn btn-danger'>No disponible</button></td></td>
-                    <td><form action='/php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-                    <td><form action='modificar_inmueble.php' method='get'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
-            }
-          }
-          echo "</table>";
-        }
-      }
-      mysqli_close($conexion); 
-}
 
 function registrarse() {
   if (isset($_POST['cancelar'])) {
@@ -1170,22 +1138,12 @@ function registrarse() {
     $nom_user = $_POST['nom_user'];
     $pass = $_POST['pass'];
 
-    echo $id;
-    echo $nombre;
-    echo $apellidos;
-    echo $telefono;
-    echo $email;
-    echo $fecha_alta;
-    echo $nom_user;
-    echo $pass;
-
-
     $conexion = abrirConexion();
 
-    $insertar = "INSERT into tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
-    ($id, $nombre, $apellidos, $telefono, $email, $fecha_alta, $nom_user, $pass)";
+    $sql = "INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
+    ('$id', '$nombre', '$apellidos', '$telefono', '$email', '$fecha_alta', '$nom_user', '$pass')";
 
-    $datos = mysqli_query($conexion, $insertar);
+    $datos = mysqli_query($conexion, $sql);
     echo $datos;
     
     if ($datos) {
@@ -1198,11 +1156,9 @@ function registrarse() {
               <h4><strong>¡Error!</strong>No ha sido posible el registro</h4>
             </div></div></div>";
       echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=home.php'>";
-
     }
     mysqli_close($conexion);
   }
- 
 }
 
 function datos_noticia() {
@@ -1224,7 +1180,7 @@ function datos_noticia() {
         echo "<div class='container-fluid cabecera-menu-inicio'>
         <div class='row'>
           <div class='col-sm-8 col-sm-offset-2'>
-            <center><img src='../media/img/img_noticias/$imagen' img-align='center' width='60%'></center>
+            <center><img src='../media/img/img_noticias/$imagen' alt='img-inmueble' img-align='center' width='60%'></center>
             <div class='contenido-noticia'>
               <h1><b> $titular</b></h1>
                   <p align='justify'> $contenido</p>
@@ -1240,9 +1196,7 @@ function datos_noticia() {
   }
 }
 
-
 /* USUARIOS */
-
 function gestion_datos_usuario(): bool {
   if (isset($_POST['cancelar'])) {
     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=area_personal.php'>";
@@ -1272,7 +1226,7 @@ function gestion_datos_usuario(): bool {
 
       if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos 1 actualizados correctamente</b> 
+            <b>Datos actualizados correctamente</b> 
           </div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
       } else {
@@ -1345,6 +1299,36 @@ function añadir_favorito(): bool  {/***** MEJORA ******/
 
 
 /* ADMINISTRADOR */
+function listar_inmuebles() {
+  echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
+  <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los inmuenles de tu búsqueda</h2>";
+ 
+  $conexion = abrirConexion();
+  $mostrar = "SELECT id, calle, portal, descripcion, precio, id_cliente, imagen
+              FROM tbl_inmuebles";
+  $datos = mysqli_query($conexion,$mostrar);
+  if (!$datos) {
+    echo "No hay datos que mostrar";
+  } else {
+    $num_filas = mysqli_num_rows($datos);
+    if ($num_filas == 0) {
+      echo "No hay ningún inmueble almacenado";
+    } else {
+      echo "<div class =
+      <p><strong>Total de inmuebles almacenados:</strong> $num_filas</p>";
+      echo "<table class='table table-hover'>";
+      echo "<thead><tr><th>ID</th><th>Dirección</th><th>Precio</th><th>Imagen</th><<th>Ver inmueble</th><th>Modificar inmueble</th></tr></thead>";
+      while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
+        echo "<tbody><tr><td>$fila[id]</td><td>$fila[calle] $fila[portal]</td><td>$fila[precio] €</td><td><img src='../../../media/img/img_inmuebles/$fila[imagen]' style='width:150px''></td></td>
+        <td><form action='/./php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+        <td><form action='modificar_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+      }
+    }
+      echo "</table>";
+  }
+  mysqli_close($conexion);
+  modificar_inmueble();
+}
 function añadir_inmuebles() {
 
   if (isset($_POST['nuevo_inmueble'])){
@@ -1624,8 +1608,64 @@ function borrar_inmueble(){
 } /* -------------------- REVISAR -----*/
 
 function modificar_inmueble() {
+  
   if (isset($_POST['modificar'])) {
     $id = $_POST['id'];
+    $tipo = $_POST['tipo'];
+    $calle = $_POST['calle'];
+    $portal = $_POST['portal'];
+    $piso = $_POST['piso'];
+    $puerta = $_POST['puerta'];
+    $cp = $_POST['cp'];
+    $localidad = $_POST['localidad'];
+    $metros = $_POST['metros'];
+    $num_hab = $_POST['num_hab'];
+    $banos = $_POST['banos'];
+    $garaje = $_POST['garaje'];
+    $jardin = $_POST['jardin'];
+    $piscina = $_POST['piscina'];
+    $estado = $_POST['estado'];
+    $titular = $_POST['titular'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $fecha_alta = $_POST['fecha_alta'];
+    $id_cliente = $_POST['id_cliente'];
+    $imagen = $_POST['imagen'];
+
+    $con = abrirConexion();
+    $sql = "UPDATE tbl_usuarios SET id='$id', tipo='$tipo',
+    calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+    cp='$cp', localidad='$localidad',metros = '$metros',num_hab = '$num_hab',
+    banos = '$banos',
+    garaje = '$garaje',
+    jardin = '$jardin',
+    piscina = '$piscina',
+    estado = '$estado',
+    titular = '$titular',
+    descripcion = '$descripcion',
+    precio = '$precio',
+    fecha_alta = '$fecha_alta',
+    id_cliente = '$id_cliente',
+    imagen = '$imagen'
+    WHERE id='$id'";
+
+if (mysqli_query($con,$sql)) {
+  echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+      <b>Datos actualizados correctamente</b> 
+    </div>";
+  echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+} else {
+  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+  <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+</div></div></div>";
+}
+
+
+
+
+  }
+
+
 
     // almaceno en variables los datos para mostrarlas después en los 'value' del formulario
     $conexion = abrirConexion();
@@ -1639,23 +1679,32 @@ function modificar_inmueble() {
     } else {
       $num_filas = mysqli_num_rows($consulta);
       while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-        $tipo = $fila['tipo'];
-        $nombre = $fila['nombre'];
-        $apellidos = $fila['apellidos'];
-        $telefono = $fila['telefono'];
-        $email = $fila['email'];
-        $calle = $fila['calle'];
-        $portal = $fila['portal'];
-        $piso = $fila['piso'];
-        $puerta = $fila['puerta'];
-        $cp = $fila['cp'];
-        $localidad = $fila['localidad'];
+        $id = $_POST['id'];
+          $tipo = $_POST['tipo'];
+          $calle = $_POST['calle'];
+          $portal = $_POST['portal'];
+          $piso = $_POST['piso'];
+          $puerta = $_POST['puerta'];
+          $cp = $_POST['cp'];
+          $localidad = $_POST['localidad'];
+          $metros = $_POST['metros'];
+          $num_hab = $_POST['num_hab'];
+          $banos = $_POST['banos'];
+          $garaje = $_POST['garaje'];
+          $jardin = $_POST['jardin'];
+          $piscina = $_POST['piscina'];
+          $estado = $_POST['estado'];
+          $titular = $_POST['titular'];
+          $descripcion = $_POST['descripcion'];
+          $precio = $_POST['precio'];
+          $fecha_alta = $_POST['fecha_alta'];
+          $id_cliente = $_POST['id_cliente'];
+          $imagen = $_POST['imagen'];
       }
     }
     mysqli_close($conexion);
   }
 
-}
 
 function añadir_noticias() : bool {
   if (isset($_POST['añadir_noticia'])) {
@@ -1751,7 +1800,7 @@ function buscar_noticias() : bool {
         echo "<thead><tr><th>Titular</th><th>Fecha de publicación</th><th>Imagen</th><th>Ver</th></tr></thead>";
         while ($fila = mysqli_fetch_array($busqueda,MYSQLI_ASSOC)) {
           echo "<tbody><tr><td><strong>$fila[titular]</strong></td><td>$fila[fecha]</td><td><img src='../../../media/img/img_noticias/$fila[imagen]' width='150px'></td>
-          <td><form action='ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-info' type='submit' name='ver' value='Leer Más'></form></td></tr></tbody>";
+          <td><form action='../../../php/ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-theme' type='submit' name='ver' value='Leer Más'></form></td></tr></tbody>";
         }
         echo '</table>';
       }
@@ -1761,6 +1810,7 @@ function buscar_noticias() : bool {
   }
   return true;
 }
+
 function borrar_noticias(): bool {
   if (isset($_POST['borrar'])) {
     $id = $_POST['id'];
