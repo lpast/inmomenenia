@@ -29,10 +29,7 @@
     <?php $botones = Interfaz::gestion_clientes(); ?>
   
     <!-- Formmulario con datos -->   
-    <?php
-      $datos=Interfaz::mod_datos_cliente();
-      modificar_datos_cliente();
-     ?>
+    <?php $datos=Interfaz::form_mod_cliente(); ?>
 
    
     <!-- footer -->

@@ -29,9 +29,7 @@
     <?php $botones = Interfaz::gestion_inmuebles(); ?>
   
     <!-- Formmulario con datos -->   
-    <?php
-      $datos=Interfaz::form_mod_inmueble();
-     ?>
+    <?php $datos=Interfaz::form_mod_inmueble();?>
 
    
     <!-- footer -->

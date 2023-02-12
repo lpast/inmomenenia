@@ -87,7 +87,7 @@ comprobarAdmin();
                         <h3><img src='../../../media/iconos/telefono.png' alt='telefono-cliente' width='50px' style='margin-left:55px; margin-right:15px'><b> <?php echo $telefono; ?></b>
                         <h3><img src='../../../media/iconos/email.png' alt='email-cliente' width='50px' style='margin-left:55px ;margin-right:15px'><b> <?php echo $email; ?></b><h3>
                     </div>
-                    <form action='modificar_cliente.php'method='post'>
+                    <form action='modificar_cliente.php' method='post'>
                         <input type='hidden' name='id' value='<?php echo $id ?>'>
                         <input class='form-control btn-theme' type='submit' name='modificar' value='Modificar Cliente'>
                     </form>
