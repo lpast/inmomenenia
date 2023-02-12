@@ -38,11 +38,9 @@ session_start();
       <!-- Menú de navegación --> 
       <?php $menu = Interfaz::mostrarMenu(); ?>
     </head>
-
    
         <!-- Formulario de acceso -->
         <?php $form_acceso= Interfaz::formulario_registro();?>
-        
     
    
  <!-- footer -->

@@ -1,9 +1,9 @@
-<?php 
-   include "../../../../php/dbconnect.php";
-   include "../../../../php/class/interfaz.php";
-   include "../../../../php/funciones.php";
-  session_start(); 
-  comprobarAdmin();
+<<?php 
+       include "../../../php/dbconnect.php";
+       include "../../../php/class/interfaz.php";
+       include "../../../php/funciones.php";
+      session_start(); 
+      comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,22 +16,20 @@
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../../../..css/estilos.css" media="screen">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
+    <!--Insertamos jQuery dependencia de Bootstrap-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
     
    <!-- Menú de navegación -->
-   <?php $menu = Interfaz::mostrarMenu(); ?>
+   <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_citas(); ?>
-    
-    <!-- Muestro calendario y muestro las citas y opción de modificar -->
-    <? $calendario = Interfaz::mostrar_ProximasCitas(); ?>
-            
+         
     <div class="col-xs-12 col-md-6">
       <h2 class="margen-citas" align="center">Calendario</h2>
       <!-- PHP que muestra el calendario del mes pedido -->
@@ -63,10 +61,14 @@
         $mostrarCalendario = Interfaz::mostrarCalendario($dia, $mes, $anio);?>
     </div>
 
+     <!-- Muestro calendario y muestro las citas y opción de modificar -->
+     <? $calendario = Interfaz::mostrar_ProximasCitas(); ?>
+      
+
     <!-- footer -->
    <?php Interfaz::footer();?>
 
- 
+    <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();   
           });

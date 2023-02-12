@@ -1,9 +1,8 @@
 <?php 
-     require_once "../php/dbconnect.php";
-     require_once "../php/class/interfaz.php";
-     require_once "../php/funciones.php";
+    include "../../../php/dbconnect.php";
+    include "../../../php/class/interfaz.php";
+    include "../../../php/funciones.php";
     session_start(); 
-    comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,33 +15,33 @@
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../css/estilos.css" media="screen">
+    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
   </head>
-  <body style="background-color: #f5f1e7; background-image:none;">
+  <body>
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_clientes(); ?>
 
     
     <!-- Muestra una tabla con los clientes almacenados en la BD -->
-    <?php $menu = Interfaz::listar_usuarios(); ?>
+    <?php $clientes = Interfaz::listar_clientes(); ?>
     
     <!-- footer -->
-    <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmobiliaria/php/mapa_web.php">Mapa web</a> | Estamos en Av. Doctor Oloriz, 6 (Granada) | Teléfono: 611622633 | Email: info@inmobiliaria.com</p>
-    </footer>
+    <?php $footer = Interfaz::footer(); ?>
   </body>
 </html>
     
-    <!-- footer -->
-   <footer class="navbar-nav navbar-inverse">
-      <p align="center"><a class="aweb" href="../inmomenenia/php/mapa_web.php">Mapa web</a> |  Teléfono: 692605414 | Email: info@inmomenenia.com</p>
-    </footer>
-  </body>
-</html>

@@ -1,9 +1,9 @@
 <?php 
-    require_once "..php/dbconnect.php";
-    require_once "../php/class/interfaz.php";
-    require_once "../php/funciones.php";
-    session_start(); 
-    comprobarAdmin();
+       include "../../../php/dbconnect.php";
+       include "../../../php/class/interfaz.php";
+       include "../../../php/funciones.php";
+      session_start(); 
+      comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,16 +16,22 @@
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../css/estilos.css" media="screen">
+    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
   </head>
-  <body style="background-color: #f5f1e7; background-image:none;">
-    
    <!-- Menú de navegación -->
-   <?php $menu = Interfaz::mostrarMenu(); ?>
+   <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_noticias(); ?>
@@ -34,6 +40,6 @@
     <?php $noticias = Interfaz::mostrar_noticias(); ?>
 
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>

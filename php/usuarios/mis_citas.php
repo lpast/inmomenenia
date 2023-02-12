@@ -37,7 +37,7 @@
     <?php $menu = Interfaz::mostrarMenu(); ?>
 
      <!-- Se muestran las citas comprados por el usuario -->
-    <?php $citas = Interfaz::citas_cliente(); ?>
+    <?php $citas = Interfaz::citas_usuario(); ?>
 
     <footer>
       <?php $footer = Interfaz::footer(); ?>

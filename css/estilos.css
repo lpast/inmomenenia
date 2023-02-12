@@ -22,14 +22,10 @@
 /* CSS General de la web */
 
 body {
-	
-	/*background-image: url("Untitled.png");
+	background-image: url("/./media/img/img_inmuebles/bbk_fachada_0533.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: cover;*/
-	background-color: #f5f1e7;
-	margin: 0;
-  	margin-bottom: 40px;
+	background-size: cover;
 }
 
 head {

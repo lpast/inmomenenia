@@ -35,7 +35,7 @@
     <?php $menu = Interfaz::mostrarMenu(); ?>
 
     <!-- Se muestran los datos del usuario -->
-    <?php  $inmuebles = Interfaz::inmuebles_cliente();?>
+    <?php  $inmuebles = Interfaz::inmuebles_usuario();?>
 
     <footer>
       <?php $footer = Interfaz::footer(); ?>

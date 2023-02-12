@@ -1,9 +1,9 @@
 <?php 
-  require_once "../../../php/dbconnect.php";
-  require_once "../../../php/class/interfaz.php";
-  require_once "../../../php/funciones.php";
-session_start(); 
-comprobarAdmin();
+    include "../../../php/dbconnect.php";
+    include "../../../php/class/interfaz.php";
+    include "../../../php/funciones.php";
+  session_start(); 
+  comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +25,7 @@ comprobarAdmin();
 </head>
 <body>
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_inmuebles(); ?>
