@@ -1655,10 +1655,9 @@ return true;
     } else {
       $num_filas = mysqli_num_rows($sql);
       if ($num_filas == 0) {
-        echo "No hay ningún inmueble almacenado con ese id";
+        echo "No hay datos de inmueble almacenados";
       } else {
         while ($fila = mysqli_fetch_array($sql,MYSQLI_ASSOC)) {
-          $id = $fila['id'];
           $tipo = $fila['tipo'];
           $calle = $fila['calle'];
           $portal = $fila['portal'];
@@ -1668,7 +1667,7 @@ return true;
           $localidad = $fila['localidad'];
           $metros = $fila['metros'];
           $num_hab = $fila['num_hab'];
-          $banos = $fila['banos'];
+          $num_banos = $fila['num_banos'];
           $garaje = $fila['garaje'];
           $jardin = $fila['jardin'];
           $piscina = $fila['piscina'];
@@ -1682,7 +1681,7 @@ return true;
         }
       }
     }
-      mysqli_close($conexion);
+    mysqli_close($conexion);
 
       echo "<div class='container-fluid'>
         <div class='row'>
@@ -1758,7 +1757,7 @@ return true;
                     <div class='form-group'>
                         <label class='col-sm-2'>Núm. de baños:</label>
                         <div class='col-sm-10'>
-                        <input class='form-control' type='number' name='banos' value='$banos'>
+                        <input class='form-control' type='number' name='num_banos' value='$num_banos'>
                         </div>
                     </div>
                     <div class='form-group'>
@@ -1818,6 +1817,7 @@ return true;
                         }
                         mysqli_close($conexion);
                         }
+
                       echo "</div>";
                     echo "</div>";
                     echo "<div class='form-group'>
@@ -1862,8 +1862,9 @@ return true;
           </div>
         </div>
       </div>";
+      modificar_inmueble();
       return true;
-}
+  }
   static public function gestion_noticias(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
