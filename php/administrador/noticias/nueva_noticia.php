@@ -1,9 +1,9 @@
 <?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../..//php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+     include "../../../php/dbconnect.php";
+     include "../../../php/class/interfaz.php";
+     include "../../../php/funciones.php";
+    session_start(); 
+    comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <style>
+    <style>
         body {
             background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
             background-repeat: no-repeat;
@@ -39,11 +39,12 @@
     <?php $botones = Interfaz::gestion_noticias(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $formulario = Interfaz::form_buscar_noticias(); ?>
-
-    <?php buscar_noticias(); ?>
+    <?php $formulario = Interfaz::form_nueva_noticia(); ?>
 
    <!-- footer -->
-   <?php $footer = Interfaz::footer(); ?> 
+   <?php $home = Interfaz::footer(); ?> 
+
+    <!-- Validación javascript -->
+    <script src="/./js/validar_nueva_noticia.js"></script>
   </body>
 </html>

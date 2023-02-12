@@ -17,64 +17,65 @@ function Inicio() {
 	blugar.addEventListener("blur",ValidarLugar);
 }
 
-function ValidarFecha(){
+function ValidarFecha() {
 	fecha = new Date();
 	var dia = fecha.getDate();
 	if (dia < 10) { dia = '0' + dia;} 
 	var mes = fecha.getMonth() + 1;
 	if (mes < 10) { mes = '0' + mes;} 
 	var anio = fecha.getFullYear();
-	var fecha_formateada = anio+'-'+mes+'-'+dia;
+	var fecha = dia+'-'+mes+'-'+anio;
 
-	if (this.value == ""){
+
+	if (this.value == "") {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! Debe indicar una fecha de publicación";
 		this.nextSibling.className = "error";
-	}else if (this.value < fecha_formateada ){
+	} else if (this.value < fecha ) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! No puedes indicar una fecha de publicación anterior al día de hoy";
 		this.nextSibling.className = "error";
-	}else{
+	} else {
 		this.className="form-control";
 		this.nextSibling.innerHTML = "La fecha es válida";
 		this.nextSibling.className = "ok";
 	}
 }
 
-function ValidarHora(){
-	if (this.value == ""){
+function ValidarHora() {
+	if (this.value == "") {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! Debe seleccionar una hora";
 		this.nextSibling.className = "error";
-	}else{
+	} else {
 		this.className="form-control";
 		this.nextSibling.innerHTML = "La hora es válida";
 		this.nextSibling.className = "ok";
 	}
 }
 
-function ValidarMotivo(){
-	if (this.value.trim() == ""){
+function ValidarMotivo() {
+	if (this.value.trim() == "") {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El motivo no puede quedar vacío";
 		this.nextSibling.className = "error";
-	}else if (this.value.trim().length > 50){
+	} else if (this.value.trim().length > 50) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El motivo no puede superar los 1500 caracteres";
 		this.nextSibling.className = "error";
-	}else{
+	} else {
 		this.className="form-control";
 		this.nextSibling.innerHTML = "El motivo es válido";
 		this.nextSibling.className = "ok";
 	}
 }
 
-function ValidarLugar(){
-	if (this.value.trim() == ""){
+function ValidarLugar() {
+	if (this.value.trim() == "") {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El lugar no puede quedar vacío";
 		this.nextSibling.className = "error";
-	}else if (this.value.trim().length > 50){
+	} else if (this.value.trim().length > 50) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El lugar no puede superar los 1500 caracteres";
 		this.nextSibling.className = "error";
@@ -85,7 +86,7 @@ function ValidarLugar(){
 	}
 }
 
-function Validar(info_evento){
+function Validar(info_evento) {
 	ifecha = document.querySelector("#fecha");
 	ihora = document.querySelector("#hora");
 	imotivo = document.querySelector("#motivo");
@@ -96,30 +97,30 @@ function Validar(info_evento){
 	if (dia < 10) { dia = '0' + dia;} 
 	var mes = fecha.getMonth() + 1;
 	var anio = fecha.getFullYear();
-	var fecha_formateada = anio+'-'+mes+'-'+dia;
+	var fecha = dia+'-'+mes+'-'+anio;
 
-	if (ifecha.value == ""){
+	if (ifecha.value == "") {
 		alert("La fecha no puede quedar vacía");
 		info_evento.preventDefault();
-	}else if (ifecha.value < fecha_formateada){
+	} else if (ifecha.value < fecha) {
 		alert("La fecha introducida ya ha pasado");
 		info_evento.preventDefault();
-	}else{
-		if (ihora.value == ""){
+	} else {
+		if (ihora.value == "") {
 			alert("La hora no puede quedar vacía");
 			info_evento.preventDefault();
-		}else{
-			if (imotivo.value.trim() == ""){
+		} else {
+			if (imotivo.value.trim() == "") {
 				alert("El motivo no puede quedar vacío");
 				info_evento.preventDefault();
-			}else if (imotivo.value.trim().length >50){
+			} else if (imotivo.value.trim().length >50) {
 				alert("El motivo no puede superar los 50 caracteres");
 				info_evento.preventDefault();
-			}else{
-				if (ilugar.value.trim() == ""){
+			} else {
+				if (ilugar.value.trim() == "") {
 					alert("El lugar no puede quedar vacío");
 					info_evento.preventDefault();
-				}else if (ilugar.value.trim().length >30){
+				} else if (ilugar.value.trim().length >30) {
 					alert("El lugar no puede superar los 30 caracteres");
 					info_evento.preventDefault();
 				}

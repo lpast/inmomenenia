@@ -33,8 +33,7 @@
 
       <!-- mostrar formulario de busqueda-->
       <?php Interfaz::form_buscar_inmueble_admin(); ?>
-      <!-- buscar inmuebles-->
-      <?php buscar_inmuebles_admin (); ?>
+      
       <!-- footer -->
       <?php $home = Interfaz::footer(); ?> 
     </body>

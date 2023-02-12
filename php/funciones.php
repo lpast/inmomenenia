@@ -1128,7 +1128,7 @@ function registrarse() {
     header("url=../index.php");
   }
 
-  if (isset($_POST['alta_usuario'])) {
+  if (isset($_POST['nuevo_usuario'])) {
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
@@ -1272,8 +1272,8 @@ function gestion_datos_usuario(): bool {
   return true;
 }
 
-function añadir_favorito(): bool  {/***** MEJORA ******/
-  if (isset($_POST['añadir_favorito'])) {
+function nuevo_favorito(): bool  {/***** MEJORA ******/
+  if (isset($_POST['nuevo_favorito'])) {
     $id = $_POST['id'];
     $id_inmueble = $_POST['id_inmueble'];
     $id_usuario = $_SESSION['id_usuario'];
@@ -1328,7 +1328,7 @@ function listar_inmuebles() {
   mysqli_close($conexion);
   modificar_inmueble();
 }
-function añadir_inmuebles() {
+function nuevo_inmueble() {
 
   if (isset($_POST['nuevo_inmueble'])){
     $id = $_POST['id'];
@@ -1424,7 +1424,7 @@ function añadir_inmuebles() {
   </div>";
 }
 
-function buscar_inmuebles_admin(){  
+function buscar_inmueble_admin(){  
   if (isset($_POST['buscar_inm'])){
     $tipo = $_POST['tipo'];
     $calle = $_POST['calle'];
@@ -1719,8 +1719,8 @@ function borrar_inmueble(){
   }
   }
 
-function añadir_noticias() : bool {
-  if (isset($_POST['añadir_noticia'])) {
+function nueva_noticia() : bool {
+  if (isset($_POST['nueva_noticia'])) {
     $id = $_POST['id'];
     $titular = $_POST['titular'];
     $contenido = $_POST['contenido'];
@@ -1791,7 +1791,7 @@ echo $imagen;
   return true;
 }
 
-function buscar_noticias() : bool {
+function buscar_noticia() : bool {
   if (isset($_POST['buscar'])) {
     $titular = $_POST['titular'];
 
@@ -1828,7 +1828,7 @@ function buscar_noticias() : bool {
   return true;
 }
 
-function borrar_noticias(): bool {
+function borrar_noticia(): bool {
   if (isset($_POST['borrar'])) {
     $id = $_POST['id'];
     $conexion = abrirConexion();
@@ -1849,7 +1849,7 @@ function borrar_noticias(): bool {
 
 
 
-function añadir_cliente(): bool {
+function nuevo_cliente(): bool {
   if (isset($_POST['cancelar'])) {
     header("url=/clientes.php");
   }
@@ -1972,7 +1972,7 @@ function modificar_cliente() {
   return true;
 }
 
-function añadir_citas(){
+function nueva_cita(){
   if (isset($_POST['cancelar'])) {
     header('Location: citas.php');
   }
@@ -2028,7 +2028,7 @@ function añadir_citas(){
   }
 }
 
-function buscar_citas() {
+function buscar_cita() {
   if (isset($_POST['buscar_cita'])) {
 
     $fecha = $_POST['fecha'];
@@ -2119,7 +2119,7 @@ function buscar_citas() {
   }
 }
 
-function borrar_noticia(){
+function borrar_cita() {
   if (isset($_POST['borrar'])) {
     $id = $_POST['id'];
     $conexion = abrirConexion();

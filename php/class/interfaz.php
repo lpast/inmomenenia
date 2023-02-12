@@ -295,6 +295,7 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    buscar_Inmuebles();
     return true;
   }
   /* static public function carousel() : bool {
@@ -501,7 +502,7 @@ class Interfaz {
                 echo "<div class='favorito'>
                 <form action='#' method='post'>
                   <button class='button button5'><img id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
-                    <a href='#' id='añadir_favorito' type='submit' name='añadir_favorito'> Añadir favorito</a></button>
+                    <a href='#' id='nuevo_favorito' type='submit' name='nuevo_favorito'> Añadir favorito</a></button>
                     <input type='hidden' id='id' value = '$_SESSION[id]'></td>
                     <input type='hidden' id='id_usuario' value='$_SESSION[id_usuario]'/>
                     <input type='hidden' id='id_inmueble' value='$_SESSION[id_inmueble]'/>";
@@ -509,7 +510,7 @@ class Interfaz {
                     echo "$_SESSION[id_usuario]";
                     echo "$_SESSION[id_inmueble]
                 </form>";
-                añadir_favorito();
+                nuevo_favorito();
                 echo "</div>";
               }
             }
@@ -583,8 +584,6 @@ class Interfaz {
         <p align='center'><a class='btn btn-theme' href='../php/contacto.php'>Solicitar <b>una cita</b></a></p>
     </div>
   </div>";
-    
-        
     return true;
   }
   static public function muestra_contacto(): bool {
@@ -805,7 +804,7 @@ class Interfaz {
                   </div>
                   <div class='form-group'>
                     <div class='col-sm-9 col-sm-offset-2'>
-                      <input class='form-control btn-theme' type='submit' name='alta_usuaruio' value='Aceptar'>
+                      <input class='form-control btn-theme' type='submit' name='nuevo_usuario' value='Aceptar'>
                     </div>
                     <div class='col-sm-2' >
                       <a type='button' href='./clientes.php' class='btn btn-danger' >Cancelar</a>
@@ -1319,7 +1318,7 @@ class Interfaz {
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-theme btn-md' href='añadir_inmueble.php'>Añadir inmueble</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='nuevo_inmueble.php'>Añadir inmueble</a></li>
                 <li><a type='button' class='btn btn-theme btn-md' href='borrar_inmueble.php'>Borrar inmueble</a></li>
                 <li><a type='button' class='btn btn-theme btn-md' href='buscar_inmueble.php'>Buscar inmueble</a></li>
               </ul>
@@ -1364,7 +1363,7 @@ class Interfaz {
     mysqli_close($conexion);
     return true;
   }
-  static public function form_añadir_inmueble(): bool {
+  static public function form_nuevo_inmueble(): bool {
     echo "<div class='container-fluid'>
     <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -1402,15 +1401,21 @@ class Interfaz {
                     </div>
                   </div>
                   <div class='form-group'>
+                    <label class='col-sm-2'>Portal:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' id='portal' name='portal' type='text'><span></span>
+                    </div>
+                  </div>
+                  <div class='form-group'>
                     <label class='col-sm-2'>Código Postal:</label>
                     <div class='col-sm-10'>
                       <input class='form-control' id='cp' name='cp' type='number'><span></span>
                     </div>
                   </div>
                   <div class='form-group'>
-                      <label class='col-sm-2'>Zona:</label>
+                      <label class='col-sm-2'>Localidad:</label>
                       <div class='col-sm-10'>
-                          <input class='form-control' id='zona' name='zona' type='text'><span></span>
+                          <input class='form-control' id='localidad' name='localidad' type='text'><span></span>
                       </div>
                   </div>
                   <div class='form-group'>
@@ -1428,7 +1433,7 @@ class Interfaz {
                   <div class='form-group'>
                       <label class='col-sm-2'>Núm. de baños:</label>
                       <div class='col-sm-10'>
-                          <input class='form-control' id='banos' name='banos' type='number'><span></span>
+                          <input class='form-control' id='num_banos' name='num_banos' type='number'><span></span>
                       </div>
                   </div>
                   <div class='form-group'>
@@ -1467,11 +1472,17 @@ class Interfaz {
                   <div class='form-group'>
                       <label class=' col-sm-2'>Estado:</label>
                       <div class='col-sm-10'>
-                          <select class='form-control' name='tipo' id='tipo'>
-                              <option value='alquiler'>Selecciona una opcion</option>
-                              <option value='alquiler'>Nuevo</option>
-                              <option value='compra'>Segunda mano</option>
+                          <select class='form-control' id='estado' name='estado' >
+                              <option value=''>Selecciona una opcion</option>
+                              <option value='0'>Nuevo</option>
+                              <option value='1'>Segunda mano</option>
                           </select>
+                      </div>
+                  </div>
+                  <div class='form-group'>
+                      <label class=' col-sm-2'>Titular:</label>
+                      <div class='col-sm-10'>
+                          <textarea class='form-control' id='titular' name='titular' rows='3'></textarea><span></span>
                       </div>
                   </div>
                   <div class='form-group'>
@@ -1537,7 +1548,8 @@ class Interfaz {
         </div>
       </div>
     </div>";
-return true;
+    nuevo_inmueble();
+    return true;
   }
   static public function form_borrar_inmueble(): bool {
     echo "<div class='container-fluid'>
@@ -1683,39 +1695,39 @@ return true;
     }
     mysqli_close($conexion);
 
-      echo "<div class='container-fluid'>
-        <div class='row'>
-           <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
-            <div class='panel-group'>
-              <div class='panel panel-default menu-inicio'>
-                <div class='panel-heading'>
-                  <h2 align='center'>Modificar inmueble</h2>
+    echo "<div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
+        <div class='panel-group'>
+          <div class='panel panel-default menu-inicio'>
+            <div class='panel-heading'>
+              <h2 align='center'>Modificar inmueble</h2>
+            </div>
+              <div class='panel-body'>
+              <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
+              <div class='form-group'>
+                  <label class='col-sm-2'>ID:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' name='id' type='number' value ='$id'></td>
+                  </div>
                 </div>
-                 <div class='panel-body'>
-                 <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
-                  <div class='form-group'>
-                      <label class='col-sm-2'>ID:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' name='id' type='number' value ='$id'></td>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Tipo:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' name='tipo' type='text' value ='$tipo'></td>
-                        </select>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Calle:</label>
-                      <div class='col-sm-10'>
-                      <input class='form-control'  name='calle' type='text' value='$calle'>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Portal:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='number' name='portal' value='$portal'>
+                <div class='form-group'>
+                  <label class='col-sm-2'>Tipo:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' name='tipo' type='text' value ='$tipo'></td>
+                    </select>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class='col-sm-2'>Calle:</label>
+                  <div class='col-sm-10'>
+                  <input class='form-control'  name='calle' type='text' value='$calle'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label class='col-sm-2'>Portal:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='number' name='portal' value='$portal'>
                       </div>
                     </div>
                      <div class='form-group'>
@@ -1816,7 +1828,7 @@ return true;
                           }
                         }
                         mysqli_close($conexion);
-                        }
+                      
 
                       echo "</div>";
                     echo "</div>";
@@ -1865,6 +1877,8 @@ return true;
       modificar_inmueble();
       return true;
   }
+  return true;
+}
   static public function gestion_noticias(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -1872,9 +1886,9 @@ return true;
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-theme btn-md' href='añadir_noticias.php'>Añadir noticias</a></li>
-                <li><a type='button' class='btn btn-theme btn-md' href='borrar_noticias.php'>Borrar noticias</a></li>
-                <li><a type='button' class='btn btn-theme btn-md' href='buscar_noticias.php'>Buscar noticias</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='nueva_noticia.php'>Añadir noticias</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='borrar_noticia.php'>Borrar noticias</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='buscar_noticia.php'>Buscar noticias</a></li>
               </ul>
             </div>
           </nav>
@@ -1884,7 +1898,7 @@ return true;
     return true;
   }
 
-  static public function form_añadir_noticias(): bool {
+  static public function form_nueva_noticia(): bool {
 echo "<div class='container-fluid cabecera-menu-inicio'>
 <div class='row'>
   <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
@@ -1933,7 +1947,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
             <div class='form-group'>
               <div class='col-sm-12 col-sm-offset-4'>
                 <div class='col-sm-2'>
-                  <input class='form-control btn-theme' id='añadir_noticia' type='submit' name='añadir_noticia' value='Añadir'>
+                  <input class='form-control btn-theme' id='nueva_noticia' type='submit' name='nueva_noticia' value='Añadir'>
                 </div>
                 <div class='col-sm-2'>
                   <a href='noticias.php' class='btn btn-danger'>Cancelar</a>
@@ -1944,11 +1958,11 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
         </div>
       </div>
     </div>";
-    añadir_noticias();
+   nueva_noticia();
     return true;
   }
 
-  static public function form_borrar_noticias(): bool {
+  static public function form_borrar_noticia(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
     <div class='row'>
       <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
@@ -1987,10 +2001,11 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
       </div>
     </div>
     </div>";
+    borrar_noticia();
     return true;
   }
 
-  static public function form_buscar_noticias(): bool {
+  static public function form_buscar_noticia(): bool {
     echo "<div class='container-fluid menu-inicio'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
@@ -2019,6 +2034,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
           </div>
         </div>
       </div>";
+      buscar_noticia();
     return true;
   }
 
@@ -2083,7 +2099,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
     return true;
   }
 
- static public function form_añadir_cliente(): bool  {
+ static public function form_nuevo_cliente(): bool  {
     echo "
     <!-- Nuevo cliente -->
     <div class='container-fluid menu-inicio'>
@@ -2210,6 +2226,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
         </div>
       </div>
     </div>";
+    nuevo_cliente();
     return true;
   }
 
@@ -2265,6 +2282,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
                 </div>
               </form>
             </div></div></div></div></div></div>";
+            buscar_cliente();
     return true;
   } /*************** revisar  */
 
@@ -2449,7 +2467,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
     return true;
   }
 
-  static public function form_añadir_citas() : bool {
+  static public function form_nueva_cita() : bool {
     echo "<div class='container-fluid'>
     <div class='row'>
     <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -2546,12 +2564,12 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
     </div>
   </div>";
    /* Código PHP que añade una nueva cita */
-   añadir_citas();
+   nueva_cita();
   return true;
 
   }
 
-  static public function form_buscar_citas() : bool {
+  static public function form_buscar_cita() : bool {
     echo "  <div class='container-fluid'>
     <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -2604,7 +2622,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
       </div>
      </div>
     </div>";
-    buscar_citas();
+    buscar_cita();
     return true;
   }
 
@@ -2650,7 +2668,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
         </div>
       </div>
     </div>";
-    borrar_noticia();
+    borrar_cita();
     return true;
   }
 

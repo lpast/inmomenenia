@@ -32,8 +32,6 @@
 
       <!-- mostrar formulario de busqueda-->
       <?php Interfaz::form_buscar_cliente(); ?>
-      <!-- buscar inmuebles-->
-      <?php buscar_cliente(); ?>
      
       <!-- footer -->
       <?php Interfaz::footer(); ?>

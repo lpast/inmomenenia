@@ -31,10 +31,7 @@
     <?php $botones = Interfaz::gestion_inmuebles(); ?>
   
     <?php $menu = Interfaz::form_borrar_inmueble(); ?>
-
-   <!-- Código PHP para añadir un nuevo inmueble -->
-   <?php borrar_inmueble(); ?>
-
+    
     <!-- footer -->
     <?php $home = Interfaz::footer(); ?> 
 </body>

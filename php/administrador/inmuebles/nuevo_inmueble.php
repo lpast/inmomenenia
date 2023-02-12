@@ -1,42 +1,41 @@
 <?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../../php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+    include "../../../php/dbconnect.php";
+    include "../../../php/class/interfaz.php";
+    include "../../../php/funciones.php";
+  session_start(); 
+  comprobarAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Añadir Cliente Nuevo</title>
+    <title>Añadir Inmueble Nuevo</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Mi CSS -->
-    <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
+      <link rel="stylesheet" href="../../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
+</head>
 <body>
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::menuAdmin(); ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_clientes(); ?>
+    <?php $botones = Interfaz::gestion_inmuebles(); ?>
   
-    <?php $menu = Interfaz::form_añadir_cliente(); ?>
+    <?php $menu = Interfaz::form_nuevo_inmueble(); ?>
 
-   <!-- Código PHP para añadir un nuevo inmueble -->
-   <?php añadir_cliente(); ?>
- <!-- footer -->
- <?php $footer = Interfaz::footer(); ?> 
 
+   <!-- footer -->
+   <?php $menu = Interfaz::footer(); ?>
+
+   <!-- Validación javascript -->
+   <script src="/./js/validar_nuevo_inmueble.js"></script>
 </body>
 </html>
- 
- 
