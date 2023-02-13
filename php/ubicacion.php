@@ -45,7 +45,7 @@
       </div>
     </div>
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>
         

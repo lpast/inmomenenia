@@ -21,14 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-      body{
-        background-image: url("../../media/img/img_inmuebles/fachada_0533.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      </style>
   <body>
     <head>
         <!-- Menú de navegación -->
@@ -40,6 +32,6 @@
     <?php $mapa = Interfaz::mapaWeb(); ?>
     
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>

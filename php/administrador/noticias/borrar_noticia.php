@@ -31,9 +31,9 @@
     <?php $botones = Interfaz::gestion_noticias(); ?>
 
     <!-- Mostramos noticias para borrar -->
-    <?php $menu = Interfaz::form_borrar_noticia(); ?>
+    <?php $formulario = Interfaz::tbl_borrar_noticia(); ?>
 
     <!-- footer -->
-   <?php $home = Interfaz::footer(); ?> 
+   <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>

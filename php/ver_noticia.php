@@ -30,7 +30,7 @@ session_start();
     <?php datos_noticia(); ?>
     
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>
 

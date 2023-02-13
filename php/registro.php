@@ -31,19 +31,18 @@ session_start();
       </style>
   </head>
   <body>
-
-    
-    <head>
+     <head> 
       <?php abrirConexion();?>
       <!-- Menú de navegación --> 
       <?php $menu = Interfaz::mostrarMenu(); ?>
     </head>
    
-        <!-- Formulario de acceso -->
-        <?php $form_acceso= Interfaz::formulario_registro();?>
+    <!-- Formulario de acceso -->
+    <?php $formurlario= Interfaz::formulario_registro();?>
     
-   
- <!-- footer -->
- <?php $home = Interfaz::footer(); ?> 
+    <!-- footer -->
+    <?php $footer = Interfaz::footer(); ?> 
+
+    <script src="../js/validar_registro.js"></script>
   </body>
 </html>

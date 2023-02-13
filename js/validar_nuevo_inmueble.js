@@ -72,14 +72,17 @@ function ValidarCalle() {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! La calle no puede estar vacía";
 		this.nextSibling.className = "error";
+		return false;
 	} else if(calle.value.length >100) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! La calle no puede superar los 100 caracteres";
 		this.nextSibling.className = "error";
+		return false;
 	} else {
 		this.className = "form-control";
 		this.nextSibling.innerHTML = "Calle válida";
 		this.nextSibling.className ="ok";
+		return true;
 	}
 }
 
@@ -254,6 +257,7 @@ function ValidarEstado(){
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! La opcion estado no puede estar vacía";
 		this.nextSibling.className = "error";
+		return false;
 	}
 }
 
@@ -262,14 +266,17 @@ function ValidarTitular(){
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El titular no puede estar vacía";
 		this.nextSibling.className = "error";
+		return false;
 	} else if(descripcion.value.length >150) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención!El titular no puede superar los 150 caracteres";
 		this.nextSibling.className = "error";
+		return false;
 	} else {
 		this.className = "form-control";
-		this.nextSibling.innerHTML = "Titulat válido";
+		this.nextSibling.innerHTML = "Titular válido";
 		this.nextSibling.className ="ok";
+		return true;
 	}
 }
 
@@ -279,14 +286,17 @@ function ValidarDescripcion() {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! La descripcion no puede estar vacía";
 		this.nextSibling.className = "error";
+		return false;
 	} else if(descripcion.value.length >1500) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! La descripcion no puede superar los 1500 caracteres";
 		this.nextSibling.className = "error";
+		return false;
 	} else {
 		this.className = "form-control";
 		this.nextSibling.innerHTML = "Descripcion válida";
 		this.nextSibling.className ="ok";
+		return true;
 	}
 }
 
@@ -295,18 +305,22 @@ function ValidarPrecio() {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El precio no puede estar vacio";
 		this.nextSibling.className = "error";
+		return false;
 	} else if(isNaN(precio.value)) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El precio debe de constar de caracteres numéricos";
 		this.nextSibling.className = "error";
+		return false;
 	} else if(metros.value.length >5) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! El precio no puede superarlos 5 caracteres";
 		this.nextSibling.className = "error";
+		return false;
 	} else {
 		this.className = "form-control";
 		this.nextSibling.innerHTML = "Precio válido";
 		this.nextSibling.className ="ok";
+		return true;
 	}
 }
 
@@ -324,14 +338,17 @@ function ValidarFecha() {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! Debe indicar una fecha de publicación";
 		this.nextSibling.className = "error";
+		return false;
 	} else if (this.value < fecha ) {
 		this.className = "form-control error-input";
 		this.nextSibling.innerHTML = "¡Atención! No puedes indicar una fecha de publicación anterior al día de hoy";
 		this.nextSibling.className = "error";
+		return false;
 	} else {
 		this.className="form-control";
 		this.nextSibling.innerHTML = "La fecha es válida";
 		this.nextSibling.className = "ok";
+		return true;
 	}
 }
 

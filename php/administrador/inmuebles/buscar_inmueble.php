@@ -29,13 +29,13 @@
       <?php Interfaz::menuAdmin(); ?>
 
       <!-- Botones de funciones añadir, borrar, buscar -->
-      <?php Interfaz::gestion_inmuebles(); ?>
+      <?php $botones = Interfaz::gestion_inmuebles(); ?>
 
       <!-- mostrar formulario de busqueda-->
-      <?php Interfaz::form_buscar_inmueble_admin(); ?>
+      <?php $formulario = Interfaz::form_buscar_inmueble_admin(); ?>
       
       <!-- footer -->
-      <?php $home = Interfaz::footer(); ?> 
+      <?php $footer = Interfaz::footer(); ?> 
     </body>
 
   </html>

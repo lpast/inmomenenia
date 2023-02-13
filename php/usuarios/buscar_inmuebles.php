@@ -20,14 +20,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-      body{
-        background-image: url("../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      </style>
   </head>
   <body>
     <!-- Menú de navegación -->
@@ -35,10 +27,8 @@
 
     <!-- Muestro imagen de un inmueble aleatorio -->
     <?php $aleatoria = Interfaz::img_aleatoria(); ?>
-    <div class='cabecera'>
-    <?php $form = Interfaz::form_buscar_Inmuebles(); ?>
-      <?php buscar_Inmuebles(); ?>
-    </div>
+
+    <?php $formulario = Interfaz::form_buscar_Inmuebles(); ?>
    
    <!-- footer -->
    <?php $footer = Interfaz::footer(); ?> 

@@ -31,23 +31,15 @@ session_start();
       </style>
   </head>
   <body>
-
-    
     <head>
       <?php abrirConexion();?>
       <!-- Menú de navegación --> 
       <?php $menu = Interfaz::mostrarMenu(); ?>
     </head>
-
-    <div class="acceso">
-        <!-- Formulario de acceso -->
-        <?php $form_acceso= Interfaz::formulario_acceso();?>
-        <!-- Accedemos a la aplicacón -->
-        <?php iniciar_sesion();?>
-      </div>
-   
-
-     <!-- footer -->
-     <?php $home = Interfaz::footer(); ?> 
+    <!-- Formulario de acceso -->
+    <?php $form_acceso= Interfaz::formulario_acceso();?>
+    
+      <!-- footer -->
+      <?php $footer = Interfaz::footer(); ?> 
   </body>
 </html>

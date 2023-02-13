@@ -253,7 +253,7 @@ class Interfaz {
                     <option value=''>Seleccione el tipo de vivienda</option>
                     <option value='alquiler'>Alquilar</option>
                     <option value='venta'>Venta</option>
-                  </select>
+                  </select><span></span>
                 </div>
               </div>
               <div class='form-group'>
@@ -263,30 +263,30 @@ class Interfaz {
                     <option value=''>Seleccione la localidad</option>
                     <option value='puebla'>La Puebla de Alfindén</option>
                     <option value='pastriz'>Pastriz</option>
-                  </select>
+                  </select><span></span>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-2'>Nº de habitaciones:</label>
                 <div class='col-sm-5 col-lg-offset-2'>
-                  <input class='form-control' type='text' name='num_hab' placeholder='Nº de habitaciones'>
+                  <input class='form-control' type='text' id='num_hab' name='num_hab' placeholder='Nº de habitaciones'><span></span>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-2'>Metros<sup>2</sup>:</label>
                 <div class='col-sm-5 col-lg-offset-2'>
-                  <input class='form-control' type='text' name='metros' placeholder='metros'>
+                  <input class='form-control' type='text' id='metros' name='metros' placeholder='metros'><span></span>
                 </div>
               </div>
               <div class='form-group'>
                 <label class='col-sm-2'>Precio:</label>
                 <div class='col-sm-5  col-lg-offset-2'>
-                  <input class='form-control' type='text' name='precio'  placeholder='€'>
+                  <input class='form-control' type='text' id='precio' name='precio'  placeholder='€'><span></span>
                 </div>
               </div>
               <div class='form-group'>
                 <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                  <input class='form-control btn-theme' type='submit' name='buscar_inm' value='Buscar'>
+                  <input class='form-control btn-theme' type='submit' id='buscar_inm' name='buscar_inm' value='Buscar'><span></span>
                 </div>
               </div>
             </form>
@@ -549,26 +549,26 @@ class Interfaz {
             <div class='panel-body'>
               <form class='form-horizontal' action='#' method='post'>
                 <div class='form-group'>
-                  <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Importe: </label>
+                <span><label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Importe: </label></span>
                   <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                    <input class='form-control' type='text' name='importe' maxlength=9 value=1000 autofocus>
+                  <span><input class='form-control' type='text' name='importe' maxlength=9 value=1000 autofocus></span>
                   </div>
                 </div>
                 <div class='form-group'>
-                  <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Años: </label>
-                  <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                    <input class='form-control' type='text' name='anos' maxlength=2 value=1 autofocus>
+                <span><label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Años: </label></span>
+                <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
+                <span><input class='form-control' type='text' name='anios' maxlength=2 value=1 autofocus></span>
                   </div>
                 </div>
                 <div class='form-group'>
-                  <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Intereés: </label>
+                <span><label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Interés: </label></span>
                   <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                    <input class='form-control' type='text' name='interes' maxlength=9 value=3.6 autofocus>
+                  <span><input class='form-control' type='text' name='interes' maxlength=9 value=3.6 autofocus></span>
                   </div>
                 <div>
                 <div class='form-group'>
                   <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                    <p><input class='form-control btn-theme' type='button' value='Calcular' onclick='calcular()'></p>
+                    <p><input class='form-control btn-theme' type='button' value='Calcular' onclick='calcular()'</p>
                   </div>
                 </div>  
               </form>
@@ -602,7 +602,7 @@ class Interfaz {
                   <div class='col-xs-12 col-sm-12 col-md-6' col-lg-6'>
                     <h1 align ='center'>CÓMO LLEGAR</h1>
                   </br>
-                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
+                  <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='500' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
                   </div>
                 </div>
                 </div>
@@ -640,48 +640,48 @@ class Interfaz {
                       <div class='form-group'>
                         <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
                         <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' name='nombre' placeholder='escribe aqui tu nombre' autofocus>
+                          <input class='form-control' type='text' id='nombre' name='nombre' placeholder='escribe aqui tu nombre' autofocus><span></span>
                         </div>
                       </div>
                       <div class='form-group'>
                         <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
                         <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' name='email' placeholder='escribe aqui tu email'>
+                          <input class='form-control' type='text' id='email' name='email' placeholder='escribe aqui tu email'><span></span>
                         </div>
                       </div>
                       <div class='form-group'>
                         <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='number' name='telefono' placeholder='escribe aqui tu teléfono'>
+                        <div class='col-md-5 col-sm-2' style='margin-bottom:15px'>
+                          <input class='form-control' type='text' id='telefono' name='telefono' placeholder='escribe aqui tu teléfono'><span></span>
                         </div>
                       </div>
                       <div class='form-group'>
                         <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
                         <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
                           <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Pedir información
+                            <input type='radio' name='asunto' id=asunto1' value='informacion'>Pedir información
                           </label>
                           <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Consulta
+                          <input type='radio' name='asunto' id=asunto2' value='consulta'>Consulta
                           </label>
                           <label class='radio-inline'>
-                            <input type='radio' name='asunto'>Sugerencia
+                          <input type='radio' name='asunto' id=asunto3' value='sugerencia'>Sugerencia 
                           </label>
                           <label class='radio-inline'>
-                          <input type='radio' name='asunto'>Solicitar cita
+                          <input type='radio' name='asunto' id=asunto4' value='cita'>Pedir cita
                         </div>
                       </div>
                       <br>
                       <div class='form-group'>
                         <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
                         <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea>
+                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea><span></span>
                         </div>
                       </div>
                       <br>
                       <div class='form-group'>
                       <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                            <input class='form-control btn-theme' align=center' type='submit' name='Enviar' value='Enviar'>
+                        <input class='form-control btn-theme' align=center' style='margin-bottom:30px' type='submit' id='contacto' name='contacto' value='Enviar'>
                         </div>
                       </div>
                     </form>
@@ -733,7 +733,7 @@ class Interfaz {
         </div>
       </div>
     </div>";
-
+    iniciar_sesion();
     return true;
 
   }
@@ -745,66 +745,66 @@ class Interfaz {
             <h1 style='margin-bottom:35px' align='center'>Registro</h1>
             <div class='panel panel-default'>
               <div class='panel-body'>
-                <form action='#' method='post' class='form-horizontal'>
+                <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
                   <div class='form-group'>
-                    <label class='col-sm-2'>Dni:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='id' placeholder='aqui tu Dni' required>
+                    <label class='col-sm-2'>DNI:</label>
+                    <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='id' name='id' placeholder='aqui tu Dni'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                       <label class='col-sm-2'>Nombre:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='nombre' placeholder='aqui tu nombre' required>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='nombre' name='nombre' placeholder='aqui tu nombre'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                       <label class='col-sm-2'>Apellidos:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='apellidos' placeholder='aqui tus apellidos'>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='apellidos' name='apellidos' placeholder='aqui tus apellidos'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                     <label class='col-sm-2'>Teléfono:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='telefono' placeholder='aqui tu teléfono' required>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='telefono' name='telefono' placeholder='aqui tu teléfono'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                     <label class='col-sm-2'>Email:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='email' placeholder='aqui tu email'>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='email' name='email' placeholder='aqui tu email'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                     <label class='col-sm-2'>Fecha actual:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='date' name='fecha_alta' placeholder='aqui la fecha de hoy' required>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='date' id='fecha' name='fecha_alta'> <span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                     <label class='col-sm-2'>Nombre de usuario:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='nom_user' placeholder='aqui tu nombre de usuario' required>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='nom_user' name='nom_user' placeholder='aqui tu nombre de usuario'><span></span>
                       </div>
                     </div>
                     <div class='form-group'>
                     <label class='col-sm-2'>Contraseña:</label>
-                      <div class='col-sm-5 col-lg-offset-2'>
-                        <input class='form-control' type='text' name='pass' placeholder='aqui tu contraseña' required>
+                      <div class='col-sm-10'>
+                        <input class='form-control' type='text' id='pass' name='pass' placeholder='aqui tu contraseña'><span></span>
                       </div>
                     </div>
                   <div class='form-group'>
                     <div class='checkbox'>
-                      <input class='form-control' type='checkbox' value='open' name='check'>
+                      <input class='form-control' type='checkbox' id='privacidad' name='privacidad' value='aceptar'><span></span>
                     </div>
                     <div>
                       <h4><label class='col-sm-4 col-sm-offset-2'> Acepto los términos de privacidad</label></h4>
                     </div>
                   </div>
                   <div class='form-group'>
-                    <div class='col-sm-9 col-sm-offset-2'>
-                      <input class='form-control btn-theme' type='submit' name='nuevo_usuario' value='Aceptar'>
+                    <div class='col-sm-5'>
+                      <input class='form-control btn-theme' type='submit' id='nuevo_usuario' name='nuevo_usuario' value='Aceptar'>
                     </div>
                     <div class='col-sm-2' >
                       <a type='button' href='./clientes.php' class='btn btn-danger' >Cancelar</a>
@@ -1440,10 +1440,10 @@ class Interfaz {
                       <label class='col-sm-2' >Garaje:</label>
                       <div class='col-sm-10'>
                           <label class='radio-inline'>
-                              <input type='radio' name='garaje' value='si' id= 'Si'> Si
+                              <input type='radio' name='garaje' value='si' id= 'Si'> Si <span></span>
                           </label>
                           <label class='radio-inline'>
-                              <input type='radio' name='garaje' value='no' id='No'> No
+                              <input type='radio' name='garaje' value='no' id='No'> No <span></span>
                           </label>
                       </div>
                   </div>
@@ -1454,7 +1454,7 @@ class Interfaz {
                               <input type='radio' name='jardin' value='si' id= 'Si'> Si
                           </label>
                           <label class='radio-inline'>
-                              <input type='radio' name='jardin' value='no' id='No'> No
+                              <input type='radio' name='jardin' value='no' id='No'> No<span></span>
                           </label>
                       </div>
                   </div>
@@ -1462,7 +1462,7 @@ class Interfaz {
                       <label class='col-sm-2'>Piscina:</label>
                       <div class='col-sm-10 '>
                           <label class='radio-inline'>
-                              <input type='radio' name='piscina' value='si' id= 'Si'> Si
+                              <input type='radio' name='piscina' value='si' id= 'Si'> Si<span></span>
                           </label>
                           <label class='radio-inline'>
                               <input type='radio' name='piscina' value='no' id='No'> No
@@ -1472,11 +1472,11 @@ class Interfaz {
                   <div class='form-group'>
                       <label class=' col-sm-2'>Estado:</label>
                       <div class='col-sm-10'>
-                          <select class='form-control' id='estado' name='estado' >
+                          <select class='form-control' id='estado' name='estado'>
                               <option value=''>Selecciona una opcion</option>
                               <option value='0'>Nuevo</option>
                               <option value='1'>Segunda mano</option>
-                          </select>
+                          </select><span></span>
                       </div>
                   </div>
                   <div class='form-group'>
@@ -1551,7 +1551,7 @@ class Interfaz {
     nuevo_inmueble();
     return true;
   }
-  static public function form_borrar_inmueble(): bool {
+  static public function tbl_borrar_inmueble(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
@@ -1564,28 +1564,28 @@ class Interfaz {
               <div class='panel-body'>
                 <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
                   <div class='form-group'>
-                    <label class='col-sm-2'>ID:</label>
+                   
                     <div class='col-sm-10'>";
-    $conexion = abrirConexion();
-    $consulta = "SELECT id, direccion, imagen from tbl_inmuebles";
+                      $conexion = abrirConexion();
+                      $consulta = "SELECT id, calle, imagen from tbl_inmuebles";
 
-    $datos = mysqli_query($conexion, $consulta);
+                      $datos = mysqli_query($conexion, $consulta);
 
-    if (!$datos) {
-      echo "Error!! No se han podido cargar los datos del inmueble";
-    } else {
-      echo "<div class='col-xs-12 col-md-8 col-md-offset-2'>";
-      echo "<div class='table-responsive'>";
-      echo "<table class='table table-striped'";
-      echo "<thead><tr><th>Dirección</th><th>Imagen</th><th>¿Eliminar?</th></tr></thead>";
-      while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-        echo "<tbody><tr><td>$fila[direccion]</td><td><img src='$fila[imagen]' style='width:150px'></td>
-                              <td><form action='#' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-danger' type='submit' name='borrar' value='Eliminar'></form></td></tr></tbody>";
-      }
-      echo "</div></table></div>";
-    }
-    mysqli_close($conexion);
-    echo "</div>
+                      if (!$datos) {
+                        echo "Error!! No se han podido cargar los datos del inmueble";
+                      } else {
+                        echo "<div class='col-xs-12 col-md-8 col-md-offset-2'>";
+                        echo "<div class='table-responsive'>";
+                        echo "<table class='table table-striped'";
+                        echo "<thead><tr><th>id</th><th>Dirección</th><th>Imagen</th><th>¿Eliminar?</th></tr></thead>";
+                        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+                          echo "<tbody><tr><td>$fila[id]</td><td>'$fila[calle]$fila[portal]'</td><td><img src='/./media/img/img_inmuebles/$fila[imagen]' style='width:150px'></td>
+                                                <td><form action='#' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-danger' type='submit' name='borrar' value='Eliminar'></form></td></tr></tbody>";
+                        }
+                        echo "</div></table></div>";
+                      }
+                      mysqli_close($conexion);
+                    echo "</div>
                   </div>
                 </form>
               </div>
@@ -1594,6 +1594,7 @@ class Interfaz {
         </div>
       </div>
     </div>";
+    borrar_inmueble();
     return true;
   }
 
@@ -1878,7 +1879,7 @@ class Interfaz {
       return true;
   }
   return true;
-}
+  }/*************** revisar  */
   static public function gestion_noticias(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -1962,7 +1963,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
     return true;
   }
 
-  static public function form_borrar_noticia(): bool {
+  static public function tbl_borrar_noticia(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
     <div class='row'>
       <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
@@ -2455,9 +2456,9 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-theme' href='añadir_citas.php'>Añadir citas</a></li>
-                <li><a type='button' class='btn btn-theme' href='borrar_citas.php'>Borrar citas</a></li>
-                <li><a type='button' class='btn btn-theme' href='buscar_citas.php'>Buscar citas</a></li>
+                <li><a type='button' class='btn btn-theme' href='nueva_cita.php'>Añadir citas</a></li>
+                <li><a type='button' class='btn btn-theme' href='borrar_cita.php'>Borrar citas</a></li>
+                <li><a type='button' class='btn btn-theme' href='buscar_cita.php'>Buscar citas</a></li>
               </ul>
             </div>
           </nav>
@@ -2548,13 +2549,11 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
                 </div>
               </div>";
               echo "<div class='form-group'>
-                  <div class='col-sm-12 col-sm-offset-4'
-                    <div class='col-sm-2'>
-                      <input id='nueva_cita' class='form-control btn-theme' type='submit' name='nueva_cita' value='Añadir cita'>
-                    </div>
-                    <div class='col-sm-2'>
-                      <a href='citas.php' class='btn btn-danger'>Cancelar</a>
-                    </div>
+                  <div class='col-sm-12'>
+                    <input class='form-control btn-theme' type='submit' id='nueva_cita' name='nueva_cita' value='Añadir cita'>
+                  </div>
+                  <div class='col-sm-2'>
+                    <a href='citas.php' class='btn btn-danger'>Cancelar</a>
                   </div>
               </div>
             </form>
@@ -2626,7 +2625,7 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
     return true;
   }
 
-  static public function form_borrar_cita(): bool {
+  static public function tbl_borrar_cita(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-form'>

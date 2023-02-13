@@ -21,30 +21,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-      body{
-        background-image: url("../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      </style>
   </head>
   <body>
 
     <!-- Menú de navegación -->
     <?php $menu = Interfaz::mostrarMenu(); ?>
 
-    <?php $menu = Interfaz::mostrarFavoritos(); ?>
+    <?php $favoritos = Interfaz::mostrarFavoritos(); ?>
     
-
+    <?php $footer = Interfaz::footer(); ?>
 
     <script type="text/javascript" src="../../js/favoritos.js"></script>
-  
-  
-
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-    </footer>
-    </body>
-    </html>
+  </body>
+</html>

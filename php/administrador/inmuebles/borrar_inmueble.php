@@ -30,9 +30,9 @@
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones = Interfaz::gestion_inmuebles(); ?>
   
-    <?php $menu = Interfaz::form_borrar_inmueble(); ?>
+    <?php $formulario = Interfaz::tbl_borrar_inmueble(); ?>
     
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
 </body>
 </html>

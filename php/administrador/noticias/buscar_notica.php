@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Añadir Noticias</title>
+    <title>Buscar Noticias</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -34,6 +34,8 @@
     <?php $formulario = Interfaz::form_buscar_noticia(); ?>
 
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?>
+
+    <script src="../js/validar_buscar_noticia.js"></script>
   </body>
 </html>

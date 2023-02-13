@@ -7,14 +7,14 @@ function Inicio() {
 	bsubmit.addEventListener("click",Validar);
 
 	// validación en tiempo real cuando entro/salgo de cada campo
-	var btitular = document.querySelector("#titular");
-	btitular.addEventListener("blur",ValidarTitular);
+	var titular = document.querySelector("#titular");
+	titular.addEventListener("blur",ValidarTitular);
 
-	var bcontenido = document.querySelector("#contenido");
-	bcontenido.addEventListener("blur",ValidarContenido);
+	var contenido = document.querySelector("#contenido");
+	contenido.addEventListener("blur",ValidarContenido);
 
-	var bfecha = document.querySelector("#fecha");
-	bfecha.addEventListener("blur",ValidarFecha);
+	var fecha = document.querySelector("#fecha");
+	fecha.addEventListener("blur",ValidarFecha);
 
 }
 

@@ -2,22 +2,24 @@
 function calcular() {
 
     let deuda=parseFloat(document.querySelector("input[name=importe]").value);
-    let anos=parseInt(document.querySelector("input[name=anos]").value);
+    let anios=parseInt(document.querySelector("input[name=anios]").value);
     let interes=parseFloat(document.querySelector("input[name=interes]").value);
     const resultado=document.getElementById("resultado");
 
     // hacemos los calculos
     interes=(interes/100)/12;
-    const m=(deuda*interes*(Math.pow((1+interes),(anos*12))))/((Math.pow((1+interes),(anos*12)))-1);
+    const m=(deuda*interes*(Math.pow((1+interes),(anios*12))))/((Math.pow((1+interes),(anios*12)))-1);
 
     resultado.innerHTML="<div>Capital Inicial: "+deuda.toLocaleString("es-ES", {minimumFractionDigits: 2, maximumFractionDigits:2})+" € \
         <br>Cuota a pagar mensualmente: "+m.toLocaleString("es-ES", {minimumFractionDigits: 2, maximumFractionDigits:2})+" €</div>";
 
     // cramos un objeto table donde poner el resultado
     const table=document.createElement("table");
-
+    table.setAttribute("class",'tnoticias');
+    table.setAttribute("height", '400px');
+    table.setAttribute("width",'100%');
     table.setAttribute("border",1);
-    table.setAttribute("background-color",red);
+    table.setAttribute("background-color", 'red');
     table.setAttribute("cellpadding",5);
     table.setAttribute("cellspacing",0);
 
@@ -36,10 +38,13 @@ function calcular() {
     // contenido de la tabla
     let totalInt=0;
 
-    for (let i=1; i<=anos*12; i++) {
+    for (let i=1; i<=anios*12; i++) {
         totalInt=totalInt+(deuda*interes);
         tr=document.createElement("tr");
         let td=document.createElement("td");
+        tr.setAttribute("align",'center');
+        td.setAttribute("align",'center');
+
         let txt=document.createTextNode(i);
         td.appendChild(txt);
         tr.appendChild(td);
