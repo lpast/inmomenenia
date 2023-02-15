@@ -1,9 +1,18 @@
 <?php
-  require_once "dbconnect.php";
-  require_once "class/interfaz.php";
-  require_once "funciones.php";
-  session_start(); 
-  comprobarIndex();
+  session_start();
+  include "dbconnect.php";
+  include "class/interfaz.php";
+  include "funciones.php";
+
+  if (!isset($_SESSION['tipo'])) {
+    $tipo = $_SESSION['tipo'];
+    if( $tipo == 'u' && $tipo == 'a')  {
+      $nombre = $_SESSION['nombre'];
+    }
+    
+
+     $_SESSION['tipo'] = 'no_logeado';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,27 +30,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-      body {
-        background-image: url("../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      </style>
-  </head>
-  <body>
-    <head>
-        <!-- Menú de navegación -->
-        <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
     </head>
+  <body>
+      <!-- Menú de navegación -->
+      <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
 
-     
-       <?php $home = Interfaz::mostrar_home(); ?> 
-     
+     <?php $home = Interfaz::mostrar_home(); ?>
 
     <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer = Interfaz::footer(); ?> 
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

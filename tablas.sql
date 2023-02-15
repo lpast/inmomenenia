@@ -218,7 +218,7 @@ INSERT INTO tbl_noticias ( id, titular, contenido, imagen, fecha) VALUES
 
 --volcado datos 'tbl_empleados'
 INSERT INTO tbl_empleados (id, nombre, apellidos, direccion, telefono, fecha_alta, nom_user) VALUES
-('72998257Y', 'Administrador', 'Marco Cornago', 'San Blas, 41', 692605415, '1986-10-31', 'administrador');
+('72998257Y', 'Administrador', 'Marco Cornago', 'San Blas, 41', 692605415, '1986-10-31', 'admin');
 
 INSERT INTO tbl_favoritos (id, id_usuario, id_inmueble ) VALUES
 (001,'47896214H', 006);

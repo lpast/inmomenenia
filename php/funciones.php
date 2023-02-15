@@ -1,70 +1,24 @@
 <?php
 
-function iniciar_sesion(){
- /* if (isset($_SESSION['tipo'])) {*/
-    if ($_SESSION['tipo'] == 'u') {
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
-    } else if ($_SESSION['tipo'] == 'a') {
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=home.php'>";
-    }
-
-    if (isset($_POST['acceder'])) {
-      $usuario = $_POST['nick'];
-      $pass = $_POST['password'];
-
-      $con = abrirConexion();
-      $sql = "SELECT * FROM tbl_usuarios WHERE nom_user='$usuario' and pass='$pass'";
-      $consulta = mysqli_query($con, $sql);
-
-      if ($consulta) {
-        if (mysqli_num_rows($consulta) > 0) {
-          $fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-          $_SESSION['id_usuario'] = $fila['id'];
-
-          if ($usuario == 'administrador') {
-            $_SESSION['tipo'] = 'a';
-            $_SESSION['nombre'] = 'Administrador';
-            $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
-          } else {
-            $_SESSION['tipo'] = 'u';
-            $_SESSION['nombre'] = $fila['nombre'] . ' ' . $fila['apellidos'];
-            $home = "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=home.php'>";
-          }
-
-          if (isset($_POST['check'])) {
-            $datos = session_encode();
-            setcookie('datos', $datos, time() + (15 * 24 * 60 * 60), '/');
-          }
-
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong>¡Acceso correcto!</strong> 
-          </div>";
-        } else {
-          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
-        }
-      } else {
-        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-        <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4></div></div></div>";
-      }
-      echo $home;
-    }
- /* }*/
-}
+/*function iniciar_sesion() {
+  if (isset($_SESSION['tipo'])) {*/
+    
+ /* 
+}}*/
 
 function comprobarUsuario() {
-  if (isset($_SESSION['tipo'])){
-    if ($_SESSION['tipo'] != 'u'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+  if (isset($_SESSION['tipo'])) {
+    if ($_SESSION['tipo'] != 'u') {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
     }
     
-  }else if ($_COOKIE['datos']){
+  } else if ($_COOKIE['datos']) {
       session_decode($_COOKIE['datos']);
-      if ($_SESSION['tipo'] != 'u'){
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+      if ($_SESSION['tipo'] != 'u') {
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
       }
-  }else{
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+  } else {
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
   }
 }
 
@@ -76,21 +30,21 @@ function comprobarAdmin() {
   } else if ($_COOKIE['datos']) {
     session_decode($_COOKIE['datos']);
     if ($_SESSION['tipo'] != 'a'){
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
     }
   } else {
-    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../home.php'>";
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
   }
 }
 
 function comprobarIndex() {
   if (isset($_SESSION['tipo'])){
-    //echo "Tipo: ".$_SESSION['tipo']." - Desde sesión";
+    echo "Tipo: ".$_SESSION['tipo']." - Desde sesión";
   }else if (isset($_COOKIE['datos'])){
     session_decode($_COOKIE['datos']);
-    //echo "Tipo: ".$_SESSION['tipo']." - Desde cookies";
+    echo "Tipo: ".$_SESSION['tipo']." - Desde cookies";
   }else{
-    //echo "No hay sesión";
+   echo "No hay sesión";
   }
 }
 

@@ -4,6 +4,7 @@ class Interfaz {
   /* Cabeceras */
   static public function mostrarMenuHome(): bool {
     if (isset($_SESSION['tipo'])) {
+
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
@@ -30,8 +31,7 @@ class Interfaz {
                   </div>
                 </div>
               </nav>";
-      }
-      if ($tipo_usuario == 'a') {
+      } else if ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>
@@ -54,7 +54,33 @@ class Interfaz {
           </div>
         </div>
         </nav>";
+      } else {
+        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+            <div class='container-fluid'>
+              <div class='navbar-header'>
+                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span>                              
+                </button>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+                </div>
+              <div class='collapse navbar-collapse' id='nav-responsive'>
+              <ul class='nav navbar-nav navbar-right'>
+                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+                <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+              </ul>
+              </div>
+            </div>
+      </nav>";
       }
+
+
     } else {
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
             <div class='container-fluid'>
@@ -136,7 +162,33 @@ class Interfaz {
           </div>
         </div>
         </nav>";
+      } else {
+        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+            <div class='container-fluid'>
+              <div class='navbar-header'>
+                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span>
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span> 
+                  <span class='icon-bar b-resp'></span>                              
+                </button>
+                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+                </div>
+              <div class='collapse navbar-collapse' id='nav-responsive'>
+              <ul class='nav navbar-nav navbar-right'>
+                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+                <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+              </ul>
+              </div>
+            </div>
+      </nav>";
       }
+
+
     } else {
       echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
             <div class='container-fluid'>
@@ -194,10 +246,11 @@ class Interfaz {
     }
     return true;
   }
-  static public function mostrar_home(): bool {
+   static public function mostrar_home(): bool {
+    
     echo "<div class='container-fluid'>
       <div class='row'>";
-    if (isset($_SESSION['tipo'])) {
+    if ($_SESSION['tipo']) {
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         $nombre = $_SESSION['nombre'];
@@ -211,8 +264,7 @@ class Interfaz {
         echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-inicio'>";
         self::mostrar_noticias();
         echo "</div>";
-      }
-      if ($tipo_usuario == 'a') {
+      } else if ($tipo_usuario == 'a') {
         echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
           <h1 align='center'> Administración InmoMenenia </h1>
         </div>";
@@ -235,6 +287,7 @@ class Interfaz {
     }
     echo "</div>";
     echo "</div>";
+    
     return true;
   }
   static public function form_buscar_Inmuebles(): bool {
@@ -298,92 +351,93 @@ class Interfaz {
     buscar_Inmuebles();
     return true;
   }
-  /* static public function carousel() : bool {
-  echo "<div class='container-carousel'>
-  <div class='row'>
-  <!-- Carousel -->
-  <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
-  <!-- Indicators -->
-  <ol class='carousel-indicators'>
-  <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
-  <li data-target='#carousel-example-generic' data-slide-to='1'></li>
-  <li data-target='#carousel-example-generic' data-slide-to='2'></li>
-  </ol>
-  <!-- Wrapper for slides -->
-  
-  <div class='carousel-inner'>
-  <div class='item active'>";
-  $conexion = abrirConexion();
-  $sql = 'SELECT imagen FROM tbl_inmuebles';
-  $imagenes = array();
-  
-  $imagen = mysqli_query($conexion, $sql);
-  
-  if (!$imagen) {
-  echo 'Eror al cargar las imagenes';
-  } else {
-  while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-  array_push($imagenes, $fila['imagen']);
-  }
-  }
-  mysqli_close($conexion);
-  
-  $max = count($imagenes);
-  $img_aleatoria = rand(0, $max - 1);
-  echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='First slide' class='img-rounded img-responsive'  width: '900px' height:'400px' border:solid 0.5px>
-  </div>";
-  
-  echo "<div class='item'>";
-  $conexion = abrirConexion();
-  $sql = 'SELECT imagen FROM tbl_inmuebles';
-  $imagenes = array();
-  
-  $imagen = mysqli_query($conexion, $sql);
-  
-  if (!$imagen) {
-  echo 'Eror al cargar las imagenes';
-  } else {
-  while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-  array_push($imagenes, $fila['imagen']);
-  }
-  }
-  mysqli_close($conexion);
-  
-  $max = count($imagenes);
-  $img_aleatoria = rand(0, $max - 1);
-  echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Second slide' class='img-rounded img-responsive' border:solid 0.5px>
-  </div>";
-  echo "<div class='item'>";
-  $conexion = abrirConexion();
-  $sql = 'SELECT imagen FROM tbl_inmuebles';
-  $imagenes = array();
-  
-  $imagen = mysqli_query($conexion, $sql);
-  
-  if (!$imagen) {
-  echo 'Eror al cargar las imagenes';
-  } else {
-  while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-  array_push($imagenes, $fila['imagen']);
-  }
-  }
-  mysqli_close($conexion);
-  
-  $max = count($imagenes);
-  $img_aleatoria = rand(0, $max - 1);
-  echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Thierts slide' class='img-rounded img-responsive' border:solid 0.5px>
-  </div>";
-  //-- Controls -->
-  echo "<a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
-  <span class='glyphicon glyphicon-chevron-left'></span>
-  </a>
-  <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
-  <span class='glyphicon glyphicon-chevron-right'></span>
-  </a>
-  </div><!-- /carousel -->
-  </div>
-  </div>";
-  return true;
+
+  /*static public function carousel() : bool {
+    echo "<div class='container-carousel'>
+    <div class='row'>
+    <!-- Carousel -->
+    <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
+    <!-- Indicators -->
+    <ol class='carousel-indicators'>
+    <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
+    <li data-target='#carousel-example-generic' data-slide-to='1'></li>
+    <li data-target='#carousel-example-generic' data-slide-to='2'></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    
+    <div class='carousel-inner'>
+    <div class='item active'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='First slide' class='img-rounded img-responsive'  width: '900px' height:'400px' border:solid 0.5px>
+    </div>";
+    
+    echo "<div class='item'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Second slide' class='img-rounded img-responsive' border:solid 0.5px>
+    </div>";
+    echo "<div class='item'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Thierts slide' class='img-rounded img-responsive' border:solid 0.5px>
+    </div>";
+    //-- Controls -->
+    echo "<a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
+    <span class='glyphicon glyphicon-chevron-left'></span>
+    </a>
+    <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
+    <span class='glyphicon glyphicon-chevron-right'></span>
+    </a>
+    </div><!-- /carousel -->
+    </div>
+    </div>";
+    return true;
   } 
   */
 
@@ -733,7 +787,6 @@ class Interfaz {
         </div>
       </div>
     </div>";
-    iniciar_sesion();
     return true;
 
   }
@@ -817,7 +870,7 @@ class Interfaz {
         </div>
       </div>
     </div>";
-    registrarse();
+
 
     return true;
 
