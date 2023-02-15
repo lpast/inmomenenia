@@ -9,10 +9,13 @@
     if( $tipo == 'u' && $tipo == 'a')  {
       $nombre = $_SESSION['nombre'];
     }
-    
-
-     $_SESSION['tipo'] = 'no_logeado';
+     
   }
+
+  $menuHome = Interfaz::mostrarMenuHome();
+  $home = Interfaz::mostrar_home();
+  $footer = Interfaz::footer();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,12 +36,11 @@
     </head>
   <body>
       <!-- Menú de navegación -->
-      <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
+      <?php $menuHome; ?>
 
-     <?php $home = Interfaz::mostrar_home(); ?>
+     <?php $home; ?>
 
-    <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer; ?> 
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -1,6 +1,8 @@
 <?php
 
 class Interfaz {
+
+  const BASE_URL = "https://inmomenenia.com/php";
   /* Cabeceras */
   static public function mostrarMenuHome(): bool {
     if (isset($_SESSION['tipo'])) {
@@ -26,7 +28,7 @@ class Interfaz {
                     <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
                     <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                     <li><a href='usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                    <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                   </div>
                 </div>
@@ -49,7 +51,7 @@ class Interfaz {
             <li><a href='administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
             <li><a href='administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
             <li><a href='administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
           </ul>
           </div>
         </div>
@@ -133,7 +135,7 @@ class Interfaz {
                     <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
                     <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                     <li><a href='../../php/usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='../../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                    <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                   </div>
                 </div>
@@ -157,7 +159,7 @@ class Interfaz {
             <li><a href='../php/administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
             <li><a href='../php/administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
             <li><a href='../php/administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
           </ul>
           </div>
         </div>
@@ -237,7 +239,7 @@ class Interfaz {
             <li><a href='../clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
             <li><a href='../inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
             <li><a href='../citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='../../php/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
           </ul>
           </div>
         </div>
@@ -681,115 +683,10 @@ class Interfaz {
     return true;
   }
   static public function formulario_contacto(): bool {
-    echo "<div class='container-fluid'>
-            <div class='row'>
-              <div class='jumbotron'>
-                <h2 align ='center'>Si quieres ponerte en contacto con nosotros puedes rellenar el siguiente formulario</h2>
-                <h2 align ='center'>Trataremos de responderte lo antes posible</h3>
-              </div>
-              <div class='col-md-6 col-md-offset-3'>
-                <div class='panel panel-default'>
-                  <div class='panel-body'>
-                    <form id='contacto' action='#' method='post' accept-charset='utf-8'>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Nombre * </label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' id='nombre' name='nombre' placeholder='escribe aqui tu nombre' autofocus><span></span>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Email *</label>
-                        <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' id='email' name='email' placeholder='escribe aqui tu email'><span></span>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Teléfono</label>
-                        <div class='col-md-5 col-sm-2' style='margin-bottom:15px'>
-                          <input class='form-control' type='text' id='telefono' name='telefono' placeholder='escribe aqui tu teléfono'><span></span>
-                        </div>
-                      </div>
-                      <div class='form-group'>
-                        <label <div class='col-md-12 col-sm-2' style='margin-bottom:10px'> Asunto</label>
-                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <label class='radio-inline'>
-                            <input type='radio' name='asunto' id=asunto1' value='informacion'>Pedir información
-                          </label>
-                          <label class='radio-inline'>
-                          <input type='radio' name='asunto' id=asunto2' value='consulta'>Consulta
-                          </label>
-                          <label class='radio-inline'>
-                          <input type='radio' name='asunto' id=asunto3' value='sugerencia'>Sugerencia 
-                          </label>
-                          <label class='radio-inline'>
-                          <input type='radio' name='asunto' id=asunto4' value='cita'>Pedir cita
-                        </div>
-                      </div>
-                      <br>
-                      <div class='form-group'>
-                        <label class='col-md-12 col-sm-2' style='margin-bottom:10px'> Mensaje *</label>
-                        <div <div class='col-md-12 col-sm-2' style='margin-bottom:15px'>
-                          <textarea id='mensaje' class='form-control' name='mensaje' rows='5'></textarea><span></span>
-                        </div>
-                      </div>
-                      <br>
-                      <div class='form-group'>
-                      <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                        <input class='form-control btn-theme' align=center' style='margin-bottom:30px' type='submit' id='contacto' name='contacto' value='Enviar'>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>";
+    echo "";
     return true;
   }/*************** revisar  */
-  static public function formulario_acceso(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <div class='jumbotron'>
-            <h1 style='margin-bottom:35px' align='center'>ACCESO</h1>
-            <div class='panel panel-default'>
-              <div class='panel-body'>
-                <form action='#' method='post' class='form-horizontal'>
-                  <div class='form-group'>
-                    <h3><label class='col-sm-3 col-sm-offset-2'>Usuario</label></h3>
-                      <div class='col-sm-6'>
-                        <input class='form-control' type='text' name='nick' required>
-                      </div>
-                    </div>
-                  <div class='form-group'>
-                    <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
-                      <div class='col-sm-6'>
-                        <input class='form-control' type='password' name='password' required>
-                      </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='checkbox'>
-                      <input class='form-control' type='checkbox' value='open' name='check'>
-                    </div>
-                    <div>
-                      <h4><label class='col-sm-4 col-sm-offset-2'>Mantener la sesión abierta </label></h4>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-9 col-sm-offset-2'>
-                      <input class='form-control btn-theme' type='submit' name='acceder' value='Acceder'>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>";
-    return true;
-
-  }
+ 
   static public function formulario_registro(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>
@@ -1914,7 +1811,7 @@ class Interfaz {
                     <div class='form-group'>
                       <div class='col-sm-12 col-sm-offset-4'>
                         <div class='col-sm-2'>
-                          <input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'>
+                          <input class='form-control btn-theme' type='submit' name='guardar' value='Modificar'>
                         </div>
                         <div class='col-sm-2'>
                           <a href='cliente.php' class='btn btn-danger'>Cancelar</a>
@@ -1928,7 +1825,6 @@ class Interfaz {
           </div>
         </div>
       </div>";
-      modificar_inmueble();
       return true;
   }
   return true;
@@ -2496,7 +2392,6 @@ echo "<div class='container-fluid cabecera-menu-inicio'>
           </form>
         </div>
       </div>";
-      modificar_cliente();
     }
     return true;
 

@@ -1,8 +1,9 @@
 <?php 
+      session_start(); 
        include "../../../php/dbconnect.php";
        include "../../../php/class/interfaz.php";
        include "../../../php/funciones.php";
-      session_start(); 
+modificar_inmueble();
 ?>
 <!DOCTYPE html>
 <html lang="es">

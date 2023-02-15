@@ -1075,8 +1075,6 @@ function buscar_Inmuebles() {
   }//----fin isset
 }
 
-
-
 function registrarse() {
   if (isset($_POST['cancelar'])) {
     header("url=../index.php");
@@ -1173,10 +1171,10 @@ function gestion_datos_usuario(): bool {
       $con = abrirConexion();
       $sql1 = "UPDATE tbl_usuarios 
       SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
-       nom_user='$nom_user' HERE id='$id'";
+       nom_user='$nom_user' WHERE id='$id'";
 
       $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
-      HERE id='$id'";
+      WHERE id='$id'";
 
       if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
@@ -1206,10 +1204,10 @@ function gestion_datos_usuario(): bool {
       $con = abrirConexion();
       $sql1 = "UPDATE tbl_usuarios 
       SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
-       nom_user='$nom_user' HERE id='$id'";
+       nom_user='$nom_user' WHERE id='$id'";
 
       $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
-      HERE id='$id'";
+      WHERE id='$id'";
 
       if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
@@ -1280,7 +1278,6 @@ function listar_inmuebles() {
       echo "</table>";
   }
   mysqli_close($conexion);
-  modificar_inmueble();
 }
 function nuevo_inmueble() {
 
@@ -1561,11 +1558,14 @@ function borrar_inmueble(){
 } /* -------------------- REVISAR -----*/
 
   function modificar_inmueble() {
+
     if (isset($_POST['cancelar'])) {
-      header("url=inmuebles.php");
+
+      print_r($_POST);
+      //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
     }
   
-    if (isset($_POST['modificar'])) {
+    if (isset($_POST['guardar'])) {
       $id = $_POST['id'];
       $tipo = $_POST['tipo'];
       $calle = $_POST['calle'];
@@ -1600,8 +1600,11 @@ function borrar_inmueble(){
         $modificar_imagen = true;
       }
 
+      
+
       //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
       if ($modificar_imagen) {
+        
          //compruebo sea que sea una imagen
           if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
             echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
@@ -1641,9 +1644,9 @@ function borrar_inmueble(){
 
         if ($img_correcto) {
           $conexion = abrirConexion();
-          $sql = "UPDATE tbl_usuarios SET tipo='$tipo',
+          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
           calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
-          cp='$cp', localidad='$localidad',metros = '$metros',num_hab = '$num_hab',
+          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
           num_banos = '$num_banos',
           garaje = '$garaje',
           jardin = '$jardin',
@@ -1663,14 +1666,47 @@ function borrar_inmueble(){
             </div>";
           echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
         } else {
+          
           echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
           </div></div></div>";
         }
         mysqli_close($conexion);
         }
+      } else {
+          $conexion = abrirConexion();
+          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
+          calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
+          num_banos = '$num_banos',
+          garaje = '$garaje',
+          jardin = '$jardin',
+          piscina = '$piscina',
+          estado = '$estado',
+          titular = '$titular',
+          descripcion = '$descripcion',
+          precio = '$precio',
+          fecha_alta = '$fecha_alta',
+          id_cliente = '$id_cliente'
+          WHERE id='$id'";
+  
+        if (mysqli_query($conexion,$sql)) {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <b>Datos actualizados correctamente</b> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+        } else {
+          
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+          </div></div></div>";
+        }
+        mysqli_close($conexion);
       }
-  }
+      
+
+    }
+    return true;
   }
 
 function nueva_noticia() : bool {
@@ -1722,7 +1758,7 @@ function nueva_noticia() : bool {
               </div>";
       echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=noticias.php'>";
     }
-echo $imagen;
+  echo $imagen;
     if ($img_correcto) {
       $conexion = abrirConexion();
       $sql = "INSERT INTO tbl_noticias (id, titular, contenido, imagen, fecha) VALUES
@@ -1906,11 +1942,14 @@ function modificar_cliente() {
     $cp = $_POST['cp'];
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
+
+    print_r($_POST);
   
     $conexion = abrirConexion();
-    $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos', calle='$calle,' portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad' telefono='$telefono', email='$email' WHERE id='$id'";
+    $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos', calle='$calle', portal='$portal', piso='$piso',
+     puerta='$puerta', cp='$cp', localidad='$localidad', telefono='$telefono', email='$email' WHERE id='$id'";
 
-    if (mysqli_query($conexion,$sql)) {
+    if ($result) {
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <b>Datos actualizados correctamente</b> 
         </div>";
@@ -1920,7 +1959,7 @@ function modificar_cliente() {
       <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
     </div></div></div>";
     }
-    mysqli_close($conexion);
+    //mysqli_close($conexion);
   }
   
   return true;
