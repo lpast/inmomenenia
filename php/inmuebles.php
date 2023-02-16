@@ -1,13 +1,14 @@
 <?php 
-     include "../php/dbconnect.php";
-     include "../php/class/interfaz.php";
-     include "../php/funciones.php";
-     session_start(); 
-
+    session_start();
+    include "dbconnect.php";
+    include "class/interfaz.php";
+    include "funciones.php";
+    $tipoMenu = Interfaz::mostrarMenu();
+    $disponibles = Interfaz::inmuebles_disponibles();
+    $footer = Interfaz::footer();   
   ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,17 +25,19 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="../js/favoritos.js"></script>
-   </head>
+  </head>
   <body>
-    <!-- Menú de navegación -->
-    <?php $tipoMenu=Interfaz::mostrarMenu(); ?>
+    <?php $tipoMennu ?>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Mostramos los inmuebles disponibles -->
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 align="center">Ahora mismo, estos son los inmuebles están disponibles</h1>
+          <?php $disponibles ?>
+        </div>
+      </diV>
+    </diV>
 
-    <!-- Se muestran los inmuebles disponibles -->
-    <?php Interfaz::inmuebles_disponibles();?>
-  
-    <!-- footer -->
-    <?php $home = Interfaz::footer(); ?> 
+    <?php $footer ?> 
   </body>
-
-  
 </html>

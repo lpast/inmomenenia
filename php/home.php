@@ -35,12 +35,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
   <body>
-      <!-- Menú de navegación -->
-      <?php $menuHome; ?>
+    <?php $menuHome ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <?php $home ?>
+        </div>
+      </div>
+    </div>
 
-     <?php $home; ?>
-
-    <?php $footer; ?> 
+    <?php $footer ?> 
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

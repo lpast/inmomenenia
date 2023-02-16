@@ -1,9 +1,9 @@
 <?php
   function abrirConexion(){
     $servername = "localhost";
-    $database = "db_inmomenenia";
-    $username = "root";
-    $password = "ubuntu";
+    $database = "dbbrhgswov0fge";
+    $username = "uchlzplyz1zcl";
+    $password = "uchlzplyz1zcl";
     
     
     // Create connection

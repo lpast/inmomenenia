@@ -1929,7 +1929,7 @@ function modificar_cliente() {
     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=clientes.php'>";
   }
 
-  if (isset($_POST['modificar'])) {
+  if (isset($_POST['guardar'])) {
     $id = $_POST['id'];
     $tipo = $_POST['tipo']; 
     $nombre = $_POST['nombre'];
@@ -1949,7 +1949,8 @@ function modificar_cliente() {
     $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos', calle='$calle', portal='$portal', piso='$piso',
      puerta='$puerta', cp='$cp', localidad='$localidad', telefono='$telefono', email='$email' WHERE id='$id'";
 
-    if ($result) {
+
+    if(mysqli_query($conexion,$sql)) {
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
           <b>Datos actualizados correctamente</b> 
         </div>";
