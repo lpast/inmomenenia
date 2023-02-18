@@ -1,23 +1,24 @@
 
-    window.onload = function(){
-        var favorito = document.getElementById("no_favorito");
-       
+    window.onload = function() {
+        var boton = document.getElementById("no_favorito");
+        var favorito = document.getElementById("nuevo_favorito");
+
         favorito.addEventListener('click',cambiarImagen);
-        
+ 
+        function cambiarImagen() {
            
-        function cambiarImagen(){
-            favorito.setAttribute('id','si_favorito');   
-            favorito.setAttribute('src','../media/iconos/si-favorito.png');   
+               
+            
+          
+            
+            if (favorito.innerHTML == 'Añadir favorito') {
+                boton.setAttribute ('id','si_favorito');   
+                boton.setAttribute ('src','../media/iconos/si-favorito.png'); 
+                favorito.innerHTML = 'Borrar favorito';
+            } else {
+                boton.setAttribute ('id','no_favorito');   
+                boton.setAttribute ('src','../media/iconos/no-favorito.png'); 
+                favorito.innerHTML = 'Añadir favorito'; 
+            }
         }
-
-
-      
-     /*
-         var favorito = document.getElementById("si_favorito");
-         favorito.addEventListener('click',imagenInicial);
-        function imagenInicial(){
-            favorito.setAttribute('id','no_favorito');
-            favorito.setAttribute('src','../media/iconos/no-favorito.png');
-        }
-        */
     }

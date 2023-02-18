@@ -4,8 +4,6 @@
   include "class/interfaz.php";
   include "funciones.php";
 
-  
-
   $menu = Interfaz::mostrarMenu();
   $footer = Interfaz::footer();
 
@@ -37,20 +35,20 @@
         }
   
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                        <strong>¡Acceso correcto!</strong> 
-                      </div>";
+          <strong>¡Acceso correcto!</strong> 
+        </div>";
   
-                echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
   
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                    <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
-                  </div></div></div>";
+          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
+        </div>";
       }
     } else {
       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                    <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
-                  </div></div></div>";
+        <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
+      </div>";
     }
   
     }
