@@ -1,11 +1,4 @@
 <?php
-
-/*function iniciar_sesion() {
-  if (isset($_SESSION['tipo'])) {*/
-    
- /* 
-}}*/
-
 function comprobarUsuario() {
   if (isset($_SESSION['tipo'])) {
     if ($_SESSION['tipo'] != 'u') {
@@ -1418,7 +1411,6 @@ function buscar_inmueble_admin(){
             $con = abrirConexion();
             $sql = "SELECT * FROM tbl_inmuebles WHERE num_hab='%num_hab%' WHERE metros='%metros%' and tipo='venta'";
             $bhmventa = mysqli_query($con,$sql);
-
             if (!$bhmventa){
               echo "Error al consultar BD - Venta -Nº. habitaciones - precio SI";
             }else{
@@ -2130,3 +2122,4 @@ function borrar_cita() {
     mysqli_close($conexion);
   }
 }
+?>

@@ -4,6 +4,8 @@
   include "class/interfaz.php";
   include "funciones.php";
 
+  
+
   $menu = Interfaz::mostrarMenu();
   $footer = Interfaz::footer();
 
@@ -106,6 +108,7 @@
                   <div class='form-group'>
                     <div class='col-sm-9 col-sm-offset-2'>
                       <input class='form-control btn-theme' type='submit' name='acceder' value='Acceder'>
+                      
                     </div>
                   </div>
                 </form>
@@ -116,7 +119,7 @@
       </div>
     </div>
 
-    <?php acceder(); ?>
+    
     <?php  $footer; ?>
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,10 +1,12 @@
---mysql -u past - past -p 
---(contraseña)
-
---DROP DATABASE IF EXISTS db_inmomenenia;
---CREATE DATABASE db_inmomenenia;
-
---USE db_inmomenenia;
+CREATE DATABASE dbbrhgswov0fge;
+CREATE USER 'uchlzplyz1zcl'@localhost IDENTIFIED BY 'uchlzplyz1zcl';
+--Conceder permisos para poder acceder y usar el servidor MySQL
+GRANT USAGE ON *.* TO 'uchlzplyz1zcl'@localhost;
+--Conceder todos los privilegios sobre la base de datos al usuario
+GRANT ALL ON dbbrhgswov0fge.* TO 'uchlzplyz1zcl'@localhost;
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'uchlzplyz1zcl'@localhost;
+USE dbbrhgswov0fge;
 
 CREATE TABLE IF NOT EXISTS tbl_inmuebles (
    id int (5) NOT NULL UNIQUE,
@@ -78,7 +80,7 @@ ALTER TABLE tbl_favoritos
 MODIFY id int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 
 
-  CREATE TABLE IF NOT EXISTS tbl_empleados (
+/**  CREATE TABLE IF NOT EXISTS tbl_empleados (
     id varchar (9) NOT NULL UNIQUE,
     nombre varchar (20) NOT NULL,
     apellidos varchar (30) NOT NULL,
@@ -88,7 +90,7 @@ MODIFY id int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
     fecha_alta DATE NOT NULL,
     nom_user varchar (20) NOT NULL,
     CONSTRAINT pk_emp_id PRIMARY KEY (id)
- );
+ ); */
  
 CREATE TABLE IF NOT EXISTS tbl_citas (
    id int(20) NOT NULL,
@@ -115,8 +117,6 @@ CREATE TABLE IF NOT EXISTS tbl_noticias (
 ALTER TABLE tbl_noticias
 MODIFY id int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 
---alter table tbl_inmuebles ADD CONSTRAINT fk_id FOREIGN KEY (id_cliente) references tbl_clientes(id);
-
 --volcado datos 'tbl_inmuebles' 
 INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad, metros, num_hab, num_banos, garaje, jardin, piscina, estado, titular, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
 (001, 'venta', 'Calle Eras Altas', 86, null, null, 50171, 'La Puebla de Alfindén', 120, 3, 2, 'si', 'si', 'no', 'segunda mano', 'Casa en venta','Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'fachada_0078.png', '2022-09-08', '74859657P'),
@@ -130,9 +130,6 @@ INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad,
 (009, 'alquiler', 'Calle Barrio Nuevo', 89, null, null, 50171, 'La Puebla de Alfindén', 120, 3, 2, 'no', 'no', 'no', 'segunda mano', 'Casa en alquiler', 'Casa totalmente reformada y equipada, lista para entrar a vivir.', 150.000, 'salon_0115.png','2022-10-07', '72146969B'),
 (010, 'venta', 'Avd. Santa Ana', 15, '1','A Izq', 50195, 'Pastriz', 134, 2, 2, 'no', 'no', 'no', 'segunda mano', 'Casa en venta','Casa totalmente reformada y equipada, lista para entrar a vivir.', 89.000,'salon_cocina263.png','2022-07-05', '38693644L'),
 (011, 'venta', 'Calle Acacia', 78, null, null, 50171, 'La Puebla de Alfindén', 220, 3, 1, 'no', 'si', 'si', 'obra nueva', 'Casa en venta', 'Obra nueva, lista para entrar a vivir.', 150.000, 'salon_7890.png','2022-06-05', '40321567C');
-
-(012, 'venta', 'Sol', 54, '', '', 50171, 'La Puebla de Alfindén', 133, 3, 2, 0, 0, 1,  0, 'Casa en venta', 'Preciosa casa para una familia. Reformada y equipada hace pocos meses, lista para entrar a vivir.', 139.000, 'salon-rojo_0063.jpeg','2022-10-07', '39147258M'),
-(013, 'alquiler', 'Carretera Zaragoza',33, '3','', 50195, 'Pastriz', 90,  1, 1, 0, 0, 1, 0,'Casa en alquiler', 'Preciosa y acogedora casa totalmente reformada y equipada, ideal para parejas. Lista para entrar a vivir.', 400, 'fachada_0078.jpg','2022-05-08', '40324786C');
 
 --volcado datos 'tbl_usuarios'
 INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
@@ -185,9 +182,6 @@ INSERT INTO tbl_clientes (id, tipo, nombre, apellidos, telefono, email, calle, p
 ('72146969B', 'alquilar', 'Andres', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','C/ Doctor Pareja Yében', 68, '3','C', 50171, 'La Puebla de Alfindén'),
 ('78596875P', 'arrendatario','Pepe', 'Rodriguez Sancho', 976355896, 'pepesano@yahoo.com','Calle Hermita', 36, '4','D',50171, 'La Puebla de Alfindén');
 
-('72998257Y','' ,'2022-01-04', 'Administrador', 'admin');
-('0', 'disponible', '', 000000000,'' , '', '')
-
 --volcado datos 'tbl_citas'
 INSERT INTO tbl_citas (id, fecha, hora, motivo, lugar, id_cliente) VALUES
 (200, '2022-12-12', '11:00:00', 'Ver piso', 'Plaza de la Nava, 5', '40321567C'),
@@ -214,14 +208,14 @@ INSERT INTO tbl_noticias ( id, titular, contenido, imagen, fecha) VALUES
 (4, 'Nuevos pisos', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sitres iste non. Magnam!', 'noticias2.png', '2022-11-27'),
 (1, 'Black friday inmobiliario', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut soluta commodi, aperiam, sint assumenda, sit deserunt quas, cupiditate reprehenderit cum sunt dolor vitae vel voluptas maxime maiores iste non. Magnam!','noticias5.png', '2022-10-28');
 
-
+INSERT INTO tbl_favoritos (id, id_usuario, id_inmueble ) VALUES
+(001,'47896214H', 006);
 
 --volcado datos 'tbl_empleados'
 INSERT INTO tbl_empleados (id, nombre, apellidos, direccion, telefono, fecha_alta, nom_user) VALUES
 ('72998257Y', 'Administrador', 'Marco Cornago', 'San Blas, 41', 692605415, '1986-10-31', 'admin');
 
-INSERT INTO tbl_favoritos (id, id_usuario, id_inmueble ) VALUES
-(001,'47896214H', 006);
+
 
 ALTER TABLE tbl_inmuebles
    ADD CONSTRAINT fk_cli_id FOREIGN KEY (id_cliente) REFERENCES tbl_clientes (id);

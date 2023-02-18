@@ -3,9 +3,6 @@
     include "dbconnect.php";
     include "class/interfaz.php";
     include "funciones.php";
-    $tipoMenu = Interfaz::mostrarMenu();
-    $disponibles = Interfaz::inmuebles_disponibles();
-    $footer = Interfaz::footer();   
   ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,17 +24,19 @@
     <script src="../js/favoritos.js"></script>
   </head>
   <body>
-    <?php $tipoMennu ?>
+    <?php $tipoMenu = Interfaz::mostrarMenu();  ?>
     <div class="container-fluid">
       <div class="row">
         <!-- Mostramos los inmuebles disponibles -->
-        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio tinmuebles'>
           <h1 align="center">Ahora mismo, estos son los inmuebles están disponibles</h1>
-          <?php $disponibles ?>
+        </div>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+       <?php $disponibles = Interfaz::inmuebles_disponibles(); ?>
         </div>
       </diV>
     </diV>
 
-    <?php $footer ?> 
+    <?php $footer = Interfaz::footer();   ?> 
   </body>
 </html>
