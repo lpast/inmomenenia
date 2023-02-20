@@ -35,20 +35,20 @@
         }
   
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                        <strong>¡Acceso correcto!</strong> 
-                      </div>";
+          <strong>¡Acceso correcto!</strong> 
+        </div>";
   
-                echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
   
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                    <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
-                  </div></div></div>";
+          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
+        </div>";
       }
     } else {
       echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                    <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
-                  </div></div></div>";
+        <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
+      </div>";
     }
   
     }
@@ -106,6 +106,7 @@
                   <div class='form-group'>
                     <div class='col-sm-9 col-sm-offset-2'>
                       <input class='form-control btn-theme' type='submit' name='acceder' value='Acceder'>
+                      
                     </div>
                   </div>
                 </form>
@@ -116,7 +117,7 @@
       </div>
     </div>
 
-    <?php acceder(); ?>
+    
     <?php  $footer; ?>
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

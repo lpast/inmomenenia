@@ -66,7 +66,7 @@
                       echo "<div class='favorito'>
                       <form action='#' method='post'>
                         <button class='button button5'><img id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
-                        <input class='btn-favorito' id='nuevo_favorito' type='submit' name='nuevo_favorito' value='Añadir favorito'>Añadir favorito</button>
+                        <input class='btn-favorito' id='nuevo_favorito' type='submit' name='nuevo_favorito' value='Añadir favorito'></button>
                           <td><input type='hidden' id ='id_favorito'  value = '$array[0]'>
                           <td><input type='hidden' id='id_usuario' value= '$_SESSION[id_usuario]'></td>
                           <td><input type='hidden' id='id_inmueble' value= '$_SESSION[id_inmueble]'></td>";
