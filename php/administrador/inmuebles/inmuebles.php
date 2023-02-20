@@ -1,8 +1,9 @@
-<?php 
-    include "../../../php/dbconnect.php";
-    include "../../../php/class/interfaz.php";
-    include "../../../php/funciones.php";
-  session_start(); 
+<?php
+  session_start();
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/interfaz.php";
+  include "../../../php/funciones.php";
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">

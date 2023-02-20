@@ -6,7 +6,6 @@ class Interfaz {
   /* Cabeceras */
   static public function mostrarMenuHome(): bool {
     if (isset($_SESSION['tipo'])) {
-
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
@@ -140,8 +139,7 @@ class Interfaz {
                   </div>
                 </div>
               </nav>";
-      }
-      if ($tipo_usuario == 'a') {
+      } else if ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>

@@ -306,3 +306,23 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 102
+[20-Feb-2023 19:12:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:102
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 102
+[20-Feb-2023 19:53:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:102
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 102
+[20-Feb-2023 19:53:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function acceder() in /home/customer/www/inmomenenia.com/public_html/php/acceder.php:119
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/acceder.php on line 119
+[20-Feb-2023 19:53:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function acceder() in /home/customer/www/inmomenenia.com/public_html/php/acceder.php:119
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/acceder.php on line 119
+[20-Feb-2023 19:53:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function acceder() in /home/customer/www/inmomenenia.com/public_html/php/acceder.php:119
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/acceder.php on line 119

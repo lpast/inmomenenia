@@ -3,8 +3,6 @@
     include "dbconnect.php";
     include "class/interfaz.php";
     include "funciones.php";
-    comprobarUsuario();
-
   ?>
 <!DOCTYPE html>
 <html lang="es">
