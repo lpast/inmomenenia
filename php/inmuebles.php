@@ -3,8 +3,8 @@
     include "dbconnect.php";
     include "class/interfaz.php";
     include "funciones.php";
+    comprobarUsuario();
 
-    $opcion = "Añadir favorito";
   ?>
 <!DOCTYPE html>
 <html lang="es">

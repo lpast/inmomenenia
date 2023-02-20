@@ -29,11 +29,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <?php  $home = Interfaz::mostrar_home(); ?>
+     <?php $menuHome = Interfaz::mostrarMenuHome();?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-          <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
+        <?php  $home = Interfaz::mostrar_home(); ?>
         </div>
       </div>
     </div>

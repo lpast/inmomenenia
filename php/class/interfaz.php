@@ -333,6 +333,95 @@ class Interfaz {
     return true;
   }
 
+  /*static public function carousel() : bool {
+    echo "<div class='container-carousel'>
+    <div class='row'>
+    <!-- Carousel -->
+    <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
+    <!-- Indicators -->
+    <ol class='carousel-indicators'>
+    <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
+    <li data-target='#carousel-example-generic' data-slide-to='1'></li>
+    <li data-target='#carousel-example-generic' data-slide-to='2'></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    
+    <div class='carousel-inner'>
+    <div class='item active'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='First slide' class='img-rounded img-responsive'  width: '900px' height:'400px' border:solid 0.5px>
+    </div>";
+    
+    echo "<div class='item'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Second slide' class='img-rounded img-responsive' border:solid 0.5px>
+    </div>";
+    echo "<div class='item'>";
+    $conexion = abrirConexion();
+    $sql = 'SELECT imagen FROM tbl_inmuebles';
+    $imagenes = array();
+    
+    $imagen = mysqli_query($conexion, $sql);
+    
+    if (!$imagen) {
+    echo 'Eror al cargar las imagenes';
+    } else {
+    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
+    array_push($imagenes, $fila['imagen']);
+    }
+    }
+    mysqli_close($conexion);
+    
+    $max = count($imagenes);
+    $img_aleatoria = rand(0, $max - 1);
+    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Thierts slide' class='img-rounded img-responsive' border:solid 0.5px>
+    </div>";
+    //-- Controls -->
+    echo "<a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
+    <span class='glyphicon glyphicon-chevron-left'></span>
+    </a>
+    <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
+    <span class='glyphicon glyphicon-chevron-right'></span>
+    </a>
+    </div><!-- /carousel -->
+    </div>
+    </div>";
+    return true;
+  } 
+  */
+
   static public function mostrar_noticias(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>
