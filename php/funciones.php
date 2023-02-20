@@ -1,4 +1,11 @@
 <?php
+
+/*function iniciar_sesion() {
+  if (isset($_SESSION['tipo'])) {*/
+    
+ /* 
+}}*/
+
 function comprobarUsuario() {
   if (isset($_SESSION['tipo'])) {
     if ($_SESSION['tipo'] != 'u') {
@@ -1224,18 +1231,18 @@ function nuevo_favorito(): bool  {/***** MEJORA ******/
     $id_usuario = $_SESSION['id_usuario'];
 
     $conexion = abrirConexion();
-    $insertar = "INSERT into tbl_favoritos (id_favorito, id_usuario, id_inmueble) VALUES
+    $insertar = "INSERT into tbl_favoritos (id, id_usuario, id_inmueble) VALUES
       ('$id', '$id_usuario', $id_inmueble)";
       
       if(mysqli_query($conexion, $insertar)) {
         "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>Favorito añadido</h4>
-        </div></div></div>";
+        </div>";
         
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble a favoritos</h4>
-        </div></div></div>";
+        </div>";
       }
     mysqli_close($conexion);
   }
@@ -1411,6 +1418,7 @@ function buscar_inmueble_admin(){
             $con = abrirConexion();
             $sql = "SELECT * FROM tbl_inmuebles WHERE num_hab='%num_hab%' WHERE metros='%metros%' and tipo='venta'";
             $bhmventa = mysqli_query($con,$sql);
+
             if (!$bhmventa){
               echo "Error al consultar BD - Venta -Nº. habitaciones - precio SI";
             }else{
@@ -2122,4 +2130,3 @@ function borrar_cita() {
     mysqli_close($conexion);
   }
 }
-?>

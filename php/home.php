@@ -6,14 +6,20 @@
 
   if (!isset($_SESSION['tipo'])) {
     $tipo = $_SESSION['tipo'];
-    if ( $tipo == 'u' && $tipo == 'a')  {
+    if( $tipo == 'u' && $tipo == 'a')  {
       $nombre = $_SESSION['nombre'];
     }
+     
   }
+
+  $menuHome = Interfaz::mostrarMenuHome();
+  $home = Interfaz::mostrar_home();
+  $footer = Interfaz::footer();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>InmoMenenia</title>
@@ -27,18 +33,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
+    </head>
   <body>
-     <?php $menuHome = Interfaz::mostrarMenuHome();?>
+    <?php $menuHome ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-        <?php  $home = Interfaz::mostrar_home(); ?>
+          <?php $home ?>
         </div>
       </div>
     </div>
 
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer ?> 
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

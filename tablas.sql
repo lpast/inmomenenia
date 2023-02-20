@@ -1,7 +1,7 @@
 CREATE DATABASE dbbrhgswov0fge;
 CREATE USER 'uchlzplyz1zcl'@localhost IDENTIFIED BY 'uchlzplyz1zcl';
 --Conceder permisos para poder acceder y usar el servidor MySQL
-GRANT USAGE ON *.* TO 'uchlzplyz1zcl'@localhost;
+GRANT USAGE ON *.* TO 'uchlzplyz1zcl'@localhost IDENTIFIED BY 'uchlzplyz1zcl';
 --Conceder todos los privilegios sobre la base de datos al usuario
 GRANT ALL ON dbbrhgswov0fge.* TO 'uchlzplyz1zcl'@localhost;
 FLUSH PRIVILEGES;

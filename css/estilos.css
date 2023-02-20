@@ -22,7 +22,7 @@
 /* CSS General de la web */
 
 body {
-	background-image: url("/./media/img/img_inmuebles/bbk_fachada_0533.jpg");
+	background-image: url("../media/img/img_inmuebles/bbk_fachada_0533.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
@@ -36,30 +36,6 @@ h1, h2,h3, h4, p {
 	font-family: 'Lobster Two';
 	color: #000000;
 }
-
-.home {
-	background-image: url("../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	width: 100%;
-	height: 800px
-}
-
-.hipotecas {
-	background-image: url("../media/img/img_inmuebles/bbk_buhardilla_0890.jpeg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
-.acceso {
-	background-image: url("../media/img/img_inmuebles/bbk_buhardilla_0890.jpeg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
-
 
 .cabecera {
 	padding-top: 110px;

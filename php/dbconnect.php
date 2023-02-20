@@ -1,13 +1,9 @@
 <?php
   function abrirConexion(){
-    $servername = "localhost";
-    $database = "dbbrhgswov0fge";
-    $username = "uchlzplyz1zcl";
-    $password = "uchlzplyz1zcl";
-    
+   
     try {
       // Create connection
-      $mysqli = mysqli_connect($servername, $username, $password, $database);
+      $mysqli = mysqli_connect( 'localhost', 'uchlzplyz1zcl', 'uchlzplyz1zcl', 'dbbrhgswov0fge');
       // Check connection
       if (!$mysqli) {
         die ("Connection failed: " . mysqli_connect_error());
@@ -19,5 +15,4 @@
       $mysqli = null;
     }
   }
-   
 ?>

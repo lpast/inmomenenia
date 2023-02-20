@@ -3,7 +3,7 @@
     include "dbconnect.php";
     include "class/interfaz.php";
     include "funciones.php";
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -34,11 +34,6 @@
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
           <?php
           $con = abrirConexion();
-          $incremento = "SELECT auto_increment from information_schema.tables WHERE table_schema='db_inmomenenia' and table_name='tbl_favoritos'";
-      
-          $datos = mysqli_query($con, $incremento);
-          $array = mysqli_fetch_array($datos, MYSQLI_NUM);
-      
           $sql = "SELECT * FROM tbl_inmuebles";
           $consulta = mysqli_query($con, $sql);
       
@@ -57,23 +52,28 @@
                 echo "<div class='panel panel-default'>";
                 echo "<div class='panel-body tnoticias'>";
                 echo "<img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
-                      <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
+                  <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
       
                 if (isset($_SESSION['tipo'])) {
                   if (isset($_SESSION['id_usuario'])) {
                     $tipo_usuario = $_SESSION['tipo'];
                     if ($tipo_usuario == 'u') {
+                      $incremento = "SELECT auto_increment from information_schema.tables WHERE table_schema='dbbrhgswov0fge' and table_name='tbl_favoritos'";
+      
+                      $datos = mysqli_query($con, $incremento);
+                      $array = mysqli_fetch_array($datos, MYSQLI_NUM);
+                      $_SESSION['id_favorito'] = $fila ['id'];
                       echo "<div class='favorito'>
                       <form action='#' method='post'>
                         <button class='button button5'><img id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
-                          <a href='#' id='nuevo_favorito' type='submit' name='nuevo_favorito'> Añadir favorito</a></button>
-                          <input type='hidden' id='id' value = '$_SESSION[id]'></td>
-                          <input type='hidden' id='id_usuario' value='$_SESSION[id_usuario]'/>
-                          <input type='hidden' id='id_inmueble' value='$_SESSION[id_inmueble]'/>";
-                          echo "$_SESSION[id]'";
+                        <input class='btn-favorito' id='nuevo_favorito' type='submit' name='nuevo_favorito' value='Añadir favorito'>Añadir favorito</button>
+                          <td><input type='hidden' id ='id_favorito'  value = '$array[0]'>
+                          <td><input type='hidden' id='id_usuario' value= '$_SESSION[id_usuario]'></td>
+                          <td><input type='hidden' id='id_inmueble' value= '$_SESSION[id_inmueble]'></td>";
+                          echo "$_SESSION[id_favorito]";
                           echo "$_SESSION[id_usuario]";
-                          echo "$_SESSION[id_inmueble]
-                      </form>";
+                          echo "$_SESSION[id_inmueble]";
+                      echo "</form>";
                       nuevo_favorito();
                       echo "</div>";
                     }
