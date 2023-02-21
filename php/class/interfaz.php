@@ -254,12 +254,16 @@ class Interfaz {
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         $nombre = $_SESSION['nombre'];
-        echo "<h1 align='center'> ¡ Hola $nombre ! </h1>
-              <h2 align='center'> ¿En qué podemos ayudarte? </h2>";
+        echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 align='center'> ¡ Hola $nombre ! </h1>
+          <h2 align='center'> ¿En qué podemos ayudarte? </h2>
+        </div>  ";
         self::gestion_usuario();
         self::mostrar_noticias();
       } else if ($tipo_usuario == 'a') {
-        echo "<h1 align='center'> Administración InmoMenenia </h1>";
+        echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+        <h1 align='center'> Administración InmoMenenia </h1>
+      </div>  ";
         self::area_administrador();
         self::form_buscar_Inmuebles();
          buscar_Inmuebles();
@@ -332,95 +336,6 @@ class Interfaz {
     </div>";
     return true;
   }
-
-  /*static public function carousel() : bool {
-    echo "<div class='container-carousel'>
-    <div class='row'>
-    <!-- Carousel -->
-    <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
-    <!-- Indicators -->
-    <ol class='carousel-indicators'>
-    <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
-    <li data-target='#carousel-example-generic' data-slide-to='1'></li>
-    <li data-target='#carousel-example-generic' data-slide-to='2'></li>
-    </ol>
-    <!-- Wrapper for slides -->
-    
-    <div class='carousel-inner'>
-    <div class='item active'>";
-    $conexion = abrirConexion();
-    $sql = 'SELECT imagen FROM tbl_inmuebles';
-    $imagenes = array();
-    
-    $imagen = mysqli_query($conexion, $sql);
-    
-    if (!$imagen) {
-    echo 'Eror al cargar las imagenes';
-    } else {
-    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-    array_push($imagenes, $fila['imagen']);
-    }
-    }
-    mysqli_close($conexion);
-    
-    $max = count($imagenes);
-    $img_aleatoria = rand(0, $max - 1);
-    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='First slide' class='img-rounded img-responsive'  width: '900px' height:'400px' border:solid 0.5px>
-    </div>";
-    
-    echo "<div class='item'>";
-    $conexion = abrirConexion();
-    $sql = 'SELECT imagen FROM tbl_inmuebles';
-    $imagenes = array();
-    
-    $imagen = mysqli_query($conexion, $sql);
-    
-    if (!$imagen) {
-    echo 'Eror al cargar las imagenes';
-    } else {
-    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-    array_push($imagenes, $fila['imagen']);
-    }
-    }
-    mysqli_close($conexion);
-    
-    $max = count($imagenes);
-    $img_aleatoria = rand(0, $max - 1);
-    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Second slide' class='img-rounded img-responsive' border:solid 0.5px>
-    </div>";
-    echo "<div class='item'>";
-    $conexion = abrirConexion();
-    $sql = 'SELECT imagen FROM tbl_inmuebles';
-    $imagenes = array();
-    
-    $imagen = mysqli_query($conexion, $sql);
-    
-    if (!$imagen) {
-    echo 'Eror al cargar las imagenes';
-    } else {
-    while ($fila = mysqli_fetch_array($imagen, MYSQLI_ASSOC)) {
-    array_push($imagenes, $fila['imagen']);
-    }
-    }
-    mysqli_close($conexion);
-    
-    $max = count($imagenes);
-    $img_aleatoria = rand(0, $max - 1);
-    echo "<img src='media/img/$imagenes[$img_aleatoria]' alt='Thierts slide' class='img-rounded img-responsive' border:solid 0.5px>
-    </div>";
-    //-- Controls -->
-    echo "<a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
-    <span class='glyphicon glyphicon-chevron-left'></span>
-    </a>
-    <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
-    <span class='glyphicon glyphicon-chevron-right'></span>
-    </a>
-    </div><!-- /carousel -->
-    </div>
-    </div>";
-    return true;
-  } 
-  */
 
   static public function mostrar_noticias(): bool {
     echo "<div class='container-fluid'>
@@ -588,9 +503,8 @@ class Interfaz {
   /* Menú de navegación usuario*/
 
   static public function gestion_usuario(): bool {
-    echo "<div class='container-fluid cabecera-menu'>
-    <div class='row'>
-      <div class='col-xs-12'>
+    echo "    <div class='col-xs-12 col-sm-12 col-md-10 '>
+
         <nav class='navbar'>
           <div class='container-fluid'>
             <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
