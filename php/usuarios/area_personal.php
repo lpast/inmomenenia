@@ -30,7 +30,7 @@
     </head>
 
     <section>
-         <?php $area = Interfaz::area_personal(); ?>
+         <?php $area = Usuario::area_personal(); ?>
     </section>
 
     <footer>

@@ -3,6 +3,9 @@
   include "../php/dbconnect.php";
   include "../php/class/interfaz.php";
   include "../php/funciones.php";
+
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,10 +27,7 @@
   <body>
     
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
-
-    
-
+    <?php $menu ?>
     <div class='container-fluid'>
     <div class='row'>
         <div class='col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 cabecera-menu-inicio'>
@@ -53,18 +53,13 @@
               <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../media/iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
             </div>
           </div>
-
           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 tinmuebles'>
-           
             <div class='jumbotron'>
               <p align ='right'><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.119915259742!2d-0.7502616847277431!3d41.63153937924263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd59182ed7c6ceb3%3A0x345da3b45c8c7af0!2sC.%20San%20Blas%2C%2050171%20La%20Puebla%20de%20Alfind%C3%A9n%2C%20Zaragoza!5e0!3m2!1ses!2ses!4v1670877551410!5m2!1ses!2ses' width='600' height='450' style='border:solid 2px'  allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></p>
             </div>
           </div>
         </div>
       </div>
-
-      
-
 
       <div class='jumbotron'>
         <h2 align ='center'>Si quieres conocernos un poco más</h2>
@@ -135,6 +130,6 @@
         </div>
       </div>
     </div>
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer ?> 
   </body>
 </html>

@@ -43,7 +43,7 @@ function ValidarId(id) {
 		this.nextSibling.innerHTML="¡Atención! El dni no puede quedar vacío";
 		this.nextSibling.className="error";
 		return false;
-	} else if (this.value.trim().length > 9) { 
+	} else if (this.value.trim().length > 10) { 
 		this.className="form-control error-input"; 
 		this.nextSibling.innerHTML="¡Atención! El dni no puede superar los 9 carácteres";
 		this.nextSibling.className="error";

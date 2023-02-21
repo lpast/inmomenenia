@@ -38,6 +38,11 @@
     <?php 
       if (isset($_POST['modificar'])) {
         $id = $_POST['id'];
+        $fecha = $_POST['fecha'];
+        $hora = $_POST['hora'];
+        $motivo = $_POST['motivo'];
+        $lugar = $_POST['lugar'];
+        $id_cliente = $_POST['id_cliente'];
         
         $conexion = abrirConexion();
         $sql = "SELECT fecha, hora, motivo, lugar, id_cliente FROM tbl_citas WHERE id='$id'";
@@ -47,13 +52,17 @@
         if (!$datos) {
           echo "Error al consultar datos a la BD";
         } else {
-          $fila = mysqli_fetch_array($datos,MYSQLI_ASSOC);
+             $fila = mysqli_fetch_array($datos,MYSQLI_ASSOC);
+            while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
+                
+                $fecha = $fila['fecha'];
+                $hora = $fila['hora'];
+                $motivo = $fila['motivo'];
+                $lugar = $fila['lugar'];
+                $id_cliente = $fila['id_cliente'];
+            }
+         
 
-          $fecha = $fila['fecha'];
-          $hora = $fila['hora'];
-          $motivo = $fila['motivo'];
-          $lugar = $fila['lugar'];
-          $id_cliente = $fila['id_cliente'];
         }
       }
     ?>
@@ -110,9 +119,7 @@
                            echo "Error al ajecutar la consulta";
                          } else {
                            while ($fila = mysqli_fetch_array($clientes,MYSQLI_ASSOC)) {
-                             if ($fila['nombre'] != 'disponible') {
                                echo "<option value=$fila[id]>$fila[nombre]</option>";
-                             }
                            }
                          }                     
                          mysqli_close($conexion);

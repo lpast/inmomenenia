@@ -15,6 +15,7 @@
 
     
     window.onload = function() {
+        
         var boton = document.getElementById("no_favorito");
         var favorito = document.getElementById("nuevo_favorito");
 

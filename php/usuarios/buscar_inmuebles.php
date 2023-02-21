@@ -26,9 +26,9 @@
     <?php $menu = Interfaz::mostrarMenu(); ?>
 
     <!-- Muestro imagen de un inmueble aleatorio -->
-    <?php $aleatoria = Interfaz::img_aleatoria(); ?>
+    <?php $aleatoria = Usuario::img_aleatoria(); ?>
 
-    <?php $formulario = Interfaz::form_buscar_Inmuebles(); ?>
+    <?php $formulario = Usuario::form_buscar_Inmuebles(); ?>
    
    <!-- footer -->
    <?php $footer = Interfaz::footer(); ?> 

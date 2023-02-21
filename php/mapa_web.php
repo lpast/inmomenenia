@@ -4,6 +4,8 @@
   require_once "funciones.php";
   session_start(); 
   comprobarIndex();
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,16 +24,23 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <body>
-    <head>
-        <!-- Menú de navegación -->
-        <?php $menuHome = Interfaz::mostrarMenuHome(); ?>
-    </head>
-    
-    
-    <!-- Mapa web -->
-    <?php $mapa = Interfaz::mapaWeb(); ?>
+    <!-- Menú de navegación -->
+    <?php $menu ?>
+        
+    <!-- Mapa web --><div class='container-fluid'>
+      <div class='row'>
+      <div class='col-xs-12 cabecera-menu-inicio' align='center'>
+        <h1>Mapa web</h1>
+        <h3 class='tmapa'><a href='../php/home.php'>Inicio</a></h3>
+        <h3 class='tmapa'><a href='../php/usuarios/buscar_inmuebles.php'>Buscar Inmuebles</a></h3>
+        <h3 class='tmapa'><a href='../php/inmuebles.php'>Cartera de Inmuebles</a></h3>
+        <h3 class='tmapa'><a href='../php/hipotecas.php'>Calcula tu hipoteca</a></h3>
+        <h3 class='tmapa'><a href='../php/contacto.php'>Contacto</a></h3>
+        <h3 class='tmapa'><a href='../php/usuarios/area_personal.php'>Área Personal</a></h3>
+        </div>
+      </div>
     
     <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer ?> 
   </body>
 </html>

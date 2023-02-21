@@ -3,6 +3,9 @@
   include "../php/dbconnect.php";
   include "../php/class/interfaz.php";
   include "../php/funciones.php";
+
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +25,7 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <body>
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-menu-inicio'>
@@ -72,8 +75,7 @@
     </div>
     </div>
 
-     <!-- footer -->
-     <?php $footer = Interfaz::footer(); ?> 
+     <?php $footer ?> 
 
      <script src="../js/calcula_hipoteca.js"></script>
   </head>
