@@ -26,7 +26,7 @@
           $_SESSION['nombre'] = 'Administrador';
         } else {
           $_SESSION['tipo'] = 'u';
-          $_SESSION['nombre'] = $fila['nombre'].' '.$fila['apellidos'];
+          $_SESSION['nombre'] = $fila['nombre'];
         }
   
         if (isset($_POST['check'])) {
@@ -38,7 +38,7 @@
           <strong>¡Acceso correcto!</strong> 
         </div>";
   
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
+       echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
   
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
@@ -106,7 +106,6 @@
                   <div class='form-group'>
                     <div class='col-sm-9 col-sm-offset-2'>
                       <input class='form-control btn-theme' type='submit' name='acceder' value='Acceder'>
-                      
                     </div>
                   </div>
                 </form>
@@ -117,7 +116,7 @@
       </div>
     </div>
 
-    
+    <?php acceder(); ?>
     <?php  $footer; ?>
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

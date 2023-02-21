@@ -1219,23 +1219,23 @@ function gestion_datos_usuario(): bool {
 
 function nuevo_favorito(): bool  {/***** MEJORA ******/
   if (isset($_POST['nuevo_favorito'])) {
-    $id = $_POST['id_favorito'];
+    $id = $_POST['id'];
     $id_inmueble = $_POST['id_inmueble'];
     $id_usuario = $_SESSION['id_usuario'];
 
     $conexion = abrirConexion();
-    $insertar = "INSERT into tbl_favoritos (id, id_usuario, id_inmueble) VALUES
+    $insertar = "INSERT into tbl_favoritos (id_favorito, id_usuario, id_inmueble) VALUES
       ('$id', '$id_usuario', $id_inmueble)";
       
       if(mysqli_query($conexion, $insertar)) {
         "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>Favorito añadido</h4>
-        </div>";
+        </div></div></div>";
         
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble a favoritos</h4>
-        </div>";
+        </div></div></div>";
       }
     mysqli_close($conexion);
   }
@@ -1828,6 +1828,7 @@ function borrar_noticia(): bool {
   }
   return true;
 }
+
 
 
 function nuevo_cliente(): bool {
