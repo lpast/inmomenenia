@@ -1272,8 +1272,8 @@ function listar_inmuebles() {
   }
   mysqli_close($conexion);
 }
-function nuevo_inmueble() {
 
+function nuevo_inmueble() {
   if (isset($_POST['nuevo_inmueble'])){
     $id = $_POST['id'];
     $tipo = $_POST['tipo'];
@@ -1368,145 +1368,6 @@ function nuevo_inmueble() {
   </div>";
 }
 
-function buscar_inmueble_admin(){  
-  if (isset($_POST['buscar_inm'])){
-    $tipo = $_POST['tipo'];
-    $calle = $_POST['calle'];
-    $portal = $_POST['portal'];
-    $piso = $_POST['piso'];
-    $puerta = $_POST['puerta'];
-    $direccion = $calle . $portal . $piso . $puerta;
-    $metros = $_POST['metros'];
-    $precio = $_POST['precio'];
-
-    if ($tipo == "compra"){ //SI venta
-      if($direccion != ""){   //SI  venta y direccion
-        if($metros != ""){ // SI  venta, direccion y metros 
-          if($precio != ""){//SI  venta, direccion, metros y precio
-            $con = abrirConexion();
-            $sql = "SELECT *
-                    FROM tbl_inmuebles
-                    WHERE calle=$calle
-                    WHERE portal=$portal
-                    WHERE piso=$piso
-                    WHERE metros=$metros
-                    WHERE precio=$precio 
-                    and tipo='venta'";
-            $ballventa = mysqli_query($con,$sql);
-
-            if (!$ballventa){
-              echo "Error al consultar BD - Venta - Direccion. - Metros<sup>2</sup>  - Precio SI";
-            }else{
-              echo "<table class='table table-striped'>";
-              echo "<thead><tr><th>Dirección</th><th><th>Metros<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-              while ($fila = mysqli_fetch_array($ballventa,MYSQLI_ASSOC)){
-                echo "<tbody><tr><td>$direccion</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-              <td><form action='../../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-              </tr></tbody>";
-              }
-              echo "</table>";
-            }
-            mysqli_close($con);
-          }/*else if($precio == ""){ //buscamos por venta, numero de habitaciones y metros 
-            $con = abrirConexion();
-            $sql = "SELECT * FROM tbl_inmuebles WHERE num_hab='%num_hab%' WHERE metros='%metros%' and tipo='venta'";
-            $bhmventa = mysqli_query($con,$sql);
-            if (!$bhmventa){
-              echo "Error al consultar BD - Venta -Nº. habitaciones - precio SI";
-            }else{
-              echo "<table class='table table-striped'>";
-              echo "<thead><tr><th>Dirección</th><th>Nº. habitaciones</th><th>Metros<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-              while ($fila = mysqli_fetch_array($bhmventa,MYSQLI_ASSOC)){
-                echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='$fila[imagen]' width='150px'></td>
-              <td><form action='ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-              </tr></tbody>";
-            }
-              echo "</table>";
-            }
-            mysqli_close($con);      
-          }//------cierre llave if precio*/
-          //buscamos por venta, dirección y metros
-          $con = abrirConexion();
-          $sql = "SELECT * FROM tbl_inmuebles WHERE direccion='%direccion%' WHERE metros='%metros%' and tipo='venta'";
-          $bhmventa = mysqli_query($con,$sql);
-
-          if (!$bhmventa){
-            echo "Error al consultar BD - Venta - Metros - direccion SI";
-          }else{
-            echo "<table class='table table-striped'>";
-            echo "<thead><tr><th>Dirección</th><th>Metros<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-            while ($fila = mysqli_fetch_array($bhmventa,MYSQLI_ASSOC)){
-              echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='$fila[imagen]' width='150px'></td>
-            <td><form action='ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-            </tr></tbody>";
-          }
-            echo "</table>";
-          }
-          mysqli_close($con);
-        
-          
-        }else if($metros == ""){//SI  venta y direccion
-          $con = abrirConexion();
-          $sql = "SELECT * FROM tbl_inmuebles WHERE direccion='%direccion%' and tipo='venta'";
-
-          $bhventa = mysqli_query($con,$sql);
-
-          if (!$bhventa){
-            echo "Error al consultar BD - Venta y direccion SI";
-          }else{
-            echo "<table class='table table-striped'>";
-            echo "<thead><tr><th>Dirección</th><th>Metros<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-            while ($fila = mysqli_fetch_array($bhventa,MYSQLI_ASSOC)){
-              echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='$fila[imagen]' width='150px'></td>
-            <td><form action='ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-            </tr></tbody>";
-          }
-            echo "</table>";
-          }
-          mysqli_close($con);
-
-        }//llave cierre metros 
-      }
-      $con = abrirConexion();
-      $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='venta'";
-      $bventa = mysqli_query($con,$sql);
-
-      if (!$bventa){
-        echo "Error al consultar BD - Venta SI";
-      }else{
-        echo "<table class='table table-striped'>";
-        echo "<thead><tr><th>Dirección</th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($bventa,MYSQLI_ASSOC)){
-          echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[precio]</td><td><img src='$fila[imagen]' width='150px'></td>
-        <td><form action='ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-        </tr></tbody>";
-      }
-        echo "</table>";
-      }
-      mysqli_close($con);
-    }else if($tipo == "alquiler"){ //buscamos por alquiler
-      $con = abrirConexion();
-      $sql = "SELECT * FROM tbl_inmuebles WHERE tipo='alquiler'";
-      $balquiler = mysqli_query($con,$sql);
-
-      if (!$balquiler){
-        echo "Error al consultar BD - Alquiler SI";
-      }else{
-        echo "<table class='table table-striped'>";
-        echo "<thead><tr><th>Dirección</th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
-        while ($fila = mysqli_fetch_array($balquiler,MYSQLI_ASSOC)){
-          echo "<tbody><tr><td>$fila[direccion]</td><td>$fila[precio]</td><td><img src='../../php/$fila[imagen]' width='150px'></td>
-        <td><form action='ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
-        </tr></tbody>";
-        }
-        echo "</table>";
-      }
-      mysqli_close($con);
-    }
-  }//llave cierre  if (isset($_POST['buscar_inm']))
-  
-} /* -------------------- REVISAR -----*/
-
 function borrar_inmueble(){
   if (isset($_POST['borrar'])){
     $id = $_POST['id'];
@@ -1549,157 +1410,157 @@ function borrar_inmueble(){
     }
 } /* -------------------- REVISAR -----*/
 
-  function modificar_inmueble() {
+function modificar_inmueble() {
 
-    if (isset($_POST['cancelar'])) {
+  if (isset($_POST['cancelar'])) {
 
-      print_r($_POST);
-      //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
-    }
-  
-    if (isset($_POST['guardar'])) {
-      $id = $_POST['id'];
-      $tipo = $_POST['tipo'];
-      $calle = $_POST['calle'];
-      $portal = $_POST['portal'];
-      $piso = $_POST['piso'];
-      $puerta = $_POST['puerta'];
-      $cp = $_POST['cp'];
-      $localidad = $_POST['localidad'];
-      $metros = $_POST['metros'];
-      $num_hab = $_POST['num_hab'];
-      $num_banos = $_POST['num_banos'];
-      $garaje = $_POST['garaje'];
-      $jardin = $_POST['jardin'];
-      $piscina = $_POST['piscina'];
-      $estado = $_POST['estado'];
-      $titular = $_POST['titular'];
-      $descripcion = $_POST['descripcion'];
-      $precio = $_POST['precio'];
-      $fecha_alta = $_POST['fecha_alta'];
-      $id_cliente = $_POST['id_cliente'];
-
-      $imagen = $_FILES['imagen']['name'];
-      $imagen_tmp = $_FILES['imagen']['tmp_name'];
-      $imagen_type = $_FILES['imagen']['type'];
-      $imagen_size = $_FILES['imagen']['size'];
-      
-      $img_correcto = false;
-      $modificar_imagen = false;
-
-      // si el tamaño de la imagen es mayor que 0 significa que se quiere modificar
-      if ($imagen_size > 0) {
-        $modificar_imagen = true;
-      }
-
-      
-
-      //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
-      if ($modificar_imagen) {
-        
-         //compruebo sea que sea una imagen
-          if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
-            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-            <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
-            </div></div></div>";
-          }
-
-        // subo la imagen al servidor
-        if (!file_exists("/./media/img/img_inmuebles")) {
-          mkdir("/./media/img/img_inmuebles");
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <strong>la carpeta se ha creado</strong> 
-          </div>";
-        } else {
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <strong>la carpeta estaba creada</strong> 
-          </div>";
-        }
-
-            // creo la ruta donde guardar la foto dependiendo del tipo que sea
-        if ($imagen_type){
-          $ruta_img = "/./media/img/img_inmuebles/$imagen";
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <strong>ruta correcta</strong> 
-          </div>";
-        } 
-
-        // guardo la foto en el servidor
-        if (move_uploaded_file($imagen_tmp, $ruta_img)) {
-          $img_correcto = true;
-        } else {
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-              <strong>Error al subir la imagen del inmueble al servidor</strong> 
-            </div>";
-          echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
-        }
-
-        if ($img_correcto) {
-          $conexion = abrirConexion();
-          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
-          calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
-          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
-          num_banos = '$num_banos',
-          garaje = '$garaje',
-          jardin = '$jardin',
-          piscina = '$piscina',
-          estado = '$estado',
-          titular = '$titular',
-          descripcion = '$descripcion',
-          precio = '$precio',
-          fecha_alta = '$fecha_alta',
-          id_cliente = '$id_cliente',
-          imagen = '$imagen'
-          WHERE id='$id'";
-  
-        if (mysqli_query($conexion,$sql)) {
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-              <b>Datos actualizados correctamente</b> 
-            </div>";
-          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
-        } else {
-          
-          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-          </div></div></div>";
-        }
-        mysqli_close($conexion);
-        }
-      } else {
-          $conexion = abrirConexion();
-          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
-          calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
-          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
-          num_banos = '$num_banos',
-          garaje = '$garaje',
-          jardin = '$jardin',
-          piscina = '$piscina',
-          estado = '$estado',
-          titular = '$titular',
-          descripcion = '$descripcion',
-          precio = '$precio',
-          fecha_alta = '$fecha_alta',
-          id_cliente = '$id_cliente'
-          WHERE id='$id'";
-  
-        if (mysqli_query($conexion,$sql)) {
-          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-              <b>Datos actualizados correctamente</b> 
-            </div>";
-          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
-        } else {
-          
-          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-          </div></div></div>";
-        }
-        mysqli_close($conexion);
-      }
-      
-
-    }
-    return true;
+    print_r($_POST);
+    //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
   }
+
+  if (isset($_POST['guardar'])) {
+    $id = $_POST['id'];
+    $tipo = $_POST['tipo'];
+    $calle = $_POST['calle'];
+    $portal = $_POST['portal'];
+    $piso = $_POST['piso'];
+    $puerta = $_POST['puerta'];
+    $cp = $_POST['cp'];
+    $localidad = $_POST['localidad'];
+    $metros = $_POST['metros'];
+    $num_hab = $_POST['num_hab'];
+    $num_banos = $_POST['num_banos'];
+    $garaje = $_POST['garaje'];
+    $jardin = $_POST['jardin'];
+    $piscina = $_POST['piscina'];
+    $estado = $_POST['estado'];
+    $titular = $_POST['titular'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $fecha_alta = $_POST['fecha_alta'];
+    $id_cliente = $_POST['id_cliente'];
+
+    $imagen = $_FILES['imagen']['name'];
+    $imagen_tmp = $_FILES['imagen']['tmp_name'];
+    $imagen_type = $_FILES['imagen']['type'];
+    $imagen_size = $_FILES['imagen']['size'];
+    
+    $img_correcto = false;
+    $modificar_imagen = false;
+
+    // si el tamaño de la imagen es mayor que 0 significa que se quiere modificar
+    if ($imagen_size > 0) {
+      $modificar_imagen = true;
+    }
+
+    
+
+    //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
+    if ($modificar_imagen) {
+      
+        //compruebo sea que sea una imagen
+        if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
+          </div></div></div>";
+        }
+
+      // subo la imagen al servidor
+      if (!file_exists("/./media/img/img_inmuebles")) {
+        mkdir("/./media/img/img_inmuebles");
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <strong>la carpeta se ha creado</strong> 
+        </div>";
+      } else {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <strong>la carpeta estaba creada</strong> 
+        </div>";
+      }
+
+          // creo la ruta donde guardar la foto dependiendo del tipo que sea
+      if ($imagen_type){
+        $ruta_img = "/./media/img/img_inmuebles/$imagen";
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+          <strong>ruta correcta</strong> 
+        </div>";
+      } 
+
+      // guardo la foto en el servidor
+      if (move_uploaded_file($imagen_tmp, $ruta_img)) {
+        $img_correcto = true;
+      } else {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>Error al subir la imagen del inmueble al servidor</strong> 
+          </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+      }
+
+      if ($img_correcto) {
+        $conexion = abrirConexion();
+        $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
+        calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+        cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
+        num_banos = '$num_banos',
+        garaje = '$garaje',
+        jardin = '$jardin',
+        piscina = '$piscina',
+        estado = '$estado',
+        titular = '$titular',
+        descripcion = '$descripcion',
+        precio = '$precio',
+        fecha_alta = '$fecha_alta',
+        id_cliente = '$id_cliente',
+        imagen = '$imagen'
+        WHERE id='$id'";
+
+      if (mysqli_query($conexion,$sql)) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <b>Datos actualizados correctamente</b> 
+          </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+      } else {
+        
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+        </div></div></div>";
+      }
+      mysqli_close($conexion);
+      }
+    } else {
+        $conexion = abrirConexion();
+        $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
+        calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+        cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
+        num_banos = '$num_banos',
+        garaje = '$garaje',
+        jardin = '$jardin',
+        piscina = '$piscina',
+        estado = '$estado',
+        titular = '$titular',
+        descripcion = '$descripcion',
+        precio = '$precio',
+        fecha_alta = '$fecha_alta',
+        id_cliente = '$id_cliente'
+        WHERE id='$id'";
+
+      if (mysqli_query($conexion,$sql)) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <b>Datos actualizados correctamente</b> 
+          </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+      } else {
+        
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+        </div></div></div>";
+      }
+      mysqli_close($conexion);
+    }
+    
+
+  }
+  return true;
+}
 
 function nueva_noticia() : bool {
   if (isset($_POST['nueva_noticia'])) {

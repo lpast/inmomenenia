@@ -1,9 +1,13 @@
 <?php
-  require_once "../../php/dbconnect.php";
-  require_once "../../php/class/interfaz.php";
-  require_once "../../php/funciones.php";
   session_start(); 
- ?>
+  require "../../php/dbconnect.php";
+  require "../../php/class/interfaz.php";
+  require "../../php/class/usuario.php";
+  require "../../php/class/inmueble.php";
+
+  $menu = Usuario::mostrarMenu();
+  $footer = Interfaz::footer();
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -24,15 +28,19 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    </head>
-  <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
-
-     <!-- Se muestran las citas comprados por el usuario -->
-    <?php $botones = Interfaz::citas_usuario(); ?>
-
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-    </footer>
+   <body>
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <div class='tnoticias'>
+            <h1 align='center'>Echa un vistazo a tus citas</h1>
+          </div>
+        </div>
+        <!-- Se muestran los datos del usuario -->
+        <?php Usuario::citas_usuario(); ?>
+      </div>
+    </div>
+    <?php $footer ?>
   </body>
 </html>

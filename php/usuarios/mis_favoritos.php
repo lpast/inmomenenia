@@ -1,8 +1,12 @@
-<?php 
-    require_once "../../php/dbconnect.php";
-    require_once "../../php/class/interfaz.php";
-    require_once "../../php/funciones.php";
-    session_start(); 
+<?php
+  session_start(); 
+  require "../../php/dbconnect.php";
+  require "../../php/class/interfaz.php";
+  require "../../php/class/usuario.php";
+  require "../../php/class/inmueble.php";
+
+  $menu = Usuario::mostrarMenu();
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,14 +27,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
-
-    <?php $favoritos = Interfaz::mostrarFavoritos(); ?>
-    
-    <?php $footer = Interfaz::footer(); ?>
-
-    <script type="text/javascript" src="../../js/favoritos.js"></script>
+    <?php $menu ?>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+            <div class='tnoticias'>
+            <?php Usuario::mis_favoritos(); ?>
+            </div>
+          </div>    
+        </div>
+      </div>
+      <?php $footer ?>
   </body>
 </html>

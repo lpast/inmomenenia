@@ -402,12 +402,8 @@ class Noticia {
         </div>";
       }
     }  
-    
-      return true;
-    
+    return true;
   }
-
-
 }
 
 ?>

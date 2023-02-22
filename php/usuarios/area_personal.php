@@ -1,9 +1,13 @@
-<?php 
-        require_once "../../php/dbconnect.php";
-        require_once "../../php/class/interfaz.php";
-        require_once "../../php/funciones.php";
-        session_start(); 
-?>
+<?php
+  session_start(); 
+  require "../../php/dbconnect.php";
+  require "../../php/class/interfaz.php";
+  require "../../php/class/usuario.php";
+  require "../../php/class/inmueble.php";
+
+  $menu = Usuario::mostrarMenu();
+  $footer = Interfaz::footer();
+ ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -24,19 +28,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-  <head>
-        <!-- Menú de navegación -->
-        <?php $menuHome = Interfaz::mostrarMenu(); ?>
-    </head>
-
-    <section>
-         <?php $area = Usuario::area_personal(); ?>
-    </section>
-
-    <footer>
-      <?php $footer = Interfaz::footer(); ?>
-    </footer>
-    
-
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <div class='tnoticias'>
+            <div class='container-fluid'>
+              <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
+                <?php
+                  if (isset($_SESSION['tipo'])) {
+                    $tipo_usuario = $_SESSION['tipo'];
+                    if ($tipo_usuario == 'u') {
+                      $nombre = $_SESSION['nombre'];
+                    }
+                  }
+                  echo "<h1 align='center'> ¡ Hola $nombre ! </h1>
+                    <h2 align='center'> ¿Qué quieres hacer?</h2>";
+                ?>
+              </div>
+            </div>
+            <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio '>
+              <div class ='col-md-6'>
+                <ul>
+                  <lo><a href='../usuarios/mis_datos.php'><img src='../../media/iconos/mis-datos.png' alt='logo-mis-datos' width='150px' align='center'>
+                    <h2> Ver mis datos </h2></a></lo>
+                  <lo><a href='../usuarios/mis_inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-mis-inmuebles' width='150px' align='center'>
+                    <h2> Ver mis inmuebles </h2></a></lo>
+                </ul>
+              </div>
+              <div class ='col-md-6'>
+                <ul>
+                  <lo><a href='../usuarios/mis_citas.php'><img src='../../media/iconos/calendar.png' alt='logo-mis-citas' width='150px' align='center'>
+                    <h2>Ver mis citas </h2></a></lo>
+                  <lo><a href='../usuarios/mis_favoritos.php'><img src='../../media/iconos/mis-favoritos.png' alt='logo-mis-favoritos' width='150px' align='center'>
+                    <h2>Ver mis favoritos </h2></a></lo>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php $footer ?>
   </body>
 </html>

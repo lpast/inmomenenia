@@ -1,9 +1,13 @@
-<?php 
-    require_once "../../php/dbconnect.php";
-    require_once "../../php/class/interfaz.php";
-    require_once "../../php/funciones.php";
-    session_start(); 
-?>
+<?php
+  session_start(); 
+  require "../../php/dbconnect.php";
+  require "../../php/class/interfaz.php";
+  require "../../php/class/usuario.php";
+  require "../../php/class/inmueble.php";
+
+  $menu = Usuario::mostrarMenu();
+  $footer = Interfaz::footer();
+ ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -23,13 +27,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
-
-    <!-- Mostramos formulario con datos del usuario -->
-    <?php $botones = Interfaz::datos_usuario(); ?>
-    
-    <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <?php $botones ?>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+          <h2 align='center' style='margin-top: 50px;'>Estos son tus datos de usuario</h2>
+          <p align='center'><b>Podrás modificar tu dirección, teléfono o contraseña</b></p>          
+          <?php
+            Usuario::mis_datos();
+            Usuario::modificar_datos();
+          ?>
+        </div>
+      </div>
+      <?php $footer ?>
   </body>
 </html>
