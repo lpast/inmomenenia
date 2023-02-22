@@ -1549,157 +1549,157 @@ function borrar_inmueble(){
     }
 } /* -------------------- REVISAR -----*/
 
-function modificar_inmueble() {
+  function modificar_inmueble() {
 
-  if (isset($_POST['cancelar'])) {
+    if (isset($_POST['cancelar'])) {
 
-    print_r($_POST);
-    //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
-  }
-
-  if (isset($_POST['guardar'])) {
-    $id = $_POST['id'];
-    $tipo = $_POST['tipo'];
-    $calle = $_POST['calle'];
-    $portal = $_POST['portal'];
-    $piso = $_POST['piso'];
-    $puerta = $_POST['puerta'];
-    $cp = $_POST['cp'];
-    $localidad = $_POST['localidad'];
-    $metros = $_POST['metros'];
-    $num_hab = $_POST['num_hab'];
-    $num_banos = $_POST['num_banos'];
-    $garaje = $_POST['garaje'];
-    $jardin = $_POST['jardin'];
-    $piscina = $_POST['piscina'];
-    $estado = $_POST['estado'];
-    $titular = $_POST['titular'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $fecha_alta = $_POST['fecha_alta'];
-    $id_cliente = $_POST['id_cliente'];
-
-    $imagen = $_FILES['imagen']['name'];
-    $imagen_tmp = $_FILES['imagen']['tmp_name'];
-    $imagen_type = $_FILES['imagen']['type'];
-    $imagen_size = $_FILES['imagen']['size'];
-    
-    $img_correcto = false;
-    $modificar_imagen = false;
-
-    // si el tamaño de la imagen es mayor que 0 significa que se quiere modificar
-    if ($imagen_size > 0) {
-      $modificar_imagen = true;
+      print_r($_POST);
+      //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
     }
+  
+    if (isset($_POST['guardar'])) {
+      $id = $_POST['id'];
+      $tipo = $_POST['tipo'];
+      $calle = $_POST['calle'];
+      $portal = $_POST['portal'];
+      $piso = $_POST['piso'];
+      $puerta = $_POST['puerta'];
+      $cp = $_POST['cp'];
+      $localidad = $_POST['localidad'];
+      $metros = $_POST['metros'];
+      $num_hab = $_POST['num_hab'];
+      $num_banos = $_POST['num_banos'];
+      $garaje = $_POST['garaje'];
+      $jardin = $_POST['jardin'];
+      $piscina = $_POST['piscina'];
+      $estado = $_POST['estado'];
+      $titular = $_POST['titular'];
+      $descripcion = $_POST['descripcion'];
+      $precio = $_POST['precio'];
+      $fecha_alta = $_POST['fecha_alta'];
+      $id_cliente = $_POST['id_cliente'];
 
-    
-
-    //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
-    if ($modificar_imagen) {
+      $imagen = $_FILES['imagen']['name'];
+      $imagen_tmp = $_FILES['imagen']['tmp_name'];
+      $imagen_type = $_FILES['imagen']['type'];
+      $imagen_size = $_FILES['imagen']['size'];
       
-        //compruebo sea que sea una imagen
-        if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
-          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-          <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
-          </div></div></div>";
+      $img_correcto = false;
+      $modificar_imagen = false;
+
+      // si el tamaño de la imagen es mayor que 0 significa que se quiere modificar
+      if ($imagen_size > 0) {
+        $modificar_imagen = true;
+      }
+
+      
+
+      //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
+      if ($modificar_imagen) {
+        
+         //compruebo sea que sea una imagen
+          if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
+            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
+            </div></div></div>";
+          }
+
+        // subo la imagen al servidor
+        if (!file_exists("/./media/img/img_inmuebles")) {
+          mkdir("/./media/img/img_inmuebles");
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>la carpeta se ha creado</strong> 
+          </div>";
+        } else {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>la carpeta estaba creada</strong> 
+          </div>";
         }
 
-      // subo la imagen al servidor
-      if (!file_exists("/./media/img/img_inmuebles")) {
-        mkdir("/./media/img/img_inmuebles");
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong>la carpeta se ha creado</strong> 
-        </div>";
-      } else {
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong>la carpeta estaba creada</strong> 
-        </div>";
-      }
-
-          // creo la ruta donde guardar la foto dependiendo del tipo que sea
-      if ($imagen_type){
-        $ruta_img = "/./media/img/img_inmuebles/$imagen";
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong>ruta correcta</strong> 
-        </div>";
-      } 
-
-      // guardo la foto en el servidor
-      if (move_uploaded_file($imagen_tmp, $ruta_img)) {
-        $img_correcto = true;
-      } else {
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <strong>Error al subir la imagen del inmueble al servidor</strong> 
+            // creo la ruta donde guardar la foto dependiendo del tipo que sea
+        if ($imagen_type){
+          $ruta_img = "/./media/img/img_inmuebles/$imagen";
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+            <strong>ruta correcta</strong> 
           </div>";
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
-      }
+        } 
 
-      if ($img_correcto) {
-        $conexion = abrirConexion();
-        $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
-        calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
-        cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
-        num_banos = '$num_banos',
-        garaje = '$garaje',
-        jardin = '$jardin',
-        piscina = '$piscina',
-        estado = '$estado',
-        titular = '$titular',
-        descripcion = '$descripcion',
-        precio = '$precio',
-        fecha_alta = '$fecha_alta',
-        id_cliente = '$id_cliente',
-        imagen = '$imagen'
-        WHERE id='$id'";
+        // guardo la foto en el servidor
+        if (move_uploaded_file($imagen_tmp, $ruta_img)) {
+          $img_correcto = true;
+        } else {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <strong>Error al subir la imagen del inmueble al servidor</strong> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+        }
 
-      if (mysqli_query($conexion,$sql)) {
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos actualizados correctamente</b> 
-          </div>";
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+        if ($img_correcto) {
+          $conexion = abrirConexion();
+          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
+          calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
+          num_banos = '$num_banos',
+          garaje = '$garaje',
+          jardin = '$jardin',
+          piscina = '$piscina',
+          estado = '$estado',
+          titular = '$titular',
+          descripcion = '$descripcion',
+          precio = '$precio',
+          fecha_alta = '$fecha_alta',
+          id_cliente = '$id_cliente',
+          imagen = '$imagen'
+          WHERE id='$id'";
+  
+        if (mysqli_query($conexion,$sql)) {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <b>Datos actualizados correctamente</b> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+        } else {
+          
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+          </div></div></div>";
+        }
+        mysqli_close($conexion);
+        }
       } else {
-        
-        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-        </div></div></div>";
+          $conexion = abrirConexion();
+          $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
+          calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
+          cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
+          num_banos = '$num_banos',
+          garaje = '$garaje',
+          jardin = '$jardin',
+          piscina = '$piscina',
+          estado = '$estado',
+          titular = '$titular',
+          descripcion = '$descripcion',
+          precio = '$precio',
+          fecha_alta = '$fecha_alta',
+          id_cliente = '$id_cliente'
+          WHERE id='$id'";
+  
+        if (mysqli_query($conexion,$sql)) {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <b>Datos actualizados correctamente</b> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
+        } else {
+          
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+          </div></div></div>";
+        }
+        mysqli_close($conexion);
       }
-      mysqli_close($conexion);
-      }
-    } else {
-        $conexion = abrirConexion();
-        $sql = "UPDATE tbl_inmuebles SET tipo='$tipo',
-        calle='$calle', portal='$portal', piso='$piso', puerta='$puerta',
-        cp='$cp', localidad='$localidad', metros = '$metros', num_hab = '$num_hab',
-        num_banos = '$num_banos',
-        garaje = '$garaje',
-        jardin = '$jardin',
-        piscina = '$piscina',
-        estado = '$estado',
-        titular = '$titular',
-        descripcion = '$descripcion',
-        precio = '$precio',
-        fecha_alta = '$fecha_alta',
-        id_cliente = '$id_cliente'
-        WHERE id='$id'";
+      
 
-      if (mysqli_query($conexion,$sql)) {
-        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-            <b>Datos actualizados correctamente</b> 
-          </div>";
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=inmuebles.php'>";
-      } else {
-        
-        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-        </div></div></div>";
-      }
-      mysqli_close($conexion);
     }
-    
-
+    return true;
   }
-  return true;
-}
 
 function nueva_noticia() : bool {
   if (isset($_POST['nueva_noticia'])) {

@@ -434,3 +434,109 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/customer/www/inmomenenia.com/public_html/php/acceder.php on line 119
+[21-Feb-2023 20:50:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:55:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:57:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:57:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:57:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:45 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:46 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 20:59:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 21:00:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 21:00:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 21:00:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[21-Feb-2023 21:00:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[22-Feb-2023 15:50:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:112
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 112
+[22-Feb-2023 15:50:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:112
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 112
+[22-Feb-2023 15:50:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:112
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 112
+[22-Feb-2023 15:50:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_disponibles() in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php:112
+Stack trace:
+#0 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/inmuebles.php on line 112
+[22-Feb-2023 15:52:42 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[22-Feb-2023 15:58:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::area_administrador() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:267
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 267
+[22-Feb-2023 16:00:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::gestion_usuario() in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php:261
+Stack trace:
+#0 /home/customer/www/inmomenenia.com/public_html/php/home.php(14): Interfaz::mostrar_home()
+#1 {main}
+  thrown in /home/customer/www/inmomenenia.com/public_html/php/class/interfaz.php on line 261

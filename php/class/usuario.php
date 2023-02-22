@@ -4,17 +4,20 @@ class Usuario {
       /* Menú de navegación usuario*/
 
   static public function gestion_usuario(): bool {
-    echo "<div class='col-xs-12 col-sm-12 col-md-10 '>
-      <nav class='navbar'>
-        <div class='container-fluid'>
-          <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_inmuebles.php'> Ver mis inmuebles</a></li>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_citas.php'> Ver mis citas</a></li>
-          </ul>
-        </div>
-      </nav>
-      </div>";
+    echo "    <div class='col-xs-12 col-sm-12 col-md-10 '>
+
+        <nav class='navbar'>
+          <div class='container-fluid'>
+            <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+              <li><a type='button' class='btn btn-theme' href='../php/usuarios/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
+              <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_inmuebles.php'> Ver mis inmuebles</a></li>
+              <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_citas.php'> Ver mis citas</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    </div>";
     return true;
   }
 

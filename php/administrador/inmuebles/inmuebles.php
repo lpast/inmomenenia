@@ -1,8 +1,14 @@
-<?php 
-    include "../../../php/dbconnect.php";
-    include "../../../php/class/interfaz.php";
-    include "../../../php/funciones.php";
-  session_start(); 
+<?php
+  session_start();
+  require "../../../php/dbconnect.php";
+  require "../../../php/class/interfaz.php";
+  require "../../../php/class/inmueble.php";
+  require "../../../php/class/administrador.php";
+  require "../../../php/funciones.php";
+
+  $menu = Administrador::menuAdmin();
+  $botones = Interfaz::gestion_inmuebles();
+  $footer = Interfaz::footer(); 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,15 +29,18 @@
   </head>
   <body>
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::menuAdmin(); ?>
+    <?php $menu ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_inmuebles(); ?>
+    <?php $botones ?>
 
     <!-- Listamos inmuebles -->
-    <?php listar_inmuebles(); ?>
+    <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
+      <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los inmuenles de tu búsqueda</h2>";
+    </div>
+    <?php Inmueble::listar_inmuebles(); ?>
     
     <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer ?> 
   </body>
 </html>

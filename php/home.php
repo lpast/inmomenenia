@@ -3,7 +3,7 @@
   include "dbconnect.php";
   include "class/interfaz.php";
   include "class/usuario.php";
-  include "class/administrador.php";
+  include "class/noticia.php";
   include "funciones.php";
 
   if (!isset($_SESSION['tipo'])) {
@@ -38,10 +38,7 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-        <?php  $home
-
-
-        ?>
+        <?php  $home ?>
         </div>
       </div>
     </div>

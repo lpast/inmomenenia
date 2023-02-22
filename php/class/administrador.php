@@ -1,74 +1,67 @@
 <?php
 
 class Administrador {
-
-  const BASE_URL = "https://inmomenenia.com/php";
-
-  /* Menú de navegación administrador*/
+     /* Menú de navegación administrador*/
   static public function menuAdmin(): bool {
-    if (isset($_SESSION['tipo'])) {
-      $tipo_usuario = $_SESSION['tipo'];
-      if ($tipo_usuario == 'a') {
-        echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-        <div class='container-fluid'>
-          <div class='navbar-header'>
-            <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-              <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>                        
-            </button>
-            <a href='../../../index.html'><img src='../../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-            </div>
-          <div class='collapse navbar-collapse' id='nav-responsive'>
-          <ul class='nav navbar-nav navbar-right'>
-            <li><a href='../../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-            <li><a href='../noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
-            <li><a href='../clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
-            <li><a href='../inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
-            <li><a href='../citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-          </ul>
+  if (isset($_SESSION['tipo'])) {
+    $tipo_usuario = $_SESSION['tipo'];
+    if ($tipo_usuario == 'a') {
+      echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+      <div class='container-fluid'>
+        <div class='navbar-header'>
+          <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+            <span class='icon-bar b-resp'></span>
+            <span class='icon-bar b-resp'></span>
+            <span class='icon-bar b-resp'></span>                        
+          </button>
+          <a href='../../../index.html'><img src='../../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
           </div>
+        <div class='collapse navbar-collapse' id='nav-responsive'>
+        <ul class='nav navbar-nav navbar-right'>
+          <li><a href='../../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+          <li><a href='../noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
+          <li><a href='../clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+          <li><a href='../inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+          <li><a href='../citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+          <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+        </ul>
         </div>
-        </nav>";
-      }
+      </div>
+      </nav>";
     }
-    return true;
+  }
+  return true;
   }
   static public function area_administrador(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>";
-        try {
-          if (isset($_SESSION['tipo'])) {
-            $tipo_usuario = $_SESSION['tipo'];
-            if ($tipo_usuario == 'a') {
-              //Mostramos una imagen aleatoria 
-              echo "<h2 align='center'> ¿Qué quieres hacer?</h2>
-              <div class ='col-md-offset-2 col-md-4'>
-                <ul>
-                <lo><a href='administrador/citas/citas.php'><img src='../../media/iconos/calendar.png' alt='logo-citas' width='150px' align='center'>
-                  <h2>Ver Citas</h2></a>
-                </lo>
-                  <lo><a href='administrador/inmuebles/inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-inmuebles' width='150px' align='center'>
-                  <h2> Ver Inmuebles </h2></a>
-                  </lo>
-                </ul>
-              </div>
-              <div class ='col-md-offset-2 col-md-4'>
-                <ul>
-                  <lo><a href='administrador/clientes/clientes.php'><img src='../../media/iconos/mis-datos.png' alt='logo-clientes' width='150px' align='center'>
-                  <h2>Ver CLientes </h2></a></lo>
-                  <lo><a href='administrador/noticias/noticias.php'><img src='../../media/iconos/newspaper.png' alt='logo-noticias' width='150px' align='center'>
-                  <h2>Ver Noticias </h2></a></lo>
-                </ul>
-              </div>";
-            }
+    
+        if (isset($_SESSION['tipo'])) {
+          $tipo_usuario = $_SESSION['tipo'];
+          if ($tipo_usuario == 'a') {
+            //Mostramos una imagen aleatoria 
+            echo "<h2 align='center'> ¿Qué quieres hacer?</h2>
+                    <div class ='col-md-offset-2 col-md-4'>
+                      <ul>
+                      <lo><a href='administrador/citas/citas.php'><img src='../../media/iconos/calendar.png' alt='logo-citas' width='150px' align='center'>
+                        <h2>Ver Citas</h2></a>
+                      </lo>
+                        <lo><a href='administrador/inmuebles/inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-inmuebles' width='150px' align='center'>
+                        <h2> Ver Inmuebles </h2></a>
+                        </lo>
+                      </ul>
+                    </div>
+                    <div class ='col-md-offset-2 col-md-4'>
+                    <ul>
+                        <lo><a href='administrador/clientes/clientes.php'><img src='../../media/iconos/mis-datos.png' alt='logo-clientes' width='150px' align='center'>
+                        <h2>Ver CLientes </h2></a></lo>
+                        <lo><a href='administrador/noticias/noticias.php'><img src='../../media/iconos/newspaper.png' alt='logo-noticias' width='150px' align='center'>
+                        <h2>Ver Noticias </h2></a></lo>
+                      </ul>
+                    </div>
+                  </div>";
           }
-          throw new Exception ('No existe tipo usuario');
-        
-        } catch (Exception $e) {
-          die ('Error' . $e->GetMessage());
-        } 
+        }
       echo "</div>";
     echo "</div>";
 
@@ -1612,10 +1605,10 @@ class Administrador {
           $h_formateada = date("G:i", $marca_hora);
 
           if ($marca_cita > $marca_actual) {
-            echo "<tbody><tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono]</td>
+            echo "<tbody><tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td>
                         <td><form action='modificar_cita.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
           } else {
-            echo "<tbody><tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono]</td><td>No se puede modificar</td></tr></tbody>";
+            echo "<tbody><tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono1]</td><td>No se puede modificar</td></tr></tbody>";
           }
         }
         echo "</table>
@@ -1624,6 +1617,29 @@ class Administrador {
     }
     return true;
   } /*************** revisar  */
+
+  static public function mapaWeb(): bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>
+      <div class='col-xs-12 cabecera-menu-inicio' align='center'>
+        <h1>Mapa web</h1>
+        <h3 class='tmapa'><a href='/./php/home.php'>Inicio</a></h3>
+        <h3 class='tmapa'><a href='/./php/home.php'>Buscar Inmuebles</a></h3>
+        <h3 class='tmapa'><a href='/./php/inmuebles.php'>Cartera de Inmuebles</a></h3>
+        <h3 class='tmapa'><a href='/./php/hipotecas.php'>Calcula tu hipoteca</a></h3>
+        <h3 class='tmapa'><a href='/./php/contacto.php'>Contacto</a></h3>
+        <h3 class='tmapa'><a href='/./php/clientes/area_personal.php'>Área Personal</a></h3>
+        </div>
+      </div>";
+    return true;
+  }
+
+  static public function footer (): bool {
+    echo "<footer class='navbar-nav navbar-inverse'>
+      <p align='center'><span style='color:white'>info@inmomenenia.com</span>  |  <a class='aweb' href='..../php/mapa_web.php'>Mapa web</a>  |  <span style='color:white'> Copyright Menenia's Digital 2022</span></p>
+    </footer>";
+    return true;
+  }
 
 
 }
