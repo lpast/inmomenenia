@@ -1,7 +1,63 @@
 <?php
 
 class Usuario { 
-      /* Menú de navegación usuario*/
+
+  public static function comprobarUsuario() {
+    if (isset($_SESSION['tipo'])) {
+      if ($_SESSION['tipo'] != 'u') {
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+      }
+      
+    } else if ($_COOKIE['datos']) {
+        session_decode($_COOKIE['datos']);
+        if ($_SESSION['tipo'] != 'u') {
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+        }
+    } else {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+    }
+  }
+
+  function registrarse() {
+    if (isset($_POST['cancelar'])) {
+      header("url=../index.php");
+    }
+  
+    if (isset($_POST['nuevo_usuario'])) {
+      $id = $_POST['id'];
+      $nombre = $_POST['nombre'];
+      $apellidos = $_POST['apellidos'];
+      $telefono = $_POST['telefono'];
+      $email = $_POST['email'];
+      $fecha_alta = $_POST['fecha_alta'];
+      $nom_user = $_POST['nom_user'];
+      $pass = $_POST['pass'];
+  
+      $conexion = abrirConexion();
+  
+      $sql = "INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
+      ('$id', '$nombre', '$apellidos', '$telefono', '$email', '$fecha_alta', '$nom_user', '$pass')";
+  
+      $datos = mysqli_query($conexion, $sql);
+      echo $datos;
+      
+      if ($datos) {
+        echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+                <strong>Datos guardados correctamente</strong>  
+              </div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=acceder.php'>";
+      } else {
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong>No ha sido posible el registro</h4>
+              </div></div></div>";
+        echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=home.php'>";
+      }
+      mysqli_close($conexion);
+    }
+  }
+      
+
+  
 
   static public function gestion_usuario(): bool {
     echo "<div class='col-xs-12 col-sm-12 col-md-10 '>
@@ -14,7 +70,82 @@ class Usuario {
           </ul>
         </div>
       </nav>
-      </div>";
+    </div>";
+    return true;
+  }
+
+  function gestion_datos_usuario(): bool {
+    if (isset($_POST['cancelar'])) {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=area_personal.php'>";
+    }
+    if (isset($_POST['guardar'])) {
+      if ($_POST['pass'] == '') {
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $apellidos=$_POST['apellidos'];
+        $calle = $_POST['calle'];
+        $portal = $_POST['portal'];
+        $piso = $_POST['piso'];
+        $puerta = $_POST['puerta'];
+        $localidad = $_POST['localidad'];
+        $cp = $_POST['cp'];
+        $telefono = $_POST['telefono'];
+        $email = $_POST['email'];
+        $nom_user = $_POST['nom_user'];
+  
+        $con = abrirConexion();
+        $sql1 = "UPDATE tbl_usuarios 
+        SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
+         nom_user='$nom_user' WHERE id='$id'";
+  
+        $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
+        WHERE id='$id'";
+  
+        if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <b>Datos actualizados correctamente</b> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+        </div></div></div>";
+        }
+      } else {
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $apellidos=$_POST['apellidos'];
+        $calle = $_POST['calle'];
+        $portal = $_POST['portal'];
+        $piso = $_POST['piso'];
+        $puerta = $_POST['puerta'];
+        $localidad = $_POST['localidad'];
+        $cp = $_POST['cp'];
+        $telefono = $_POST['telefono'];
+        $email = $_POST['email'];
+        $nom_user = $_POST['nom_user'];
+        $pass = $_POST['pass'];
+  
+        $con = abrirConexion();
+        $sql1 = "UPDATE tbl_usuarios 
+        SET nombre='$nombre', apellidos='$apellidos', telefono='$telefono', email='$email',
+         nom_user='$nom_user' WHERE id='$id'";
+  
+        $sql2 = "UPDATE tbl_clientes SET calle='$calle', portal='$portal', piso='$piso', puerta='$puerta', cp='$cp', localidad='$localidad'
+        WHERE id='$id'";
+  
+        if ((mysqli_query($con,$sql1)) && (mysqli_query($con,$sql2) )) {
+          echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
+              <b>Datos 1 actualizados correctamente</b> 
+            </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=mis_datos.php'>";
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+        </div></div></div>";
+       }
+     }
+    }
     return true;
   }
 
@@ -118,6 +249,31 @@ class Usuario {
     return true;
   }
 
+  function nuevo_favorito(): bool  {/***** MEJORA ******/
+    if (isset($_POST['nuevo_favorito'])) {
+      $id = $_POST['id'];
+      $id_inmueble = $_POST['id_inmueble'];
+      $id_usuario = $_SESSION['id_usuario'];
+  
+      $conexion = abrirConexion();
+      $insertar = "INSERT into tbl_favoritos (id_favorito, id_usuario, id_inmueble) VALUES
+        ('$id', '$id_usuario', $id_inmueble)";
+        
+        if(mysqli_query($conexion, $insertar)) {
+          "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>Favorito añadido</h4>
+          </div></div></div>";
+          
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble a favoritos</h4>
+          </div></div></div>";
+        }
+      mysqli_close($conexion);
+    }
+    return true;
+  }
+
   static public function img_aleatoria(): bool {
     echo "<div class='container-fluid'>
       <div class='row'>
@@ -153,68 +309,6 @@ class Usuario {
     return true;
   }
 
-  static public function inmuebles_usuario(): bool {
-    echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <div class='tnoticias'>
-          <h1 align='center''>Echa un vistazo a tus inmuebles</h1>
-        </div>;
-      </div>
-      <div class='col-xs-12 col-sm-offset-2 col-sm-10'>";
-        
-        $id = $_SESSION['id_usuario'];
-        $con = abrirConexion();
-        $sql = "SELECT * FROM tbl_inmuebles WHERE id_cliente='$id'";
-        $consulta = mysqli_query($con, $sql);
-
-        if (!$consulta) {
-          echo "Error al realizar la consulta";
-        } else {
-          $num_filas = mysqli_num_rows($consulta);
-          if ($num_filas == 0) {
-            echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-                          <h2>Aún no tienen ningún inmueble comprado :(</h2>
-                        </div>";
-          } else {
-            while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-              echo "<div class='col-sm-4'>";
-                echo "<div class='panel panel-default'>";
-                  echo "<div class='panel-body tnoticias'>";
-                    echo "<img class='img-responsive' src='../../media/img/img_inmuebles/$fila[imagen]' alt='inmueble_cliente'>
-                    <h3 align ='center'>$fila[calle]</h3>
-                    <h4 align ='center' style='padding-bottom:15px'>$fila[localidad]</h4>
-                    <div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
-                      <h3><img src='../../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $fila[num_banos]</b>
-                      <img src='../../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[num_hab]</b><h3>
-                      <h3><img src='../../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b>  $fila[garaje]</b>
-                      <img src='../../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[jardin]</b>
-                      <img src='../../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[piscina]</b><h3>
-                      <h3><img src='../../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $fila[estado]</b>
-                      <img src='../../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[tipo]</b><h3>
-                      <h3><img src='../../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b>  $fila[metros] m<sup>2</sup></b>
-                      <img src='../../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[precio] €</b><h3>
-                      <h3><img src='../../media/iconos/codigo-de-barras .png' alt='id-inmueble' width='50px' style= 'margin-right:5px'><b>  $fila[id] €</b>
-                      <img src='../../media/iconos/calendario .png' alt='fecha-inmueble' width='50px' style='margin-right:5px'><b>  $fila[fecha_alta]</b><h3>
-                      </div>
-                    <h4 align ='center'>$fila[descripcion]</h4>
-                    <form action='../../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>";
-            echo "<div style='padding-top:15px'>
-                <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
-              </div>";
-            }
-          }
-        }
-        mysqli_close($con);
-
-      echo "</div></div></div>";
-    return true;
-  }
 
   static public function datos_usuario(): bool {
     echo "<div class='container-fluid'>
@@ -386,64 +480,6 @@ class Usuario {
     return true;
   }
 
-  static public function citas_usuario(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <div class='tnoticias'>
-            <h1 align='center''>Echa un vistazo a tus citas</h1>
-            <p align='center'><b>Tus próximas citas aparecen marcadas en <span style='color:green'>verde</span> y la pasadas en <span style='color:#baa35f'>amarillo</span></b></p>
-          </div>;
-        </div>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2  tnoticias'>";
-            $actual = date('Y-m-d');
-            $marca_actual = strtotime($actual);
 
-            $id_cliente = $_SESSION['id_usuario'];
-            $con = abrirConexion();
-            $sql = "SELECT * FROM tbl_citas WHERE id_cliente='$id_cliente' order by fecha desc";
-
-            $consulta = mysqli_query($con, $sql);
-
-            if (!$consulta) {
-              echo "Error al realizar la consulta sql...";
-            } else {
-              $num_filas = mysqli_num_rows($consulta);
-
-              if ($num_filas == 0) {
-                echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-                              <h2>No tienes ninguna cita programada</h2>
-                      </div>";
-              } else {
-                echo "<div class='table-responsive'>";
-                echo "<table class='table table-hover'>";
-                echo "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th></tr></thead>";
-                echo "<tbody>";
-                while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-                  $marca_cita = strtotime($fila['fecha']);
-                  $marca_hora = strtotime($fila['hora']);
-                  $f_formateada = date("d-m-Y", $marca_cita);
-                  $h_formateada = date("G:i", $marca_hora);
-                  if ($marca_cita >= $marca_actual) { // en verde las futuras citas)
-                    echo "<tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
-                  } else { // en amarillo las citas pasadas)
-                    echo "<tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
-                  }
-                }
-                echo "</tbody>";
-                echo "</table></div>"; //responsive, table-hover
-              }
-              
-            }
-              mysqli_close($con);
-              echo "</div>
-              </div>";
-              echo "<div style='padding-top:15px'>
-                <p align='center'><a class='btn btn-theme' href='../../php/contacto.php'>Solicitar <b>nueva cita</b></a></p>
-              </div>";
-      echo "</div>
-    </div>";
-    return true;
-  }
 
 }

@@ -1,9 +1,15 @@
 <?php 
-include "../php/dbconnect.php";
-include "../php/class/interfaz.php";
-include "../php/funciones.php";
-session_start(); 
- ?>
+  session_start();
+  require "dbconnect.php";
+  require "class/interfaz.php";
+  require "class/usuario.php";
+  require "class/noticia.php";
+
+  $menu = Interfaz::mostrarMenu();
+  $noticia = Noticia::datos_noticia();
+  $footer = Interfaz::footer();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,13 +30,25 @@ session_start();
   <body>
     
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
     
-    <!-- Recojo datos de la noticia -->
-    <?php datos_noticia(); ?>
-    
+    <!-- Recojo y muestro datos de la noticia -->
+    <?php $noticia ?>
+    <div class='container-fluid cabecera-menu-inicio'>
+      <div class='row'>
+      <div class='col-sm-8 col-sm-offset-2'>
+            <center><img src='../media/img/img_noticias/$imagen' alt='img-inmueble' img-align='center' width='60%'></center>
+            <div class='contenido-noticia'>
+              <h1><b> <?php echo $titular ?></b></h1>
+                <p align='justify'><?php echo $contenido ?></p>
+                <p><b>Fecha de publicación: </b><?php echo $fecha ?></p>
+                <a class='btn btn-theme' href='./home.php'>Volver a <b>Inicio</b></a>
+            </div>
+          </div>
+      </div>
+    </div>
     <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer ?> 
   </body>
 </html>
 

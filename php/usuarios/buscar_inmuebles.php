@@ -1,9 +1,15 @@
 <?php 
+  session_start();
   require_once "../../php/dbconnect.php";
   require_once "../../php/class/interfaz.php";
+  require_once "../../php/class/interfaz.php";
   require_once "../../php/funciones.php";
-  session_start(); 
- ?>
+  
+  $menu = Interfaz::mostrarMenu();
+  $aleatoria = Usuario::img_aleatoria();
+  $formulario = Usuario::form_buscar_Inmuebles();
+  $footer = Interfaz::footer();
+  ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,14 +29,14 @@
   </head>
   <body>
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
 
     <!-- Muestro imagen de un inmueble aleatorio -->
-    <?php $aleatoria = Usuario::img_aleatoria(); ?>
+    <?php $aleatoria ?>
 
-    <?php $formulario = Usuario::form_buscar_Inmuebles(); ?>
+    <?php $formulario ?>
    
    <!-- footer -->
-   <?php $footer = Interfaz::footer(); ?> 
+   <?php $footer ?> 
   </body>
 </html>

@@ -1,111 +1,136 @@
 <?php
-
+//métodos comunes 
 class Interfaz {
 
   const BASE_URL = "https://inmomenenia.com/php";
+  
+function comprobarAdmin() {
+  if (isset($_SESSION['tipo'])){
+    if ($_SESSION['tipo'] != 'a'){
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../../../php/home.php'>";
+    }
+  } else if ($_COOKIE['datos']) {
+    session_decode($_COOKIE['datos']);
+    if ($_SESSION['tipo'] != 'a'){
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+    }
+  } else {
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+  }
+}
+
+function comprobarIndex() {
+  if (isset($_SESSION['tipo'])){
+    echo "Tipo: ".$_SESSION['tipo']." - Desde sesión";
+  }else if (isset($_COOKIE['datos'])){
+    session_decode($_COOKIE['datos']);
+    echo "Tipo: ".$_SESSION['tipo']." - Desde cookies";
+  }else{
+   echo "No hay sesión";
+  }
+}
+
+
   /* Cabeceras */
   static public function mostrarMenuHome(): bool {
     if (isset($_SESSION['tipo'])) {
-
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-                <div class='container-fluid'>
-                  <div class='navbar-header'>
-                    <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>                             
-                    </button>
-                    <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-                    </div>
-                  <div class='collapse navbar-collapse' id='nav-responsive'>
-                  <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-                    <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                    <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                    <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-                  </ul>
-                  </div>
-                </div>
-              </nav>";
-      } else if ($tipo_usuario == 'a') {
+          <div class='container-fluid'>
+            <div class='navbar-header'>
+              <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>                             
+              </button>
+              <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+              </div>
+            <div class='collapse navbar-collapse' id='nav-responsive'>
+            <ul class='nav navbar-nav navbar-right'>
+              <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+              <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+              <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+              <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+              <li><a href='usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
+              <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            </ul>
+            </div>
+          </div>
+        </nav>";
+      } elseif ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+          <div class='container-fluid'>
+            <div class='navbar-header'>
+              <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>                        
+              </button>
+              <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+              </div>
+            <div class='collapse navbar-collapse' id='nav-responsive'>
+            <ul class='nav navbar-nav navbar-right'>
+              <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+              <li><a href='administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
+              <li><a href='administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+              <li><a href='administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+              <li><a href='administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+              <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            </ul>
+            </div>
+          </div>
+        </nav>";
+      } else {
+        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+          <div class='container-fluid'>
+            <div class='navbar-header'>
+              <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span> 
+                <span class='icon-bar b-resp'></span> 
+                <span class='icon-bar b-resp'></span>                              
+              </button>
+              <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+              </div>
+            <div class='collapse navbar-collapse' id='nav-responsive'>
+            <ul class='nav navbar-nav navbar-right'>
+              <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+              <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+              <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+              <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+              <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
+            </ul>
+            </div>
+          </div>
+        </nav>";
+      }
+    } else {
+      echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
         <div class='container-fluid'>
           <div class='navbar-header'>
             <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
               <span class='icon-bar b-resp'></span>
               <span class='icon-bar b-resp'></span>
-              <span class='icon-bar b-resp'></span>                        
+              <span class='icon-bar b-resp'></span> 
+              <span class='icon-bar b-resp'></span> 
+              <span class='icon-bar b-resp'></span>                              
             </button>
             <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
             </div>
           <div class='collapse navbar-collapse' id='nav-responsive'>
           <ul class='nav navbar-nav navbar-right'>
-            <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-            <li><a href='administrador/noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
-            <li><a href='administrador/clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
-            <li><a href='administrador/inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
-            <li><a href='administrador/citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
-            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
+            <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+            <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+            <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+            <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
           </ul>
           </div>
         </div>
-        </nav>";
-      } else {
-        echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-            <div class='container-fluid'>
-              <div class='navbar-header'>
-                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span> 
-                  <span class='icon-bar b-resp'></span> 
-                  <span class='icon-bar b-resp'></span>                              
-                </button>
-                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-                </div>
-              <div class='collapse navbar-collapse' id='nav-responsive'>
-              <ul class='nav navbar-nav navbar-right'>
-                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-              </ul>
-              </div>
-            </div>
-      </nav>";
-      }
-
-
-    } else {
-      echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-            <div class='container-fluid'>
-              <div class='navbar-header'>
-                <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span>
-                  <span class='icon-bar b-resp'></span> 
-                  <span class='icon-bar b-resp'></span> 
-                  <span class='icon-bar b-resp'></span>                              
-                </button>
-                <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-                </div>
-              <div class='collapse navbar-collapse' id='nav-responsive'>
-              <ul class='nav navbar-nav navbar-right'>
-                <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Buscar Inmuebles</a></li>
-                <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                <li><a href='acceder.php'><span class='glyphicon glyphicon-log-in'></span> Acceder</a></li>
-              </ul>
-              </div>
-            </div>
       </nav>";
     }
     return true;
@@ -116,30 +141,30 @@ class Interfaz {
       $tipo_usuario = $_SESSION['tipo'];
       if ($tipo_usuario == 'u') {
         echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-                <div class='container-fluid'>
-                  <div class='navbar-header'>
-                    <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>
-                      <span class='icon-bar b-resp'></span>                             
-                    </button>
-                    <a href='../../index.html'><img src='../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-                    </div>
-                  <div class='collapse navbar-collapse' id='nav-responsive'>
-                  <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-                    <li><a href='../../php/usuarios/buscar_inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Buscar Inmuebles</a></li>
-                    <li><a href='../../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                    <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                    <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='../../php/usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-                  </ul>
-                  </div>
-                </div>
-              </nav>";
+          <div class='container-fluid'>
+            <div class='navbar-header'>
+              <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>
+                <span class='icon-bar b-resp'></span>                             
+              </button>
+              <a href='../../index.html'><img src='../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+              </div>
+            <div class='collapse navbar-collapse' id='nav-responsive'>
+            <ul class='nav navbar-nav navbar-right'>
+              <li><a href='../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+              <li><a href='../../php/usuarios/buscar_inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Buscar Inmuebles</a></li>
+              <li><a href='../../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+              <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+              <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+              <li><a href='../../php/usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
+              <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+            </ul>
+            </div>
+          </div>
+        </nav>";
       }
       if ($tipo_usuario == 'a') {
         echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
@@ -228,27 +253,102 @@ class Interfaz {
         echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
           <h1 align='center'> ¡ Hola $nombre ! </h1>
           <h2 align='center'> ¿En qué podemos ayudarte? </h2>
-        </div>  ";
+        </div>";
         Usuario::gestion_usuario();
-        Usuario::mostrar_noticias();
+        Noticia::mostrar_noticias();
       } else if ($tipo_usuario == 'a') {
         echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
           <h1 align='center'> Administración InmoMenenia </h1>
         </div>";
-        Administrador::area_administrador();
-        Administrador::form_buscar_Inmuebles();
-         buscar_Inmuebles();
+        self::area_administrador();
+        Inmueble::form_buscar_Inmuebles();
+        Inmueble::buscar_Inmuebles();
       }
     } else {
       echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu-inicio'>
         <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>";
-        self::form_buscar_Inmuebles();
-        buscar_Inmuebles();
-        self::mostrar_noticias();
+        Inmueble::form_buscar_Inmuebles();
+        Inmueble::buscar_Inmuebles();
+        Noticia::mostrar_noticias();
       echo "</div>";
     }
     return true;
   }
+
+
+  /* Menú de navegación administrador*/
+  static public function menuAdmin(): bool {
+    if (isset($_SESSION['tipo'])) {
+      $tipo_usuario = $_SESSION['tipo'];
+      if ($tipo_usuario == 'a') {
+        echo " <nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <button type='button' class='n-resp navbar-toggle ' data-toggle='collapse' data-target='#nav-responsive'>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>
+              <span class='icon-bar b-resp'></span>                        
+            </button>
+            <a href='../../../index.html'><img src='../../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+            </div>
+          <div class='collapse navbar-collapse' id='nav-responsive'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li><a href='../../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+            <li><a href='../noticias/noticias.php'><span class='glyphicon glyphicon-briefcase'></span> Noticias</a></li>
+            <li><a href='../clientes/clientes.php'><span class='glyphicon glyphicon-folder-open'></span> Clientes</a></li>
+            <li><a href='../inmuebles/inmuebles.php'><span class='glyphicon glyphicon-pencil'></span> Inmuebles</a></li>
+            <li><a href='../citas/citas.php'><span class='glyphicon glyphicon-calendar'></span> Citas</a></li>
+            <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+          </ul>
+          </div>
+        </div>
+        </nav>";
+      }
+    }
+    return true;
+  }
+
+  static public function area_administrador(): bool {
+    echo "<div class='container-fluid'>
+      <div class='row'>";
+        try {
+          if (isset($_SESSION['tipo'])) {
+            $tipo_usuario = $_SESSION['tipo'];
+            if ($tipo_usuario == 'a') {
+              //Mostramos una imagen aleatoria 
+              echo "<h2 align='center'> ¿Qué quieres hacer?</h2>
+              <div class ='col-md-offset-2 col-md-4'>
+                <ul>
+                <lo><a href='administrador/citas/citas.php'><img src='../../media/iconos/calendar.png' alt='logo-citas' width='150px' align='center'>
+                  <h2>Ver Citas</h2></a>
+                </lo>
+                  <lo><a href='administrador/inmuebles/inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-inmuebles' width='150px' align='center'>
+                  <h2> Ver Inmuebles </h2></a>
+                  </lo>
+                </ul>
+              </div>
+              <div class ='col-md-offset-2 col-md-4'>
+                <ul>
+                  <lo><a href='administrador/clientes/clientes.php'><img src='../../media/iconos/mis-datos.png' alt='logo-clientes' width='150px' align='center'>
+                  <h2>Ver CLientes </h2></a></lo>
+                  <lo><a href='administrador/noticias/noticias.php'><img src='../../media/iconos/newspaper.png' alt='logo-noticias' width='150px' align='center'>
+                  <h2>Ver Noticias </h2></a></lo>
+                </ul>
+              </div>";
+            }
+          }
+          throw new Exception ('No existe tipo usuario');
+        
+        } catch (Exception $e) {
+          die ('Error' . $e->GetMessage());
+        } 
+      echo "</div>";
+    echo "</div>";
+
+
+    return true;
+  }
+
 
   static public function form_buscar_Inmuebles(): bool {
     echo "<div class='panel-group'>
@@ -383,92 +483,6 @@ class Interfaz {
     
       return true;
     
-  }
-
-  static public function formulario_registro(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <div class='jumbotron'>
-            <h1 style='margin-bottom:35px' align='center'>Registro</h1>
-            <div class='panel panel-default'>
-              <div class='panel-body'>
-                <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
-                  <div class='form-group'>
-                    <label class='col-sm-2'>DNI:</label>
-                    <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='id' name='id' placeholder='aqui tu Dni'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Nombre:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='nombre' name='nombre' placeholder='aqui tu nombre'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                      <label class='col-sm-2'>Apellidos:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='apellidos' name='apellidos' placeholder='aqui tus apellidos'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class='col-sm-2'>Teléfono:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='telefono' name='telefono' placeholder='aqui tu teléfono'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class='col-sm-2'>Email:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='email' name='email' placeholder='aqui tu email'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class='col-sm-2'>Fecha actual:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='date' id='fecha' name='fecha_alta'> <span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class='col-sm-2'>Nombre de usuario:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='nom_user' name='nom_user' placeholder='aqui tu nombre de usuario'><span></span>
-                      </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class='col-sm-2'>Contraseña:</label>
-                      <div class='col-sm-10'>
-                        <input class='form-control' type='text' id='pass' name='pass' placeholder='aqui tu contraseña'><span></span>
-                      </div>
-                    </div>
-                  <div class='form-group'>
-                    <div class='checkbox'>
-                      <input class='form-control' type='checkbox' id='privacidad' name='privacidad' value='aceptar'><span></span>
-                    </div>
-                    <div>
-                      <h4><label class='col-sm-4 col-sm-offset-2'> Acepto los términos de privacidad</label></h4>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-5'>
-                      <input class='form-control btn-theme' type='submit' id='nuevo_usuario' name='nuevo_usuario' value='Aceptar'>
-                    </div>
-                    <div class='col-sm-2' >
-                      <a type='button' href='./clientes.php' class='btn btn-danger' >Cancelar</a>
-                    </div> 
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>";
-
-
-    return true;
-
   }
 
   static public function footer (): bool {

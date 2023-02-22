@@ -1,9 +1,14 @@
 <?php 
-include "../php/dbconnect.php";
-include "../php/class/interfaz.php";
-include "../php/funciones.php";
-session_start(); 
- ?>
+  session_start();
+  require "dbconnect.php";
+  require "class/interfaz.php";
+  require "class/usuario.php";
+  require "class/inmueble.php";
+
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +29,7 @@ session_start();
   <body>
     
     <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
 	
     <!-- Recojo en variables los datos a mostrar mediante PHP -->
     <?php 
@@ -173,6 +178,6 @@ session_start();
         </div>
   
         <!-- footer -->
-        <?php $footer = Interfaz::footer(); ?> 
+        <?php $footer ?> 
   </body>
 </html>

@@ -1,20 +1,26 @@
 <?php
   session_start();
-  include "dbconnect.php";
-  include "class/interfaz.php";
-  include "class/usuario.php";
-  include "class/administrador.php";
-  include "funciones.php";
+  require "dbconnect.php";
+  require "class/interfaz.php";
+  require "class/usuario.php";
+  require "class/noticia.php";
+  require "class/inmueble.php";
 
-  if (!isset($_SESSION['tipo'])) {
+  $menu = Interfaz::mostrarMenuHome();
+  $home = Interfaz::mostrar_home();
+  $footer = Interfaz::footer();
+
+  if (isset($_SESSION['tipo'])) {
     $tipo = $_SESSION['tipo'];
+    
     if ( $tipo == 'u' && $tipo == 'a')  {
       $nombre = $_SESSION['nombre'];
     }
+
+    $tipo = $_POST['tipo'];
   }
-  $menuHome = Interfaz::mostrarMenuHome();
-  $home = Interfaz::mostrar_home();
-  $footer = Interfaz::footer(); 
+  
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,14 +40,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-     <?php $menuHome ?>
+    <?php $menu ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-        <?php  $home
-
-
-        ?>
+          <?php  $home ?>
         </div>
       </div>
     </div>
