@@ -31,11 +31,11 @@ class Usuario {
                   </div>
                 <div class='collapse navbar-collapse' id='nav-responsive'>
                 <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-                    <li><a href='inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                    <li><a href='hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                    <li><a href='contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='usuarios/area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
+                    <li><a href='../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
+                    <li><a href='../../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
+                    <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
+                    <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
+                    <li><a href='area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
                     <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                 </div>
@@ -97,45 +97,6 @@ class Usuario {
     return true;
   }
 
-  static public function area_personal(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>";
-        if (isset($_SESSION['tipo'])) {
-          $tipo_usuario = $_SESSION['tipo'];
-          if ($tipo_usuario == 'u') {
-            $nombre = $_SESSION['nombre'];
-            //Mostramos una imagen aleatoria 
-            echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio '>
-              <h1 align='center'> ¡ Hola $nombre ! </h1>
-              <h2 align='center'> ¿Qué quieres hacer?</h2>
-              <div class ='col-md-6'>
-                <ul>
-                  <lo><a href='../usuarios/mis_datos.php'><img src='../../media/iconos/mis-datos.png' alt='logo-mis-datos' width='150px' align='center'>
-                  <h2> Ver mis datos </h2></a></lo>
-
-                  <lo><a href='../usuarios/mis_inmuebles.php'><img src='../../media/iconos/house.png' alt='logo-mis-inmuebles' width='150px' align='center'>
-                  <h2> Ver mis inmuebles </h2></a></lo>
-                </ul>
-                
-              </div>
-              <div class ='col-md-6'>
-              <ul>
-                  <lo><a href='../usuarios/mis_citas.php'><img src='../../media/iconos/calendar.png' alt='logo-mis-citas' width='150px' align='center'>
-                  <h2>Ver mis citas </h2></a></lo>
-
-                  <lo><a href='../usuarios/mis_favoritos.php'><img src='../../media/iconos/mis-favoritos.png' alt='logo-mis-favoritos' width='150px' align='center'>
-                  <h2>Ver mis favoritos </h2></a></lo>
-                </ul>
-              </div>
-            </div>";
-          }
-        }
-      echo "</div>";
-    echo "</div>";
-
-
-    return true;
-  }
 
   static public function mis_favoritos() : bool {
     echo "<div class='container-fluid'>
@@ -501,14 +462,7 @@ class Usuario {
   }
 
   static public function mis_citas(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <div class='tnoticias'>
-            <h1 align='center''>Echa un vistazo a tus citas</h1>
-            <p align='center'><b>Tus próximas citas aparecen marcadas en <span style='color:green'>verde</span> y la pasadas en <span style='color:#baa35f'>amarillo</span></b></p>
-          </div>;
-        </div>
+    echo "
         <div class='col-xs-12 col-sm-8 col-sm-offset-2  tnoticias'>";
             $actual = date('Y-m-d');
             $marca_actual = strtotime($actual);
@@ -554,9 +508,10 @@ class Usuario {
               </div>";
               echo "<div style='padding-top:15px'>
                 <p align='center'><a class='btn btn-theme' href='../../php/contacto.php'>Solicitar <b>nueva cita</b></a></p>
-              </div>";
-      echo "</div>
-    </div>";
+                <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
+
+                </div>";
+     
     return true;
   }
 

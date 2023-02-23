@@ -1,9 +1,50 @@
 <?php 
-include "../php/dbconnect.php";
-include "../php/class/interfaz.php";
-include "../php/funciones.php";
-session_start(); 
- ?>
+  session_start();
+  include "../php/dbconnect.php";
+  include "../php/class/interfaz.php";
+  include "../php/class/usuario.php";
+  include "../php/funciones.php";
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
+
+  /** Recojo en variables los datos a mostrar mediante PHP */
+  if (isset($_POST['ver'])) {
+    $id = $_POST['id'];
+
+    $conexion = abrirConexion();
+    $consulta = "SELECT * FROM tbl_inmuebles where id='$id'";
+
+    $datos = mysqli_query($conexion,$consulta);
+
+    if (!$datos) {
+      echo "Error, no se ha podido consultar los datos del inmueble";
+    } else {
+      while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+        $id = $fila['id'];
+        $tipo = $fila['tipo'];
+        $calle = $fila['calle'];
+        $portal = $fila['portal'];
+        $piso = $fila['piso'];
+        $puerta = $fila['puerta'];
+        $cp = $fila['cp'];
+        $localidad = $fila['localidad'];
+        $metros = $fila['metros'];
+        $num_hab = $fila['num_hab'];
+        $num_banos = $fila['num_banos'];
+        $garaje = $fila['garaje'];
+        $jardin = $fila['jardin'];
+        $piscina = $fila['piscina'];
+        $estado = $fila['estado'];
+        $titular = $fila['titular'];
+        $descripcion = $fila['descripcion'];
+        $fecha_alta = $fila['fecha_alta'];
+        $precio = $fila['precio'];
+        $imagen = $fila['imagen'];
+      }
+    }
+    mysqli_close($conexion);
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,56 +64,14 @@ session_start();
   </head>
   <body>
     
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
 	
-    <!-- Recojo en variables los datos a mostrar mediante PHP -->
-    <?php 
-      if (isset($_POST['ver'])) {
-        $id = $_POST['id'];
-
-        $conexion = abrirConexion();
-        $consulta = "SELECT * FROM tbl_inmuebles where id='$id'";
-
-        $datos = mysqli_query($conexion,$consulta);
-
-        if (!$datos) {
-          echo "Error, no se ha podido consultar los datos del inmueble";
-        } else {
-          while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-            $id = $fila['id'];
-            $tipo = $fila['tipo'];
-            $calle = $fila['calle'];
-            $portal = $fila['portal'];
-            $piso = $fila['piso'];
-            $puerta = $fila['puerta'];
-            $cp = $fila['cp'];
-            $localidad = $fila['localidad'];
-            $metros = $fila['metros'];
-            $num_hab = $fila['num_hab'];
-            $num_banos = $fila['num_banos'];
-            $garaje = $fila['garaje'];
-            $jardin = $fila['jardin'];
-            $piscina = $fila['piscina'];
-            $estado = $fila['estado'];
-            $titular = $fila['titular'];
-            $descripcion = $fila['descripcion'];
-            $fecha_alta = $fila['fecha_alta'];
-            $precio = $fila['precio'];
-            $imagen = $fila['imagen'];
-          }
-        }
-        mysqli_close($conexion);
-      }
-    ?>
-
-    
-	<!-- Muestro los datos del inmueble -->
+	  <!-- Muestro los datos del inmueble -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio">
           <div class='jumbotron'>
-                <h1 align ='center'><?php echo $titular; ?></h1>
+            <h1 align ='center'><?php echo $titular ?></h1>
           </div>
         </div>
         <div class="col-md-offset-2 col-md-5">
@@ -83,14 +82,13 @@ session_start();
         <div class="col-md-5 ">
           <div class='jumbotron'>
             <?php
-              if (isset($_POST['id_cliente'])) {
+              /*if (isset($_POST['id_cliente'])) {
                 if ($id_cliente== 0 ) {
                   echo "<p><button type='button' class='btn btn-success bt-ver'>Disponible</button></p>";
                 } else {
                   echo "<p><button type='button' class='btn btn-danger bt-ver'>No disponible</button></p>";
                 }
-              }
-
+              }*/
               if (isset($_SESSION['tipo']) == 'u') {
               echo "<div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
                 <h3><img src='../media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px' <b> $calle</b>
@@ -147,27 +145,26 @@ session_start();
           <div class='row'>
             <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
               <h2 align="center">Descripción</h1>
-              <?php
+                <?php
+                  if (isset($_SESSION['tipo']) == 'u') {
+                    echo "<div class='jumbotron'>
+                      <h3><b>$descripcion </b></h3>
+                    </div>";
+                
+                        
+                  } else if (isset($_SESSION['tipo']) == 'a') {
+                    echo "<div class='jumbotron'>
+                      <h3><b>$descripcion </b></h3>
+                    </div>";
+                  } else {
+                    echo "<div class='jumbotron'>
+                      <h3> Si quieres obtener información más detallada, puedes registrarte como usuario </h3>
+                      <p align='center'><a class='btn btn-success bt-ver' href='../php/registro.php'><b> Registrarse</b></a></p>
 
-                if (isset($_SESSION['tipo']) == 'u') {
-                  echo "<div class='jumbotron'>
-                    <h3><b>$descripcion </b></h3>
-                  </div>";
-               
-                      
-                } else if (isset($_SESSION['tipo']) == 'a') {
-                  echo "<div class='jumbotron'>
-                    <h3><b>$descripcion </b></h3>
-                  </div>";
-                } else {
-                  echo "<div class='jumbotron'>
-                    <h3> Si quieres obtener información más detallada, puedes registrarte como usuario </h3>
-                    <p align='center'><a class='btn btn-success bt-ver' href='../php/registro.php'><b> Registrarse</b></a></p>
-
-                  </div>
-                  <p align='center'><a class='btn btn-theme' href='../php/inmuebles.php' style='margin-bottom:60px'>Volver a <b>Cartera de Inmuebles</b></a></p>";
-                }
-              ?>
+                    </div>
+                    <p align='center'><a class='btn btn-theme' href='../php/inmuebles.php' style='margin-bottom:60px'>Volver a <b>Cartera de Inmuebles</b></a></p>";
+                  }
+                ?>
             </div>
           </div>
         </div>

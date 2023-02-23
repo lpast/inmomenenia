@@ -1,9 +1,35 @@
-<?php 
-include "../php/dbconnect.php";
-include "../php/class/interfaz.php";
-include "../php/funciones.php";
-session_start(); 
- ?>
+<?php
+  session_start();
+  include "dbconnect.php";
+  include "class/interfaz.php";
+  include "class/usuario.php";
+  include "class/administrador.php";
+  include "class/inmueble.php";
+  include "class/noticia.php";
+  include "funciones.php";
+
+  $menu = Interfaz::mostrarMenu();
+  $footer = Interfaz::footer();
+
+  if (isset($_POST['ver'])) {
+    $id = $_POST['id'];
+    $conexion = abrirConexion();
+    $consulta = "SELECT * FROM tbl_noticias WHERE id='$id'";
+    $noticia = mysqli_query($conexion,$consulta);
+
+    if (!$noticia) {
+      echo "¡Error! No se ha podido acceder a la noticia :(";
+    } else {
+      while ($fila = mysqli_fetch_array($noticia, MYSQLI_ASSOC)) {
+        $titular = $fila['titular'];
+        $contenido = $fila['contenido'];
+        $imagen = $fila['imagen'];
+        $fecha = $fila['fecha'];
+      }
+    }
+    mysqli_close($conexion);
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,15 +48,26 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::mostrarMenu(); ?>
+    <?php $menu ?>
     
     <!-- Recojo datos de la noticia -->
-    <?php datos_noticia(); ?>
+   
+    <div class='container-fluid cabecera-menu-inicio'>
+        <div class='row'>
+          <div class='col-sm-8 col-sm-offset-2'>
+            <center><img src='../media/img/img_noticias/<?=$imagen?>' alt='img-inmueble' img-align='center' width='60%'></center>
+            <div class='contenido-noticia tnoticias'>
+              <h1><b> <?=$titular?></b></h1>
+                  <p align='justify'><?=$contenido?> </p>
+                  <p><b>Fecha de publicación: </b><?=$fecha?></p>
+                  <a class='btn btn-theme' href='./home.php'>Volver a <b>Inicio</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
     
     <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
+    <?php $footer?> 
   </body>
 </html>
 

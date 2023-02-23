@@ -1,17 +1,7 @@
 <?php
 class Noticia {
 
-  public $id, $titular, $contenido, $imagen, $fecha;
-
-  public function __construct() {
-    $this->id = $id_noticia;
-    $this->titular = $titular;
-    $this->contenido = $contenido;
-    $this->imagen = $imagen;
-    $this->fecha = $fecha;
-
-  }
-  
+ 
 
   static public function gestion_noticias(): bool {
       echo "<div class='container-fluid cabecera-menu-inicio'>
@@ -245,36 +235,7 @@ class Noticia {
     return true;
   }
 
-  function datos_noticia() {
-   
-    if (isset($_POST['ver'])) {
-      $id = $_POST['id'];
-      try {
-        $conexion = abrirConexion();
-        $consulta = "SELECT * FROM tbl_noticias WHERE id='$id'";
-        $noticia = mysqli_query($conexion,$consulta);
-        throw new Exception ('¡Error! No se ha podido acceder a la noticia :("');
-        return $noticia;
-      } catch (Exception $e) {
-        die ('Error' . $e->GetMessage());
-      } finally {
-        if (!$noticia) {
-          echo "¡Error! No se ha podido acceder a la noticia :(";        
-        } else {
-          while ($fila = mysqli_fetch_array($noticia, MYSQLI_ASSOC)) {
-            $this->titular = $fila['titular'];
-            $this->contenido = $fila['contenido'];
-            $this->imagen = $fila['imagen'];
-            $this->fecha = $fila['fecha'];
-          }
-          return $noticia;
-        }
-        mysqli_close($conexion);
-      }
-    }
-  }
-
-  function buscar_noticia() : bool {
+    function buscar_noticia() : bool {
     if (isset($_POST['buscar'])) {
       $titular = $_POST['titular'];
 

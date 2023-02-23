@@ -7,6 +7,8 @@
 
   $menu = Usuario::mostrarMenu();
   $aleatoria = Usuario::img_aleatoria();
+  $formulario = Inmueble::form_busca_inmueble();
+  $inmuebles = Inmueble::buscar_Inmueble();
   $footer = Interfaz::footer();
   
  ?>
@@ -36,61 +38,7 @@
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
           <!-- Muestro imagen de un inmueble aleatorio -->
           <?php $aleatoria ?>
-          <div class='panel-group'>
-            <div class='panel panel-default cabecera-inicio'>
-                  <div class='panel-heading'>
-                    <h2 align='center'><img src='/./media/iconos/buscar.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
-                  </div>
-                <div class='panel-body'>
-                <form class='form-horizontal' action='#' method='post'>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Tipo</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <select class='form-control' id='tipo' name='tipo' required>
-                      <option value=''>Seleccione el tipo de vivienda</option>
-                      <option value='alquiler'>Alquilar</option>
-                      <option value='venta'>Venta</option>
-                    </select><span></span>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Localidad</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <select class='form-control' id='localidad' name='localidad'>
-                      <option value=''>Seleccione la localidad</option>
-                      <option value='puebla'>La Puebla de Alfindén</option>
-                      <option value='pastriz'>Pastriz</option>
-                    </select><span></span>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Nº de habitaciones:</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <input class='form-control' type='text' id='num_hab' name='num_hab' placeholder='Nº de habitaciones'><span></span>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Metros<sup>2</sup>:</label>
-                  <div class='col-sm-5 col-lg-offset-2'>
-                    <input class='form-control' type='text' id='metros' name='metros' placeholder='metros'><span></span>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label class='col-sm-2'>Precio:</label>
-                  <div class='col-sm-5  col-lg-offset-2'>
-                    <input class='form-control' type='text' id='precio' name='precio'  placeholder='€'><span></span>
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
-                    <input class='form-control btn-theme' type='submit' id='buscar_inm' name='buscar_inm' value='Buscar'><span></span>
-                  </div>
-                </div>
-              </form>
-              </div>
-            </div>
-          </div>
-          <?php Inmueble::buscar_Inmueble(); ?>
+          <?php $formulario ?>
         </div>
       </div>
     </div>

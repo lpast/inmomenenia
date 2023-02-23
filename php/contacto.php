@@ -2,6 +2,8 @@
   session_start(); 
   include "../php/dbconnect.php";
   include "../php/class/interfaz.php";
+  include "../php/class/usuario.php";
+
   include "../php/funciones.php";
 
   $menu = Interfaz::mostrarMenu();

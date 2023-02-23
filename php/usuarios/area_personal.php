@@ -32,20 +32,18 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-          <div class='tnoticias'>
-            <div class='container-fluid'>
-              <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
-                <?php
-                  if (isset($_SESSION['tipo'])) {
-                    $tipo_usuario = $_SESSION['tipo'];
-                    if ($tipo_usuario == 'u') {
-                      $nombre = $_SESSION['nombre'];
-                    }
+          <div class='container-fluid'>
+            <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
+              <?php
+                if (isset($_SESSION['tipo'])) {
+                  $tipo_usuario = $_SESSION['tipo'];
+                  if ($tipo_usuario == 'u') {
+                    $nombre = $_SESSION['nombre'];
                   }
-                  echo "<h1 align='center'> ¡ Hola $nombre ! </h1>
-                    <h2 align='center'> ¿Qué quieres hacer?</h2>";
-                ?>
-              </div>
+                }
+                echo "<h1 align='center'> ¡ Hola $nombre ! </h1>
+                  <h2 align='center'> ¿Qué quieres hacer?</h2>";
+              ?>
             </div>
             <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio '>
               <div class ='col-md-6'>
@@ -68,7 +66,6 @@
           </div>
         </div>
       </div>
-    </div>
     <?php $footer ?>
   </body>
 </html>

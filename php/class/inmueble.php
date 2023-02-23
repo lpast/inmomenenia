@@ -21,9 +21,65 @@ class Inmueble {
     </div>";
     return true;
   }
-
-
-  function listar_inmuebles() {
+  static public function form_busca_inmueble(): bool {
+    echo "<div class='panel-group'>
+      <div class='panel panel-default cabecera-inicio'>
+        <div class='panel-heading'>
+          <h2 align='center'><img src='/./media/iconos/buscar.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
+        </div>
+        <div class='panel-body'>
+          <form class='form-horizontal' action='#' method='post'>
+            <div class='form-group'>
+              <label class='col-sm-2'>Tipo</label>
+              <div class='col-sm-5 col-lg-offset-2'>
+                <select class='form-control' id='tipo' name='tipo' required>
+                  <option value=''>Seleccione el tipo de vivienda</option>
+                  <option value='alquiler'>Alquilar</option>
+                  <option value='venta'>Venta</option>
+                </select><span></span>
+              </div>
+            </div>
+            <div class='form-group'>
+              <label class='col-sm-2'>Localidad</label>
+              <div class='col-sm-5 col-lg-offset-2'>
+                <select class='form-control' id='localidad' name='localidad'>
+                  <option value=''>Seleccione la localidad</option>
+                  <option value='puebla'>La Puebla de Alfindén</option>
+                  <option value='pastriz'>Pastriz</option>
+                </select><span></span>
+              </div>
+            </div>
+            <div class='form-group'>
+              <label class='col-sm-2'>Nº de habitaciones:</label>
+              <div class='col-sm-5 col-lg-offset-2'>
+                <input class='form-control' type='text' id='num_hab' name='num_hab' placeholder='Nº de habitaciones'><span></span>
+              </div>
+            </div>
+            <div class='form-group'>
+              <label class='col-sm-2'>Metros<sup>2</sup>:</label>
+              <div class='col-sm-5 col-lg-offset-2'>
+                <input class='form-control' type='text' id='metros' name='metros' placeholder='metros'><span></span>
+              </div>
+            </div>
+            <div class='form-group'>
+              <label class='col-sm-2'>Precio:</label>
+              <div class='col-sm-5  col-lg-offset-2'>
+                <input class='form-control' type='text' id='precio' name='precio'  placeholder='€'><span></span>
+              </div>
+            </div>
+            <div class='form-group'>
+              <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                <input class='form-control btn-theme' type='submit' id='buscar_inm' name='buscar_inm' value='Buscar'><span></span>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>";
+    return true;
+  }
+  
+  static public function listar_inmuebles() :bool {
     
     $conexion = abrirConexion();
     $mostrar = "SELECT id, calle, portal, descripcion, precio, id_cliente, imagen
@@ -48,6 +104,7 @@ class Inmueble {
         echo "</table>";
     }
     mysqli_close($conexion);
+    return true;
   }
 
   function nuevo_inmueble() {
@@ -192,6 +249,8 @@ class Inmueble {
     borrar_inmueble();
     return true;
   }
+
+
 
   static function buscar_Inmueble(): bool {
     if (isset($_POST['buscar_inm'])) {

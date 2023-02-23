@@ -4,7 +4,7 @@
   require "../../php/class/interfaz.php";
   require "../../php/class/usuario.php";
 
-  $menu = Interfaz::mostrarMenu();
+  $menu = Usuario::mostrarMenu();
   $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>

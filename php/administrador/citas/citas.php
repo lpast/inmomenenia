@@ -1,9 +1,17 @@
-<<?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../../php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+<?php
+  session_start(); 
+  require "../../../php/dbconnect.php";
+  require "../../../php/class/interfaz.php";
+  require "../../../php/class/usuario.php";
+  require "../../../php/class/administrador.php";
+  require "../../../php/class/inmueble.php";
+  require "../../../php/funciones.php";
+
+  comprobarAdmin();
+
+  $menu = Usuario::mostrarMenu();
+  $botones = Interfaz::gestion_citas();
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,10 +33,10 @@
   <body>
     
    <!-- Menú de navegación -->
-   <?php $menu = Interfaz::menuAdmin(); ?>
+   <?php $menu ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_citas(); ?>
+    <?php $botones ?>
          
     <div class="col-xs-12 col-md-6">
       <h2 class="margen-citas" align="center">Calendario</h2>
@@ -62,11 +70,11 @@
     </div>
 
      <!-- Muestro calendario y muestro las citas y opción de modificar -->
-     <? $calendario = Interfaz::mostrar_ProximasCitas(); ?>
+     <? Citas::mostrar_ProximasCitas(); ?>
       
 
     <!-- footer -->
-   <?php Interfaz::footer();?>
+   <?php $footer?>
 
     <script>
         $(document).ready(function(){

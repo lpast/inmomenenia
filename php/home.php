@@ -3,18 +3,16 @@
   include "dbconnect.php";
   include "class/interfaz.php";
   include "class/usuario.php";
+  include "class/administrador.php";
+  include "class/inmueble.php";
   include "class/noticia.php";
   include "funciones.php";
+  comprobarIndex();
 
-  if (!isset($_SESSION['tipo'])) {
-    $tipo = $_SESSION['tipo'];
-    if ( $tipo == 'u' && $tipo == 'a')  {
-      $nombre = $_SESSION['nombre'];
-    }
-  }
   $menuHome = Interfaz::mostrarMenuHome();
   $home = Interfaz::mostrar_home();
   $footer = Interfaz::footer(); 
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +36,7 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-        <?php  $home ?>
+          <?php $home ?>
         </div>
       </div>
     </div>

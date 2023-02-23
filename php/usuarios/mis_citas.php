@@ -38,7 +38,9 @@
           </div>
         </div>
         <!-- Se muestran los datos del usuario -->
-        <?php Usuario::citas_usuario(); ?>
+        <?php Usuario::mis_citas(); ?>
+        
+        
       </div>
     </div>
     <?php $footer ?>

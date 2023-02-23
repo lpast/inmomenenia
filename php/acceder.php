@@ -2,6 +2,8 @@
   session_start();
   include "dbconnect.php";
   include "class/interfaz.php";
+  include "class/usuario.php";
+  include "class/administrador.php";
   include "funciones.php";
 
   $menu = Interfaz::mostrarMenu();
@@ -51,7 +53,6 @@
         
       } else {
         throw new Exception ('Usuario o contraseña incorrectos');
-        
         return $consulta;
       }
       throw new Exception ('Usuario o contraseña incorrectos');
