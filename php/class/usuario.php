@@ -99,62 +99,48 @@ class Usuario {
 
 
   static public function mis_favoritos() : bool {
-    echo "<div class='container-fluid'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
-        <div class='tnoticias'>
-          <h1 align='center''>Echa un vistazo a tus inmuebles</h1>
-        </div>;
-      </div>
-      <div class='col-xs-12 col-sm-offset-2 col-sm-10'>";
-        
-          $id_usuario=$_SESSION['id_usuario'];
-          $con = abrirConexion();
-          $sql = "SELECT * from tbl_favoritos fav INNER JOIN tbl_inmuebles inm on fav.id_inmueble=inm.id WHERE fav.id_usuario='$id_usuario'";
+    $id_usuario=$_SESSION['id_usuario'];
+    $con = abrirConexion();
+    $sql = "SELECT * from tbl_favoritos fav INNER JOIN tbl_inmuebles inm on fav.id_inmueble=inm.id WHERE fav.id_usuario='$id_usuario'";
 
-          $consulta = mysqli_query($con, $sql);
+    $consulta = mysqli_query($con, $sql);
 
-          if (!$consulta) {
-            echo 'Error al consultar favoritos';
-          } else {
-            $num_filas = mysqli_num_rows($consulta);
-            if ($num_filas == 0) {
-              echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-                      <h2>Ups... ahora mismo no tiene ningún inmueble guardado como favoritos :(</h2>
-                    </div>";
-            } else {
-              while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-               
-                echo "<div class='col-sm-4'>";
-                echo "<div class='panel panel-default'>";
-                echo "<div class='panel-body tnoticias'>";
-                echo "<img class='img-responsive' src='../../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
-                      <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
-                echo "<h3 align ='center'>$fila[calle]</h3>
-                      <h4 align ='center' style='padding-bottom:15px'>$fila[localidad]</h4>
-                      <div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
-                        <h3><img src='../../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $fila[num_banos]</b>
-                        <img src='../../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[num_hab]</b><h3>
-                        <h3><img src='../../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b>  $fila[garaje]</b>
-                        <img src='../../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[jardin]</b>
-                        <img src='../../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[piscina]</b><h3>
-                        <h3><img src='../../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $fila[estado]</b>
-                        <img src='../../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[tipo]</b><h3>
-                        <h3><img src='../../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b>  $fila[metros] m<sup>2</sup></b>
-                        <img src='../../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[precio] €</b><h3>
-                      </div>
-                      <h4 align ='center'>$fila[descripcion]</h4>
-                      <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
-                echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
-              }
-            }
-          }
-          mysqli_close($con);
-        echo "</div>
-      </div>";
-      echo "<div style='padding-top:15px'>
-      <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
-    </div>";
+    if (!$consulta) {
+      echo 'Error al consultar favoritos';
+    } else {
+      $num_filas = mysqli_num_rows($consulta);
+      if ($num_filas == 0) {
+        echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                <h2>Ups... ahora mismo no tiene ningún inmueble guardado como favoritos :(</h2>
+              </div>";
+      } else {
+        while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+          
+          echo "<div class='col-sm-4'>";
+          echo "<div class='panel panel-default'>";
+          echo "<div class='panel-body tnoticias'>";
+          echo "<img class='img-responsive' src='../../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
+                <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
+          echo "<h3 align ='center'>$fila[calle]</h3>
+                <h4 align ='center' style='padding-bottom:15px'>$fila[localidad]</h4>
+                <div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
+                  <h3><img src='../../media/iconos/ducha.png' alt='banos-inmueble' width='50px' style='margin-right:5px'><b> $fila[num_banos]</b>
+                  <img src='../../media/iconos/dormitorio.png' alt='habitaciones-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[num_hab]</b><h3>
+                  <h3><img src='../../media/iconos/garaje.png' alt='garaje-inmueble' width='50px' style='margin-right:5px'><b>  $fila[garaje]</b>
+                  <img src='../../media/iconos/jardin.png' alt='jardin-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[jardin]</b>
+                  <img src='../../media/iconos/piscina.png' alt='piscina-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[piscina]</b><h3>
+                  <h3><img src='../../media/iconos/estado.png' alt='estado-inmueble' width='50px' style='margin-right:5px'><b> $fila[estado]</b>
+                  <img src='../../media/iconos/tipo.png' alt='tipo-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b> $fila[tipo]</b><h3>
+                  <h3><img src='../../media/iconos/metros.png' alt='metros-inmueble' width='50px' style='margin-right:5px'><b>  $fila[metros] m<sup>2</sup></b>
+                  <img src='../../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:55px' 'margin-right:15px'><b>  $fila[precio] €</b><h3>
+                </div>
+                <h4 align ='center'>$fila[descripcion]</h4>
+                <form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>"; //info inmueble
+          echo "</div></div></div>"; //cierre de col-sm, panel,panel-body
+        }
+      }
+    }
+    mysqli_close($con);
     return true;
   }
 

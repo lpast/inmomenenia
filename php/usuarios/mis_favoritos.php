@@ -32,11 +32,21 @@
         <div class='row'>
           <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
             <div class='tnoticias'>
-            <?php Usuario::mis_favoritos(); ?>
+              <h1 align='center'>Echa un vistazo a tus favoritos</h1>
             </div>
-          </div>    
-        </div>
+          </div>
+          <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+            <div class='col-xs-12 col-sm-10'>
+              <?php Usuario::mis_favoritos(); ?>
+            </div>
+            <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
+              <div class='col-xs-12 col-sm-10' style='padding-top:15px'>
+              <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
+            </div>
+          </div>
+        </div>    
       </div>
-      <?php $footer ?>
+    </div>
+    <?php $footer ?>
   </body>
 </html>
