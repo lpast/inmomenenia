@@ -5,12 +5,13 @@
   require "../../../php/class/usuario.php";
   require "../../../php/class/administrador.php";
   require "../../../php/class/inmueble.php";
+  require "../../../php/class/citas.php";
   require "../../../php/funciones.php";
 
   comprobarAdmin();
 
   $menu = Usuario::mostrarMenu();
-  $botones = Interfaz::gestion_citas();
+  $botones = Administrador::gestion_citas();
   $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
@@ -31,9 +32,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    
-   <!-- Menú de navegación -->
-   <?php $menu ?>
+    <?php $menu ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones ?>
@@ -66,11 +65,18 @@
           $dia = date('d');
         }
         if($mes < 10) $mes = "0$mes";
-        $mostrarCalendario = Interfaz::mostrarCalendario($dia, $mes, $anio);?>
+        $mostrarCalendario = Citas::mostrarCalendario($dia, $mes, $anio);?>
     </div>
 
-     <!-- Muestro calendario y muestro las citas y opción de modificar -->
-     <? Citas::mostrar_ProximasCitas(); ?>
+    <!-- Muestro calendario y muestro las citas y opción de modificar -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <h2 class="margen-citas" align="center">Próximas citas</h2>
+          <? Citas::mostrar_ProximasCitas(); ?>
+      </div>
+    </div>
+  </div>
       
 
     <!-- footer -->

@@ -50,7 +50,7 @@
             
             <div class='jumbotron'>
               <h2><a href='https://lapuebladealfinden.es/'><img src='../media/iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
-              <h2><a href='+34692605414'><img src='../media/iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
+              <h2><a href='+34682601454'><img src='../media/iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
               <h2><a href='contacto@inmomenenia.es'><img src='../media/iconos/mail.png' alt='contacto-inmomenenia' width='80px'></a> contacto@inmomenenia.es</h2>
               <h2><a href='https://lapuebladealfinden.es/horarios-de-autobus-linea-211/'><img src='../media/iconos/bus.png' alt='bus-inmomenenia' width='80px'></a>  Línea 211 </h2>
             </div>
