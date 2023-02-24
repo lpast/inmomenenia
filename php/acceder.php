@@ -41,28 +41,22 @@
             <strong>¡Acceso correcto!</strong> 
           </div>";
     
-        echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
     
         } else {
           throw new Exception ('Usuario o contraseña incorrectos');
           echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
             <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
           </div>";
-          return $consulta;
         }
-        
       } else {
         throw new Exception ('Usuario o contraseña incorrectos');
         return $consulta;
       }
-      throw new Exception ('Usuario o contraseña incorrectos');
-      return $consulta;
     }
   } catch (Exception $e) {
-    die ('Error' . $e->GetMessage());
-    echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-      <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
-    </div>";
+    echo "('Error' . $e->GetMessage())";
+    return $consulta;
   }
   
 
