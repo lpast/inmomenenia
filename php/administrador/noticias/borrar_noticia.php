@@ -1,16 +1,22 @@
 <?php 
-    include "../../../php/dbconnect.php";
-    include "../../../php/class/interfaz.php";
-    include "../../../php/funciones.php";
-  session_start(); 
-  comprobarAdmin();
+   session_start();
+   include "../../../php/dbconnect.php";
+   include "../../../php/class/interfaz.php";
+   include "../../../php/class/administrador.php";
+   include "../../../php/class/cita.php";
+   include "../../..//php/funciones.php";
+ 
+   comprobarAdmin();
+   $menu = Administrador::menuAdmin();
+   $botones = Administrador::gestion_citas();
+   $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Borrar Noticias</title>
+    <title>Borrar Cita</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -22,18 +28,50 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
-  <body style="background-color: #f5f1e7; background-image:none;">
-    
-   <!-- Menú de navegación -->
-   <?php $menu = Interfaz::menuAdmin(); ?>
-
+  <body>!-- Menú de navegación -->
+   <?php $menu ?>
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_noticias(); ?>
+    <?php $botones ?>
+    <div class='container-fluid cabecera-menu-inicio'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
+          <div class='panel-group'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h2 align='center'>Borrar una noticia</h2>
+              </div>
+              <div class='panel-body'>
+                <p align='center'>Seleccione el inmueble que desea borrar</p>
+                <?php
+                  $conexion = abrirConexion();
+                  $consulta = "SELECT id, titular from tbl_noticias";
 
-    <!-- Mostramos noticias para borrar -->
-    <?php $formulario = Interfaz::tbl_borrar_noticia(); ?>
+                  $datos = mysqli_query($conexion, $consulta);
 
-    <!-- footer -->
-   <?php $footer = Interfaz::footer(); ?> 
+                  if (!$datos) {
+                    echo "Error, no se han podido cargar los datos de las noticas";
+                  } else {
+                    echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
+                    echo "<table class='table table-striped'";
+                    echo "<thead><tr><th>ID</th><th>Titular</th><th>¿Eliminar?</th></tr></thead>";
+                    while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+                      echo "<tbody><tr><td>$fila[id]</td><td>$fila[titular]</td>
+                      <td><form action='#' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-danger' type='submit' name='borrar' value='Eliminar'></form></td></tr></tbody>";
+                    }
+                    echo "</table>
+                      <a align='center' href='noticias.php' class='btn btn-danger'>Cancelar</a>
+                    </div>";
+                  }
+                  mysqli_close($conexion);
+                ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- footer -->
+   <?php $footer?> 
   </body>
 </html>

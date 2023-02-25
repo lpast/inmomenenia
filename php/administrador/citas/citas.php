@@ -4,15 +4,24 @@
   require "../../../php/class/interfaz.php";
   require "../../../php/class/usuario.php";
   require "../../../php/class/administrador.php";
-  require "../../../php/class/inmueble.php";
-  require "../../../php/class/citas.php";
+  require "../../../php/class/cita.php";
   require "../../../php/funciones.php";
 
   comprobarAdmin();
 
-  $menu = Usuario::mostrarMenu();
+  $menu = Administrador::menuAdmin();
   $botones = Administrador::gestion_citas();
   $footer = Interfaz::footer();
+
+  $actual = date('Y-m-d');
+  $marca_actual = strtotime($actual);
+
+  $conexion = abrirConexion();
+  $sql = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id as id_cliente, tbl_clientes.nombre, tbl_clientes.telefono
+        from tbl_citas inner join tbl_clientes on tbl_citas.id_cliente = tbl_clientes.id order by fecha desc";
+        
+  $mostrar = mysqli_query($conexion, $sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,42 +50,68 @@
       <h2 class="margen-citas" align="center">Calendario</h2>
       <!-- PHP que muestra el calendario del mes pedido -->
       <?php 
-        if(isset($_GET['mes']))
-        {
+        if(isset($_GET['mes'])) {
           $dia = "01";
           $mes = $_GET['mes'];
-          if($mes == 0)
-          {
+         
+          if($mes == 0) {
             $mes = 12;
             $anio = $_GET['anio']-1;
-          }
-          elseif($mes == 13)
-          {
+          } elseif($mes == 13) {
             $mes=1;
             $anio = $_GET['anio']+1;
-          }
-          else
+          } else
             $anio = $_GET['anio'];
-        }
-        else
-        {
+           
+        } else {
           $mes = date('m');
           $anio = date('Y');
           $dia = date('d');
         }
         if($mes < 10) $mes = "0$mes";
-        $mostrarCalendario = Citas::mostrarCalendario($dia, $mes, $anio);?>
+        Cita::mostrarCalendario($dia, $mes, $anio);
+      ?>
     </div>
 
-    <!-- Muestro calendario y muestro las citas y opción de modificar -->
+    <!-- Muestro citas y opción de modificar -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <h2 class="margen-citas" align="center">Próximas citas</h2>
-          <? Citas::mostrar_ProximasCitas(); ?>
+        <div class="col-xs-12 col-md-6 col-sm-10">
+          <h2 class="margen-citas" align="center"> Próximas citas</h2>
+          <div class='col-xs-12 col-sm-12 col-md-12  tnoticias'>
+            <?php
+              if (!$mostrar) {
+                echo "Error al hacer la consulta a la BD";
+              } else {
+                $num_filas = mysqli_num_rows($mostrar);
+                if ($num_filas == 0) {
+                  echo "No hay citas para mostrar";
+                } else {
+                  echo "<p align='center'><b>Se han listado $num_filas citas</b></p>";
+                  echo "<div class='table-responsive'>";
+                  echo "<table class='table table-striped table-hover'";
+                  echo "<thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Contacto</th><th>Modificar</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($mostrar, MYSQLI_ASSOC)) {
+                    $marca_cita = strtotime($fila['fecha']);
+                    $marca_hora = strtotime($fila['hora']);
+                    $f_formateada = date("d-m-Y", $marca_cita);
+                    $h_formateada = date("G:i", $marca_hora);
+          
+                    if ($marca_cita > $marca_actual) {
+                      echo "<tbody><tr class='success'><td>$fila[id]</td><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono]</td>
+                        <td><form action='modificar_cita.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
+                    } else {
+                      echo "<tbody><tr class='warning'><td>$fila[id]</td><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono]</td><td>No se puede modificar</td></tr></tbody>";
+                    }
+                  }
+                  echo "</table>
+                  </div>";
+                }
+              }
+            ?>
+        </div>
       </div>
     </div>
-  </div>
       
 
     <!-- footer -->
@@ -84,8 +119,8 @@
 
     <script>
         $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();   
-          });
+          $('[data-toggle="popover"]').popover();   
+        });
     </script>
   </body>
 </html>

@@ -1,14 +1,36 @@
 <?php
-  session_start(); 
+  session_start();
   include "../../../php/dbconnect.php";
   include "../../../php/class/interfaz.php";
   include "../../../php/class/administrador.php";
+  include "../../../php/class/cita.php";
   include "../../..//php/funciones.php";
-    
+
   comprobarAdmin();
-  $menu = Administrador::menuAdmin(); 
-  $botones = Administrador::gestion_citas(); 
+  $menu = Administrador::menuAdmin();
+  $botones = Administrador::gestion_citas();
   $footer = Interfaz::footer();
+
+  if (isset($_POST['modificar'])) {
+    $id = $_POST['id'];
+
+    $conexion = abrirConexion();
+    $sql = "SELECT fecha, hora, motivo, lugar, id_cliente FROM tbl_citas WHERE id='$id'";
+
+    $datos = mysqli_query($conexion,$sql);
+
+    if (!$datos) {
+      echo "Error al consultar datos a la BD";
+    } else {
+        while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
+          $fecha = $fila['fecha'];
+          $hora = $fila['hora'];
+          $motivo = $fila['motivo'];
+          $lugar = $fila['lugar'];
+          $id_cliente = $fila['id_cliente'];
+        }
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,38 +56,6 @@
 
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones ?>
-
-    <?php 
-      if (isset($_POST['modificar'])) {
-        $id = $_POST['id'];
-        $fecha = $_POST['fecha'];
-        $hora = $_POST['hora'];
-        $motivo = $_POST['motivo'];
-        $lugar = $_POST['lugar'];
-        $id_cliente = $_POST['id_cliente'];
-        
-        $conexion = abrirConexion();
-        $sql = "SELECT fecha, hora, motivo, lugar, id_cliente FROM tbl_citas WHERE id='$id'";
-
-        $datos = mysqli_query($conexion,$sql);
-
-        if (!$datos) {
-          echo "Error al consultar datos a la BD";
-        } else {
-             $fila = mysqli_fetch_array($datos,MYSQLI_ASSOC);
-            while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
-                
-                $fecha = $fila['fecha'];
-                $hora = $fila['hora'];
-                $motivo = $fila['motivo'];
-                $lugar = $fila['lugar'];
-                $id_cliente = $fila['id_cliente'];
-            }
-         
-
-        }
-      }
-    ?>
     <div class="container-fluid menu-inicio">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 cabecera-form">
@@ -119,7 +109,7 @@
                            echo "Error al ajecutar la consulta";
                          } else {
                            while ($fila = mysqli_fetch_array($clientes,MYSQLI_ASSOC)) {
-                               echo "<option value=$fila[id]>$fila[nombre]</option>";
+                               echo "<option value=$fila[id]>$fila[nombre] $fila[apellidos]</option>";
                            }
                          }                     
                          mysqli_close($conexion);

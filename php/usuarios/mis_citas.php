@@ -6,6 +6,7 @@
   require "../../php/class/inmueble.php";
 
   $menu = Usuario::mostrarMenu();
+  $botones = Usuario::gestion_usuario();
   $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
@@ -30,6 +31,7 @@
    </head>
    <body>
     <?php $menu ?>
+    <?php $botones ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>

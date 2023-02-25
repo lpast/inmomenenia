@@ -80,18 +80,6 @@ ALTER TABLE tbl_favoritos
 MODIFY id int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 
 
-/**  CREATE TABLE IF NOT EXISTS tbl_empleados (
-    id varchar (9) NOT NULL UNIQUE,
-    nombre varchar (20) NOT NULL,
-    apellidos varchar (30) NOT NULL,
-    direccion varchar (30) NOT NULL,
-    telefono int (9) NOT NULL,
-    email varchar (30),
-    fecha_alta DATE NOT NULL,
-    nom_user varchar (20) NOT NULL,
-    CONSTRAINT pk_emp_id PRIMARY KEY (id)
- ); */
- 
 CREATE TABLE IF NOT EXISTS tbl_citas (
    id int(20) NOT NULL,
    fecha date NOT NULL,

@@ -1,9 +1,18 @@
 <?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../../php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+  session_start(); 
+  require "../../../php/dbconnect.php";
+  require "../../../php/class/interfaz.php";
+  require "../../../php/class/usuario.php";
+  require "../../../php/class/administrador.php";
+  require "../../../php/class/cita.php";
+  require "../../../php/funciones.php";
+
+  comprobarAdmin();
+
+  $menu = Administrador::menuAdmin();
+  $botones = Administrador::gestion_citas();
+  $nueva_cita = Cita::nueva_cita(); 
+  $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,20 +30,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-    </style>
   </head>
+  <body>
    <!-- Menú de navegación -->
-   <?php $menu = Interfaz::menuAdmin(); ?>
+   <?php $menu ?>
 
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_noticias(); ?>
+    <?php $botones ?>
     
     <!-- Muestro calendario y muestro las citas y opción de modificar -->
     <?php $noticias = Interfaz::mostrar_noticias(); ?>

@@ -3,24 +3,6 @@ class Inmueble {
 
     const BASE_URL = "https://inmomenenia.com/php";
     
-  static public function gestion_inmuebles(): bool {
-    echo "<div class='container-fluid cabecera-menu-inicio'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          <nav class='navbar '>
-            <div class='container-fluid'>
-              <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-theme btn-md' href='nuevo_inmueble.php'>Añadir inmueble</a></li>
-                <li><a type='button' class='btn btn-theme btn-md' href='borrar_inmueble.php'>Borrar inmueble</a></li>
-                <li><a type='button' class='btn btn-theme btn-md' href='buscar_inmueble.php'>Buscar inmueble</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>";
-    return true;
-  }
   static public function form_busca_inmueble(): bool {
     echo "<div class='panel-group'>
       <div class='panel panel-default cabecera-inicio'>

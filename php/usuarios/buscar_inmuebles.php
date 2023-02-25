@@ -14,8 +14,8 @@
  ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Buscar Inmuebles</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
@@ -30,34 +30,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <!-- Menú de navegación -->
     <?php $menu ?>
     
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'> <!-- cabecera alargada -->
           <!-- Muestro imagen de un inmueble aleatorio -->
           <?php $aleatoria ?>
           <?php $formulario ?>
         </div>
       </div>
     </div>
-
-    <?php $footer?> 
-   
-
-
-    
-
-    
-
-    <div class='panel-group'>
-      <div>
-      </div>
-    </div>
-
-    
-   
    <!-- footer -->
    <?php $footer ?> 
   </body>

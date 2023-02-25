@@ -144,7 +144,30 @@ class Usuario {
     return true;
   }
 
+  function nuevo_favorito(): bool  {/***** MEJORA ******/
+    if (isset($_POST['nuevo_favorito'])) {
+      $id = $_POST['id'];
+      $id_inmueble = $_POST['id_inmueble'];
+      $id_usuario = $_SESSION['id_usuario'];
   
+      $conexion = abrirConexion();
+      $insertar = "INSERT into tbl_favoritos (id_favorito, id_usuario, id_inmueble) VALUES
+        ('$id', '$id_usuario', $id_inmueble)";
+        
+        if(mysqli_query($conexion, $insertar)) {
+          "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>Favorito añadido</h4>
+          </div></div></div>";
+          
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble a favoritos</h4>
+          </div></div></div>";
+        }
+      mysqli_close($conexion);
+    }
+    return true;
+  }
 
   static public function mis_inmuebles(): bool {
     echo "<div class='col-xs-12 col-sm-offset-2 col-sm-10'>";
@@ -448,55 +471,54 @@ class Usuario {
   }
 
   static public function mis_citas(): bool {
-    echo "
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2  tnoticias'>";
-            $actual = date('Y-m-d');
-            $marca_actual = strtotime($actual);
+    echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2  tnoticias'>";
+      $actual = date('Y-m-d');
+      $marca_actual = strtotime($actual);
 
-            $id_cliente = $_SESSION['id_usuario'];
-            $con = abrirConexion();
-            $sql = "SELECT * FROM tbl_citas WHERE id_cliente='$id_cliente' order by fecha desc";
+      $id_cliente = $_SESSION['id_usuario'];
+      $con = abrirConexion();
+      $sql = "SELECT * FROM tbl_citas WHERE id_cliente='$id_cliente' order by fecha desc";
 
-            $consulta = mysqli_query($con, $sql);
+      $consulta = mysqli_query($con, $sql);
 
-            if (!$consulta) {
-              echo "Error al realizar la consulta sql...";
-            } else {
-              $num_filas = mysqli_num_rows($consulta);
+      if (!$consulta) {
+        echo "Error al realizar la consulta sql...";
+      } else {
+        $num_filas = mysqli_num_rows($consulta);
 
-              if ($num_filas == 0) {
-                echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
-                              <h2>No tienes ninguna cita programada</h2>
-                      </div>";
-              } else {
-                echo "<div class='table-responsive'>";
-                echo "<table class='table table-hover'>";
-                echo "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th></tr></thead>";
-                echo "<tbody>";
-                while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
-                  $marca_cita = strtotime($fila['fecha']);
-                  $marca_hora = strtotime($fila['hora']);
-                  $f_formateada = date("d-m-Y", $marca_cita);
-                  $h_formateada = date("G:i", $marca_hora);
-                  if ($marca_cita >= $marca_actual) { // en verde las futuras citas)
-                    echo "<tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
-                  } else { // en amarillo las citas pasadas)
-                    echo "<tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
-                  }
-                }
-                echo "</tbody>";
-                echo "</table></div>"; //responsive, table-hover
-              }
-              
-            }
-              mysqli_close($con);
-              echo "</div>
-              </div>";
-              echo "<div style='padding-top:15px'>
-                <p align='center'><a class='btn btn-theme' href='../../php/contacto.php'>Solicitar <b>nueva cita</b></a></p>
-                <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
-
+        if ($num_filas == 0) {
+          echo "<div class='alert alert-warning warning-new col-sm-6 col-sm-offset-3' align='center'>
+                        <h2>No tienes ninguna cita programada</h2>
                 </div>";
+        } else {
+          echo "<div class='table-responsive'>";
+          echo "<table class='table table-hover'>";
+          echo "<thead><tr><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th></tr></thead>";
+          echo "<tbody>";
+          while ($fila = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
+            $marca_cita = strtotime($fila['fecha']);
+            $marca_hora = strtotime($fila['hora']);
+            $f_formateada = date("d-m-Y", $marca_cita);
+            $h_formateada = date("G:i", $marca_hora);
+            if ($marca_cita >= $marca_actual) { // en verde las futuras citas)
+              echo "<tr class='success'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
+            } else { // en amarillo las citas pasadas)
+              echo "<tr class='warning'><td>$f_formateada</td><td>$h_formateada</td><td>$fila[motivo]</td><td>$fila[lugar]</td></tr>";
+            }
+          }
+          echo "</tbody>";
+          echo "</table></div>"; //responsive, table-hover
+        }
+        
+      }
+        mysqli_close($con);
+        echo "</div>
+        </div>";
+        echo "<div style='padding-top:15px'>
+          <p align='center'><a class='btn btn-theme' href='../../php/contacto.php'>Solicitar <b>nueva cita</b></a></p>
+          <p align='center'><a class='btn btn-theme' href='../../php/usuarios/area_personal.php'>Volver</b></a></p>
+
+          </div>";
      
     return true;
   }
