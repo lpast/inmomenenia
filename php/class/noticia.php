@@ -156,9 +156,7 @@ class Noticia {
         </div>
       </div>";
     return true;
-  }
-
-    
+  } 
 
   static public function nueva_noticia() : bool {
     if (isset($_POST['nueva_noticia'])) {
@@ -362,8 +360,5 @@ class Noticia {
     }  
     return true;
   }
-
-  
-}
 ?>
 

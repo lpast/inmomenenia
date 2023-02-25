@@ -1688,6 +1688,4 @@ class Inmueble {
     }
     return true;
   }
-
-
 }
