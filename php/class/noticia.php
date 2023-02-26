@@ -18,38 +18,6 @@ class Noticia {
       </div>
     </div>";
     return true;
-  }
-
-  static public function form_buscar_noticia(): bool {
-    echo "<div class='container-fluid menu-inicio'>
-      <div class='row'>
-        <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
-          <div class='panel-group'>
-            <div class=' panel panel-default' action='#' method='post'>
-              <div class='panel-heading'>
-                <h2 align='center'>Buscar noticias</h2>
-              </div>
-              <div class='panel-body'>
-                <p align='center'>Rellene el campo para realizar la búsqueda</p>
-                <form class='form-horizontal' action='#' method='post' accept-charset='utf-8'>
-                  <div class='form-group'>
-                    <label class=' col-sm-3'>Titular de la noticia:</label>
-                    <div class='col-sm-9'>
-                      <input class='form-control' type='text' id='titular' name='titular' autofocus> <span></span>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-12'>
-                      <input id='buscar' class='form-control btn-theme' type='submit' name='buscar' value='Buscar' >
-                    </div> 
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>";
-    return true;
   } 
 
   static public function nueva_noticia() : bool {
@@ -123,7 +91,7 @@ class Noticia {
     return true;
   }
 
-  function buscar_noticia() : bool {
+  static public function buscar_noticia() : bool {
     if (isset($_POST['buscar'])) {
       $titular = $_POST['titular'];
 
