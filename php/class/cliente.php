@@ -57,7 +57,7 @@ class Cliente {
             if ($telefono == "") {
             } else { // si telefono
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE telefono='$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -70,9 +70,11 @@ class Cliente {
                   echo "No se ha encontrado ningún cliente por ese teléfono";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                 echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Ver</th><th>Localidad</th><th>Ver</th></tr></thead>";
+
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -81,7 +83,7 @@ class Cliente {
           } else { // si apellidos
             if ($telefono == "") { //----------no telefono si apellidos
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where apellidos='$apellidos'";
+              $sql = "SELECT * FROM tbl_clientes WHERE apellidos='$apellidos'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -94,16 +96,17 @@ class Cliente {
                   echo "No se ha encontrado ningún cliente por esos apellidos";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else { ///si apellidos si telefono
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where apellidos='$apellidos' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE apellidos='$apellidos' and telefono='$telefono'";
   
               $btelape = mysqli_query($con, $sql);
   
@@ -116,9 +119,10 @@ class Cliente {
                   echo "No se ha encontrado ningún cliente por esos apellidos";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                              <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -129,7 +133,7 @@ class Cliente {
           if ($apellidos == "") {
             if ($telefono == "") { //buscamos por nombre
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where nombre='$nombre'";
+              $sql = "SELECT * FROM tbl_clientes WHERE nombre='$nombre'";
   
               $bnombre = mysqli_query($con, $sql);
   
@@ -142,16 +146,17 @@ class Cliente {
                   echo "No se ha encontrado ningún cliente por esos apellidos";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else { //buscamos por nombre y telefono
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE nombre='$nombre' and telefono='$telefono'";
   
               $bnomtel = mysqli_query($con, $sql);
   
@@ -164,9 +169,10 @@ class Cliente {
                   echo "No se ha encontrado ningún cliente por esos apellidos";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -176,7 +182,7 @@ class Cliente {
           } else { //buscamos por nombre - apellidos
             if ($telefono == "") {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and apellidos='$apellidos'";
+              $sql = "SELECT * FROM tbl_clientes WHERE nombre='$nombre' and apellidos='$apellidos'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -189,16 +195,17 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and apellidos='$apellidos' and telefono=?$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE nombre='$nombre' and apellidos='$apellidos' and telefono=?$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -211,9 +218,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -227,7 +235,7 @@ class Cliente {
           if ($apellidos == "") {
             if ($telefono == "") { //buscamos por id 
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -240,16 +248,17 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else { //buscamos por id - telefono
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and telefono='$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -262,9 +271,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -273,7 +283,7 @@ class Cliente {
           } else { //buscamos por id-apellidos 
             if ($telefono == "") {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and apellidos='$apellidos'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and apellidos='$apellidos'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -286,9 +296,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -296,7 +307,7 @@ class Cliente {
   
             } else {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and apellidos='$apellidos' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and apellidos='$apellidos' and telefono='$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -309,9 +320,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -322,7 +334,7 @@ class Cliente {
           if ($apellidos == "") {
             if ($telefono == "") {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and nombre='$nombre'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -335,16 +347,17 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and nombre='$nombre' and telefono='$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -357,9 +370,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -368,7 +382,7 @@ class Cliente {
           } else {
             if ($telefono == "") {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and apellidos='$apellidos'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and nombre='$nombre' and apellidos='$apellidos'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -381,16 +395,17 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                    <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
               }
             } else {
               $con = abrirConexion();
-              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and apellidos='$apellidos' and telefono='$telefono'";
+              $sql = "SELECT * FROM tbl_clientes WHERE id='$id' and nombre='$nombre' and apellidos='$apellidos' and telefono='$telefono'";
   
               $btel = mysqli_query($con, $sql);
   
@@ -403,9 +418,10 @@ class Cliente {
                   echo "No se ha encontrado ningún apellido";
                 } else {
                   echo "<table class='table table-striped'";
-                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Email</th></tr></thead>";
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Ver</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
-                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                              <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }

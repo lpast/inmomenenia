@@ -59,9 +59,9 @@
                         $clientes_registrados = $num_filas;
                         echo "<p><strong>Número de clientes:</strong> $clientes_registrados</p>";
                         echo "<table class='table table-hover'";
-                        echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Modificar</th></tr></thead>";
+                        echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Contacto</th><th>Modificar</th></tr></thead>";
                         while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-                          echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                          echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td>
                               <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                         }
                       }

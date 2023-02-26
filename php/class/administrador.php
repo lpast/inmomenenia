@@ -78,7 +78,7 @@ class Administrador {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
         <div class='col-xs-12'>
-          <nav class='navbar '>
+          <nav class='navbar'>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
                 <li><a type='button' class='btn btn-theme btn-md' href='nuevo_inmueble.php'>Añadir inmueble</a></li>
@@ -97,7 +97,7 @@ class Administrador {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
         <div class='col-xs-12'>
-          <nav class='navbar '>
+          <nav class='navbar'>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
                 <li><a type='button' class='btn btn-theme btn-md' href='nueva_noticia.php'>Añadir noticias</a></li>
@@ -116,7 +116,7 @@ class Administrador {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
         <div class='col-xs-12'>
-          <nav class='navbar '>
+          <nav class='navbar'>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
                 <li><a type='button' class='btn btn-theme' href='nueva_cita.php'>Añadir citas</a></li>
@@ -138,7 +138,7 @@ class Administrador {
           <nav class='navbar '>
             <div class='container-fluid'>
               <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-                <li><a type='button' class='btn btn-theme btn-md' href='añadir_cliente.php'>Añadir cliente</a></li>
+                <li><a type='button' class='btn btn-theme btn-md' href='nuevo_cliente.php'>Añadir cliente</a></li>
                 <li><a type='button' class='btn btn-theme btn-md' href='buscar_cliente.php'>Buscar cliente</a></li>
               </ul>
             </div>
@@ -289,135 +289,6 @@ class Administrador {
         </div>
       </div>
     </div>";
-    return true;
-  }
-
- static public function form_nuevo_cliente(): bool  {
-    echo "<div class='container-fluid menu-inicio'>
-      <div class='row'>
-        <div class='col-xs-12 col-md-8 col-md-offset-2'>
-          <div class='panel-group'>
-            <div class='panel panel-default'>
-              <div class='panel-heading'>
-                <h2 align='center'>Nuevo cliente</h2>
-              </div>
-              <div class='panel-body'>
-                <form class='form-horizontal' action='#' method='post'>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>ID:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='id'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Tipo:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='tipo'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Nombre:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='nombre'>
-                    </div>
-                  </div>   
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Apellidos:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='apellidos'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Calle:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='calle'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Portal:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='portal'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Piso:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='piso'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Puerta:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='puerta'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>CP:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='cp'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Localidad:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='localidad'>
-                    </div>
-                  </div>
-
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Teléfono:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='telefono'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-2'>
-                      <label>Email:</label>
-                    </div>
-                    <div class='col-sm-10'>
-                      <input class='form-control' type='text' name='email'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <div class='col-sm-12 col-sm-offset-4'>
-                      <div class='col-sm-2'>
-                        <input class='form-control btn-thene' id='nuevo_cliente' type='submit' name='nuevo_cliente'>
-                      </div>
-                      <div class='col-sm-2'>
-                        <a href='../php/clientes.php' class='btn btn-danger'>Cancelar</a>
-                      </div>
-                    </div>
-                  </div> 
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>";
-    nuevo_cliente();
     return true;
   }
 

@@ -1,9 +1,16 @@
-<?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../../php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+<?php session_start(); 
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/interfaz.php";
+  include "../../../php/class/usuario.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/cliente.php";
+  include "../../../php/funciones.php";
+
+  comprobarAdmin();
+
+  $menu = Administrador::menuAdmin();
+  $botones = Administrador::gestion_clientes();
+ 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,19 +30,139 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
 <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::menuAdmin(); ?>
-
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_clientes(); ?>
+  <?php $menu ?>
+  <?php $botones ?>
+  <div class='container-fluid menu-inicio'>
+    <div class='row'>
+      <div class='col-xs-12 col-md-8 col-md-offset-2'>
+        <div class='panel-group'>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>
+              <h2 align='center'>Nuevo cliente</h2>
+            </div>
+            <div class='panel-body'>
+              <form class='form-horizontal' action='#' method='post'>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>ID:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='id'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Tipo:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='tipo'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Nombre:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='nombre'>
+                  </div>
+                </div>   
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Apellidos:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='apellidos'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Calle:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='calle'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Portal:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='portal'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Piso:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='piso'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Puerta:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='puerta'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>CP:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='cp'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Localidad:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='localidad'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Teléfono:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='telefono'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-2'>
+                    <label>Email:</label>
+                  </div>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='email'>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <div class='col-sm-12 col-sm-offset-4'>
+                    <div class='col-sm-2'>
+                      <input class='form-control btn-thene' id='nuevo_cliente' type='submit' name='nuevo_cliente'>
+                    </div>
+                    <div class='col-sm-2'>
+                      <a href='../php/clientes.php' class='btn btn-danger'>Cancelar</a>
+                    </div>
+                  </div>
+                </div> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   
-    <?php $menu = Interfaz::form_nuevo_cliente(); ?>
+    <?php Cliente::nuevo_cliente();?>
     
     <!-- footer -->
     <?php $footer = Interfaz::footer(); ?> 
 
     <!-- Validación javascript -->
-    <script src="/./js/validar_nuevo_cliente.js"></script>
+    <script src="../js/validar_nuevo_cliente.js"></script>
   </body>
 </html>
  
