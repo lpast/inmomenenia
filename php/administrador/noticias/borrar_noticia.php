@@ -8,7 +8,7 @@
  
    comprobarAdmin();
    $menu = Administrador::menuAdmin();
-   $botones = Administrador::gestion_citas();
+   $botones = Administrador::gestion_noticias();
    $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
-  <body>!-- Menú de navegación -->
+  <body>
    <?php $menu ?>
     <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones ?>

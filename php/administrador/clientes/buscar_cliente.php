@@ -46,12 +46,6 @@
                     </div>
                   </div>
                   <div class='form-group'>
-                    <label class='col-sm-2'>Tipo</label>
-                    <div class='col-sm-2'>
-                      <input class='form-control' id='tipo' name='tipo'>
-                    </div>
-                  </div>
-                  <div class='form-group'>
                     <label class=' col-sm-2'>Nombre:</label>
                     <div class='col-sm-10'>
                       <input class='form-control' type='text' name='nombre' autofocus>
@@ -64,9 +58,9 @@
                     </div>
                   </div>
                   <div class='form-group'>
-                  <label class=' col-sm-2'>Localidad:</label>
+                  <label class=' col-sm-2'>Telefono:</label>
                   <div class='col-sm-10'>
-                    <input class='form-control' type='text' name='localidad'>
+                    <input class='form-control' type='text' name='telefono'>
                   </div>
                 
                   <div class='form-group' style='padding-top:'15px'>

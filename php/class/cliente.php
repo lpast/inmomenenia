@@ -45,52 +45,380 @@ class Cliente {
   }
   
   static public function buscar_cliente(): bool  {
-    if (isset($_POST['buscar'])) {  
+    if (isset($_POST['buscar'])) {
       $id = $_POST['id'];
-      $tipo = $_POST['tipo'];
       $nombre = $_POST['nombre'];
       $apellidos = $_POST['apellidos'];
-      $localidad = $_POST['localidad'];
-
-      if ($id = "") {
-        if ($tipo = "") {
-          if ($nombre = "") {
-            if ($apellidos = "") {
-              if ($localidad = "") {
-                echo "Sin datos para buscar";
+      $telefono = $_POST['telefono'];
+  
+      if ($id == "") {
+        if ($nombre == "") {
+          if ($apellidos == "") {
+            if ($telefono == "") {
+            } else { // si telefono
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where telefono='$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
-                // Aquí busco solo por localidad
-                $conexion = abrirConexion();
-                $sql = "SELECT * FROM tbl_clientes WHERE localidad='$localidad';
-                
-                $busca = mysqli_query($conexion,$sql);
-        
-                if (!$busca_cliente) {
-                  echo "Error al conectar BD";
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún cliente por ese teléfono";
                 } else {
-                  $num_filas = mysqli_num_rows($busca_cliente);
-        
-                  if ($num_filas == 0) {
-                    echo "No se han encontrado citas";
-                  } else {
-                    echo "<table class='table table-striped tnoticias'>";
-                    echo "<thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Contacto</th></tr></thead>";
-                    while ($fila = mysqli_fetch_array($busca_cliente,MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[id]</td><td>$fila[fecha]</td><td>$fila[hora]</td><td>$fila[motivo]</td><td>$fila[lugar]</td><td>$fila[nombre]</td><td>$fila[telefono]</td></tr></tbody>";
-                    }
-                    echo "</table>";
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
                   }
+                  echo "</table>";
                 }
-                mysqli_close($conexion);
+              }
+            } // --fin si telefono
+          } else { // si apellidos
+            if ($telefono == "") { //----------no telefono si apellidos
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where apellidos='$apellidos'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else { ///si apellidos si telefono
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where apellidos='$apellidos' and telefono='$telefono'";
+  
+              $btelape = mysqli_query($con, $sql);
+  
+              if (!$btelape) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btelape);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } //fin si apellidos si telefono
+          } //----fin si apellidos
+        } else { // si nombre
+          if ($apellidos == "") {
+            if ($telefono == "") { //buscamos por nombre
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where nombre='$nombre'";
+  
+              $bnombre = mysqli_query($con, $sql);
+  
+              if (!$bnombre) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($bnombre);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else { //buscamos por nombre y telefono
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and telefono='$telefono'";
+  
+              $bnomtel = mysqli_query($con, $sql);
+  
+              if (!$bnomtel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($bnomtel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+  
+            }
+          } else { //buscamos por nombre - apellidos
+            if ($telefono == "") {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and apellidos='$apellidos'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where nombre='$nombre' and apellidos='$apellidos' and telefono=?$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            }
+  
+          }
+        } //--fin si nombre
+      } else { //si id
+        if ($nombre == "") {
+          if ($apellidos == "") {
+            if ($telefono == "") { //buscamos por id 
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else { //buscamos por id - telefono
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and telefono='$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            }
+          } else { //buscamos por id-apellidos 
+            if ($telefono == "") {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and apellidos='$apellidos'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+  
+            } else {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and apellidos='$apellidos' and telefono='$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
               }
             }
           }
-        }
+        } else { //buscamos por id-nombre
+          if ($apellidos == "") {
+            if ($telefono == "") {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and telefono='$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            }
+          } else {
+            if ($telefono == "") {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and apellidos='$apellidos'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+               } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Localidad</th><th>Teléfono</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+            } else {
+              $con = abrirConexion();
+              $sql = "SELECT * from tbl_clientes where id='$id' and nombre='$nombre' and apellidos='$apellidos' and telefono='$telefono'";
+  
+              $btel = mysqli_query($con, $sql);
+  
+              if (!$btel) {
+                echo "Error al consultar DB - telefono";
+                echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
+              } else {
+                $num_filas = mysqli_num_rows($btel);
+                if ($num_filas == 0) {
+                  echo "No se ha encontrado ningún apellido";
+                } else {
+                  echo "<table class='table table-striped'";
+                  echo "<thead><tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>Telefono 1</th><th>Email</th></tr></thead>";
+                  while ($fila = mysqli_fetch_array($btel)) {
+                    echo "<tbody><tr><td>$fila[id]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[localidad]</td><td>$fila[telefono1]</td><td>$fila[email]</td></tr></tbody>";
+                  }
+                  echo "</table>";
+                }
+              }
+  
+            }
+          }
+        } //--fin si id
       }
-     
     }
-    return true;
+     return true;
   }
+   
   static public function modificar_cliente(): bool {
     
     if (isset($_POST['cancelar'])) {

@@ -8,7 +8,7 @@
  
    comprobarAdmin();
    $menu = Administrador::menuAdmin();
-   $botones = Administrador::gestion_citas();
+   $botones = Administrador::gestion_noticias();
    $footer = Interfaz::footer();
 ?>
 <!DOCTYPE html>

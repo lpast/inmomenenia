@@ -1,10 +1,10 @@
 <?php session_start(); 
-  require "../../../php/dbconnect.php";
-  require "../../../php/class/interfaz.php";
-  require "../../../php/class/usuario.php";
-  require "../../../php/class/administrador.php";
-  require "../../../php/class/cliente.php";
-  require "../../../php/funciones.php";
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/interfaz.php";
+  include "../../../php/class/usuario.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/cliente.php";
+  include "../../../php/funciones.php";
 
   comprobarAdmin();
 
@@ -67,6 +67,7 @@
                       }
                     }
                     mysqli_close($conexion);
+                    
                   ?>
                 </div>
               </div>
