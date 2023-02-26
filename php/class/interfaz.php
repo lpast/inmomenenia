@@ -179,13 +179,12 @@ class Interfaz {
             <h1 align='center'> ¡ Hola $nombre ! </h1>
             <h2 align='center'> ¿En qué podemos ayudarte? </h2>
           </div>";
-          
-            Usuario::gestion_usuario();
-            Noticia::mostrar_noticias();
+          Usuario::gestion_usuario();
+          Noticia::mostrar_noticias();
         } else if ($tipo_usuario == 'a') {
           echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
             <h1 align='center'> Administración InmoMenenia </h1>
-          </div>  ";
+          </div>";
           Administrador::area_administrador();
           Inmueble::form_busca_Inmueble();
           Inmueble::buscar_Inmueble();

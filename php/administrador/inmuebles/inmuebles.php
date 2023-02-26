@@ -7,7 +7,7 @@
   require "../../../php/funciones.php";
 
   $menu = Administrador::menuAdmin();
-  $botones = Interfaz::gestion_inmuebles();
+  $botones = Administrador::gestion_inmuebles();
   $footer = Interfaz::footer(); 
 ?>
 <!DOCTYPE html>
@@ -28,19 +28,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <!-- Menú de navegación -->
     <?php $menu ?>
-
-    <!-- Botones de funciones añadir, borrar, buscar -->
     <?php $botones ?>
-
     <!-- Listamos inmuebles -->
     <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
-      <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los inmuenles de tu búsqueda</h2>";
+      <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los inmuenles de tu búsqueda</h2>
     </div>
-    <?php Inmueble::listar_inmuebles(); ?>
-    
+    <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>;
+      <?php Inmueble::listar_inmuebles(); ?>
+    </div>
     <!-- footer -->
-    <?php $footer ?> 
+    <?php Interfaz::footer();  ?> 
   </body>
 </html>

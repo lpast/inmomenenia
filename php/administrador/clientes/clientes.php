@@ -1,8 +1,16 @@
-<?php 
-    include "../../../php/dbconnect.php";
-    include "../../../php/class/interfaz.php";
-    include "../../../php/funciones.php";
-    session_start(); 
+<?php session_start(); 
+  require "../../../php/dbconnect.php";
+  require "../../../php/class/interfaz.php";
+  require "../../../php/class/usuario.php";
+  require "../../../php/class/administrador.php";
+  require "../../../php/class/cliente.php";
+  require "../../../php/funciones.php";
+
+  comprobarAdmin();
+
+  $menu = Administrador::menuAdmin();
+  $botones = Administrador::gestion_clientes();
+ 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,28 +28,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-    </style>
   </head>
   <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::menuAdmin(); ?>
-
+    <?php $menu ?>
     <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones = Interfaz::gestion_clientes(); ?>
-
+    <?php $botones ?>
     
     <!-- Muestra una tabla con los clientes almacenados en la BD -->
-    <?php $clientes = Interfaz::listar_clientes(); ?>
-    
-    <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 lista-clientes'>
+          <h2 class='margen-citas' align='center'>Listado de clientes</h2>
+          <div class='panel panel-default'>
+            <div class='panel-body'>
+              <div class='table-responsive'>
+                <div class='table table-striped'>
+                  <?php
+                    $conexion = abrirConexion();
+                    $consulta = "SELECT id, tipo, nombre, apellidos  ,telefono, email, localidad from tbl_clientes order by id";
+                    $datos = mysqli_query($conexion, $consulta);
+
+                    if (!$datos) {
+                      echo "No hay datos que mostrar";
+                    } else {
+                      $num_filas = mysqli_num_rows($datos);
+
+                      if ($num_filas == 0) {
+                        echo "No hay clientes";
+                      } else {
+                        $clientes_registrados = $num_filas;
+                        echo "<p><strong>Número de clientes:</strong> $clientes_registrados</p>";
+                        echo "<table class='table table-hover'";
+                        echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Modificar</th></tr></thead>";
+                        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+                          echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
+                              <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
+                        }
+                      }
+                    }
+                    mysqli_close($conexion);
+                  ?>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <?php  $footer = Interfaz::footer(); ?>
   </body>
 </html>
     

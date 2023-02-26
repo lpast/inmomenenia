@@ -58,8 +58,7 @@ function ValidarFecha() {
 	var mes = fecha.getMonth() + 1;
 	if (mes < 10) { mes = '0' + mes;} 
 	var anio = fecha.getFullYear();
-	var fecha = dia+'-'+mes+'-'+anio;
-
+	var fecha = anio+'-'+mes+'-'+dia;
 
 	if (this.value == "") {
 		this.className = "form-control error-input";
@@ -76,7 +75,7 @@ function ValidarFecha() {
 	}
 }
 
-function Validar(info_evento) {
+function Validar (info_evento) {
 	
 	var ititular = document.querySelector("#titular");
 	var icontenido = document.querySelector("#contenido");
@@ -101,7 +100,7 @@ function Validar(info_evento) {
 			if (dia < 10) { dia = '0' + dia;} 
 			var mes = fecha.getMonth() + 1;
 			var anio = fecha.getFullYear();
-			var fecha = dia+'-'+mes+'-'+anio;
+			var fecha = anio+'-'+mes+'-'+dia;
 
 			if (ifecha.value == "") {
 				alert("Debe seleccionar una fecha de publicación");

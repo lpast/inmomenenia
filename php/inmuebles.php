@@ -27,7 +27,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="../js/favoritos.js"></script>
   </head>
   <body>
     <?php $menu ?>
@@ -88,7 +87,7 @@
                                   echo "$_SESSION[id_usuario]";
                                   echo "$_SESSION[id_inmueble]";
                                 
-                                nuevo_favorito();
+                                Usuario::nuevo_favorito();
                               echo "</div>";
                             }
                           }
@@ -116,6 +115,7 @@
       </diV>
     </diV>
 
-    <?php $footer = Interfaz::footer();   ?> 
+    <?php $footer = Interfaz::footer(); ?> 
+    <script src="../js/favoritos.js"></script>
   </body>
 </html>

@@ -1,10 +1,14 @@
 <?php
-session_start();
-include "../../../php/dbconnect.php";
-include "../../../php/class/interfaz.php";
-include "../../../php/funciones.php";
-
+session_start(); 
+require "../../../php/dbconnect.php";
+require "../../../php/class/interfaz.php";
+require "../../../php/class/usuario.php";
+require "../../../php/class/administrador.php";
+require "../../../php/class/cliente.php";
+require "../../../php/funciones.php";
 comprobarAdmin();
+$menu = Administrador::menuAdmin();
+$botones = Administrador::gestion_clientes();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,19 +27,12 @@ comprobarAdmin();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-image: url("../../../media/img/img_inmuebles/bbk_fachada_0533.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Menú de navegación -->
-    <?php $menu = Interfaz::menuAdmin(); ?>
+    <?php $menu ?>
+    <!-- Botones de funciones añadir, borrar, buscar -->
+    <?php $botones ?>
 
     <!-- Recojo en variables los datos a mostrar mediante PHP -->
     <?php

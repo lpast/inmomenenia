@@ -24,7 +24,7 @@ function ValidarFecha() {
 	var mes = fecha.getMonth() + 1;
 	if (mes < 10) { mes = '0' + mes;} 
 	var anio = fecha.getFullYear();
-	var fecha = dia+'-'+mes+'-'+anio;
+	var fecha = anio+'-'+mes+'-'+dia;
 
 
 	if (this.value == "") {

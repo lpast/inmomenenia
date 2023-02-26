@@ -1,11 +1,11 @@
 <?php 
   session_start(); 
-  require "../../../php/dbconnect.php";
-  require "../../../php/class/interfaz.php";
-  require "../../../php/class/usuario.php";
-  require "../../../php/class/administrador.php";
-  require "../../../php/class/cita.php";
-  require "../../../php/funciones.php";
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/interfaz.php";
+  include "../../../php/class/usuario.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/cita.php";
+  include "../../../php/funciones.php";
 
   comprobarAdmin();
 

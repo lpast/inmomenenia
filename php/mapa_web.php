@@ -1,7 +1,7 @@
 <?php
-  require_once "dbconnect.php";
-  require_once "class/interfaz.php";
-  require_once "funciones.php";
+  include "dbconnect.php";
+  include "class/interfaz.php";
+  include "funciones.php";
   session_start(); 
   comprobarIndex();
   $menu = Interfaz::mostrarMenu();

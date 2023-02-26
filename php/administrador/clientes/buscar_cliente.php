@@ -1,9 +1,13 @@
-<?php 
-       include "../../../php/dbconnect.php";
-       include "../../../php/class/interfaz.php";
-       include "../../../php/funciones.php";
-      session_start(); 
-      comprobarAdmin();
+<?php session_start(); 
+  require "../../../php/dbconnect.php";
+  require "../../../php/class/interfaz.php";
+  require "../../../php/class/usuario.php";
+  require "../../../php/class/administrador.php";
+  require "../../../php/class/cliente.php";
+  require "../../../php/funciones.php";
+  comprobarAdmin();
+  $menu = Administrador::menuAdmin();
+  $botones = Administrador::gestion_clientes();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,16 +26,66 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
-
-    <body>
-      <!-- Menú de navegación -->
-      <?php Interfaz::menuAdmin(); ?>
-
-      <!-- Botones de funciones añadir, borrar, buscar -->
-      <?php Interfaz::gestion_clientes(); ?>
-
-      <!-- mostrar formulario de busqueda-->
-      <?php Interfaz::form_buscar_cliente(); ?>
+  <body><?php $menu ?>
+    <!-- Botones de funciones añadir, borrar, buscar -->
+    <?php $botones ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'><!-- cabecera ajustada -->
+          <div class='panel-group menu-inicio'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h2 align='center'> Buscar un cliente</h2>
+              </div>
+              <div class='panel-body'>
+                <form class='form-horizontal' action='#' method='post'>
+                  <div class='form-group'>
+                    <label class=' col-sm-2'> ID:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='id' autofocus>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class='col-sm-2'>Tipo</label>
+                    <div class='col-sm-2'>
+                      <input class='form-control' id='tipo' name='tipo'>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class=' col-sm-2'>Nombre:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='nombre' autofocus>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                    <label class=' col-sm-2'>Apellidos:</label>
+                    <div class='col-sm-10'>
+                      <input class='form-control' type='text' name='apellidos'>
+                    </div>
+                  </div>
+                  <div class='form-group'>
+                  <label class=' col-sm-2'>Localidad:</label>
+                  <div class='col-sm-10'>
+                    <input class='form-control' type='text' name='localidad'>
+                  </div>
+                
+                  <div class='form-group' style='padding-top:'15px'>
+                    <div class='col-sm-offset-2 col-sm-5 col-lg-offset-4'>
+                      <input class='form-control btn-theme' type='submit' name='buscar' value='Buscar'>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-xs-12 col-md-8 col-md-offset-2'>
+        <?php Cliente:: buscar_cliente(); ?>
+      </div>
+    </div>
+    
+           
      
       <!-- footer -->
       <?php Interfaz::footer(); ?>

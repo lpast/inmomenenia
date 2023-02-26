@@ -1,19 +1,19 @@
 <?php 
   session_start();
-  include "../php/dbconnect.php";
-  include "../php/class/interfaz.php";
-  include "../php/class/usuario.php";
-  include "../php/funciones.php";
+  include "dbconnect.php";
+  include "class/interfaz.php";
+  include "class/usuario.php";
+  include "class/administrador.php";
+  include "funciones.php";
+  
   $menu = Interfaz::mostrarMenu();
   $footer = Interfaz::footer();
 
   /** Recojo en variables los datos a mostrar mediante PHP */
   if (isset($_POST['ver'])) {
     $id = $_POST['id'];
-
     $conexion = abrirConexion();
     $consulta = "SELECT * FROM tbl_inmuebles where id='$id'";
-
     $datos = mysqli_query($conexion,$consulta);
 
     if (!$datos) {
@@ -82,13 +82,6 @@
         <div class="col-md-5 ">
           <div class='jumbotron'>
             <?php
-              /*if (isset($_POST['id_cliente'])) {
-                if ($id_cliente== 0 ) {
-                  echo "<p><button type='button' class='btn btn-success bt-ver'>Disponible</button></p>";
-                } else {
-                  echo "<p><button type='button' class='btn btn-danger bt-ver'>No disponible</button></p>";
-                }
-              }*/
               if (isset($_SESSION['tipo']) == 'u') {
               echo "<div class ='iconos' align ='center' style='padding-top:5px  font-size:30px' padding-bottom:'50px'>
                 <h3><img src='../media/iconos/ubicacion.png' alt='calle-inmueble' width='50px' style='margin-right:5px' <b> $calle</b>
