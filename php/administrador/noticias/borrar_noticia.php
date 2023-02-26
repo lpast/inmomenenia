@@ -3,7 +3,7 @@
    include "../../../php/dbconnect.php";
    include "../../../php/class/interfaz.php";
    include "../../../php/class/administrador.php";
-   include "../../../php/class/cita.php";
+   include "../../../php/class/noticia.php";
    include "../../..//php/funciones.php";
  
    comprobarAdmin();
@@ -70,6 +70,7 @@
         </div>
       </div>
     </div>
+    <?php Noticia::borrar_noticia(); ?>
 
    <!-- footer -->
    <?php $footer?> 

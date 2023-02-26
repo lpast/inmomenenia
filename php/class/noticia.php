@@ -20,49 +20,6 @@ class Noticia {
     return true;
   }
 
-  static public function tbl_borrar_noticia(): bool {
-    echo "<div class='container-fluid cabecera-menu-inicio'>
-    <div class='row'>
-      <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
-        <div class='panel-group'>
-          <div class='panel panel-default'>
-            <div class='panel-heading'>
-              <h2 align='center'>Borrar una noticia</h2>
-            </div>
-            <div class='panel-body'>
-              <p align='center'>Seleccione el inmueble que desea borrar</p>";
-
-              $conexion = abrirConexion();
-              $consulta = "SELECT id, titular from tbl_noticias";
-
-              $datos = mysqli_query($conexion, $consulta);
-
-              if (!$datos) {
-                echo "Error, no se han podido cargar los datos de las noticas";
-              } else {
-                echo "<div class='col-xs-12 col-sm-8 col-sm-offset-2'>";
-
-                echo "<table class='table table-striped'";
-                echo "<thead><tr><th>ID</th><th>Titular</th><th>¿Eliminar?</th></tr></thead>";
-                while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-                  echo "<tbody><tr><td>$fila[id]</td><td>$fila[titular]</td>
-                              <td><form action='#' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-danger' type='submit' name='borrar' value='Eliminar'></form></td></tr></tbody>";
-                }
-                echo "</table>
-                    <a align='center' href='noticias.php' class='btn btn-danger'>Cancelar</a>
-                  </div>";
-              }
-              mysqli_close($conexion);
-            echo "</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>";
-    borrar_noticia();
-    return true;
-  }
-
   static public function form_buscar_noticia(): bool {
     echo "<div class='container-fluid menu-inicio'>
       <div class='row'>
@@ -203,11 +160,11 @@ class Noticia {
     return true;
   }
 
-  function borrar_noticia(): bool {
+  static public function borrar_noticia(): bool {
     if (isset($_POST['borrar'])) {
       $id = $_POST['id'];
       $conexion = abrirConexion();
-      $borrar = "DELETE FROM tbl_noticias WHERE id='$id'";
+      $borrar = "DELETE  FROM tbl_noticias WHERE id='$id'";
       if (mysqli_query($conexion,$borrar)) {
       echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
             <strong> Se ha borrado correctamente la notia</strong> 
