@@ -4,31 +4,31 @@
   function comprobarUsuario() {
     if (isset($_SESSION['tipo'])) {
       if ($_SESSION['tipo'] != 'u') {
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../php/home.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL='../../../php/home.php'>";
       }
       
     } else if ($_COOKIE['datos']) {
         session_decode($_COOKIE['datos']);
         if ($_SESSION['tipo'] != 'u') {
-          echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../php/home.php'>";
+          echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL='../../../php/home.php''>";
         }
     } else {
-      echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../php/home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL='../../../php/home.php''>";
     }
   }
 
   function comprobarAdmin() {
     if (isset($_SESSION['tipo'])){
       if ($_SESSION['tipo'] != 'a'){
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../../../php/home.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL='../../../php/home.php'>";
       }
     } else if ($_COOKIE['datos']) {
       session_decode($_COOKIE['datos']);
       if ($_SESSION['tipo'] != 'a'){
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../php/home.php'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL='../../../php/home.php'>";
       }
     } else {
-      echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../php/home.php'>";
+      echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../../../php/home.php'>";
     }
   }
 
@@ -161,7 +161,7 @@
                 <span class='icon-bar b-resp'></span>
                 <span class='icon-bar b-resp'></span>                             
               </button>
-              <a href='../index.html'><img src='../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
+              <a href='../../../index.html'><img src='../../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
               </div>
             <div class='collapse navbar-collapse' id='nav-responsive'>
             <ul class='nav navbar-nav navbar-right'>
@@ -259,7 +259,7 @@
           $nombre = $_SESSION['nombre'];
           echo "<h1 align='center'> ¡ Hola $nombre ! </h1>
           <h2 align='center'> ¿En qué podemos ayudarte? </h2>";
-          Usuario::gestion_usuario();
+          Usuario::gestion_usuarioHome();
           echo "<div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>";
             Noticia::mostrar_noticias();
           echo "</div>";
@@ -272,20 +272,25 @@
           echo "</div>";
         }
       } else {
-        echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu-inicio'>
+        echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu'>
           <h1 align='center'> ¡ Hola! Bienvenido a InmoMenenia  </h1>
         </div>";
+        echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu'>";
         Inmueble::form_busca_Inmueble();
         Inmueble::buscar_Inmueble();
-        Noticia::mostrar_noticias();        
+        Noticia::mostrar_noticias();   
+        echo "</div>";
+            
       }
     } else {
       echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu-inicio'>
           <h1 align='center'> ¡ Bienvenido a InmoMenenia ! </h1>
       </div>";
+      echo "<div class='col-xs-12 col-sm-12 co-md-12 cabecera-menu-inicio'>";
       Inmueble::form_busca_Inmueble();
       Inmueble::buscar_Inmueble();
-      Noticia::mostrar_noticias();
+      Noticia::mostrar_noticias();   
+      echo "</div>";
     }
     return true;
   }

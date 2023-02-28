@@ -48,9 +48,7 @@
                 <?php
                   $conexion = abrirConexion();
                   $consulta = "SELECT id, titular from tbl_noticias";
-
                   $datos = mysqli_query($conexion, $consulta);
-
                   if (!$datos) {
                     echo "Error, no se han podido cargar los datos de las noticas";
                   } else {
@@ -74,8 +72,6 @@
       </div>
     </div>
     <?php Noticia::borrar_noticia(); ?>
-
-   <!-- footer -->
    <?php $footer?> 
   </body>
 </html>

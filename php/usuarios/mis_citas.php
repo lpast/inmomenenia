@@ -1,15 +1,13 @@
 <?php
   session_start(); 
-  require "../../php/dbconnect.php";
-  require "../../php/class/usuario.php";
-  require "../../php/class/inmueble.php";
-
-  $botones = Usuario::gestion_usuario();
-  
-?>
+  include "../../php/dbconnect.php";
+  include "../../php/class/usuario.php";
+  include "../../php/class/inmueble.php";
+  include "../../php/funciones.php";
+  comprobarUsuario();
+ ?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +27,14 @@
    </head>
    <body>
     <?php menuTipo(); ?>
-    <?php $botones ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias ' align='center'>Agenda</h1>
+          <?php Usuario::gestion_usuario(); ?>
+        </div>
+      </div>
+    </div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>
@@ -39,9 +44,10 @@
         </div>
         <!-- Se muestran los datos del usuario -->
         <?php Usuario::mis_citas(); ?>
-        
-        
       </div>
+    </div>
+    <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Área Personal</b></a></p>
     </div>
     <?php footer(); ?>
   </body>

@@ -1,7 +1,6 @@
 <?php
  session_start();
  include "../../../php/dbconnect.php";
- include "../../../php/class/interfaz.php";
  include "../../../php/class/administrador.php";
  include "../../../php/class/inmueble.php";
  include "../../../php/funciones.php";

@@ -1,4 +1,0 @@
-[21-Feb-2023 22:24:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Interfaz::inmuebles_usuario() in /home/customer/www/inmomenenia.com/public_html/php/usuarios/mis_inmuebles.php:30
-Stack trace:
-#0 {main}
-  thrown in /home/customer/www/inmomenenia.com/public_html/php/usuarios/mis_inmuebles.php on line 30

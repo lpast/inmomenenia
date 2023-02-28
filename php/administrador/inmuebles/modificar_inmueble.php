@@ -1,7 +1,6 @@
 <?php
  session_start();
  include "../../../php/dbconnect.php";
- include "../../../php/class/interfaz.php";
  include "../../../php/class/administrador.php";
  include "../../../php/class/inmueble.php";
  include "../../../php/funciones.php";
@@ -219,7 +218,7 @@
                   <div class='form-group'>
                     <label class='col-sm-2'>Fecha de alta:</label>
                     <div class='col-sm-10'>
-                      <input class='form-control' id='fecha_alta' name='fecha_alta' type='date' value ='<?php echo $fecha_alta?>'></td>
+                      <input class='form-control' id='fecha_alta' name='fecha_alta' type='date' value ='<?php echo $fecha_alta?>'>
                     </div>
                   </div>
                   <div class='form-group'>

@@ -26,7 +26,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-  <?php menuTipo(); ?>
+    <?php menuTipo(); ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias ' align='center'>Encuentra lo que necesitas</h1>
+        </div>
+      </div>
+    </div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'> <!-- cabecera alargada -->
@@ -36,7 +43,8 @@
         </div>
       </div>
     </div>
-   <!-- footer -->
+    <!-- footer -->
    <?php footer(); ?> 
   </body>
 </html>
+

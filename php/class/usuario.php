@@ -4,57 +4,28 @@ class Usuario {
 
   const BASE_URL = "https://inmomenenia.com/php";
 
-
-  /* Menú de navegación usuario
-  static public function mostrarMenu(): bool {
-    if (isset($_SESSION['tipo'])) {
-        $tipo_usuario = $_SESSION['tipo'];
-        try {
-          if (!$tipo_usuario){
-             throw new Exception ('No hay dato de tipo');
-          }
-        } catch (Exception $e) {
-            die ('Error' . $e->GetMessage());
-        } finally {
-          if ($tipo_usuario == 'u') {
-            echo "<nav class='menu navbar navbar-inverse navbar-fixed-top texto'>
-              <div class='container-fluid'>
-                <div class='navbar-header'>
-                  <button type='button' class='n-resp navbar-toggle' data-toggle='collapse' data-target='#nav-responsive'>
-                    <span class='icon-bar b-resp'></span>
-                    <span class='icon-bar b-resp'></span>
-                    <span class='icon-bar b-resp'></span>
-                    <span class='icon-bar b-resp'></span>
-                    <span class='icon-bar b-resp'></span>                             
-                  </button>
-                  <a href='../../index.html'><img src='../../media/img/logo.png' alt='logo-inmomenenia' width='15%'></a>
-                  </div>
-                <div class='collapse navbar-collapse' id='nav-responsive'>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li><a href='../../php/home.php'><span class='glyphicon glyphicon-log-in'></span> Inicio</a></li>
-                    <li><a href='../../php/inmuebles.php'><span class='glyphicon glyphicon-briefcase'></span> Cartera de Inmuebles</a></li>
-                    <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
-                    <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
-                    <li><a href='area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='". BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
-                  </ul>
-                </div>
-              </div>
-            </nav>";
-          }
-        }
-      }
-    return true;
-  }*/
-
-  static public function gestion_usuario(): bool {
-    echo "<div class='col-xs-12 col-sm-12 col-md-12 '>
+  static public function gestion_usuarioHome(): bool {
+    echo "<div class='col-xs-12 col-sm-12 col-md-12'>
       <nav class='navbar'>
         <div class='container-fluid'>
           <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_inmuebles.php'> Ver mis inmuebles</a></li>
-            <li><a type='button' class='btn btn-theme' href='../php/usuarios/mis_citas.php'> Ver mis citas</a></li>
+            <li><a type='button' class='btn btn-theme' href='usuarios/buscar_inmuebles.php'> Buscar Inmuebles</a></li>
+            <li><a type='button' class='btn btn-theme' href='usuarios/mis_inmuebles.php'> Ver mis inmuebles</a></li>
+            <li><a type='button' class='btn btn-theme' href='usuarios/mis_citas.php'> Ver mis citas</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>";
+    return true;
+  }
+  static public function gestion_usuario(): bool {
+    echo "<div class='col-xs-12 col-sm-12 col-md-12'>
+      <nav class='navbar'>
+        <div class='container-fluid'>
+          <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
+            <li><a type='button' class='btn btn-theme' href='buscar_inmuebles.php'> Buscar Inmuebles</a></li>
+            <li><a type='button' class='btn btn-theme' href='mis_inmuebles.php'> Ver mis inmuebles</a></li>
+            <li><a type='button' class='btn btn-theme' href='mis_citas.php'> Ver mis citas</a></li>
           </ul>
         </div>
       </nav>
@@ -96,7 +67,6 @@ class Usuario {
     echo "</div>";
     return true;
   }
-
 
   static public function mis_favoritos() : bool {
     $id_usuario=$_SESSION['id_usuario'];

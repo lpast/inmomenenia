@@ -1,7 +1,6 @@
 <?php
  session_start();
  include "../../../php/dbconnect.php";
- include "../../../php/class/interfaz.php";
  include "../../../php/class/administrador.php";
  include "../../../php/class/inmueble.php";
  include "../../../php/funciones.php";
@@ -66,7 +65,7 @@
                             <img src='../../../media/iconos/euro.png' alt='precio-inmueble' width='50px' style='margin-left:45px'><b>$fila[precio] €</b>
                           </div>
                         <h4 align ='center'>$fila[descripcion]</h4>
-                        <form action='../../../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>
+                        <form action='datos_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme ' type='submit' name='ver' value='Ver inmueble'></form>
                       </div>
                     </div>
                   </div>";

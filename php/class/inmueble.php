@@ -7,7 +7,7 @@ class Inmueble {
     echo "<div class='panel-group'>
       <div class='panel panel-default cabecera-inicio'>
         <div class='panel-heading'>
-          <h2 align='center'><img src='/media/iconos/buscar.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
+          <h2 align='center'><img src='../../media/iconos/buscar.png' alt='buscar-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
         </div>
         <div class='panel-body'>
           <form class='form-horizontal' action='#' method='post'>
