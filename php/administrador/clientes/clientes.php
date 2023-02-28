@@ -1,16 +1,11 @@
 <?php session_start(); 
   include "../../../php/dbconnect.php";
-  include "../../../php/class/interfaz.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cliente.php";
   include "../../../php/funciones.php";
-
   comprobarAdmin();
-
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_clientes();
- 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,14 +26,18 @@
   </head>
   <body>
     <?php $menu ?>
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
-    
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Cartera de Clientes</h1>
+          <?php Administrador::gestion_clientes(); ?>
+        </div>
+      </div>
+    </div>
     <!-- Muestra una tabla con los clientes almacenados en la BD -->
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-xs-12 lista-clientes'>
-          <h2 class='margen-citas' align='center'>Listado de clientes</h2>
+      <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
           <div class='panel panel-default'>
             <div class='panel-body'>
               <div class='table-responsive'>
@@ -52,7 +51,6 @@
                       echo "No hay datos que mostrar";
                     } else {
                       $num_filas = mysqli_num_rows($datos);
-
                       if ($num_filas == 0) {
                         echo "No hay clientes";
                       } else {
@@ -62,12 +60,11 @@
                         echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Contacto</th><th>Modificar</th></tr></thead>";
                         while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
                           echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td>
-                              <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
+                          <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                         }
                       }
                     }
                     mysqli_close($conexion);
-                    
                   ?>
                 </div>
               </div>
@@ -77,7 +74,7 @@
         </div>
       </div>
     </div>  
-    <?php  $footer = Interfaz::footer(); ?>
+    <?php footer(); ?>
   </body>
 </html>
     

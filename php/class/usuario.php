@@ -5,7 +5,7 @@ class Usuario {
   const BASE_URL = "https://inmomenenia.com/php";
 
 
-  /* Menú de navegación usuario*/
+  /* Menú de navegación usuario
   static public function mostrarMenu(): bool {
     if (isset($_SESSION['tipo'])) {
         $tipo_usuario = $_SESSION['tipo'];
@@ -36,7 +36,7 @@ class Usuario {
                     <li><a href='../../php/hipotecas.php'><span class='glyphicon glyphicon-calendar'></span> Calcula tu hipoteca</a></li>
                     <li><a href='../../php/contacto.php'><span class='glyphicon glyphicon-envelope'></span> Contacto</a></li>
                     <li><a href='area_personal.php'><span class='glyphicon glyphicon-calendar'></span> Área Personal</a></li>
-                    <li><a href='". self::BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
+                    <li><a href='". BASE_URL . "/cerrar_sesion.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión</a></li>
                   </ul>
                 </div>
               </div>
@@ -45,10 +45,10 @@ class Usuario {
         }
       }
     return true;
-  }
+  }*/
 
   static public function gestion_usuario(): bool {
-    echo "<div class='col-xs-12 col-sm-12 col-md-10 '>
+    echo "<div class='col-xs-12 col-sm-12 col-md-12 '>
       <nav class='navbar'>
         <div class='container-fluid'>
           <ul class='nav navbar-nav navbar-center margen-cont' align='center'>
@@ -144,7 +144,7 @@ class Usuario {
     return true;
   }
 
-  function nuevo_favorito(): bool  {/***** MEJORA ******/
+  static public function nuevo_favorito(): bool  {/***** MEJORA ******/
     if (isset($_POST['nuevo_favorito'])) {
       $id = $_POST['id'];
       $id_inmueble = $_POST['id_inmueble'];

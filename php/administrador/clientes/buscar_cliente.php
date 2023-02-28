@@ -1,13 +1,12 @@
-<?php session_start(); 
-  require "../../../php/dbconnect.php";
-  require "../../../php/class/interfaz.php";
-  require "../../../php/class/usuario.php";
-  require "../../../php/class/administrador.php";
-  require "../../../php/class/cliente.php";
-  require "../../../php/funciones.php";
+<?php
+  session_start(); 
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/usuario.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/cliente.php";
+  include "../../../php/funciones.php";
   comprobarAdmin();
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_clientes();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,21 +25,28 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
-  <body><?php $menu ?>
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
+  <body>
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Cartera de Clientes</h1>
+          <?php Administrador::gestion_clientes(); ?>
+        </div>
+      </div>
+    </div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'><!-- cabecera ajustada -->
           <div class='panel-group menu-inicio'>
             <div class='panel panel-default'>
               <div class='panel-heading'>
-                <h2 align='center'> Buscar un cliente</h2>
+                <h2 align='center'>Buscar un cliente</h2>
               </div>
               <div class='panel-body'>
                 <form class='form-horizontal' action='#' method='post'>
                   <div class='form-group'>
-                    <label class=' col-sm-2'> ID:</label>
+                    <label class=' col-sm-2'>ID:</label>
                     <div class='col-sm-10'>
                       <input class='form-control' type='text' name='id' autofocus>
                     </div>
@@ -74,15 +80,11 @@
           </div>
         </div>
       </div>
-      <div class='col-xs-12 col-md-8 col-md-offset-2'>
-        <?php Cliente:: buscar_cliente(); ?>
-      </div>
     </div>
-    
-           
-     
-      <!-- footer -->
-      <?php Interfaz::footer(); ?>
-    </body>
-
-  </html>
+    <?php Cliente:: buscar_cliente(); ?>
+    <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='clientes.php'>Volver a Clientes</b></a></p>
+    </div>
+    <?php footer(); ?>
+  </body>
+</html>

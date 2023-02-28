@@ -1,21 +1,17 @@
 <?php
   session_start();
-  require "../../../php/dbconnect.php";
-  require "../../../php/class/interfaz.php";
-  require "../../../php/class/inmueble.php";
-  require "../../../php/class/administrador.php";
-  require "../../../php/funciones.php";
-
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/inmueble.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/funciones.php";
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_inmuebles();
-  $footer = Interfaz::footer(); 
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inmuebles</title>
+    <title> Cartera de Inmuebles</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -29,15 +25,18 @@
   </head>
   <body>
     <?php $menu ?>
-    <?php $botones ?>
-    <!-- Listamos inmuebles -->
-    <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
-      <h2 class='margen-noticias tnoticias' align='center'>Aquí tienes los inmuenles de tu búsqueda</h2>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Cartera de Inmuebles</h1>
+          <?php Administrador::gestion_inmuebles();?>
+        </div>
+      </div>
     </div>
-    <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>;
+    <!-- Listamos inmuebles -->
+   <div class='col-xs-12 col-sm-8 col-sm-offset-2 tnoticias'>
       <?php Inmueble::listar_inmuebles(); ?>
     </div>
-    <!-- footer -->
-    <?php Interfaz::footer();  ?> 
+    <?php footer(); ?> 
   </body>
 </html>

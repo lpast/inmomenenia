@@ -25,7 +25,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <body>
     <!-- Menú de navegación -->
-    <?php $menu ?>
+    <?php mostrarMenu(); ?>
         
     <!-- Mapa web --><div class='container-fluid'>
       <div class='row'>

@@ -1,13 +1,8 @@
 <?php 
   session_start(); 
   include "../php/dbconnect.php";
-  include "../php/class/interfaz.php";
   include "../php/class/usuario.php";
-
-  include "../php/funciones.php";
-
-  $menu = Interfaz::mostrarMenu();
-  $footer = Interfaz::footer();
+  include "funciones.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,27 +22,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    
     <!-- Menú de navegación -->
-    <?php $menu ?>
+    <?php mostrarMenu(); ?>
     <div class='container-fluid'>
     <div class='row'>
         <div class='col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 cabecera-menu-inicio'>
           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 tinmuebles'>
             <h1 style='padding-bottom:55px' align ='center'>CONTACTO</h1>
-            
           </div>
-
           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 tinmuebles'>
             <h1 style='padding-bottom:55px' align ='center'>CÓMO LLEGAR</h1>
-           
           </div>
         </div>
       </div>
       <div class='row'>
         <div class='col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1'>
           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 tinmuebles'>
-            
             <div class='jumbotron'>
               <h2><a href='https://lapuebladealfinden.es/'><img src='../media/iconos/location.png' alt='location-inmomenenia' width='80px'></a> C/San Blas 41, La Puebla de Alfindén </h2>
               <h2><a href='+34682601454'><img src='../media/iconos/telephone.png' alt='telefono-inmomenenia' width='80px'></a>  692.60.14.54</h2>
@@ -132,6 +122,6 @@
         </div>
       </div>
     </div>
-    <?php $footer ?> 
+    <?php footer(); ?> 
   </body>
 </html>

@@ -6,7 +6,6 @@ class Cita {
       header('Location: citas.php');
     }
     if (isset($_POST['nueva_cita'])) {
-
       $mes = $_GET['mes'];
       $anio= $_GET['anio'];
       $dia = $_GET['dia'];
@@ -30,19 +29,17 @@ class Cita {
 
       // hago la inserción si la fecha de la cita no es un día ya pasado
       if ($marca_fecha >= $marca_actual) {
-          
-          $conexion = abrirConexion();
-
-          $sql = "INSERT INTO tbl_citas (id,fecha,hora,motivo,lugar,id_cliente) VALUES
+        $conexion = abrirConexion();
+        $sql = "INSERT INTO tbl_citas (id,fecha,hora,motivo,lugar,id_cliente) VALUES
           (null,'$fecha','$hora','$motivo','$lugar','$id_cliente')";
 
-          if (mysqli_query($conexion,$sql)) {
+        if (mysqli_query($conexion,$sql)) {
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                          <strong>Cita añadida correctamente</strong> 
-                          </div>";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";
-          } else {
-              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <strong>Cita añadida correctamente</strong> 
+          </div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";
+        } else {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
                           <h4><strong>¡Error!</strong>No se ha podido añadir la cita</h4>
                           </div></div></div>";
               echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";

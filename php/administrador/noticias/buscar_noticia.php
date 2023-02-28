@@ -1,15 +1,12 @@
 <?php 
-   session_start();
-   include "../../../php/dbconnect.php";
-   include "../../../php/class/interfaz.php";
-   include "../../../php/class/administrador.php";
-   include "../../../php/class/noticia.php";
-   include "../../..//php/funciones.php";
- 
-   comprobarAdmin();
-   $menu = Administrador::menuAdmin();
-   $botones = Administrador::gestion_noticias();
-   $footer = Interfaz::footer();
+  session_start(); 
+  include "../../../php/dbconnect.php";
+  include "../../../php/class/usuario.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/noticia.php";
+  include "../../../php/funciones.php";
+  comprobarAdmin();
+  $menu = Administrador::menuAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,7 +27,14 @@
   </head>
   <body>
   <?php $menu ?>
-  <?php $botones ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias ' align='center'> Actualidad Inmobiliaria</h1>
+          <?php Administrador::gestion_noticias(); ?>
+        </div>
+      </div>
+    </div>
   <div class='container-fluid menu-inicio'>
     <div class='row'>
       <div class='col-xs-12 col-sm-8 col-sm-offset-2'>
@@ -60,9 +64,10 @@
       </div>
     </div>
     <?php Noticia::buscar_noticia(); ?> 
-   <!-- footer -->
-   <?php $footer = Interfaz::footer(); ?> 
-
+    <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Agenda</b></a></p>
+    </div>
+    <?php footer(); ?> 
     <!-- Validación javascript -->
     <script src="../../../js/validar_buscar_noticia.js"></script>
   </body>

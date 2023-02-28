@@ -1,13 +1,11 @@
 <?php
   session_start(); 
   require "../../php/dbconnect.php";
-  require "../../php/class/interfaz.php";
   require "../../php/class/usuario.php";
   require "../../php/class/inmueble.php";
 
-  $menu = Usuario::mostrarMenu();
   $botones = Usuario::gestion_usuario();
-  $footer = Interfaz::footer();
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,7 +28,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    </head>
    <body>
-    <?php $menu ?>
+    <?php menuTipo(); ?>
     <?php $botones ?>
     <div class='container-fluid'>
       <div class='row'>
@@ -45,6 +43,6 @@
         
       </div>
     </div>
-    <?php $footer ?>
+    <?php footer(); ?>
   </body>
 </html>

@@ -1,16 +1,12 @@
 <?php
   session_start(); 
-  require "../../php/dbconnect.php";
-  require "../../php/class/interfaz.php";
-  require "../../php/class/usuario.php";
-  require "../../php/class/inmueble.php";
-
-  $menu = Usuario::mostrarMenu();
+  include "../../php/dbconnect.php";
+  include "../../php/class/usuario.php";
+  include "../../php/class/inmueble.php";
+  include "../../php/funciones.php";
   $aleatoria = Usuario::img_aleatoria();
   $formulario = Inmueble::form_busca_inmueble();
   $inmuebles = Inmueble::buscar_Inmueble();
-  $footer = Interfaz::footer();
-  
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,8 +26,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <?php $menu ?>
-    
+  <?php menuTipo(); ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'> <!-- cabecera alargada -->
@@ -42,6 +37,6 @@
       </div>
     </div>
    <!-- footer -->
-   <?php $footer ?> 
+   <?php footer(); ?> 
   </body>
 </html>

@@ -1,10 +1,8 @@
 <?php 
   session_start();
   include "../php/dbconnect.php";
-  include "../php/class/interfaz.php";
   include "../php/funciones.php";
-  $menuHome = Interfaz::mostrarMenuHome();
-  $footer = Interfaz::footer(); 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +32,7 @@
   </head>
   <body>
       <!-- Menú de navegación --> 
-      <?php $menu ?>
+      <?php mostrarMenu(); ?>
 
       <!-- Formulario de registro -->
       <div class='container-fluid'>
@@ -119,7 +117,7 @@
 
     
       <!-- footer -->
-      <?php $footer ?> 
+      <?phpfooter();  ?> 
 
     <script src="../js/validar_registro.js"></script>
   </body>

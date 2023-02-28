@@ -1,11 +1,8 @@
 <?php
   session_start(); 
-  require "../../php/dbconnect.php";
-  require "../../php/class/interfaz.php";
-  require "../../php/class/usuario.php";
-
-  $menu = Usuario::mostrarMenu();
-  $footer = Interfaz::footer();
+  include "../../php/dbconnect.php";
+  include "../../php/class/usuario.php";
+  include "../../php/funciones.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    </head>
   <body>
-    <?php $menu ?>
+    <?php menuTipo(); ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-8 col-sm-offset-2 cabecera-menu-inicio'>

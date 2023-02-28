@@ -1,14 +1,11 @@
 <?php 
   session_start();
   include "../../../php/dbconnect.php";
-  include "../../../php/class/interfaz.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
   include "../../../php/funciones.php";
- 
   comprobarAdmin();
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_citas();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,9 +25,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-   <?php $menu ?>
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+      <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+        <h1 class='margen-noticias' align='center'>Agenda</h1>
+        <?php Administrador::gestion_citas(); ?>
+      </div>
+      </div>
+    </div>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'><!-- cabecera ajustada -->
@@ -75,21 +78,18 @@
                 </form>
               </div>
             </div>
-          </div>
-       
-         
+          </div>   
         </div>
         <div class='col-xs-12 col-md-8 col-md-offset-2'>
-        <?php Cita::buscar_cita(); ?>
+          <?php Cita::buscar_cita(); ?>
         </div>
       </div>
     </div>
-  
-   
-
-    <!-- footer -->
-    <?php Interfaz::footer();?>
-
+    <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Agenda</b></a></p>
+    </div>
+    <?php footer(); ?>
+    <!-- Validación javascript -->
     <script src="../js/validar_buscar_noticia.js"></script>
   </body>
 </html>

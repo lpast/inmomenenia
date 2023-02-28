@@ -1,14 +1,18 @@
 <?php 
   session_start();
   include "dbconnect.php";
-  include "class/interfaz.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "funciones.php";
 
-  $menu = Interfaz::mostrarMenu();
-  $footer = Interfaz::footer();
-
+  /*if ($_SESSION['tipo'] == 'u') {
+    echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+   } else if ($_SESSION['tipo'] == 'a') {
+     echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+   } else {
+    //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=../php/home.php'>";
+   }
+   */
  try {
     if (isset($_POST['acceder'])) {
       $usuario = $_POST['nick'];
@@ -58,8 +62,6 @@
     echo "('Error' . $e->GetMessage())";
     return $consulta;
   }
-  
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,7 +82,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <?php $menu ?>
+    <?php mostrarMenu(); ?>
 
     <div class='container-fluid'>
       <div class='row'>
@@ -122,7 +124,7 @@
         </div>
       </div>
     </div>
-    <?php  $footer ?>
+    <?php  footer(); ?>
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

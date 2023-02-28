@@ -1,12 +1,7 @@
 <?php
   session_start(); 
-  include "../php/dbconnect.php";
-  include "../php/class/interfaz.php";
-  include "../php/class/usuario.php";
-  include "../php/funciones.php";
-
-  $menu = Interfaz::mostrarMenu();
-  $footer = Interfaz::footer();
+  include "dbconnect.php";
+  include "funciones.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +21,7 @@
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <body>
-    <?php $menu ?>
+    <?php mostrarMenu(); ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-menu-inicio'>
@@ -76,7 +71,7 @@
     </div>
     </div>
 
-     <?php $footer ?> 
+     <?php footer(); ?> 
 
      <script src="../js/calcula_hipoteca.js"></script>
   </head>

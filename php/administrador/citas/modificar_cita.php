@@ -1,15 +1,12 @@
-<?php
+<?php 
   session_start();
   include "../../../php/dbconnect.php";
-  include "../../../php/class/interfaz.php";
+  include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
-  include "../../..//php/funciones.php";
-
+  include "../../../php/funciones.php";
   comprobarAdmin();
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_citas();
-  $footer = Interfaz::footer();
 
   if (isset($_POST['modificar'])) {
     $id = $_POST['id'];
@@ -37,7 +34,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buscar Cita</title>
+    <title>Modificar Cita</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -50,12 +47,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    
-   <!-- Menú de navegación -->
-   <?php $menu ?>
-
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
+    <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Agenda</h1>
+          <?php Administrador::gestion_citas(); ?>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid menu-inicio">
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 cabecera-form">
@@ -164,6 +164,9 @@
         mysqli_close($con);
       }
     ?>
+     <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Agenda</b></a></p>
+    </div>
    <!-- footer -->
    <?php $footer ?> 
   </body>

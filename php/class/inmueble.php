@@ -7,7 +7,7 @@ class Inmueble {
     echo "<div class='panel-group'>
       <div class='panel panel-default cabecera-inicio'>
         <div class='panel-heading'>
-          <h2 align='center'><img src='/./media/iconos/buscar.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
+          <h2 align='center'><img src='/media/iconos/buscar.png' alt='metros-inmueble' width='40px' style='margin-right:15px'>Encuentra lo que buscas</h2>
         </div>
         <div class='panel-body'>
           <form class='form-horizontal' action='#' method='post'>
@@ -76,10 +76,10 @@ class Inmueble {
       } else {
         echo "<p><strong>Total de inmuebles almacenados:</strong> $num_filas</p>";
         echo "<table class='table table-hover tnoticias'>";
-        echo "<thead><tr><th>ID</th><th>Dirección</th><th>Precio</th><th>Imagen</th><th>Ver inmueble</th><th>Modificar inmueble</th></tr></thead>";
+        echo "<thead><tr><th>ID</th><th>Dirección</th><th>Precio</th><th>Imagen</th><th>Ver detalle</th><th>Modificar inmueble</th></tr></thead>";
         while ($fila = mysqli_fetch_array($datos,MYSQLI_ASSOC)) {
           echo "<tbody><tr><td>$fila[id]</td><td>$fila[calle] $fila[portal]</td><td>$fila[precio] €</td><td><img src='../../../media/img/img_inmuebles/$fila[imagen]' style='width:150px''></td></td>
-          <td><form action='../../../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+          <td><form action='datos_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
           <td><form action='modificar_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='modificar' value='Modificar'></form></td></tr></tbody>";
         }
       }
@@ -89,9 +89,11 @@ class Inmueble {
     return true;
   }
 
-  function nuevo_inmueble() {
-
-    if (isset($_POST['nuevo_inmueble'])){
+  static public function nuevo_inmueble() {
+    if (isset($_POST['cancelar'])) {
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
+    }
+    if (isset($_POST['nuevo_inmueble'])) {
       $id = $_POST['id'];
       $tipo = $_POST['tipo'];
       $calle = $_POST['calle'];
@@ -99,14 +101,15 @@ class Inmueble {
       $piso = $_POST['piso'];
       $puerta = $_POST['puerta'];
       $cp = $_POST['cp'];
-      $zona = $_POST['zona'];
+      $localidad = $_POST['localidad'];
       $metros = $_POST['metros'];
       $num_hab = $_POST['num_hab'];
-      $banos = $_POST['banos'];
+      $num_banos = $_POST['num_banos'];
       $garaje = $_POST['garaje'];
       $jardin = $_POST['jardin'];
       $piscina = $_POST['piscina'];
       $estado = $_POST['estado'];
+      $titular = $_POST['titular'];
       $descripcion = $_POST['descripcion'];
       $precio = $_POST['precio'];
       $fecha_alta = $_POST['fecha_alta'];
@@ -118,65 +121,61 @@ class Inmueble {
 
       $img_correcto = false;
     
-
       //comprobamos que la extensión de la imagen sea válida
-      if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png'){
+      if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png') {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
           <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
-          </div></div></div>";
+        </div></div></div>";
       }
 
       // subimos la imagen al servidor
-      if (!file_exists('../../../media/img/img_inmuebles')){
-        mkdir('../../../media/img/img_inmuebles');
+      if (!file_exists("../../../media/img/img_inmuebles")) {
+        mkdir("../../../media/img/img_inmuebles");
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-          <strong>carpeta creada</strong> 
+          <strong>la carpeta se ha creado</strong> 
         </div>";
-      }else{
+      } else {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-        <strong>la carpeta estaba creada</strong> 
+          <strong>la carpeta estaba creada</strong> 
         </div>";
       }
                   
       // creo la ruta donde guardar la foto dependiendo del tipo que sea
-      if ($imagen_type){
+      if ($imagen_type) {
         $ruta_img = "../../../media/img/img_inmuebles/$imagen";
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
             <strong>ruta correcta</strong> 
-          </div>";
-    } 
+        </div>";
+      } 
               
-    // guardo la foto en el servidor
-    if (move_uploaded_file($imagen_tmp, $ruta_img)) {
-      $img_correcto = true;
-    }else{
-      echo "<div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-              <strong>Error al subir la imagen del inmueble al servidor</strong> 
-              </div>";
-      echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
-    }
+      // guardo la foto en el servidor
+      if (move_uploaded_file($imagen_tmp, $ruta_img)) {
+        $img_correcto = true;
+      } else {
+        echo "<div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <strong>Error al subir la imagen del inmueble al servidor</strong> 
+        </div>";
+       // echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+      }
 
       // añado el inmueble a la BD si se ha subido la imagen correctamente
-      if ($img_correcto){
-
+      if ($img_correcto) {
         $conexion = abrirConexion();
-
-        $insertar = "INSERT into tbl_inmuebles (id, tipo, direccion, cp, zona, metros, num_hab, num_baños, garaje, jardin, piscina, estado, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
-        ($id, $tipo, $calle, $portal, $piso, $puerta, $cp, $zona, $metros, $num_hab, $banos, $garaje, $jardin, $piscina, $estado, $descripcion, $precio, $imagen, $fecha_alta, $id_cliente)";
+        $insertar = "INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad, metros, num_hab, num_banos, garaje, jardin, piscina, estado, titular, descripcion, precio, imagen, fecha_alta, id_cliente) VALUES
+        ('$id', '$tipo', '$calle',' $portal', '$piso', '$puerta', '$cp', '$localidad', '$metros', '$num_hab', '$num_banos', '$garaje', '$jardin', '$piscina', '$estado', '$titular', '$descripcion', '$precio', '$imagen', '$fecha_alta', '$id_cliente')";
 
         $datos = mysqli_query($conexion, $insertar);
         echo $datos;
         
-        if ($datos){
+        if ($datos) {
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
                   <strong>Inmuebles añadido correctamente</strong> 
                 </div>";
           echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=inmuebles.php'>";
-        }else{
+        } else {
           echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                  <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble</h4>
-                </div></div></div>";
-        // echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=inmuebles.php'>";
+            <h4><strong>¡Error!</strong>No ha sido posible añadir el inmueble</h4>
+          </div></div></div>";
         }
       }
     }
@@ -185,54 +184,7 @@ class Inmueble {
     </div>";
   }
 
-  static public function tbl_borrar_inmueble(): bool {
-    echo "<div class='container-fluid'>
-      <div class='row'>
-        <div class='col-xs-12 col-md-8 col-md-offset-2 cabecera-form'>
-          <div class='panel-group'>
-            <div class='panel panel-default menu-inicio'>
-              <div class='panel-heading'>
-                <h2 align='center'>Borrar inmueble</h2>
-                <p align='center'>Seleccione el inmueble que desea borrar</p>
-              </div>
-              <div class='panel-body'>
-                <form class='form-horizontal' action='#' method='post' enctype='multipart/form-data'>
-                  <div class='form-group'>
-                   
-                    <div class='col-sm-10'>";
-                      $conexion = abrirConexion();
-                      $consulta = "SELECT id, calle, imagen from tbl_inmuebles";
-
-                      $datos = mysqli_query($conexion, $consulta);
-
-                      if (!$datos) {
-                        echo "Error!! No se han podido cargar los datos del inmueble";
-                      } else {
-                        echo "<div class='col-xs-12 col-md-8 col-md-offset-2'>";
-                        echo "<div class='table-responsive'>";
-                        echo "<table class='table table-striped'";
-                        echo "<thead><tr><th>id</th><th>Dirección</th><th>Imagen</th><th>¿Eliminar?</th></tr></thead>";
-                        while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-                          echo "<tbody><tr><td>$fila[id]</td><td>'$fila[calle]$fila[portal]'</td><td><img src='/./media/img/img_inmuebles/$fila[imagen]' style='width:150px'></td>
-                                                <td><form action='#' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-md btn-danger' type='submit' name='borrar' value='Eliminar'></form></td></tr></tbody>";
-                        }
-                        echo "</div></table></div>";
-                      }
-                      mysqli_close($conexion);
-                    echo "</div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>";
-    borrar_inmueble();
-    return true;
-  }
-
-  static function buscar_Inmueble(): bool {
+  static public function buscar_Inmueble(): bool {
     if (isset($_POST['buscar_inm'])) {
       $tipo = $_POST['tipo'];
       $localidad = $_POST['localidad'];
@@ -260,7 +212,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -279,7 +231,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -299,7 +251,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -318,7 +270,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -341,7 +293,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -360,7 +312,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -381,7 +333,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -400,7 +352,7 @@ class Inmueble {
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                       echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -426,7 +378,7 @@ class Inmueble {
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
                         echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -444,8 +396,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -465,8 +417,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -484,8 +436,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -507,8 +459,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -526,8 +478,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -547,8 +499,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -566,8 +518,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -594,8 +546,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -613,8 +565,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -634,8 +586,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -653,8 +605,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -676,8 +628,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -695,8 +647,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -716,8 +668,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -735,8 +687,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($bventa, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -765,8 +717,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -784,8 +736,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -804,8 +756,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -823,8 +775,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -846,8 +798,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -865,8 +817,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -886,8 +838,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -905,8 +857,8 @@ class Inmueble {
                     echo "<table class='table table-striped'>";
                     echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                     while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                    <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                      echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                    <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                     </tr></tbody>";
                     }
                     echo "</table>";
@@ -931,8 +883,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -950,8 +902,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -971,8 +923,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -990,8 +942,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1013,8 +965,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1032,8 +984,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1053,8 +1005,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1072,8 +1024,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1100,8 +1052,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1119,8 +1071,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1140,8 +1092,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1159,8 +1111,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1182,8 +1134,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1201,8 +1153,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1222,8 +1174,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                      <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                      <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1241,8 +1193,8 @@ class Inmueble {
                       echo "<table class='table table-striped'>";
                       echo "<thead><tr><th>Dirección</th><th>Localidad</th><th>Nº. Habitaciones</th><th>M<sup>2</sup></th><th>Precio</th><th>Imagen</th><th>Ver</th></tr></thead>";
                       while ($fila = mysqli_fetch_array($balquiler, MYSQLI_ASSOC)) {
-                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
-                        <td><form action='../ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
+                        echo "<tbody><tr><td>$fila[calle]</td><td>$fila[localidad]</td><td>$fila[num_hab]</td><td>$fila[metros]</td><td>$fila[precio]</td><td><img src='../media/img/img_inmuebles/$fila[imagen]' width='150px'></td>
+                        <td><form action='../php/ver_inmueble.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td>
                       </tr></tbody>";
                       }
                       echo "</table>";
@@ -1260,7 +1212,7 @@ class Inmueble {
     return true;
   }
   
-  static function borrar_inmueble(): bool {
+  static public function borrar_inmueble(): bool {
     if (isset($_POST['borrar'])){
       $id = $_POST['id'];
 
@@ -1290,7 +1242,7 @@ class Inmueble {
 
       if ($borrar){
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-              <strong>EL iSe ha borrado correctamente el inmueble</strong> 
+              <strong>EL inmueble se ha borrado correctamente</strong> 
           </div>";
           echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=inmuebles.php'>";
       } else {
@@ -1301,14 +1253,12 @@ class Inmueble {
       mysqli_close($conexion);
       }
     return true;
-  } /* -------------------- REVISAR -----*/
+  }
 
   static public function modificar_inmueble(): bool {
-
     if (isset($_POST['cancelar'])) {
-      //echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
+      echo "<META HTTP-EQUIV='REFRESH'CONTENT='0;URL=inmuebles.php'>";
     }
-
     if (isset($_POST['guardar'])) {
       $id = $_POST['id'];
       $tipo = $_POST['tipo'];
@@ -1346,12 +1296,12 @@ class Inmueble {
       //si no se quiere modificar la imagen se actualizará todo menos esta, en caso contrario también se modificará la imagen
       if ($modificar_imagen) {
         
-          //compruebo sea que sea una imagen
-          if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
-            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-            <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
-            </div></div></div>";
-          }
+        //compruebo sea que sea una imagen
+        if ($imagen_type != 'image/jpeg' && $imagen_type != 'image/png' ) {
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong>El tipo de imagen no es válido</h4><h5>Por favor, suba un archivo con formato: <b>.png</b> o <b>.jpeg</b></h5>
+          </div></div></div>";
+        }
 
         // subo la imagen al servidor
         if (!file_exists("../../../media/img/img_inmuebles")) {
@@ -1364,8 +1314,8 @@ class Inmueble {
             <strong>la carpeta estaba creada</strong> 
           </div>";
         }
-
-            // creo la ruta donde guardar la foto dependiendo del tipo que sea
+        
+        // creo la ruta donde guardar la foto dependiendo del tipo que sea
         if ($imagen_type){
           $ruta_img = "../../../media/img/img_inmuebles/$imagen";
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>

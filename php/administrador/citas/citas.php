@@ -1,27 +1,21 @@
 <?php
   session_start(); 
   include "../../../php/dbconnect.php";
-  include "../../../php/class/interfaz.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
   include "../../../php/funciones.php";
-
   comprobarAdmin();
-
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_citas();
-  $footer = Interfaz::footer();
 
   $actual = date('Y-m-d');
   $marca_actual = strtotime($actual);
 
   $conexion = abrirConexion();
   $sql = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id as id_cliente, tbl_clientes.nombre, tbl_clientes.telefono
-        from tbl_citas inner join tbl_clientes on tbl_citas.id_cliente = tbl_clientes.id order by fecha desc";
+  FROM tbl_citas INNER JOIN tbl_clientes ON tbl_citas.id_cliente = tbl_clientes.id ORDER BY fecha desc";
         
   $mostrar = mysqli_query($conexion, $sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,10 +36,14 @@
   </head>
   <body>
     <?php $menu ?>
-
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
-         
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Agenda</h1>
+          <?php Administrador::gestion_citas(); ?>
+        </div>
+      </div>
+    </div>
     <div class="col-xs-12 col-md-6">
       <h2 class="margen-citas" align="center">Calendario</h2>
       <!-- PHP que muestra el calendario del mes pedido -->
@@ -72,7 +70,6 @@
         Cita::mostrarCalendario($dia, $mes, $anio);
       ?>
     </div>
-
     <!-- Muestro citas y opción de modificar -->
     <div class="container-fluid">
       <div class="row">
@@ -112,10 +109,7 @@
         </div>
       </div>
     </div>
-      
-
-    <!-- footer -->
-   <?php $footer?>
+   <?php footer();?>
 
     <script>
         $(document).ready(function(){

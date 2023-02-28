@@ -1,10 +1,10 @@
-<?php 
-    session_start();
-    include "dbconnect.php";
-    include "class/usuario.php";
-    include "class/administrador.php";
-    include "class/inmueble.php";
-    include "funciones.php";
+<?php
+  session_start(); 
+  require "../../php/dbconnect.php";
+  require "../../php/class/usuario.php";
+  require "../../php/funciones.php";
+
+  comprobarUsuario();
   ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,7 +17,7 @@
     <!-- Theme opcional -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
       <!-- Mi CSS -->
-      <link rel="stylesheet" href="../css/estilos.css" media="screen">
+      <link rel="stylesheet" href="../../css/estilos.css" media="screen">
     <!--Insertamos jQuery dependencia de Bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -25,7 +25,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-  <?php mostrarMenu(); ?>
+    <?php mostrarMenu(); ?>
     <div class="container-fluid">
       <div class="row">
         <!-- Mostramos los inmuebles disponibles -->
@@ -57,12 +57,7 @@
                       <img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
                       <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
         
-                        if (isset($_SESSION['tipo'])) {
-                          if (isset($_SESSION['id_usuario'])) {
-                            $tipo_usuario = $_SESSION['tipo'];
-                            $id_usuario = $_SESSION['id_usuario'];
-                            
-                            if ($tipo_usuario == 'u') {
+                       
                               $incremento = "SELECT auto_increment from information_schema.tables WHERE table_schema='dbbrhgswov0fge' and table_name='tbl_favoritos'";
                     
                               $datos = mysqli_query($con, $incremento);
@@ -79,9 +74,6 @@
                                   <button class='button button5'><img id='no_favorito' src='../media/iconos/no-favorito.png' alt='btn-favoritos' width='30px'>
                                     <a href='#' id='nuevo_favorito' type='submit' name='nuevo_favorito'> Añadir favorito</a></button>
                                   </form>";
-                                  echo "$_SESSION[id_favorito]";
-                                  echo "$_SESSION[id_usuario]";
-                                  echo "$_SESSION[id_inmueble]";
                                 
                                 Usuario::nuevo_favorito();
                               echo "</div>";
@@ -101,10 +93,10 @@
                     </div>
                   </div>
                 </div>";
-              }
+              
       
-            }
-          }
+            
+          
           mysqli_close($con);
           ?>
         </div>

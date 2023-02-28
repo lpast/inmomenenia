@@ -1,18 +1,12 @@
 <?php
   session_start();
   include "dbconnect.php";
-  include "class/interfaz.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "class/inmueble.php";
   include "class/noticia.php";
   include "funciones.php";
   comprobarIndex();
-
-  $menuHome = Interfaz::mostrarMenuHome();
-  $home = Interfaz::mostrar_home();
-  $footer = Interfaz::footer(); 
-  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,16 +26,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <?php $menuHome ?>
+    <?php mostrarMenu(); ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-          <?php $home ?>
+          <?php mostrarHome(); ?>
         </div>
       </div>
     </div>
-
-    <?php $footer?> 
+    <?php footer(); ?> 
        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -1,23 +1,19 @@
-<?php session_start(); 
+<?php
+  session_start(); 
   include "../../../php/dbconnect.php";
-  include "../../../php/class/interfaz.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cliente.php";
   include "../../../php/funciones.php";
-
   comprobarAdmin();
-
   $menu = Administrador::menuAdmin();
-  $botones = Administrador::gestion_clientes();
- 
 ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Añadir Cliente Nuevo</title>
+    <title>Añadir Cliente</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -31,7 +27,14 @@
   </head>
 <body>
   <?php $menu ?>
-  <?php $botones ?>
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+        <h1 class='margen-noticias' align='center'>Cartera de Clientes</h1>
+        <?php Administrador::gestion_clientes(); ?>
+      </div>
+    </div>
+  </div>
   <div class='container-fluid menu-inicio'>
     <div class='row'>
       <div class='col-xs-12 col-md-8 col-md-offset-2'>
@@ -141,7 +144,7 @@
                 <div class='form-group'>
                   <div class='col-sm-12 col-sm-offset-4'>
                     <div class='col-sm-2'>
-                      <input class='form-control btn-thene' id='nuevo_cliente' type='submit' name='nuevo_cliente'>
+                      <input class='form-control btn-thene' id='nuevo_cliente' type='submit' name='nuevo_cliente' value='Añadir Cliente'>
                     </div>
                     <div class='col-sm-2'>
                       <a href='../php/clientes.php' class='btn btn-danger'>Cancelar</a>
@@ -155,14 +158,11 @@
       </div>
     </div>
   </div>
-  
-    <?php Cliente::nuevo_cliente();?>
-    
-    <!-- footer -->
-    <?php $footer = Interfaz::footer(); ?> 
-
-    <!-- Validación javascript -->
-    <script src="../js/validar_nuevo_cliente.js"></script>
+  <?php Cliente::nuevo_cliente();?>
+  <div class="col-xs-4 col-md-6 col-sm-10">
+      <p align='center'><a class='btn btn-theme' href='clientes.php'>Volver a Clientes</b></a></p>
+    </div>
+    <?php footer(); ?>
   </body>
 </html>
  
