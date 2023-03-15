@@ -1,6 +1,6 @@
 <?php 
   session_start(); 
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/noticia.php";
@@ -65,7 +65,7 @@
     </div>
     <?php Noticia::buscar_noticia(); ?> 
     <div class="col-xs-4 col-md-6 col-sm-10">
-      <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Agenda</b></a></p>
+      <p align='center'><a class='btn btn-theme' href='noticias.php'>Volver a Agenda</b></a></p>
     </div>
     <?php footer(); ?> 
     <!-- Validación javascript -->

@@ -1,6 +1,6 @@
 <?php
   session_start(); 
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
@@ -74,8 +74,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-md-6 col-sm-10">
-          <h2 class="margen-citas" align="center"> Próximas citas</h2>
-          <div class='col-xs-12 col-sm-12 col-md-12  tnoticias'>
+          <h2 class="margen-citas" align="center">Próximas citas</h2>
+          <div class='col-xs-12 col-sm-12 col-md-12 tnoticias'>
             <?php
               if (!$mostrar) {
                 echo "Error al hacer la consulta a la BD";
@@ -112,9 +112,9 @@
    <?php footer();?>
 
     <script>
-        $(document).ready(function(){
-          $('[data-toggle="popover"]').popover();   
-        });
+      $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();   
+      });
     </script>
   </body>
 </html>

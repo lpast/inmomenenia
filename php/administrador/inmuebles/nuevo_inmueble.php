@@ -1,6 +1,6 @@
 <?php
  session_start();
- include "../../../php/dbconnect.php";
+ include "../../../php/includes/dbconnect.php";
  include "../../../php/class/administrador.php";
  include "../../../php/class/inmueble.php";
  include "../../../php/funciones.php";
@@ -237,7 +237,7 @@
     <?php $inmueble ?>
     <?php footer(); ?>
     <!-- Validación javascript -->
-   <script src="/./js/validar_nuevo_inmueble.js"></script>
+    <script src="../../../js/validar_nuevo_inmueble.js"></script>
   </body>
 </html>
  

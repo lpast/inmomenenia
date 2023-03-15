@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
@@ -107,10 +107,10 @@
                          
                          if (!$clientes) {
                            echo "Error al ajecutar la consulta";
-                         } else {
+                          } else {
                            while ($fila = mysqli_fetch_array($clientes,MYSQLI_ASSOC)) {
-                               echo "<option value=$fila[id]>$fila[nombre] $fila[apellidos]</option>";
-                           }
+                            echo "<option value=$fila[id]>$fila[nombre] $fila[apellidos]</option>";
+                          }
                          }                     
                          mysqli_close($conexion);
                        ?>
@@ -123,7 +123,7 @@
                        <input class="form-control btn-primary" type="submit" name="mod_cita" value="Modificar">
                      </div>
                      <div class="col-sm-2">
-                       <a href="./citas.php" class="btn btn-danger">Cancelar</a>
+                       <a href="citas.php" class="btn btn-danger">Cancelar</a>
                      </div>
                    </div>
                  </div>
@@ -146,7 +146,7 @@
         $id_cliente_new = $_POST['id_cliente_new'];
 
         $con = abrirConexion();
-        $sql = "UPDATE  tbl_citas set fecha='$fecha_new',hora='$hora_new',motivo='$motivo_new',lugar='$lugar_new',id_cliente='$id_cliente_new' where id='$id_new'";
+        $sql = "UPDATE  tbl_citas set fecha='$fecha_new', hora='$hora_new', motivo='$motivo_new', lugar='$lugar_new', id_cliente='$id_cliente_new' where id='$id_new'";
 
         $actualizar = mysqli_query($con,$sql);
 

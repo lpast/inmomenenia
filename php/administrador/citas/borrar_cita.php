@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/interfaz.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
@@ -26,7 +26,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
   <body>
-  <?php $menu ?>
+    <?php $menu ?>
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>

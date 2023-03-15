@@ -1,5 +1,5 @@
 <?php session_start(); 
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cliente.php";

@@ -1,6 +1,6 @@
 <?php 
   session_start(); 
-  include "../php/dbconnect.php";
+  include "includes/dbconnect.php";
   include "../php/class/usuario.php";
   include "funciones.php";
 ?>
@@ -122,6 +122,8 @@
         </div>
       </div>
     </div>
-    <?php footer(); ?> 
+    <?php footer(); ?>
+    <!-- Validación javascript -->
+    <script src="../../../js/validar_contacto.js"></script>
   </body>
 </html>

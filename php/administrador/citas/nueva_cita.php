@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
@@ -141,6 +141,6 @@
     </div>
     <?php footer(); ?>
     <!-- Validación javascript -->
-    <script src="/./js/validar_nueva_cita.js"></script>
+    <script src="../../../js/validar_nueva_cita.js"></script>
   </body>
 </html>

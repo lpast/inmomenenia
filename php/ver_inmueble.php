@@ -1,11 +1,10 @@
 <?php 
   session_start();
-  include "dbconnect.php";
+  include "includes/dbconnect.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "funciones.php";
   comprobarIndex();
-  comprobarUsuario();
 
   /** Recojo en variables los datos a mostrar mediante PHP */
   if (isset($_POST['ver'])) {

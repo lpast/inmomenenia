@@ -1,6 +1,9 @@
 <?php
 class Noticia {
 
+  const BASE_MEDIA = "https://inmomenenia.com/media";
+  const BASE_PHP = "https://inmomenenia.com/php";
+
   static public function gestion_noticias(): bool {
     echo "<div class='container-fluid cabecera-menu-inicio'>
       <div class='row'>
@@ -109,14 +112,16 @@ class Noticia {
       } else {
         $num_filas = mysqli_num_rows($busqueda);
         if ($num_filas == 0) {
-          echo "Sin coincidencias";
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong> No se han encontrado coincidencias</h4>
+          </div></div></div>";
         } else {
           echo "Se listarán $num_filas noticias relacionadas..."; 
           echo "<table class='table table-striped'>";
           echo "<thead><tr><th>Titular</th><th>Fecha de publicación</th><th>Imagen</th><th>Ver</th></tr></thead>";
           while ($fila = mysqli_fetch_array($busqueda,MYSQLI_ASSOC)) {
             echo "<tbody><tr><td><strong>$fila[titular]</strong></td><td>$fila[fecha]</td><td><img src='../../../media/img/img_noticias/$fila[imagen]' width='150px'></td>
-            <td><form action='../../../php/ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-theme' type='submit' name='ver' value='Leer Más'></form></td></tr></tbody>";
+            <td><form action='". self::BASE_PHP . "/ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn btn-theme' type='submit' name='ver' value='Leer Más'></form></td></tr></tbody>";
           }
           echo "</table>";
           echo "</div>";
@@ -139,7 +144,9 @@ class Noticia {
           </div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
       } else {
-        echo "<p>¡Error! No se ha podido borrar la noticia...</p>";
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se han podido borrar la noticia...</h4>
+                  </div></div></div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=noticias.php'>";
       }
       mysqli_close($conexion);
@@ -183,7 +190,9 @@ class Noticia {
             $mostrar = mysqli_query($conexion, $consulta_mostrar);
 
             if (!$mostrar) {
-              echo "Error al cargar las noticias desde la BD";
+              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+              <h4><strong>¡Error!</strong> Al cargar las imágenes de la BD</h4>
+              </div></div></div>";
             } else {
               while ($fila = mysqli_fetch_array($mostrar, MYSQLI_ASSOC)) {
                 $marca_cita = strtotime($fila['fecha']);
@@ -191,12 +200,12 @@ class Noticia {
                 //muestro info de noticia
                 echo "<div class='panel-body tnoticias'>
                   <div class='petit-noticias' style=align='center'>
-                    <img src='../media/img/img_noticias/$fila[imagen]' alt='img_noticia' >
+                    <img src='". self::BASE_MEDIA . "/img/img_noticias/$fila[imagen]' alt='img_noticia' >
                   </div>
                   <h3 align='center'><b>$fila[titular]</b></h3>
                   <p align='center'>Fecha de publicación: $f_formateada</p>
                   <p class='texto'>$fila[contenido]<p>
-                  <form action='../php/ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver más'></form>";
+                  <form action='". self::BASE_PHP . "/ver_noticia.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver más'></form>";
                 echo "</div>";
               }
             }

@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "dbconnect.php";
+  include "includes/dbconnect.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "class/inmueble.php";

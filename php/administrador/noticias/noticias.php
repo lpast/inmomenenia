@@ -1,6 +1,6 @@
 <?php 
   session_start(); 
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/cita.php";
@@ -30,7 +30,7 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
-          <h1 class='margen-noticias ' align='center'> Actualidad Inmobiliaria</h1>
+          <h1 class='margen-noticias ' align='center'>Actualidad Inmobiliaria</h1>
           <?php Administrador::gestion_noticias(); ?>
         </div>
       </div>

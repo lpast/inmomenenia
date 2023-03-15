@@ -69,7 +69,7 @@ function ValidarEmail() {
 		this.className="form-control error-input"; 
 		this.nextSibling.innerHTML="¡Atención! El nombre no puede quedar vacío";
 		this.nextSibling.className="error";
-        return false;
+      return false;
 	} else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
 		this.className="form-control";
 		this.nextSibling.innerHTML="El email es válido";

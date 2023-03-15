@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "dbconnect.php";
+    include "includes/dbconnect.php";
     include "class/usuario.php";
     include "class/administrador.php";
     include "class/inmueble.php";
@@ -55,7 +55,7 @@
                   <div class='panel panel-default'>
                     <div class='panel-body tnoticias'>
                       <img class='img-responsive' src='../media/img/img_inmuebles/$fila[imagen]' alt='img-inmuble'>
-                      <h2 align ='center'><span style='background-color: #baa35f'; 'color:black;'>$fila[titular]</span></h2>";
+                      <h2 align ='center'>$fila[titular]</h2>";
         
                         if (isset($_SESSION['tipo'])) {
                           if (isset($_SESSION['id_usuario'])) {

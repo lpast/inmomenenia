@@ -1,7 +1,6 @@
 <?php
 class Cliente {
 
-    
   static public function nuevo_cliente(): bool {
     if (isset($_POST['cancelar'])) {
       header("url=/clientes.php");
@@ -30,13 +29,13 @@ class Cliente {
   
       if (mysqli_query($conexion,$sql)) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
-                    <strong>Cliente añadido correctamente</strong> 
-                  </div>";
+          <strong>Cliente añadido correctamente</strong> 
+        </div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=clientes.php'>";
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                <h4><strong>¡Error!</strong>No ha sido posible añadir el cliente</h4>
-              </div></div></div>";
+          <h4><strong>¡Error!</strong>No ha sido posible añadir el cliente</h4>
+        </div></div></div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=clientes.php'>";
       }
         mysqli_close($conexion);
@@ -62,16 +61,19 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún cliente por ese teléfono";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese teléfono</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
-                 echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Ver</th><th>Localidad</th><th>Ver</th></tr></thead>";
-
+                  echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Ver</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
                     echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
                     <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
@@ -88,12 +90,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con esos apellidos</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -111,12 +117,16 @@ class Cliente {
               $btelape = mysqli_query($con, $sql);
   
               if (!$btelape) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btelape);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún cliente por esos apellidos";
+				  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+				    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese teléfono ni esos apellidos</h4>
+				  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -138,16 +148,20 @@ class Cliente {
               $bnombre = mysqli_query($con, $sql);
   
               if (!$bnombre) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($bnombre);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese nombre</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
-                  while ($fila = mysqli_fetch_array($btel)) {
+                  while ($fila = mysqli_fetch_array($bnombre)) {
                     echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
                     <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
@@ -161,12 +175,16 @@ class Cliente {
               $bnomtel = mysqli_query($con, $sql);
   
               if (!$bnomtel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($bnomtel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún cliente por esos apellidos";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese nombre y teléfono</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -187,12 +205,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese nombre y apellidos</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -210,12 +232,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese nombre, apellido y teléfono</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -240,12 +266,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -263,12 +293,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                   echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id y teléfono</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -288,12 +322,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                   echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id y esos apellidos</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -312,12 +350,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id, esos apellidos y ese teléfono</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -339,12 +381,16 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id y ese nombre</h4>
+                  </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -362,12 +408,17 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id, nombre y telefono</h4>
+                  </div></div></div>";
+
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -386,13 +437,16 @@ class Cliente {
   
               $btel = mysqli_query($con, $sql);
   
-              if (!$btel) {
-                echo "Error al consultar DB - telefono";
+              if (!$btel) {echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                  echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                    <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id, nombre y apellidos</h4>
+                  </div></div></div>";
                } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Localidad</th><th>Ver</th></tr></thead>";
@@ -410,18 +464,22 @@ class Cliente {
               $btel = mysqli_query($con, $sql);
   
               if (!$btel) {
-                echo "Error al consultar DB - telefono";
+                echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> Al realizar la búsqueda</h4>
+                </div></div></div>";
                 echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=clientes.php'>";
               } else {
                 $num_filas = mysqli_num_rows($btel);
                 if ($num_filas == 0) {
-                  echo "No se ha encontrado ningún apellido";
+                    echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                      <h4><strong>¡Error!</strong> No se ha encontrado ningún cliente que coincida con ese id, nombre, apellidos y teléfono</h4>
+                    </div></div></div>";
                 } else {
                   echo "<table class='table table-striped'";
                   echo "<thead><tr><th>ID</th><th>Tipo</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>Email</th><th>Ver</th><th>Localidad</th><th>Ver</th></tr></thead>";
                   while ($fila = mysqli_fetch_array($btel)) {
                     echo "<tbody><tr><td>$fila[id]</td><td>$fila[tipo]</td><td>$fila[nombre]</td><td>$fila[apellidos]</td><td>$fila[telefono]</td><td>$fila[email]</td><td>$fila[localidad]</td>
-                              <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
+                      <td><form action='ver_cliente.php' method='post'><input type='hidden' name='id' value='$fila[id]'><input class='form-control btn-theme' type='submit' name='ver' value='Ver'></form></td></tr></tbody>";
                   }
                   echo "</table>";
                 }
@@ -454,13 +512,10 @@ class Cliente {
       $cp = $_POST['cp'];
       $telefono = $_POST['telefono'];
       $email = $_POST['email'];
-  
-      print_r($_POST);
-    
+
       $conexion = abrirConexion();
       $sql = "UPDATE tbl_clientes SET tipo='$tipo', nombre='$nombre', apellidos='$apellidos', calle='$calle', portal='$portal', piso='$piso',
        puerta='$puerta', cp='$cp', localidad='$localidad', telefono='$telefono', email='$email' WHERE id='$id'";
-  
   
       if(mysqli_query($conexion,$sql)) {
         echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
@@ -469,14 +524,11 @@ class Cliente {
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='1;URL=clientes.php'>";
       } else {
         echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-        <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
-      </div></div></div>";
+          <h4><strong>¡Error!</strong> No se han podido actualizar los datos</h4>
+        </div></div></div>";
       }
-      //mysqli_close($conexion);
+      mysqli_close($conexion);
     }
-    
-    return true;
     return true;
   }
-
 }

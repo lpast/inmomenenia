@@ -1,5 +1,5 @@
 <?php
-  include "dbconnect.php";
+  include "includes/dbconnect.php";
   include "class/interfaz.php";
   include "funciones.php";
   session_start(); 

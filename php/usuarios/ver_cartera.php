@@ -1,6 +1,6 @@
 <?php
   session_start(); 
-  require "../../php/dbconnect.php";
+  include "../../php/includes/dbconnect.php";
   require "../../php/class/usuario.php";
   require "../../php/funciones.php";
 
@@ -11,7 +11,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inmuebles</title>
+    <title>Cartera Inmuebles</title>
     <!-- Insertamos el archivo CSS compilado y comprimido -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Theme opcional -->
@@ -30,7 +30,7 @@
       <div class="row">
         <!-- Mostramos los inmuebles disponibles -->
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio tinmuebles'>
-          <h1 align="center">Ahora mismo, estos son los inmuebles están disponibles</h1>
+          <h1 align="center">Ahora mismo, estos son los inmuebles que están disponibles</h1>
         </div>
         <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
           <?php

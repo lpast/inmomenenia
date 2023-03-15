@@ -1,6 +1,6 @@
 <?php 
   session_start(); 
-  include "../../../php/dbconnect.php";
+  include "../../../php/includes/dbconnect.php";
   include "../../../php/class/usuario.php";
   include "../../../php/class/administrador.php";
   include "../../../php/class/noticia.php";
@@ -103,6 +103,8 @@
     <div class="col-xs-4 col-md-6 col-sm-10">
       <p align='center'><a class='btn btn-theme' href='citas.php'>Volver a Agenda</b></a></p>
     </div>
-    <?php footer(); ?> 
+    <?php footer(); ?>
+    <!-- Validación javascript -->
+    <script src="../../../js/validar_nueva_noticia.js"></script>
   </body>
 </html>

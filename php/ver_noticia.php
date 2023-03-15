@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "dbconnect.php";
+  include "includes/dbconnect.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "class/inmueble.php";
@@ -51,14 +51,15 @@
       <div class='row'>
         <div class='col-sm-8 col-sm-offset-2'>
           <center><img src='../media/img/img_noticias/<?=$imagen?>' alt='img-inmueble' img-align='center' width='60%'></center>
-          <div class='contenido-noticia tnoticias'>
-            <h1><b> <?=$titular?></b></h1>
-            <p align='justify'><?=$contenido?> </p>
-            <p><b>Fecha de publicación: </b><?=$fecha?></p>
-            <a class='btn btn-theme' href='./home.php'>Volver a <b>Inicio</b></a>
-          </div>
+        </div>
+        <div class='contenido-noticia tnoticias'>
+          <h1><b> <?=$titular?></b></h1>
+          <p align='justify'><?=$contenido?> </p>
+          <p><b>Fecha de publicación: </b><?=$fecha?></p>
+          <a class='btn btn-theme' href='./home.php'>Volver a <b>Inicio</b></a>
         </div>
       </div>
+    </div>
     </div>
     <!-- footer -->
     <?php footer(); ?> 

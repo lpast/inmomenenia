@@ -36,7 +36,7 @@ function Inicio() {
 
 function ValidarId(id) {
     var numero, letr, letra;
-    var regExp = /^[0-9]{8,8}[A-Za-z]$/;
+    var regExp = /^\d{8}[A-Z]$/
 
     if (this.value.trim() == "") {
 		this.className="form-control error-input"; 
@@ -48,29 +48,29 @@ function ValidarId(id) {
 		this.nextSibling.innerHTML="¡Atención! El dni no puede superar los 9 carácteres";
 		this.nextSibling.className="error";
 		return false;
-	} else if(regExp.test (id) == true) {
-        numero = dni.substr(0,id.length-1);
-        letr = dni.substr(dni.length-1,1);
-        numero = numero % 23;
-        letra='TRWAGMYFPDXBNJZSQVHLCKET';
-        letra=letra.substring(numero,numero+1);
-        if (letra!=letr.toUpperCase()) {
-            this.className="form-control error-input"; 
-		    this.nextSibling.innerHTML="¡Atención! Dni erroneo, la letra del NIF no se corresponde";
-		    this.nextSibling.className="error";
-			return false;
-        } else {
-            this.className="form-control";
-		    this.nextSibling.innerHTML="El nombre es válido";
-		    this.nextSibling.className="Dni correcto";
-			return true;
-        }
+	} else if (regExp.test (id) == true) {
+    numero = dni.substr(0,id.length-1);
+    letr = dni.substr(dni.length-1,1);
+    numero = numero % 23;
+    letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    letra = letra.substring(numero,numero+1);
+    if (letra!=letr.toUpperCase()) {
+      this.className="form-control error-input"; 
+      this.nextSibling.innerHTML="¡Atención! Dni erroneo, la letra del NIF no se corresponde";
+      this.nextSibling.className="error";
+      return false;
     } else {
-        this.className="form-control error-input"; 
-		this.nextSibling.innerHTML="¡Atención! Dni erroneo, formato no válido";
-		this.nextSibling.className="error";
-		return false;
+      this.className="form-control";
+      this.nextSibling.innerHTML="El nombre es válido";
+      this.nextSibling.className="Dni correcto";
+      return true;
     }
+  } else {
+    this.className="form-control error-input"; 
+    this.nextSibling.innerHTML="¡Atención! Dni erroneo, formato no válido";
+    this.nextSibling.className="error";
+    return false;
+  }
 }
 
 function ValidarNombre() {

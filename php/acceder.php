@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include "dbconnect.php";
+  include "includes/dbconnect.php";
   include "class/usuario.php";
   include "class/administrador.php";
   include "funciones.php";
@@ -16,12 +16,13 @@
  try {
     if (isset($_POST['acceder'])) {
       $usuario = $_POST['nick'];
-      $pass = $_POST['password'];
+      $pass = $_POST['pass'];
+
+      $pass = md5($pass);
+      $conexion = abrirConexion();
+      $sql = "SELECT * FROM tbl_usuarios inner join tbl_passwords on tbl_usuarios.id = tbl_passwords.id_user WHERE tbl_usuarios.nom_user='$usuario' and tbl_passwords.pass = '$pass'";
     
-      $con = abrirConexion();
-      $sql = "SELECT * FROM tbl_usuarios WHERE nom_user='$usuario' and pass='$pass'";
-    
-      $consulta = mysqli_query($con,$sql);
+      $consulta = mysqli_query($conexion,$sql);
   
       if ($consulta) {
         if (mysqli_num_rows($consulta) > 0) {
@@ -38,28 +39,28 @@
     
           if (isset($_POST['check'])) {
             $datos = session_encode();
-            setcookie('datos', $datos, time()+(15*24*60*60), '/');
+            setcookie('datos', $datos, time() + (15*24*60*60), '/');
           }
-    
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
             <strong>¡Acceso correcto!</strong> 
           </div>";
-    
           echo "<META HTTP-EQUIV='REFRESH'CONTENT='1; URL=home.php'>";
-    
         } else {
           throw new Exception ('Usuario o contraseña incorrectos');
           echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
             <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
           </div>";
+          return $consulta;
         }
       } else {
         throw new Exception ('Usuario o contraseña incorrectos');
-        return $consulta;
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+          <h4><strong>¡Error!</strong> Usuario o contraseña incorrectos</h4>
+        </div>";
       }
     }
   } catch (Exception $e) {
-    echo "('Error' . $e->GetMessage())";
+    echo 'Error' . $e->GetMessage();
     return $consulta;
   }
 ?>
@@ -101,7 +102,7 @@
                   <div class='form-group'>
                     <h3><label class='col-sm-3 col-sm-offset-2'>Contraseña</label></h3>
                       <div class='col-sm-6'>
-                        <input class='form-control' type='password' name='password' required>
+                        <input class='form-control' type='password' name='pass' required>
                       </div>
                   </div>
                   <div class='form-group'>

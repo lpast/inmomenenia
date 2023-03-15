@@ -1,19 +1,15 @@
-<?php
-session_start(); 
-require "../../../php/dbconnect.php";
-require "../../../php/class/interfaz.php";
-require "../../../php/class/usuario.php";
-require "../../../php/class/administrador.php";
-require "../../../php/class/cliente.php";
-require "../../../php/funciones.php";
-comprobarAdmin();
-$menu = Administrador::menuAdmin();
-$botones = Administrador::gestion_clientes();
+<?php 
+  session_start();
+  include "../../../php/includes/dbconnect.php";
+  include "../../../php/class/administrador.php";
+  include "../../../php/class/cita.php";
+  include "../../..//php/funciones.php";
+  comprobarAdmin();
+  $menu = Administrador::menuAdmin();
 ?>
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
+<html lang="es">  
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ver Cliente</title>
@@ -27,45 +23,46 @@ $botones = Administrador::gestion_clientes();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!--Insertamos el archivo JS compilado y comprimido -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <?php $menu ?>
-    <!-- Botones de funciones añadir, borrar, buscar -->
-    <?php $botones ?>
-
+  </head>
+  <body>
+  <?php $menu ?>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-xs-12 col-sm-12 col-md-12 cabecera-menu-inicio'>
+          <h1 class='margen-noticias' align='center'>Agenda</h1>
+          <?php Administrador::gestion_clientes(); ?>
+        </div>
+      </div>
+    </div>
     <!-- Recojo en variables los datos a mostrar mediante PHP -->
     <?php
-    if (isset($_POST['ver'])) {
+      if (isset($_POST['ver'])) {
         $id = $_POST['id'];
-
         $conexion = abrirConexion();
         $sql = "SELECT * FROM tbl_clientes WHERE id='$id'";
-
         $datos = mysqli_query($conexion, $sql);
-
+        
         if (!$datos) {
-            echo "Error, no se ha podido consultar los datos del cliente";
+          echo "Error, no se ha podido consultar los datos del cliente";
         } else {
-            while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
-                $id = $fila['id'];
-                $tipo = $fila['tipo'];
-                $nombre = $fila['nombre'];
-                $apellidos = $fila['apellidos'];
-                $calle = $fila['calle'];
-                $portal = $fila['portal'];
-                $piso = $fila['piso'];
-                $puerta = $fila['puerta'];
-                $cp = $fila['cp'];
-                $localidad = $fila['localidad'];
-                $telefono = $fila['telefono'];
-                $email = $fila['email'];
-            }
+          while ($fila = mysqli_fetch_array($datos, MYSQLI_ASSOC)) {
+            $id = $fila['id'];
+            $tipo = $fila['tipo'];
+            $nombre = $fila['nombre'];
+            $apellidos = $fila['apellidos'];
+            $calle = $fila['calle'];
+            $portal = $fila['portal'];
+            $piso = $fila['piso'];
+            $puerta = $fila['puerta'];
+            $cp = $fila['cp'];
+            $localidad = $fila['localidad'];
+            $telefono = $fila['telefono'];
+            $email = $fila['email'];
+          }
         }
         mysqli_close($conexion);
-    }
+      }
     ?>
-
     <!-- Muestro los datos del cliente -->
     <div class="container-fluid">
         <div class="row">
@@ -95,8 +92,7 @@ $botones = Administrador::gestion_clientes();
         </div>
       </div>
     </div>
-        <!-- footer -->
-        <?php $footer = Interfaz::footer(); ?>
-</body>
+    <?php footer(); ?>
+  </body>
 
 </html>

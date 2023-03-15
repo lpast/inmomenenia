@@ -59,13 +59,12 @@ CREATE TABLE IF NOT EXISTS tbl_usuarios (
    email varchar (30) REFERENCES tbl_clientes(email),
    fecha_alta DATE NOT NULL,
    nom_user varchar (20) NOT NULL,
-   pass varchar (5) NOT NULL,
    CONSTRAINT pk_usu_id PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS tbl_passwords (
    id_user varchar (10) NOT NULL UNIQUE REFERENCES tbl_usuarios(id),
-   pass varchar (5) NOT NULL REFERENCES tbl_usuarios(pass),
+   pass varchar (32) NOT NULL,
    CONSTRAINT pk_psw_id PRIMARY KEY (id_user)
 );
 
@@ -120,38 +119,38 @@ INSERT INTO tbl_inmuebles (id, tipo, calle, portal, piso, puerta, cp, localidad,
 (011, 'venta', 'Calle Acacia', 78, null, null, 50171, 'La Puebla de Alfindén', 220, 3, 1, 'no', 'si', 'si', 'obra nueva', 'Casa en venta', 'Obra nueva, lista para entrar a vivir.', 150.000, 'salon_7890.png','2022-06-05', '40321567C');
 
 --volcado datos 'tbl_usuarios'
-INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user, pass) VALUES
-('72998257Y', 'Administrador', 'Marco Cornago', 692605415, '', '1986-10-31', 'Administrador', 'admin'),
-('74859657P', 'Marisa', 'Perez Martínez', 61162263, '','2022-12-12', 'marisapm45', 'fg7t9'),
-('72149369B', 'Andrés', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','2022-10-07', 'and', '784ñl'),
-('78996587P', 'Pepa', 'Antonia Peralta', 647847151,'pepaperal@yahoo.es', '2019-12-12', 'pepaperal', 'pepap'),
+INSERT INTO tbl_usuarios (id, nombre, apellidos, telefono, email, fecha_alta, nom_user) VALUES
+('72998257Y', 'Administrador', 'Marco Cornago', 692605415, '', '1986-10-31', 'administrador'),
+('74859657P', 'Marisa', 'Perez Martínez', 61162263, '','2022-12-12', 'marisapm45'),
+('72149369B', 'Andrés', 'Lopez Panizo', 698475632, 'andres_lopez@medina.es','2022-10-07', 'and'),
+('78996587P', 'Pepa', 'Antonia Peralta', 647847151,'pepaperal@yahoo.es', '2019-12-12', 'pepaperal'),
 ('38693644L', 'Teresa', 'Salsero Martínez', 65874114, '','2022-12-12', 'tete78', 'r7gl3'),
-('72036547J', 'Isabel', 'Cornago Lavega', 987456123, 'i_c_lavega@hotmail.es', '2022-02-02', 'isa_c', 'i8i3c'),
-('20489695S', 'Antonio', 'Camacho Perez', 692478963,'','2022-08-13', 'ant_oi', '789li'),
-('40321567C', 'Daniel', 'Blazque Franco', 653896574, 'daniel_bf@ematiza.es','2019-04-04', 'dani_bl', '44abr'),
-('45805486A', 'Yasmina', 'Marco Monlora', 666547896, 'yas_1986@outlook.com','2021-10-10', 'yas82', 'rub78'),
-('47896214H', 'Amparo', 'Sánchez Carrillo', 685633215, 'amp_san@yahoo.com','2020-06-03', 'amp', 'amp79'),
-('45007784T', 'José', 'Torrecillas Fernández', 612321441, '', '2022-11-30', 'jose', '9b680'),
-('89532541D', 'Timoteo', 'Torrecillas Carrillo', 611622633, 'ttc_yahoo.es','2021-11-30','tim_78', 'op789'),
-('11478215K', 'Rubén', 'Segura Romo', 664790808, '', '2022-06-30', 'ruben', '8b925'),
-('89658231F', 'Delia', 'Sánchez Carrillo', 612321441, '', '2023-01-15', 'delia', '6bc5e'),
-('69147258M', 'Antonia', 'Medina Soler', 654789412, '','2022-03-06', 'toni', '6g7rt');
+('72036547J', 'Isabel', 'Cornago Lavega', 987456123, 'i_c_lavega@hotmail.es', '2022-02-02', 'isa_c'),
+('20489695S', 'Antonio', 'Camacho Perez', 692478963,'','2022-08-13', 'ant_oi'),
+('40321567C', 'Daniel', 'Blazque Franco', 653896574, 'daniel_bf@ematiza.es','2019-04-04', 'dani_bl'),
+('45805486A', 'Yasmina', 'Marco Monlora', 666547896, 'yas_1986@outlook.com','2021-10-10', 'yas82'),
+('47896214H', 'Amparo', 'Sánchez Carrillo', 685633215, 'amp_san@yahoo.com','2020-06-03', 'amp'),
+('45007784T', 'José', 'Torrecillas Fernández', 612321441, '', '2022-11-30', 'jose'),
+('89532541D', 'Timoteo', 'Torrecillas Carrillo', 611622633, 'ttc_yahoo.es','2021-11-30','tim_78'),
+('11478215K', 'Rubén', 'Segura Romo', 664790808, '', '2022-06-30', 'ruben'),
+('89658231F', 'Delia', 'Sánchez Carrillo', 612321441, '', '2023-01-15', 'delia'),
+('69147258M', 'Antonia', 'Medina Soler', 654789412, '','2022-03-06', 'toni');
 
 INSERT INTO tbl_passwords (id_user, pass) VALUES
-('74859657P', 'fg7t9'),
-('72149369B', '784ñl'),
-('78996587P', 'pepap'),
-('38693644L', 'r7gl3'),
-('72036547J', 'i8i3c'),
-('20489695S', '789li'),
-('40321567C', '44abr'),
-('45805486A', 'rub78'),
-('47896214H', 'amp79'),
-('45007784T', '9b680'),
-('89532541D', 'op789'),
-('11478215K', '8b925'),
-('89658231F', '6bc5e'),
-('69147258M', '6g7rt');
+('74859657P', 'd568064f096e93bc2301652ca2e3438b'), -- 'fg7t9'
+('72149369B', 'a28319d811285858aa6604499e150a82'), -- '784ñl'
+('78996587P', '59ad64231058347064a91844e6438044'), -- 'pepap'
+('38693644L', '9d5bae547e1c1c4dfd29f3372311c2b7'), -- 'r7gl3'
+('72036547J', '9e7342850e6787564478b314a1c9a43f'), -- 'i8i3c'
+('20489695S', 'ae0f21747ef44f36a1c6ef15ba8ac990'), -- '789li'
+('40321567C', 'f6c411f80ae5d7dd753e4df379c40bfd'), -- '44abr'
+('45805486A', '6de119d949efd8e05404b42d2e8faf9b'), -- 'rub78'
+('47896214H', '0a0026510353bf1e05e3d848dee944bc'), -- 'amp79'
+('45007784T', '3070ad1e9f570e3d43e44ea26cf146c2'), -- '9b680'
+('89532541D', '7c7c81d7a0a6424bfda4206624508c00'), -- 'op789'
+('11478215K', 'ae84169df97e58a1efed789d92aa28f1'), -- '8b925'
+('89658231F', '8c2b9fc97393cf359d429b3aefb37dfa'), -- '6bc5e'
+('69147258M', 'a79a501a2d3fa66d982380f993812e23'); -- '6g7rt'
 
 --volcado datos 'tbl_clientes' 
 INSERT INTO tbl_clientes (id, tipo, nombre, apellidos, telefono, email, calle, portal, piso, puerta, cp, localidad) VALUES

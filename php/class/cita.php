@@ -12,9 +12,9 @@ class Cita {
 
       // si isset de mes o dia pongo la fecha pasada por enlace, si no la del date de html
       if (isset($_GET['mes'])) {
-          $fecha = $anio."/".$mes."/".$dia;
+        $fecha = $anio."/".$mes."/".$dia;
       } else {
-          $fecha = $_POST['fecha'];
+        $fecha = $_POST['fecha'];
       }
       
       $hora = $_POST['hora'];
@@ -31,7 +31,7 @@ class Cita {
       if ($marca_fecha >= $marca_actual) {
         $conexion = abrirConexion();
         $sql = "INSERT INTO tbl_citas (id,fecha,hora,motivo,lugar,id_cliente) VALUES
-          (null,'$fecha','$hora','$motivo','$lugar','$id_cliente')";
+          ('$id','$fecha','$hora','$motivo','$lugar','$id_cliente')";
 
         if (mysqli_query($conexion,$sql)) {
           echo "<div class='alert alert-success col-sm-6 col-sm-offset-3' align='center'>
@@ -40,14 +40,15 @@ class Cita {
           echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";
         } else {
           echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
-                          <h4><strong>¡Error!</strong>No se ha podido añadir la cita</h4>
-                          </div></div></div>";
-              echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";
-          }
-
-          mysqli_close($conexion);
+              <h4><strong>¡Error!</strong>No se ha podido añadir la cita</h4>
+            </div></div></div>";
+          echo "<META HTTP-EQUIV='REFRESH'CONTENT='2;URL=citas.php'>";
+        }
+        mysqli_close($conexion);
       } else {
-        echo "La fecha introducída no es una fecha válida";
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong>La fecha introducída no es una fecha válida</h4>
+          </div></div></div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=citas.php'>";
       }
     }
@@ -61,8 +62,10 @@ class Cita {
   
       if ($fecha == "") {
         if ($id_cliente == "") {
-          // No se realiza ninguna búsqueda porque no ha seleccionado nada
-          echo "No ha seleccionado ningún criterio de búsqueda, vuelva a intentarlo";
+          // Si no se realiza ninguna búsqueda porque no ha seleccionado nada...
+          echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong> No ha seleccionado ningún criterio de búsqueda, vuelva a intentarlo</h4>
+          </div></div></div>";
         } else {
           // Aquí busco solo por el id del cliente
           $conexion = abrirConexion();
@@ -72,12 +75,15 @@ class Cita {
           $busca_cliente = mysqli_query($conexion,$sql_id);
   
           if (!$busca_cliente) {
-            echo "Error al conectar BD";
+            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+              <h4><strong>¡Error!</strong>No ha sido posible conectarse a la BD</h4>
+            </div></div></div>";
           } else {
             $num_filas = mysqli_num_rows($busca_cliente);
-  
             if ($num_filas == 0) {
-              echo "No se han encontrado citas";
+              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong> No se han encontrado citas</h4>
+              </div></div></div>";
             } else {
               echo "<table class='table table-striped tnoticias'>";
               echo "<thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Contacto</th></tr></thead>";
@@ -90,23 +96,25 @@ class Cita {
           mysqli_close($conexion);
         }
       } else {
-        echo $fecha;
         if ($id_cliente == "") {
           // aqui busco solo por la fecha
           $conexion = abrirConexion();
           $sql_fecha = "SELECT tbl_citas.id, tbl_citas.fecha, tbl_citas.hora, tbl_citas.motivo, tbl_citas.lugar, tbl_clientes.id as id_cliente, tbl_clientes.nombre, tbl_clientes.telefono
-          from tbl_citas inner join tbl_clientes on tbl_citas.id_cliente = tbl_clientes.id WHERE fecha='$fecha order by fecha desc";
+          from tbl_citas inner join tbl_clientes on tbl_citas.id_cliente = tbl_clientes.id WHERE fecha='$fecha' order by fecha desc";
           
-  
           $busca_fecha = mysqli_query($conexion,$sql_fecha);
   
           if (!$busca_fecha) {
-            echo "Error al conectar BD-2";
+            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+              <h4><strong>¡Error!</strong>Al conectarse a la BD</h4>
+            </div></div></div>";
           } else {
             $num_filas = mysqli_num_rows($busca_fecha);
   
             if ($num_filas == 0) {
-              echo "No se han encontrado citas";
+              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong> No se han encontrado citas</h4>
+              </div></div></div>";
             } else {
               echo "<table class='table table-striped tnoticias'>";
               echo "<thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Contacto</th></tr></thead>";
@@ -127,12 +135,16 @@ class Cita {
           $busca_fe_cli = mysqli_query($conexion,$sql_fe_cli);
   
           if (!$busca_fe_cli) {
-            echo "Error al conectar BD-3";
+            echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong>Al conectarse a la BD</h4>
+              </div></div></div>";
           } else {
             $num_filas = mysqli_num_rows($busca_fe_cli);
   
             if ($num_filas == 0) {
-              echo "No se han encontrado citas";
+              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                  <h4><strong>¡Error!</strong> No se han encontrado citas</h4>
+                </div></div></div>";
             } else {
               echo "<table class='table table-striped tnoticias'>";
               echo "<thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Lugar</th><th>Cliente</th><th>Contacto</th></tr></thead>";
@@ -160,13 +172,14 @@ class Cita {
           </div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=citas.php'>";
       } else {
-        echo "<p>¡Error! No se ha podido borrar la cita...</p>";
+        echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+            <h4><strong>¡Error!</strong> No se ha podido borrar la cita...</h4>
+        </div></div></div>";
         echo "<META HTTP-EQUIV='REFRESH'CONTENT='3;URL=citas.php'>";
       }
       mysqli_close($conexion);
     }
     return true;
-
   }
 
   static public function mostrarCalendario($dia, $mes, $anio): bool {
@@ -207,7 +220,6 @@ class Cita {
       case 12:
         $nombre_mes = 'Diciembre';
         break;
-
       default:
         $nombre_mes = '';
         break;
@@ -232,7 +244,9 @@ class Cita {
     $consulta = "SELECT fecha from tbl_citas WHERE fecha like '$anio-$mes-%'";
     $fechas = mysqli_query($conexion, $consulta);
     if (!$fechas) {
-      echo "Error al cargar las fechas de las citas...";
+      echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+        <h4><strong>¡Error!</strong>Al cargar las fechas de las citas...</h4>
+      </div></div></div>";
     } else {
       echo "<p align='center'><b>Las citas del mes aparecen marcadas</b></p>";
       while ($fila = mysqli_fetch_array($fechas, MYSQLI_ASSOC)) {
@@ -253,7 +267,6 @@ class Cita {
     foreach ($calendario as $dias_mes) { // cojo los días del mes almacenados en el array
       echo "<tr>";
       for ($i = 1; $i <= 7; $i++) {
-
         if (isset($dias_mes[$i])) {
           //busca en el array citas el día por el que va i para comprobar si hay alguna
           if (in_array($dias_mes[$i], $citas_mes)) { //busca en el array citas el numero del dia / aqui si hay cita
@@ -262,12 +275,9 @@ class Cita {
             $cons_citas = mysqli_query($con, $sql);
 
             if ($cons_citas) {
-
               $num_filas = mysqli_num_rows($cons_citas);
-
               if ($num_filas == 1) { // hay 1 cita
                 while ($fila = mysqli_fetch_array($cons_citas, MYSQLI_ASSOC)) {
-                  //$fila = mysqli_fetch_array($consultar_citas,MYSQLI_ASSOC);
                   $marca_hora = strtotime($fila['hora']);
                   $h_formateada = date("G:i", $marca_hora);
                   echo "<td bgcolor='#baa35f'>
@@ -289,7 +299,9 @@ class Cita {
                 </td>";
               }
             } else {
-              echo "¡ERROR! no se ha podido conectar con la BD...";
+              echo "<div class='container-fluid'><div class='row'><div class='alert alert-danger col-sm-6 col-sm-offset-3' align='center'>
+                <h4><strong>¡Error!</strong>No se han podido cargar las fechas de las citas...</h4>
+              </div></div></div>";
             }
           } else { // Día sin cita
             echo "<td bgcolor='white'><a href='nueva_cita.php?mes=$mes&dia=$dias_mes[$i]&anio=$anio'>" . $dias_mes[$i] . "</a></td>";
@@ -312,7 +324,5 @@ class Cita {
     </ul>";
     return true;
   }
-
-
 }
 ?>
